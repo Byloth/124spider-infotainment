@@ -1,0 +1,344 @@
+ 
+ Fiat 124 Spider CMU Serial Access - Navi World 
+ Pay with Crypto - GET 10% OFF   
+ Search for: 
+ € 0.00 
+ 0 
+ Navigation 
+ Audi SD card 
+ Buick SD card 
+ Cadillac SD card 
+ Chevrolet SD card 
+ Citroen SD card 
+ Ford SD card 
+ Fiat SD card 
+ GM SD card 
+ Infiniti SD card 
+ Iveco SD card 
+ Jaguar SD card 
+ Land Rover SD card 
+ Lexus SD card 
+ Lincoln SD card 
+ Mazda SD card 
+ Mercedes Benz SD card 
+ Mercedes NTG 4.5/4.7 Maps Update 
+ Mercedes NTG 5.1/5s1 Maps Update 
+ Mercedes NTG 5.2/5s2 Maps Update 
+ Mercedes NTG 5.5 Maps Update 
+ Mercedes NTG 6 MBUX Maps Update 
+ Mercedes NTG7 Mbux2 Maps Update 
+ Mercedes Gen20x Mbux3 Maps Update 
+ Mitsubishi SD card 
+ Nissan SD card 
+ Opel SD card 
+ Peugeot SD card 
+ Renault SD card 
+ Scania SD card 
+ Smart SD card 
+ Seat SD card 
+ Skoda SD card 
+ Subaru SD card 
+ Suzuki SD card 
+ Scion SD card 
+ Toyota SD card 
+ Vauxhall SD card 
+ Volkswagen SD card 
+ Firmware 
+ Audi MMI firmware update 
+ Mazda Connect Firmware Update 
+ Mazda Connect 2 Firmware Update 
+ Mercedes Firmware update 
+ Suzuki SLDA Firmware update 
+ Carplay / Android Auto 
+ Aston Martin Carplay / Android Auto 
+ Audi Carplay / Android Auto 
+ BMW Carplay / Android Auto 
+ Citroen Carplay / Android Auto 
+ Chrysler Carplay / Android Auto 
+ Dodge Carplay / Android Auto 
+ Infiniti Carplay / Android Auto 
+ Ferrari Carplay / Android Auto 
+ Fiat Carplay / Android Auto 
+ Ford Carplay / Android Auto 
+ Honda Carplay / Android Auto 
+ Jaguar Carplay / Android Auto 
+ Land Rover Carplay / Android Auto 
+ Lexus Carplay / Android Auto 
+ Mercedes Benz Carplay / Android Auto 
+ Mazda Carplay / Android Auto 
+ Maserati Carplay / Android Auto 
+ Opel Carplay / Android Auto 
+ Porsche Carplay / Android Auto 
+ Peugeot Carplay / Android Auto 
+ Toyota Carplay / Android Auto 
+ Vauxhall Carplay / Android Auto 
+ Volvo Carplay / Android Auto 
+ Volkswagen Carplay / Android Auto 
+ Blog 
+ Reviews 
+ Contact Us 
+ FAQ 
+ Land Rover VIN Verification Form 
+ Mazda Connect System How To Use 
+ Mazda License Folder Upload Form 
+ Toyota Request Code Upload Form 
+ Fiat License Folder Upload Form 
+ Home 
+ 2025 
+ April 
+ 20 
+ Fiat 124 Spider CMU Serial Access 
+ Fiat 124 Spider CMU Serial Access
+ by 
+ Jonathan 
+ on 
+ April 20, 2025 
+ in 
+ Fiat 
+ Starting from firmware version 59.00.502 the CMU is locked down, preventing users from accessing their systems or installing tweaks. Currently, the only way to bypass this restriction is by establishing a serial connection and carefully following the instructions provided. This process will enable you to run tweaks from a USB drive. 
+ Important Note for Firmware v70.00.335 and Higher: A serial connection must be established before updating or reinstalling the firmware in order to regain root access.
+ Parts/Equipment Needed:
+ USB to TTL Serial Adapter  – $6 (Any other CP2102 module should work. Other USB-TTL Adapters might work too.) Driver can be found  Here . 
+ Single-Stranded/Solid-core insulated wire. 
+ USB Flash Drive
+ 10mm socket wrench with extender/ratchet
+ Putty  or  SecureCRT 
+ Mazda AIO Tweaks 
+ Preparation: 
+ 1) MZD AIO Method:
+ USB stick. Format drive to FAT32
+ Using MZD-AIO v2.7.9+: Run “Autorun & Recovery” with “Recovery Via Serial Connection” & “Install ID_7 Recovery Scripts Pack” options checked
+ AIO will create the ‘XX’ Folder and neccessary files in “_copy_to_usb” folder
+ AIO will offer to copy files directly to the connected USB Drive
+ 2) Manual Method:
+ USB stick. Format drive to FAT32
+ Create folder called ‘XX’
+ Add contents of  this archive  to folder ‘XX’
+ If you want to have the car create its own Wifi Access Point, configure the  XX/00-start-wifiAP/wifiAP.config file. Otherwise, delete the 00-start-wifiAP folder. If you are trying to remove Wifi AP after you have installed it, copy contents of  Wifi Uninstall Script  to flash drive and connect to CMU.
+ (Optional) Use AIO to also install some selected tweaks on the same USB flash drive to run after completed.
+ Wiring the CMU: 
+ Do not modify any of the below commands  If the commands do not work, then you have done something wrong (i.e. you’re not logged in, or RX/TX wires are not properly wired)
+ You will need to have 3 wires connected to the CMU: Transmit (TX), Receive (RX), and Ground (GND)
+ Here is a picture of the back of the CMU. We are going to be adding our cables to the ‘power&more’ connector. Here is a more detailed picture of where the RX and TX cables go. Note: The smaller 2x4logic.com diagram looks like it’s the opposite of the other picture but that’s because the CMU is using 2S to transmit (so the serial adapter will be receiving). For the sake of simplicity, connect the RX port of your Serial Adapter to 2S (top) and TX port to 2T (bottom).
+ Be sure that the cable is going into the port. It must go in about an inch. The GND cable can go anywhere so long as it is touching the CMU. I recommend slightly unscrewing one of the Philips head screws and wedging the cable in there.
+ Connect the other end of the wires to the CP2102 module in its corresponding port.
+ Serial Console App: 
+ Make sure you know what the paste command is for your Serial Console application. In Putty, you right click inside the terminal window and it will paste whatever command you had copied. For SecureCRT, you push Ctrl+Shift+V to paste. Remember that these shortcuts will only paste, you will have to push enter after to actually send the command.
+ Windows will auto-assign a COM Port to the CP2102 module once its plugged in. Go to Device Manager > Ports (COM & LPT) to see what the COM Port # is
+– For SecureCRT, under Options > Connection > Serial, set Port = COM#, Baud = 115200, Data Bits = 8, Parity = None, Stop Bits = 1
+– For Putty, you just need to select ‘Serial’ and then enter the COM Port # and set Baud to 115200
+ You should start see text scroll by even if the car is off
+ Plug in flash drive
+ Turn the car to ACC mode by just pressing the On button without putting your foot on brake to fully turn car on
+ Now you are really going to be seeing text fly by,  remember that the commands are working even though you cannot see what you are typing because of the text flying by .
+ Press Enter in terminal and CMU will respond with ‘login’. For the next several steps make sure you do not make any spelling mistakes. It is probably  best to copy and paste the commands  (to paste you just need to right click in the terminal window).
+ If text is flying by so fast it seems like you can’t type you are doing everything correctly, copy and paste each command and press enter! It will seem like your commands are not being sent to the Mazda but don’t worry they are (provided your wiring is right. If you got a module with LEDs you can check TX is Transmit/RX is Receiver) 
+ Reboot Mazda CMU by holding the Nav + Mute button for 10+ seconds.
+ Input 
+ user 
+  and press Enter
+ 9. Input
+ jci 
+  and press Enter
+NOTE: After installing the autorun scripts you will be able to login as the root user with username:  cmu  pass:  jci 
+10. Run
+ cp -r /mnt/sd*/XX/* /mnt/data_persist/dev/bin/; chmod +x /mnt/data_persist/dev/bin/autorun; /mnt/data_persist/dev/bin/autorun 
+ 11. (Optional) To test if the files have been moved to the folder, run  
+ ls -l /mnt/data_persist/dev/bin 
+ The files/folders should be colored in green/blue since they are folders/executable. You may have to run this a few times to see the Serial Console output.
+ 12. Remove flash drive, turn off car, insert flash drive that has AIO tweaks installed, turn car on back in ACC mode
+13. After a few minutes, you should see a message that indicates the mods are being installed. This process may take approximately 2 – 20 minutes.
+ Finishing Up: 
+ Now that everything is installed you can put everything back together
+ Remove the TX, RX, GND wires
+ Slide CMU back in
+ Attach bolt using 10mm socket wrench
+ Connect hazard light connector cable to trim
+ Push trim back in
+ From here on out, you can just use a flashdrive to install tweaks
+ Navi-World accepts no liability for any damage, loss, or consequences that may arise from the use of this guide. All actions taken based on the information provided are done strictly at your own risk.
+ Previous 
+ Fiat 124 Spider firmware 70.00.335+ ID7_Recovery_XX 
+ Next 
+ Navigation Update for Fiat 124 Spider (2024/2025) 
+ 0 Comments for “Fiat 124 Spider CMU Serial Access”
+ Leave a Reply Cancel reply 
+ Your email address will not be published.
+ Comment Name * 
+ E-mail * 
+ Website 
+ Save my name, email, and website in this browser for the next time I comment. 
+ Shipping Policy 
+ Refund and Returns Policy 
+ Blog 
+ Reviews 
+ Contact Us 
+ © Copyright 2015-2025 NAVI WORLD. All rights reserved.
+ Navigation 
+ Audi SD card 
+ Buick SD card 
+ Cadillac SD card 
+ Chevrolet SD card 
+ Citroen SD card 
+ Ford SD card 
+ Fiat SD card 
+ GM SD card 
+ Infiniti SD card 
+ Iveco SD card 
+ Jaguar SD card 
+ Land Rover SD card 
+ Lexus SD card 
+ Lincoln SD card 
+ Mazda SD card 
+ Mercedes Benz SD card 
+ Mercedes NTG 4.5/4.7 Maps Update 
+ Mercedes NTG 5.1/5s1 Maps Update 
+ Mercedes NTG 5.2/5s2 Maps Update 
+ Mercedes NTG 5.5 Maps Update 
+ Mercedes NTG 6 MBUX Maps Update 
+ Mercedes NTG7 Mbux2 Maps Update 
+ Mercedes Gen20x Mbux3 Maps Update 
+ Mitsubishi SD card 
+ Nissan SD card 
+ Opel SD card 
+ Peugeot SD card 
+ Renault SD card 
+ Scania SD card 
+ Smart SD card 
+ Seat SD card 
+ Skoda SD card 
+ Subaru SD card 
+ Suzuki SD card 
+ Scion SD card 
+ Toyota SD card 
+ Vauxhall SD card 
+ Volkswagen SD card 
+ Firmware 
+ Audi MMI firmware update 
+ Mazda Connect Firmware Update 
+ Mazda Connect 2 Firmware Update 
+ Mercedes Firmware update 
+ Suzuki SLDA Firmware update 
+ Carplay / Android Auto 
+ Aston Martin Carplay / Android Auto 
+ Audi Carplay / Android Auto 
+ BMW Carplay / Android Auto 
+ Citroen Carplay / Android Auto 
+ Chrysler Carplay / Android Auto 
+ Dodge Carplay / Android Auto 
+ Infiniti Carplay / Android Auto 
+ Ferrari Carplay / Android Auto 
+ Fiat Carplay / Android Auto 
+ Ford Carplay / Android Auto 
+ Honda Carplay / Android Auto 
+ Jaguar Carplay / Android Auto 
+ Land Rover Carplay / Android Auto 
+ Lexus Carplay / Android Auto 
+ Mercedes Benz Carplay / Android Auto 
+ Mazda Carplay / Android Auto 
+ Maserati Carplay / Android Auto 
+ Opel Carplay / Android Auto 
+ Porsche Carplay / Android Auto 
+ Peugeot Carplay / Android Auto 
+ Toyota Carplay / Android Auto 
+ Vauxhall Carplay / Android Auto 
+ Volvo Carplay / Android Auto 
+ Volkswagen Carplay / Android Auto 
+ Blog 
+ Reviews 
+ Contact Us 
+ FAQ 
+ Land Rover VIN Verification Form 
+ Mazda Connect System How To Use 
+ Mazda License Folder Upload Form 
+ Toyota Request Code Upload Form 
+ Fiat License Folder Upload Form 
+ Search for: 
+ € 0.00 
+ 0 
+ × 
+ Product added to cart
+ Proceed to Checkout
+ Continue Shopping
+ Menu 
+ Search for: 
+ Navigation 
+ Audi SD card 
+ Buick SD card 
+ Cadillac SD card 
+ Chevrolet SD card 
+ Citroen SD card 
+ Ford SD card 
+ Fiat SD card 
+ GM SD card 
+ Infiniti SD card 
+ Iveco SD card 
+ Jaguar SD card 
+ Land Rover SD card 
+ Lexus SD card 
+ Lincoln SD card 
+ Mazda SD card 
+ Mercedes Benz SD card 
+ Mercedes NTG 4.5/4.7 Maps Update 
+ Mercedes NTG 5.1/5s1 Maps Update 
+ Mercedes NTG 5.2/5s2 Maps Update 
+ Mercedes NTG 5.5 Maps Update 
+ Mercedes NTG 6 MBUX Maps Update 
+ Mercedes NTG7 Mbux2 Maps Update 
+ Mercedes Gen20x Mbux3 Maps Update 
+ Mitsubishi SD card 
+ Nissan SD card 
+ Opel SD card 
+ Peugeot SD card 
+ Renault SD card 
+ Scania SD card 
+ Smart SD card 
+ Seat SD card 
+ Skoda SD card 
+ Subaru SD card 
+ Suzuki SD card 
+ Scion SD card 
+ Toyota SD card 
+ Vauxhall SD card 
+ Volkswagen SD card 
+ Firmware 
+ Audi MMI firmware update 
+ Mazda Connect Firmware Update 
+ Mazda Connect 2 Firmware Update 
+ Mercedes Firmware update 
+ Suzuki SLDA Firmware update 
+ Carplay / Android Auto 
+ Aston Martin Carplay / Android Auto 
+ Audi Carplay / Android Auto 
+ BMW Carplay / Android Auto 
+ Citroen Carplay / Android Auto 
+ Chrysler Carplay / Android Auto 
+ Dodge Carplay / Android Auto 
+ Infiniti Carplay / Android Auto 
+ Ferrari Carplay / Android Auto 
+ Fiat Carplay / Android Auto 
+ Ford Carplay / Android Auto 
+ Honda Carplay / Android Auto 
+ Jaguar Carplay / Android Auto 
+ Land Rover Carplay / Android Auto 
+ Lexus Carplay / Android Auto 
+ Mercedes Benz Carplay / Android Auto 
+ Mazda Carplay / Android Auto 
+ Maserati Carplay / Android Auto 
+ Opel Carplay / Android Auto 
+ Porsche Carplay / Android Auto 
+ Peugeot Carplay / Android Auto 
+ Toyota Carplay / Android Auto 
+ Vauxhall Carplay / Android Auto 
+ Volvo Carplay / Android Auto 
+ Volkswagen Carplay / Android Auto 
+ Blog 
+ Reviews 
+ Contact Us 
+ FAQ 
+ Land Rover VIN Verification Form 
+ Mazda Connect System How To Use 
+ Mazda License Folder Upload Form 
+ Toyota Request Code Upload Form 
+ Fiat License Folder Upload Form 
+ © Copyright 2019-2026 NAVI WORLD. All rights reserved.

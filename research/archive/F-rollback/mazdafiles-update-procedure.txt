@@ -1,0 +1,109 @@
+ 
+ Mazda Connect Firmware Update Procedure - Mazda infotainment cmu update Files 
+ Skip to content 
+ Home 
+ Catalog 
+ All Mazda Firmware Update Files 
+ Mazda Connect Firmware Update 
+ Mazda Connect 2 Firmware Update 
+ Guides 
+ Which Mazda Connect system do you have? 
+ Firmware Update Procedures 
+ usb needed for firmware update 
+ About 
+ Home 
+ Catalog 
+ All Mazda Firmware Update Files 
+ Mazda Connect Firmware Update 
+ Mazda Connect 2 Firmware Update 
+ Guides 
+ Which Mazda Connect system do you have? 
+ Firmware Update Procedures 
+ usb needed for firmware update 
+ About 
+ Mazda Connect Firmware Update Procedure
+ Leave a Comment 
+ / Guides , Update Procedure 
+ Complete installation of Reinstall/ Update Package will take about 40 minutes.“Preparing to update”, black screen and Update process bar will appear. Reinstallation will start from 0%, the progress bar will gradually increase to 100%. The update progress bar may pause for several minutes, please wait, DO NOT SWITCH IGNITION OFF OR RESTART. In order to avoid the ACC power being turned off automatically during CMU update, press and release clutch pedal (MT) or the brake pedal (AT) after approx. 15 minutes to reset power safe function. This will disable CMU sleep mode for next 15 minutes. Please set a timer as a reminder for you.
+ Remove Navigation SD card (if customer has one) and all other devices (USB, AUX, Mobile phones. …) connected to the MZD Connect when ignition position is OFF. 
+ Push engine start button once without depressing clutch pedal (manual transaxle) or brake pedal (automatic transaxle). This will set ignition to ACC. 1. Wait until MZD system is booted.
+ 2. Select AM, FM or DAB radio.
+ 3. Press three buttons (Music (A) + Favorite (B) + Volume Mute(C)) on the commander switch at the same time for 2-5 seconds and the Diagnostic Test Screen will appear.
+ 4. Use the touchscreen or the commander knob to input ‘3’ on test screen and then select “ENTER” and “CLEAR”.
+ 5. Input ‘2’ on test screen and then select “ENTER”. (This will internally clear earlier set DTCs in CMU). Select “CLEAR” and then “EXIT”.
+ 6. Connect the prepared USB memory stick to one of the two USB port (A) (depending on vehicle equipment) (Format fat32. Capacity 4-16 gb. USB 2.0 preferred).NOTE: Only the prepared USB memory stick should be inserted in one of USB ports. Nothing should be inserted in the other USB port and SD slot during the re-flashing process.
+ 7. When the USB memory stick is recognized, following message will appear briefly on the screen.
+ 8. NOTE: If USB memory stick is not recognized by the system, change USB memory stick and return to step 9.
+ 9. Press again the three buttons (Music (A) + Favorites (B) + Volume Mute(C)) on commander switch at the same time for 2-5 seconds.
+ 10. Use touchscreen or commander knob to input ‘99’ and then select “ENTER” on Diagnostics Test screen.
+ 11. Select “Search” on screen below.
+ 12. When updating to software version 70.00.335 or later, go to step 22.
+ (“Fail Safe Package” has been eliminated since 70.00.335. No need to perform Failsafe installation process since then.)CAUTION: Always do the “Fail Safe Package” first.
+ Note: Please check if CMU S/W is 29.00.000 or older. If yes, refer to Service Information R036/18.
+ Note: Please DO NOT switch ignition OFF or allow system to switch off ignition automatically until all updates have been installed.
+ Note: Stay inside the vehicle until failsafe package installation is finished.
+ 13. Select “Install” on the screen below and the Failsafe installation process will start.
+ 14. Failsafe installation process will start and will take several minutes.
+ 15. After Failsafe installation process is completed, select “OK”
+ 16. Press and release clutch pedal (Manual Transaxle) or brake pedal (Automatic Transaxle) and proceed with following steps without stopping.NOTE: If the ignition is left in ACC position it will automatically switch off after 25 minutes. Performing this step resets timer to ensure vehicle does not switch off while installing reinstallation package.
+ 17. Press the three buttons (Music (A) + Favorite (B) + Volume Mute(C)) on commander switch at the same time for 2-5 seconds to open the Diagnostics Test screen again.
+ 18. Use touchscreen or commander knob to input ‘99’ and then select “ENTER” on Diagnostics Test screen.
+ 19. Select “Search” on screen below.
+ 20. Select “Reinstallation Package” or “Update Package” on the screen below.
+ NOTE: “Reinstallation Package” appears when current version is 70.00.110 or before. “Update Package” appears when current version is 70.00.335 or later.(“Fail Safe Package” has been eliminated since 70.00.335. No need to perform Failsafe installation process since then.) 
+ 21. Select “Install” (or “Update” for 70.00.335 or later versions) on the screen below.
+ 22. Screen below will be displayed.“Preparing to update”→“black screen”→“White screen”. This will take several minutes.
+ 23. Reinstallation / Update will start from 0% and during the update process, the progress bar will gradually increase to 100%. It will take about 40 minutes.
+ DO NOT turn IG OFF to avoid damaging CMU.
+ NOTE: In order to avoid ACC power being turned off during update process, press and release clutch pedal (Manual Transaxle) or brake pedal (Automatic Transaxle) after approx. 25 minutes. We strongly recommend to set a timer to 25 minutes.
+ 24. Confirm that update is completed and turn ignition switch OFF.
+ 25. If you see “Please restart” on the screen, Turn ignition switch OFF.
+ 26. Insert Navigation-SD card (if removed in step 1) into slot. Go to NAV screen and confirm current vehicle location is correctly displayed. If it is not correct, check GPS signal status and drive vehicle for approx. 50 m at 15 km/h or faster speed.
+ If updating process will not finish successfully: 
+ Turn the ignition switch OFF. (Do not start the engine.)
+ Wait until the screen turns to black.
+ Remove the USB memory stick.
+ Remove ROOM fuse and wait for one minute.
+ Install ROOM fuse.
+ Turn ignition switch to ACC. (Do not turn to ON or Start.)
+ Confirm the screen below appears.
+ Connect the USB memory stick to the USB port.
+ Confirm that update process restarts.
+ Continue from step 25 (update successful) again.
+ View Compatible Firmware 
+ ← Previous Post 
+ Next Post → 
+ Related Posts 
+ How to check Mazda connect firmware version – connect gen 6 
+ Firmware Version Identification , Guides 
+ How to check Mazda connect 2 (GEN 7) firmware version 
+ Firmware Version Identification , Guides 
+ Leave a Comment Cancel Reply 
+ Your email address will not be published. Required fields are marked * 
+ Type here.. 
+ Name* 
+ Email* 
+ Website 
+ Save my name, email, and website in this browser for the next time I comment. 
+ Search Search 
+ Recent Posts
+ usb needed for firmware update 
+ Which Mazda Connect system do you have? 
+ Mazda Connect 2 (7 gen) Firmware Update Procedure 
+ Mazda Connect Firmware Update Procedure 
+ How to check Mazda connect 2 (GEN 7) firmware version 
+ Recent Comments
+ No comments to show.
+ Archives
+ December 2025 
+ Categories
+ Firmware Version Identification 
+ Guides 
+ Update Procedure 
+ Usb Requirements 
+ Terms & Conditions 
+ Privacy Policy 
+ Refund Policy 
+ Contact 
+ Copyright: 2025 Mazda Infotainment cmu Update Files
+ 

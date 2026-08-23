@@ -1,0 +1,199 @@
+<html>
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=2N_sDSC0" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=o9P2E1FK" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden","showSwfDownload":true};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("http://web.archive.org/web");
+  __wm.wombat("http://www.2x4logic.com:80/invokefailsafe.html","20160605131255","http://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1465132375");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>forcing invocation of Mazda Connect failsafe mode</title>
+</head>
+<body>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+Do not attempt this.  There is a high risk that you could permanently damage the device.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+Due to the bug-ridden software deployed by JCI on the Mazda Connect (aka MZD Connect) infotainment system (and an apparent disinterest on their part in fixing these bugs despite years to fix them), users are driven to want to modify/replace the software.  It is infuriating that an otherwise excellent vehicle is hobbled by an infotainment system that cost less than 1/100th of the vehicle to produce.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+The software is brittle and breaks easily, resulting in "bricking" the device.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+There is a "failsafe" Linux image (which, per my <a href="jci-failsafe.html">earlier posting</a>, is anything but failsafe).  The name is a misnomer; at best, the "failsafe" is just a method of restoring/upgrading the main application.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+To my knowledge, the only way to invoke the "failsafe" is when the first byte of /dev/mtdblock1 (address 0x010000 of the SPI NOR flash) is set to zero.  This is performed by the main application after the security/integrity of the upgrade image on the USB flash drive is verified.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+<img src="/web/20160605131255im_/http://www.2x4logic.com/spirig.jpg">
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+The following equipment was utilized:
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+<table>
+<tr><td>custom adapter for the "ENET JTAG" edgeboard connector
+<tr><td>Bus Pirate
+<tr><td>Pomona 5252 SOIC-16 Clip Test Adapter
+<tr><td>0.1" female jumper leads
+</table>
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+The CMU has an edgeboard connector labeled "ENET" "JTAG" in silkscreen on the top (CPU-side) of the PCB.  Pins 1-15 are on the top of the PCB, and pins 16-30 are on the bottom (same side of the PCB as the SPI NOR flash).
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+It would seem that pin 29 functions as an active-low CPU reset.  Connecting pin 29 to pin 24 (ground) causes the current to drop markedly but leaves the power supplies active.  There appear to be no thermal hotspots in this mode.  However, since this is not documented, there is the chance that this could damage the device.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+Leaving the power supply active but the CPU pins in Hi-Z is critical, as programming the SPI NOR flash externally must be done without electrical contention or sourcing current into unpowered ICs.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+Connecting these pins by hand is much too risky, in my opinion.  Pin 30 is digital power, for example, so the slightest mistake is very destructive.  I made a prototype PCB adapter using the Sullins RBE15DHHN edge connector.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+The downside of such an adapter PCB approach is that it means removing the CMU PCB in order to install the adapter.  This adds handling risk and leaves the CPU and DRAM without heatsinks.  (I'm less worried about heatsinks during this SPI programming procedure as the CPU is in reset.)  It may be possible to design an adapter that attaches via pogo pins without requiring CMU PCB removal.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+The Bus Pirate, connected to the Pomona clip with test leads, allows reading/writing of the SPI NOR flash whilst the CMU is powered but in the CPU reset mode.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+<img src="/web/20160605131255im_/http://www.2x4logic.com/mcspipins-annotated.png">
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+Here are the commands that I used on the Bus Pirate:
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+<table>
+<tr><td>setting SPI mode (step at a time via the interactive prompt):
+<tr><td>m 5 3 1 2 1 2 2
+</table>
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+<table>
+<tr><td>verifying connectivity by reading the SPI NOR flash JEDEC ID:
+<tr><td>[0x9F r:3]
+<tr><td>returns 0x01 0x02 0x16 (indicating a Spansion S25FL064P)
+</table>
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+<table>
+<tr><td>read the current state of mtdblock1
+<tr><td>[3 1 0 0 r:4]
+<tr><td>returns 0xFF 0xFF 0xFF 0xFF if booting in the normal, non-failsafe, mode
+<tr><td>returns 0x00 0xFF 0xFF 0xFF if booting in the failsafe mode
+</table>
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+<table>
+<tr><td>write mtdblock1 to change to failsafe boot
+<tr><td>[6]
+<tr><td>[2 1 0 0 0]
+</table>
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+It is desirable at this point to repeat the command to read the current state of mtdblock1 so as to verify that the write was successful.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+<table>
+<tr><td>restore Bus Pirate to Hi-Z (via the interactive prompt):
+<tr><td>m 1
+</table>
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+At this point, the CMU can be powered down and all programming adapters must be removed.  It is desirable to place the PCB back in the enclosure so that the CPU and DRAM are on heatsinks.  (The failsafe, in particular, is power hungry; there does not seem to be any power-saving throttling of the CPU.)
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+When the CMU next boots, it will insist on an upgrade.  You must follow the Mazda documented procedures for ensuring the power doesn't get disrupted during the upgrade (as JCI's failsafe is prone to failure).  In my experience, even Mazda's procedures seem insufficient; it seems like one has to run the engine to ensure the power to the CMU doesn't get turned off in the middle of an upgrade.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+There does not appear to be any downside to starting the failsafe without a USB drive connected.  It will display the following message until the USB drive is installed.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+<img src="/web/20160605131255im_/http://www.2x4logic.com/nousb.jpg">
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+Interestingly, there is an extra step in the failsafe with the above procedure.  The normal upgrade procedure involves the main application performing a security/integrity check of the upgrade before setting /dev/mtdblock1.  There must be some sort of message passed (IRAM or the CAN microcontroller or via a temporary file on the USB drive) to indicate whether the security check has been done.  If this is not found (in a cold start such as this), the failsafe performs the check independently.  I have to wonder if this leaves a security hole if the user were to substitute a different USB drive after the normal app vets a known good image and then does a warm reset.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+<img src="/web/20160605131255im_/http://www.2x4logic.com/validating.jpg">
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+After the security check, the upgrade process is the same as normal.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+<img src="/web/20160605131255im_/http://www.2x4logic.com/reinstall.jpg">
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+At the end of the upgrade, mtdblock1 is re-written back to normal by the failsafe.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+P.S.: the above Bus Pirate procedure should also work to reprogram any portion of the 8MByte SPI NOR flash.  It would take a non-trivial amount of time to download, and you would want to write/procure software to perform programming rather than issue many, many text commands.  For this reason, though, it behooves developers to have backup copies of all /dev/mtdblock* partitions so that they can be re-written should they become corrupted.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+.
+</p>
+
+<p>
+<a href="index.html">back to main page</a> <a href="contact.html">contact</a>
+</p>
+
+</body>
+</html><!--
+     FILE ARCHIVED ON 13:12:55 Jun 05, 2016 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:17:59 Aug 23, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.709
+  exclusion.robots: 0.077
+  exclusion.robots.policy: 0.057
+  esindex: 0.01
+  cdx.remote: 4.721
+  LoadShardBlock: 113.671 (3)
+  PetaboxLoader3.datanode: 69.294 (4)
+  PetaboxLoader3.resolve: 75.601 (2)
+  load_resource: 82.948
+-->

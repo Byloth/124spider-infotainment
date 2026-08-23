@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://mzdonline.wordpress.com/xmlrpc.php">
+
+<title>Reset CMU NOR Flash with RPi &#8211; mzdonline</title>
+<script type="text/javascript">
+  WebFontConfig = {"google":{"families":["Source+Sans+Pro:r,i,b,bi:latin,latin-ext"]},"api_url":"https:\/\/fonts-api.wp.com\/css"};
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = '/wp-content/plugins/custom-fonts/js/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+	})();
+</script><style id="jetpack-custom-fonts-css">.wf-active body{font-family:"Source Sans Pro",sans-serif}.wf-active .search-container .search-field{font-family:"Source Sans Pro",sans-serif}.wf-active .blog-description{font-family:"Source Sans Pro",sans-serif}.wf-active .post-content p.page-links{font-family:"Source Sans Pro",sans-serif}.wf-active .post-content{font-family:"Source Sans Pro",sans-serif}.wf-active .post-content h4, .wf-active .post-content h5, .wf-active .post-content h6{font-family:"Source Sans Pro",sans-serif}.wf-active .post-content blockquote p{font-family:"Source Sans Pro",sans-serif}.wf-active .post-content blockquote cite{font-family:"Source Sans Pro",sans-serif}.wf-active .post-content .gallery-caption, .wf-active .post-content .wp-caption-text{font-family:"Source Sans Pro",sans-serif}.wf-active .post-content fieldset legend{font-family:"Source Sans Pro",sans-serif}.wf-active .post-content label{font-family:"Source Sans Pro",sans-serif}.wf-active .post-content input, .wf-active .post-content textarea{font-family:"Source Sans Pro",sans-serif}.wf-active .pingbacklist li:before{font-family:"Source Sans Pro",sans-serif}.wf-active .comments-nav .fleft a:before{font-family:"Source Sans Pro",sans-serif}.wf-active .comments-nav .fright a:after{font-family:"Source Sans Pro",sans-serif}.wf-active .comment-respond input[type="text"], .wf-active .comment-respond textarea{font-family:"Source Sans Pro",sans-serif}.wf-active .comment-respond input[type="submit"]{font-family:"Source Sans Pro",sans-serif}.wf-active .wrapper .search-field{font-family:"Source Sans Pro",sans-serif}.wf-active .comment-respond#respond{font-family:"Source Sans Pro",sans-serif}</style>
+<meta name='robots' content='max-image-preview:large' />
+<script>document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//wordpress.com' />
+<link rel='dns-prefetch' href='//fonts-api.wp.com' />
+<link rel="alternate" type="application/rss+xml" title="mzdonline &raquo; Feed" href="https://mzdonline.wordpress.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="mzdonline &raquo; Comments Feed" href="https://mzdonline.wordpress.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="mzdonline &raquo; Reset CMU NOR Flash with&nbsp;RPi Comments Feed" href="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+	<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-2-1' href='/_static/??-eJxtjF0KwzAMgy+0zN0eVvpQepY0NSGNE4fYYddvO8bGfhAIPiEJ7sU4zopZITVTqPmQBVbUYl18MiTmw5ZGKFCRrOJiCot+0dmJnOD/JYWI7+MH/dRnYv8aJFsjasjezLbCXv1MjvGUxkvfd8Ou623dAC/0S9o=&cssminify=yes' type='text/css' media='all' />
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v23.8.0/build/styles/block-library/common.min.css */
+</style>
+<style id="wp-block-library-inline-css-extra">
+.has-text-align-justify {
+	text-align:justify;
+}
+.has-text-align-justify{text-align:justify;}
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+
+<style id="classic-theme-styles-inline-css">
+.wp-block-button__link{background-color:#32373c;border-radius:9999px;box-shadow:none;color:#fff;font-size:1.125em;padding:calc(.667em + 2px) calc(1.333em + 2px);text-decoration:none}.wp-block-file__button{background:#32373c;color:#fff}.wp-block-accordion-heading{margin:0}.wp-block-accordion-heading__toggle{background-color:inherit!important;color:inherit!important}.wp-block-accordion-heading__toggle:not(:focus-visible){outline:none}.wp-block-accordion-heading__toggle:focus,.wp-block-accordion-heading__toggle:hover{background-color:inherit!important;border:none;box-shadow:none;color:inherit;padding:var(--wp--preset--spacing--20,1em) 0;text-decoration:none}.wp-block-accordion-heading__toggle:focus-visible{outline:auto;outline-offset:0}.wp-block-tab:not(.has-text-color){color:inherit!important}.wp-block-tab:not(.has-background){background-color:inherit!important}.wp-block-tab:focus,.wp-block-tab:hover{text-decoration:none}.wp-block-tab:focus-visible{outline:auto;outline-offset:0}
+/*# sourceURL=/wp-content/plugins/gutenberg-core/v23.8.0/build/styles/block-library/classic.min.css */
+</style>
+
+<style id="coblocks-inline-format-inline-css">
+.uppercase{text-transform:uppercase}
+/*# sourceURL=coblocks-inline-format-inline-css */
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-12-1' href='/_static/??/wp-content/mu-plugins/core-compat/wp-mediaelement.css,/wp-content/mu-plugins/wpcom-bbpress-premium-themes.css?m=1432920480j&cssminify=yes' type='text/css' media='all' />
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-family--albert-sans: 'Albert Sans', sans-serif;--wp--preset--font-family--alegreya: Alegreya, serif;--wp--preset--font-family--arvo: Arvo, serif;--wp--preset--font-family--bodoni-moda: 'Bodoni Moda', serif;--wp--preset--font-family--bricolage-grotesque: 'Bricolage Grotesque', sans-serif;--wp--preset--font-family--cabin: Cabin, sans-serif;--wp--preset--font-family--chivo: Chivo, sans-serif;--wp--preset--font-family--commissioner: Commissioner, sans-serif;--wp--preset--font-family--cormorant: Cormorant, serif;--wp--preset--font-family--courier-prime: 'Courier Prime', monospace;--wp--preset--font-family--crimson-pro: 'Crimson Pro', serif;--wp--preset--font-family--dm-mono: 'DM Mono', monospace;--wp--preset--font-family--dm-sans: 'DM Sans', sans-serif;--wp--preset--font-family--dm-serif-display: 'DM Serif Display', serif;--wp--preset--font-family--domine: Domine, serif;--wp--preset--font-family--eb-garamond: 'EB Garamond', serif;--wp--preset--font-family--epilogue: Epilogue, sans-serif;--wp--preset--font-family--fahkwang: Fahkwang, sans-serif;--wp--preset--font-family--figtree: Figtree, sans-serif;--wp--preset--font-family--fira-sans: 'Fira Sans', sans-serif;--wp--preset--font-family--fjalla-one: 'Fjalla One', sans-serif;--wp--preset--font-family--fraunces: Fraunces, serif;--wp--preset--font-family--gabarito: Gabarito, system-ui;--wp--preset--font-family--ibm-plex-mono: 'IBM Plex Mono', monospace;--wp--preset--font-family--ibm-plex-sans: 'IBM Plex Sans', sans-serif;--wp--preset--font-family--ibarra-real-nova: 'Ibarra Real Nova', serif;--wp--preset--font-family--instrument-serif: 'Instrument Serif', serif;--wp--preset--font-family--inter: Inter, sans-serif;--wp--preset--font-family--josefin-sans: 'Josefin Sans', sans-serif;--wp--preset--font-family--jost: Jost, sans-serif;--wp--preset--font-family--libre-baskerville: 'Libre Baskerville', serif;--wp--preset--font-family--libre-franklin: 'Libre Franklin', sans-serif;--wp--preset--font-family--literata: Literata, serif;--wp--preset--font-family--lora: Lora, serif;--wp--preset--font-family--merriweather: Merriweather, serif;--wp--preset--font-family--montserrat: Montserrat, sans-serif;--wp--preset--font-family--newsreader: Newsreader, serif;--wp--preset--font-family--noto-sans-mono: 'Noto Sans Mono', sans-serif;--wp--preset--font-family--nunito: Nunito, sans-serif;--wp--preset--font-family--open-sans: 'Open Sans', sans-serif;--wp--preset--font-family--overpass: Overpass, sans-serif;--wp--preset--font-family--pt-serif: 'PT Serif', serif;--wp--preset--font-family--petrona: Petrona, serif;--wp--preset--font-family--piazzolla: Piazzolla, serif;--wp--preset--font-family--playfair-display: 'Playfair Display', serif;--wp--preset--font-family--plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--raleway: Raleway, sans-serif;--wp--preset--font-family--roboto: Roboto, sans-serif;--wp--preset--font-family--roboto-slab: 'Roboto Slab', serif;--wp--preset--font-family--rubik: Rubik, sans-serif;--wp--preset--font-family--rufina: Rufina, serif;--wp--preset--font-family--sora: Sora, sans-serif;--wp--preset--font-family--source-sans-3: 'Source Sans 3', sans-serif;--wp--preset--font-family--source-serif-4: 'Source Serif 4', serif;--wp--preset--font-family--space-mono: 'Space Mono', monospace;--wp--preset--font-family--syne: Syne, sans-serif;--wp--preset--font-family--texturina: Texturina, serif;--wp--preset--font-family--urbanist: Urbanist, sans-serif;--wp--preset--font-family--work-sans: 'Work Sans', sans-serif;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-albert-sans-font-family{font-family: var(--wp--preset--font-family--albert-sans) !important;}.has-alegreya-font-family{font-family: var(--wp--preset--font-family--alegreya) !important;}.has-arvo-font-family{font-family: var(--wp--preset--font-family--arvo) !important;}.has-bodoni-moda-font-family{font-family: var(--wp--preset--font-family--bodoni-moda) !important;}.has-bricolage-grotesque-font-family{font-family: var(--wp--preset--font-family--bricolage-grotesque) !important;}.has-cabin-font-family{font-family: var(--wp--preset--font-family--cabin) !important;}.has-chivo-font-family{font-family: var(--wp--preset--font-family--chivo) !important;}.has-commissioner-font-family{font-family: var(--wp--preset--font-family--commissioner) !important;}.has-cormorant-font-family{font-family: var(--wp--preset--font-family--cormorant) !important;}.has-courier-prime-font-family{font-family: var(--wp--preset--font-family--courier-prime) !important;}.has-crimson-pro-font-family{font-family: var(--wp--preset--font-family--crimson-pro) !important;}.has-dm-mono-font-family{font-family: var(--wp--preset--font-family--dm-mono) !important;}.has-dm-sans-font-family{font-family: var(--wp--preset--font-family--dm-sans) !important;}.has-dm-serif-display-font-family{font-family: var(--wp--preset--font-family--dm-serif-display) !important;}.has-domine-font-family{font-family: var(--wp--preset--font-family--domine) !important;}.has-eb-garamond-font-family{font-family: var(--wp--preset--font-family--eb-garamond) !important;}.has-epilogue-font-family{font-family: var(--wp--preset--font-family--epilogue) !important;}.has-fahkwang-font-family{font-family: var(--wp--preset--font-family--fahkwang) !important;}.has-figtree-font-family{font-family: var(--wp--preset--font-family--figtree) !important;}.has-fira-sans-font-family{font-family: var(--wp--preset--font-family--fira-sans) !important;}.has-fjalla-one-font-family{font-family: var(--wp--preset--font-family--fjalla-one) !important;}.has-fraunces-font-family{font-family: var(--wp--preset--font-family--fraunces) !important;}.has-gabarito-font-family{font-family: var(--wp--preset--font-family--gabarito) !important;}.has-ibm-plex-mono-font-family{font-family: var(--wp--preset--font-family--ibm-plex-mono) !important;}.has-ibm-plex-sans-font-family{font-family: var(--wp--preset--font-family--ibm-plex-sans) !important;}.has-ibarra-real-nova-font-family{font-family: var(--wp--preset--font-family--ibarra-real-nova) !important;}.has-instrument-serif-font-family{font-family: var(--wp--preset--font-family--instrument-serif) !important;}.has-inter-font-family{font-family: var(--wp--preset--font-family--inter) !important;}.has-josefin-sans-font-family{font-family: var(--wp--preset--font-family--josefin-sans) !important;}.has-jost-font-family{font-family: var(--wp--preset--font-family--jost) !important;}.has-libre-baskerville-font-family{font-family: var(--wp--preset--font-family--libre-baskerville) !important;}.has-libre-franklin-font-family{font-family: var(--wp--preset--font-family--libre-franklin) !important;}.has-literata-font-family{font-family: var(--wp--preset--font-family--literata) !important;}.has-lora-font-family{font-family: var(--wp--preset--font-family--lora) !important;}.has-merriweather-font-family{font-family: var(--wp--preset--font-family--merriweather) !important;}.has-montserrat-font-family{font-family: var(--wp--preset--font-family--montserrat) !important;}.has-newsreader-font-family{font-family: var(--wp--preset--font-family--newsreader) !important;}.has-noto-sans-mono-font-family{font-family: var(--wp--preset--font-family--noto-sans-mono) !important;}.has-nunito-font-family{font-family: var(--wp--preset--font-family--nunito) !important;}.has-open-sans-font-family{font-family: var(--wp--preset--font-family--open-sans) !important;}.has-overpass-font-family{font-family: var(--wp--preset--font-family--overpass) !important;}.has-pt-serif-font-family{font-family: var(--wp--preset--font-family--pt-serif) !important;}.has-petrona-font-family{font-family: var(--wp--preset--font-family--petrona) !important;}.has-piazzolla-font-family{font-family: var(--wp--preset--font-family--piazzolla) !important;}.has-playfair-display-font-family{font-family: var(--wp--preset--font-family--playfair-display) !important;}.has-plus-jakarta-sans-font-family{font-family: var(--wp--preset--font-family--plus-jakarta-sans) !important;}.has-poppins-font-family{font-family: var(--wp--preset--font-family--poppins) !important;}.has-raleway-font-family{font-family: var(--wp--preset--font-family--raleway) !important;}.has-roboto-font-family{font-family: var(--wp--preset--font-family--roboto) !important;}.has-roboto-slab-font-family{font-family: var(--wp--preset--font-family--roboto-slab) !important;}.has-rubik-font-family{font-family: var(--wp--preset--font-family--rubik) !important;}.has-rufina-font-family{font-family: var(--wp--preset--font-family--rufina) !important;}.has-sora-font-family{font-family: var(--wp--preset--font-family--sora) !important;}.has-source-sans-3-font-family{font-family: var(--wp--preset--font-family--source-sans-3) !important;}.has-source-serif-4-font-family{font-family: var(--wp--preset--font-family--source-serif-4) !important;}.has-space-mono-font-family{font-family: var(--wp--preset--font-family--space-mono) !important;}.has-syne-font-family{font-family: var(--wp--preset--font-family--syne) !important;}.has-texturina-font-family{font-family: var(--wp--preset--font-family--texturina) !important;}.has-urbanist-font-family{font-family: var(--wp--preset--font-family--urbanist) !important;}.has-work-sans-font-family{font-family: var(--wp--preset--font-family--work-sans) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-14-1' href='/_static/??/wp-content/mu-plugins/comment-likes/css/comment-likes.css,/i/noticons/noticons.css?m=1436783281j&cssminify=yes' type='text/css' media='all' />
+<link rel='stylesheet' id='fonts-css' href='https://fonts-api.wp.com/css?family=Lato%3A400%2C700%2C900%2C400italic%2C700italic%7CMerriweather%3A700%2C900%2C400italic&#038;subset=latin%2Clatin-ext' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-16-1' href='/_static/??-eJx9i0EKwyAQAD9UuwRDSw6lbzGy2RpWV1xF8vsmt4ZCjsPMQM/GS6qYKtQPRlTIbYYinUMiWHZlXEeViCe4e9UbXM9aN/4PYzOZG4WkUHBmITravfrBq4lQDIt3NUg6gVnYhXKs7/ganuPwmKwd7foFezNUhg==&cssminify=yes' type='text/css' media='all' />
+<link crossorigin='anonymous' rel='stylesheet' id='print-css-17-1' href='/wp-content/mu-plugins/global-print/global-print.css?m=1465851035i&cssminify=yes' type='text/css' media='print' />
+<style id="jetpack-global-styles-frontend-style-inline-css">
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+/*# sourceURL=jetpack-global-styles-frontend-style-inline-css */
+</style>
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-20-1' href='/_static/??-eJyNjcEKAjEMRH/ImhVlqwfxU6TbhrZrmhTTIv69u+JFvHgZ5sHwBh7VeOGG3KB0U6nHzAoztur87cNQRNYInVBBk7tjcCE83zVz3HrVDfxvumb2MPVMAVR8dmRIougX/DhbwrK8pwNEksnROriU884e9+PJDnaYXxwFS20=&cssminify=yes' type='text/css' media='all' />
+<script id="jetpack_related-posts-js-extra">
+var related_posts_js_options = {"post_heading":"h4"};
+//# sourceURL=jetpack_related-posts-js-extra
+</script>
+<script id="wpcom-actionbar-placeholder-js-extra">
+var actionbardata = {"siteID":"131539937","postID":"1083","siteURL":"https://mzdonline.wordpress.com","xhrURL":"https://mzdonline.wordpress.com/wp-admin/admin-ajax.php","nonce":"013702067a","isLoggedIn":"","statusMessage":"","subsEmailDefault":"instantly","proxyScriptUrl":"https://s0.wp.com/wp-content/js/wpcom-proxy-request.js?m=1513050504i&amp;ver=20211021","shortlink":"https://wp.me/p8TVxT-ht","i18n":{"followedText":"New posts from this site will now appear in your \u003Ca href=\"https://wordpress.com/reader\"\u003EReader\u003C/a\u003E","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","shortLinkCopied":"Shortlink copied to clipboard."}};
+//# sourceURL=wpcom-actionbar-placeholder-js-extra
+</script>
+<script id="jetpack-mu-wpcom-settings-js-before">
+var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://s0.wp.com/wp-content/mu-plugins/jetpack-mu-wpcom-plugin/moon/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/"};
+//# sourceURL=jetpack-mu-wpcom-settings-js-before
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='/_static/??-eJx1jcEOwiAQRH/I7dYm6Mn4KabCpgFhQVhS+/digkk9eJpM5uUNrgl0ZCEWDBWSr4vlgo4kzfrRO4YYGW+WNd6r9QYz+VnIQIpFym8bguXBlQPuxK4xXiDl+Nq+W5P5aqh8RveslLcee8FfCIJdcjvt8DVcjmelxvE0Tcq9AV2gTlk='></script>
+<script id="rlt-proxy-js-after">
+	rltInitialize( {"token":null,"iframeOrigins":["https:\/\/widgets.wp.com"]} );
+//# sourceURL=rlt-proxy-js-after
+</script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://mzdonline.wordpress.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/" />
+<link rel='shortlink' href='https://wp.me/p8TVxT-ht' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fmzdonline.wordpress.com%2F2017%2F07%2F19%2Freset-cmu-nor-flash-with-rpi%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fmzdonline.wordpress.com%2F2017%2F07%2F19%2Freset-cmu-nor-flash-with-rpi%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Reset CMU NOR Flash with RPi" />
+<meta property="og:url" content="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/" />
+<meta property="og:description" content="สรุป : แก้ปัญหา MZD Connect หน้าจอค้าง, บูตไม่ขึ้น วิธีทำ : รีเซต NOR Chip เซตแอดเดรช 0x1000 เป็น 0 ทำให้ cmu บูตสู่ failsafe partition แล้วจึงติดตั้งเฟิร์มแวร์ใหม่ผ่านยูเอสบี เครื่องมือ และงบประมา…" />
+<meta property="article:published_time" content="2017-07-19T15:17:21+00:00" />
+<meta property="article:modified_time" content="2018-04-15T18:55:49+00:00" />
+<meta property="og:site_name" content="mzdonline" />
+<meta property="og:image" content="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg" />
+<meta property="og:image:secure_url" content="https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?ssl=1" />
+<meta property="og:image" content="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4850-2.jpg" />
+<meta property="og:image:secure_url" content="https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4850-2.jpg?ssl=1" />
+<meta property="og:image" content="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4848.jpg" />
+<meta property="og:image:secure_url" content="https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4848.jpg?ssl=1" />
+<meta property="og:image" content="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4832-2-e1512985887973.jpg" />
+<meta property="og:image:secure_url" content="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4832-2-e1512985887973.jpg" />
+<meta property="og:image" content="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/pi-cmu1.jpg" />
+<meta property="og:image:secure_url" content="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/pi-cmu1.jpg" />
+<meta property="og:image" content="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/2561-02-12-at-16-36-56.jpg" />
+<meta property="og:image:secure_url" content="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/2561-02-12-at-16-36-56.jpg" />
+<meta property="og:image:width" content="2448" />
+<meta property="og:image:height" content="3264" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="en_US" />
+<meta property="fb:app_id" content="249643311490" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+<meta name="twitter:creator" content="@mzdonline" />
+<meta name="twitter:site" content="@mzdonline" />
+<meta name="twitter:text:title" content="Reset CMU NOR Flash with&nbsp;RPi" />
+<meta name="twitter:image" content="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?w=640" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="search" type="application/opensearchdescription+xml" href="https://mzdonline.wordpress.com/osd.xml" title="mzdonline" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+<meta name="description" content="สรุป : แก้ปัญหา MZD Connect หน้าจอค้าง, บูตไม่ขึ้น วิธีทำ : รีเซต NOR Chip เซตแอดเดรช 0x1000 เป็น 0 ทำให้ cmu บูตสู่ failsafe partition แล้วจึงติดตั้งเฟิร์มแวร์ใหม่ผ่านยูเอสบี เครื่องมือ และงบประมาณ : - Raspberry PI 2 หรือ 3 model B ราคาประมาณ 1200บาท - IC TEST CLIP 16ขา ราคาประมาณ 250บาท ซอฟต์แวร์ - flashrom Raspberry PI GPIO ใน Raspbery PI(RPi) มี 40ขาเรียง 2แถว มีพอร์ตชนิดต่างอยู่มาก&hellip;" />
+<style type="text/css" id="custom-colors-css">.post-tags a,
+		.tagcloud .widget-content a,
+		.widget_tag_cloud .widget-content a,
+		#infinite-handle span button:hover { background: #CCCCCC;}
+.header-top-menu li.menu-item-has-children a:after,
+		.header-top-menu li.page_item_has_children a:after { border-top-color: #999999;}
+.post-tags a:before,
+		.tagcloud .widget-content a:before,
+		.widget_tag_cloud .widget-content a:before { border-right-color: #CCCCCC;}
+.entry-author .author-bio,
+		.site-description,
+		.post-author .description,
+		.header-top-menu ul a,
+		.header-top-menu > li > a,
+		.social-menu a,
+		.credits .attribution,
+		.credits .attribution a { color: #999999;}
+.widget-content,
+		.rowling-widget-list .excerpt { color: #6D6D6D;}
+.nav-toggle .bar,
+		.nav-toggle.active .bar { background: #3D3D3D;}
+.header-bottom-menu > li.menu-item-has-children:after,
+		.header-bottom-menu > li.page_item_has_children:after { border-top-color: #3D3D3D;}
+.header-top-menu li.menu-item-has-children:hover a:after,
+		.header-top-menu li.page_item_has_children:hover a:after { border-top-color: #FFFFFF;}
+.post-author .title a,
+		.social-menu a:hover,
+		.social-menu a.active { border-color: #FFFFFF;}
+.header-bottom-menu ul a,
+		.header-bottom-menu > li > a,
+		.header-bottom-menu > li:hover > a,
+		.header-bottom-menu ul li:hover > a,
+		.header-bottom-menu > li.current_menu_item > a,
+		.header-bottom-menu > li.current_page_item > a,
+		.navigation .section-inner,
+		.sticky.post .sticky-tag,
+		.single-post .post .sticky-tag,
+		.post-content .page-links a:hover,
+		.post-content fieldset legend,
+		.post-content fieldset legend,
+		.post-content input[type="submit"],
+		.post-content input[type="reset"],
+		.post-content input[type="button"],
+		.post-content input[type="submit"]:hover,
+		.post-content input[type="reset"]:hover,
+		.post-content input[type="button"]:hover,
+		.post-tags a:hover,
+		.tagcloud .widget-content a:hover,
+		.widget_tag_cloud .widget-content a:hover,
+		.comment-respond input[type="submit"],
+		.to-the-top .fa { color: #3D3D3D;}
+.site-title a { color: #FFFFFF;}
+.header-top-menu li.current-menu-item > a,
+		.header-top-menu li.current_page_item > a,
+		.header-top-menu li:hover > a,
+		.header-top-menu ul li:hover > a,
+		.social-menu a:hover,
+		.social-menu a.active { color: #FFFFFF;}
+body,
+		.post-title a,
+		.post-title a:hover,
+		.single-post .post-image-caption,
+		.page-links > span:nth-of-type(2),
+		.post-navigation .navigation-post-title,
+		.post-content caption,
+		.post-content th,
+		.post-content div#jp-relatedposts div.jp-relatedposts-items .jp-relatedposts-post .jp-relatedposts-post-title a,
+		.pingbacks-title,
+		.pingbacklist a,
+		.comment-respond form label { color: #111111;}
+.content:before { background: #ffffff;}
+.entry-author,
+		.header-wrapper,
+		.posts .post-image,
+		.post-author,
+		.credits { background: #1f1e1d;}
+.top-nav { background: #302F2E;}
+.header-top-menu ul li,
+		.header-top-menu > li:hover > a { background: #282725;}
+.social-menu a { border-color: #1f1e1d;}
+.entry-author:before,
+		.post-author:before { border-bottom-color: #1f1e1d;}
+.header-bottom-menu ul,
+		.navigation .section-inner,
+		.header-bottom-menu,
+		.nav-toggle,
+		.sticky.post .sticky-tag,
+		.single-post .post .sticky-tag,
+		.post-content .page-links a:hover,
+		.post-tags a:hover,
+		.tagcloud .widget-content a:hover,
+		.widget_tag_cloud .widget-content a:hover,
+		.post-content fieldset legend,
+		.post-content input[type="submit"],
+		.post-content input[type="reset"],
+		.post-content input[type="button"],
+		.post-content input[type="submit"]:hover,
+		.post-content input[type="reset"]:hover,
+		.post-content input[type="button"]:hover,
+		.comment-respond input[type="submit"],
+		#infinite-handle span button,
+		.to-the-top { background: #96b8b6;}
+.bypostauthor .comment-author-icon { background: #507675;}
+.sticky.post .sticky-tag:after,
+		.single-post .post .sticky-tag:after,
+		.post-tags a:hover:before,
+		.tagcloud .widget-content a:hover:before,
+		.widget_tag_cloud .widget-content a:hover:before { border-right-color: #96b8b6;}
+.post-content a:hover,
+		.pingbacks-title,
+		.widget_flickr #flickr_badge_uber_wrapper a:last-of-type { border-bottom-color: #96b8b6;}
+.sticky.post .sticky-tag:after { border-left-color: #96b8b6;}
+.comments-title-link a:hover,
+		.page-edit-link .post-edit-link:hover { border-color: #507675;}
+.nav-links > div a:hover,
+		.comments-nav a:hover,
+		.archive-nav a:hover { border-top-color: #507675;}
+.widget-title,
+		.widget-content a:hover,
+		.page-title h4 { border-bottom-color: #507675;}
+body a,
+		body a:hover,
+		body a:active,
+		.post-content a,
+		.post-content a:hover,
+		.post-content p.intro,
+		.post-content blockquote:after,
+		.post-categories,
+		.single-post .post-meta a,
+		.single-post .post-image-caption .fa,
+		.search-container .search-button:hover,
+		.comments-title .fa,
+		.comment-reply-title .fa,
+		.comments-title-link a,
+		.comment-meta .vcard a,
+		.no-comments .fa,
+		.comment-header h4 a,
+		.pingbacklist a:hover,
+		.comments-nav a:hover,
+		.page-edit-link,
+		.related-post .category,
+		.nav-links > div a:hover span,
+		.credits .copyright a:hover,
+		.wrapper .search-button:hover,
+		.archive-nav a:hover,
+		#wp-calendar thead th,
+		#wp-calendar tfoot a:hover,
+		.widget-content a:hover,
+		.widget-content a:hover::before,
+		.widget-content li a:hover,
+		.widget-content li a:hover::before,
+		.widget_flickr #flickr_badge_uber_wrapper a:last-of-type { color: #507675;}
+.site-title a:hover { color: #96B8B6;}
+</style>
+<link rel="icon" href="https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=32" sizes="32x32" />
+<link rel="icon" href="https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=192" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=180" />
+<meta name="msapplication-TileImage" content="https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=270" />
+
+<link crossorigin='anonymous' rel='stylesheet' id='all-css-0-3' href='/_static/??-eJydjdEKgzAMRX9oXVAZ80X8lNHFINU0KU2L+PcibHscY4/ncDkXtuRQpZAUiNUlrnMQg4VK8ri+GKKqwCMIwpMVVwPbQqJ8RbML/F6IOlUmA/RZqxF/Rm/xb7AEpsnNnpny/o3OgzEOzb2/tW3XNf1yAHk4YIM=&cssminify=yes' type='text/css' media='all' />
+
+</head>
+
+	<body class="wp-singular post-template-default single single-post postid-1083 single-format-standard wp-theme-pubrowling customizer-styles-applied jetpack-reblog-enabled has-marketing-bar has-marketing-bar-theme-rowling">
+
+		<a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+
+		
+			<nav class="top-nav">
+
+				<div class="section-inner clear-fix">
+
+					<ul class="header-top-menu">
+
+						<li id="menu-item-8" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8"><a href="/">Home</a></li>
+<li id="menu-item-9" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9"><a href="https://mzdonline.wordpress.com/about/">About</a>
+<ul class="sub-menu">
+	<li id="menu-item-4539" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4539"><a href="https://mzdonline.wordpress.com/faq/">FAQ</a></li>
+	<li id="menu-item-4568" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4568"><a href="https://mzdonline.wordpress.com/license/">LICENSE</a></li>
+</ul>
+</li>
+<li id="menu-item-4855" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4855"><a href="https://mzdonline.wordpress.com/activate-opkg/">Activate opkg</a></li>
+<li id="menu-item-4944" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4944"><a href="https://mzdonline.wordpress.com/note/">Note</a>
+<ul class="sub-menu">
+	<li id="menu-item-6472" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6472"><a href="https://mzdonline.wordpress.com/%e0%b8%a1%e0%b8%b2%e0%b8%97%e0%b8%b1%e0%b8%81%e0%b8%97%e0%b8%b2%e0%b8%a2%e0%b8%9b%e0%b8%b5-2566/">มาทักทายปี 2566</a></li>
+	<li id="menu-item-5669" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5669"><a href="https://mzdonline.wordpress.com/%e0%b8%84%e0%b8%a3%e0%b8%9a-1-%e0%b8%9b%e0%b8%b5-4-%e0%b8%81%e0%b8%84-2561/">mzdonline ครบ 1 ปี (4 กค 2561)</a></li>
+	<li id="menu-item-5668" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5668"><a href="https://mzdonline.wordpress.com/%e0%b8%88%e0%b8%b2%e0%b8%81%e0%b8%82%e0%b9%88%e0%b8%b2%e0%b8%a7%e0%b8%9a%e0%b8%a3%e0%b8%b4%e0%b8%a9%e0%b8%b1%e0%b8%97-%e0%b8%a1%e0%b8%b2%e0%b8%aa%e0%b8%94%e0%b9%89%e0%b8%b2-%e0%b9%80%e0%b8%8b%e0%b8%a5/">จากข่าวบริษัท มาสด้า เซลส์ (ประเทศไทย) ฟ้องผู้บริโภค </a></li>
+</ul>
+</li>
+
+					</ul> <!-- /header-top-menu -->
+
+					<ul class="social-menu">
+
+						<li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12"><a href="https://www.facebook.com/mzdonline"><span class="screen-reader-text">Facebook</span></a></li>
+<li id="menu-item-13" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13"><a><span class="screen-reader-text">sourceforge</span></a></li>
+<li id="menu-item-14" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14"><a href="https://gitlab.com/mzdonline"><span class="screen-reader-text">GitLab</span></a></li>
+<li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-15"><a href="https://mzdonline.wordpress.com"><span class="screen-reader-text">WordPress.com</span></a></li>
+<li id="menu-item-151" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-151"><a class="search-toggle" href="#"><span class="screen-reader-text">Search</span></a></li>
+					</ul> <!-- /social-menu -->
+
+				</div> <!-- /section-inner -->
+
+			</nav> <!-- /top-nav -->
+
+		
+		<div class="search-container">
+
+			<div class="section-inner">
+
+				
+<form method="get" class="search-form" action="https://mzdonline.wordpress.com/">
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" class="search-field" placeholder="Search" value="" name="s" title="Search for:" />
+	</label>
+	<button type="submit" class="search-button"><span class="fa fw fa-search"></span><span class="screen-reader-text">Search</span></button>
+</form>
+
+			</div> <!-- /section-inner -->
+
+		</div> <!-- /search-container -->
+
+		<header class="header-wrapper">
+
+			<div class="header">
+
+				<div class="section-inner">
+
+					
+						<a href="https://mzdonline.wordpress.com/" class="site-logo-link" rel="home" itemprop="url"></a>
+						<h2 class="site-title">
+							<a href="https://mzdonline.wordpress.com/" title="mzdonline &mdash; mzdonline, cmu-opkg ,MZD Connect, AIO, เขียนโปรแกรม" rel="home">mzdonline</a>
+						</h2>
+
+													<h4 class="site-description">mzdonline, cmu-opkg ,MZD Connect, AIO, เขียนโปรแกรม</h4>
+						
+					
+					
+				</div> <!-- /section-inner -->
+
+			</div> <!-- /header -->
+
+			
+		</header> <!-- /header-wrapper -->
+
+<div class="wrapper section-inner">
+
+	<main id="main" class="content">
+
+	
+		
+		
+			<article id="post-1083" class="single clear-fix post-1083 post type-post status-publish format-standard hentry category-cmu category-failsafe category-firmware category-hardware category-linux category-spi tag-585998215 tag-585998211 tag-boot-loop tag-boot-process tag-brick tag-cmu tag-mzd-connect- has-post-thumbnail fallback-thumbnail">
+
+				<header class="post-header">
+
+											<p class="post-categories"><a href="https://mzdonline.wordpress.com/category/cmu/" rel="category tag">CMU</a>, <a href="https://mzdonline.wordpress.com/category/failsafe/" rel="category tag">failsafe</a>, <a href="https://mzdonline.wordpress.com/category/firmware/" rel="category tag">Firmware</a>, <a href="https://mzdonline.wordpress.com/category/hardware/" rel="category tag">Hardware</a>, <a href="https://mzdonline.wordpress.com/category/linux/" rel="category tag">linux</a>, <a href="https://mzdonline.wordpress.com/category/spi/" rel="category tag">SPI</a></p>
+					
+					<h1 class="post-title">Reset CMU NOR Flash with&nbsp;RPi</h1>
+				</header> <!-- /post-header -->
+
+				
+					<figure class="post-image clear-fix">
+
+						<img width="816" height="1088" src="https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?resize=816%2C1088&#038;ssl=1" srcset="https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?resize=816%2C1088&amp;ssl=1 816w, https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?resize=1224%2C1632&amp;ssl=1 1224w, https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?resize=1632%2C2176&amp;ssl=1 1632w, https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?resize=2448%2C3264&amp;ssl=1 2448w" sizes="min(816px, 100vw)" loading="eager" decoding="async" title="Reset CMU NOR Flash with&nbsp;RPi" class="attachment-rowling-post-image wp-post-image" />
+						
+					</figure> <!-- /post-image -->
+
+				
+				<div class="post-meta">
+
+					<span class="post-meta-date">Date: <a href="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/">July 19, 2017</a></span><span class="post-meta-author">Author: <a href="https://mzdonline.wordpress.com/author/mzdonline/">mzdonline</a></span> 
+					
+					
+				</div> <!-- /post-meta -->
+
+				<div class="post-inner">
+
+					
+						<div class="post-content">
+
+							<p><strong><em>สรุป</em></strong> : แก้ปัญหา MZD Connect หน้าจอค้าง, บูตไม่ขึ้น</p>
+<p><strong><em>วิธีทำ</em></strong> : รีเซต NOR Chip เซตแอดเดรช 0x1000 เป็น 0 ทำให้ cmu บูตสู่ failsafe partition แล้วจึงติดตั้งเฟิร์มแวร์ใหม่ผ่านยูเอสบี</p>
+<p><strong><em>เครื่องมือ และงบประมาณ</em></strong> :<br />
+&#8211; Raspberry PI 2 หรือ 3 model B ราคาประมาณ 1200บาท<br />
+&#8211; IC TEST CLIP 16ขา ราคาประมาณ 250บาท</p>
+<p><strong><em>ซอฟต์แวร์</em></strong><br />
+&#8211; <a href="https://www.flashrom.org/git/flashrom.git/">flashrom</a></p>
+<h2>Raspberry PI</h2>
+<p>GPIO ใน Raspbery PI(RPi) มี 40ขาเรียง 2แถว มีพอร์ตชนิดต่างอยู่มาก เราต้องการใช้ SPI เริ่มเปิดใช้ผ่านคำสั่ง <code>sudo raspi-config</code> เลือก Interfacing Options เปิด SPI แล้วรีบูต</p>
+<p><a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md" rel="nofollow">https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md</a></p>
+<h3>ติดตั้ง flashrom</h3>
+<pre class="brush: bash; title: ; notranslate" title="">
+sudo apt install flashrom
+</pre>
+<p><img data-attachment-id="1202" data-permalink="https://mzdonline.wordpress.com/2017/07/23/flash-cmu-spi-flash-chip-spansion-fl064p-vf-301qq043-a/img_4832-2/" data-orig-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4832-2-e1512985887973.jpg" data-orig-size="2225,2843" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="IMG_4832 2" data-image-description="" data-image-caption="" data-large-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4832-2-e1512985887973.jpg?w=616" class="  wp-image-1202 aligncenter" src="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4832-2-e1512985887973.jpg?w=521&#038;h=666" alt="img_4832-2.jpg" width="521" height="666" srcset="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4832-2-e1512985887973.jpg?w=521&amp;h=666 521w, https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4832-2-e1512985887973.jpg?w=1042&amp;h=1331 1042w, https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4832-2-e1512985887973.jpg?w=117&amp;h=150 117w, https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4832-2-e1512985887973.jpg?w=235&amp;h=300 235w, https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4832-2-e1512985887973.jpg?w=768&amp;h=981 768w, https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4832-2-e1512985887973.jpg?w=801&amp;h=1024 801w" sizes="(max-width: 521px) 100vw, 521px" /></p>
+<p><img data-attachment-id="1154" data-permalink="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/pi-cmu-2/" data-orig-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/pi-cmu1.jpg" data-orig-size="934,934" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="PI-cmu" data-image-description="" data-image-caption="" data-large-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/pi-cmu1.jpg?w=616" class="  wp-image-1154 aligncenter" src="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/pi-cmu1.jpg?w=583&#038;h=583" alt="PI-cmu.jpg" width="583" height="583" srcset="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/pi-cmu1.jpg?w=583&amp;h=583 583w, https://mzdonline.wordpress.com/wp-content/uploads/2017/07/pi-cmu1.jpg?w=150&amp;h=150 150w, https://mzdonline.wordpress.com/wp-content/uploads/2017/07/pi-cmu1.jpg?w=300&amp;h=300 300w, https://mzdonline.wordpress.com/wp-content/uploads/2017/07/pi-cmu1.jpg?w=768&amp;h=768 768w, https://mzdonline.wordpress.com/wp-content/uploads/2017/07/pi-cmu1.jpg 934w" sizes="(max-width: 583px) 100vw, 583px" /></p>
+<h3>โปรแกรม <a href="https://www.flashrom.org/Flashrom">flashrom</a></h3>
+<p><strong><em>+++สำคัญ+++</em></strong> ควร backup NOR-flash ก่อนทำคำสั่งใดๆ คำสั่ง backup เป็นไฟล์ชื่อ backup-cmu.bin</p>
+<pre class="brush: bash; title: ; notranslate" title=""> flashrom -r backup-cmu.bin -c "S25FL064A/P" -V -p linux_spi:dev=/dev/spidev0.0 </pre>
+<h2>คำสั่งต่อไปนี้ป้อนใน Raspbery PI console</h2>
+<p>อ่านวิธีทดสอบ loop back เพื่อความแน่ใจว่า RPi พร้อมใช้SPIได้ที่ <a href="http://elinux.org/RPi_SPI" rel="nofollow">http://elinux.org/RPi_SPI</a></p>
+<p>โปรแกรม <code>flashrom</code> ส่งคำสั่งทดสอบ NAND/NOR flash</p>
+<ul>
+<li>คำสั่งตรวจสอบ NOR flash เพื่อทดสอบว่า RaspPI มองเห็นชิป</li>
+</ul>
+<pre class="brush: bash; title: ; notranslate" title="">
+ flashrom -c "S25FL064A/P" -p linux_spi:dev=/dev/spidev0.0,spispeed=8000
+ </pre>
+<ul>
+<li>คำสั่ง backup NOR flash</li>
+</ul>
+<pre class="brush: bash; title: ; notranslate" title="">
+ flashrom -r backup-cmu.bin -c "S25FL064A/P" -V -p linux_spi:dev=/dev/spidev0.0,spispeed=8000
+</pre>
+<ul>
+<li>คำสั่ง reflash ใช้กรณีต้องการกู้ SPI flash ROM</li>
+</ul>
+<pre class="brush: bash; title: ; notranslate" title="">
+ flashrom -w backup-cmu.bin -c "S25FL064A/P" -V -p linux_spi:dev=/dev/spidev0.0,spispeed=8000
+</pre>
+<h3>CMU</h3>
+<p>เว็บไซต์ <a href="http://www.2x4logic.com/invokefailsafe.html">2x4logic.com</a> เป็นเว็บที่เผยแพร่ข้อมูลทั้งหมดที่ปรากฏในบทความนี้ มีวิธีทำให้ CPU อยู่โหมด Reset ทำให้ขาต่างๆมีสถานะเป็น High impedance (High-Z) เขาพบขา 29 ทำงานด้วยไฟ 0 (active low) ใช้วิธีต่อกราวด์ 24 (GND) กับขา 29 <strong>ถ้าไม่ทำขั้นตอน Reset CPU มีโอกาสทำให้วงจรเสียหายถาวร</strong></p>
+<p><del>ผู้เขียนเลือกวิธีเสี่ยงสูงขึ้น<strong>เสี่ยงมาก</strong> ผิดหลักวิศวกรรมไฟฟ้า แต่ทำให้งานง่ายขึ้นมาก(ใช้ได้กับเครื่องผู้เขียน ไม่ประกันว่าใช้ได้กับทุกเครื่อง ถือว่าเสี่ยงเพิ่ม)</del> ใช้วิธี<strong>ไม่จ่ายไฟเลี้ยงให้ CMU</strong> และไม่ได้เซตCPUให้อยู่โหมด Reset ในรูปต่อ SPI จาก RPi เข้ากับ Spansion NOR Flash ผ่าน Test clip ผู้เขียนได้ใช้วิธีนี้แล้วมากกว่า 5ครั้ง</p>
+<p>1 .ทดสอบเชื่อมต่อกับชิป</p>
+<pre class="brush: bash; title: ; notranslate" title="">
+ flashrom -c "S25FL064A/P" -p linux_spi:dev=/dev/spidev0.0,spispeed=8000
+</pre>
+<p>ทดสอบการเชื่อมต่อ เมื่อการต่อวงจรถูกต้อง ขั้นต่อไปเขียนคำสั่งลง NOR flash ขั้นตอนนี้เป็นขั้นตอนที่เสี่ยงที่สุด</p>
+<p>2 .สำรองรอม</p>
+<pre class="brush: bash; title: ; notranslate" title="">
+ flashrom -r backup-cmu.bin -c "S25FL064A/P" -V -p linux_spi:dev=/dev/spidev0.0,spispeed=8000
+ </pre>
+<p>3 .ส่งคำสั่ง Reset NOR flash</p>
+<p>CMU มี 2 partition เป็น  rootfs กับ fail-safe เมื่อระบบทำงานปกติจะบูทเข้า rootfs การ  <a href="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/">Reset CMU NOR Flash with RPi </a> คือสั่งให้ บูทเข้า fail-safe ด้วยการเซต SPI flash ที่ address 0x1000 เป็น 0x00</p>
+<p>ป้อนบน terminal ของ RPi</p>
+<pre class="brush: bash; title: ; notranslate" title="">
+ echo -ne "\x06" &gt; /dev/spidev0.0
+ echo -ne "\x02\x01\x00\x00\x00" &gt; /dev/spidev0.0
+</pre>
+<div><strong> บรรทัดแรก</strong> เซต SPI flash เป็นโหมด write enable (0x06) เป็นคำสั่งเฉพาะของชิป spansion <a href="https://www.dataman.com/media/datasheet/Spansion/S25FL064A.pdf">S25FL064A</a></div>
+<div></div>
+<div><strong>บรรทัดที่สอง</strong> ส่งคำสั่งเขียน รูปแบบคำสั่งอธิบายด้านล่าง \x02 คือ 02 ในฐาน16 (ดูคำสั่งใน <a href="https://www.dataman.com/media/datasheet/Spansion/S25FL064A.pdf">datasheet ตาราง 9.4</a>)</div>
+<p>ที่หน้าจอไม่มีการรายงานใดๆ แต่มีการเขียน flash เสร็จสิ้นแล้วขั้นต่อไป ถอดสายทั้งหมดและต่อ power ให้ CMU ให้อยู่ภาวะปกติและติดตั้งเฟิร์มแวร์โดย copy เฟิร์มแวร์ใส่ USB โปรแกรมจะค้นหาและติดตั้งอัตโนมัติ</p>
+<div class="tiled-gallery type-rectangular tiled-gallery-unresized" data-original-width="616" data-carousel-extra='{&quot;blog_id&quot;:131539937,&quot;permalink&quot;:&quot;https:\/\/mzdonline.wordpress.com\/2017\/07\/19\/reset-cmu-nor-flash-with-rpi\/&quot;,&quot;likes_blog_id&quot;:131539937}' itemscope itemtype="http://schema.org/ImageGallery" > <div class="gallery-row" style="width: 616px; height: 546px;" data-original-width="616" data-original-height="546" > <div class="gallery-group images-2" style="width: 206px; height: 546px;" data-original-width="206" data-original-height="546" > <div class="tiled-gallery-item tiled-gallery-item-small" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"> <a href="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/img_4844-2/" border="0" itemprop="url"> <meta itemprop="width" content="202"> <meta itemprop="height" content="269"> <img class="" data-attachment-id="1204" data-orig-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg" data-orig-size="2448,3264" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;2.2&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;iPhone 6&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1500466781&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;4.15&quot;,&quot;iso&quot;:&quot;250&quot;,&quot;shutter_speed&quot;:&quot;0.05&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="IMG_4844 2" data-image-description="" data-medium-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?w=225" data-large-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?w=616" src="https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?w=202&#038;h=269&#038;ssl=1" srcset="https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?w=202&amp;h=269&amp;ssl=1 202w, https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?w=404&amp;h=539&amp;ssl=1 404w, https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?w=113&amp;h=150&amp;ssl=1 113w, https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4844-2.jpg?w=225&amp;h=300&amp;ssl=1 225w" width="202" height="269" loading="lazy" data-original-width="202" data-original-height="269" itemprop="http://schema.org/image" title="IMG_4844 2" alt="IMG_4844 2" style="width: 202px; height: 269px;" /> </a> </div> <div class="tiled-gallery-item tiled-gallery-item-small" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"> <a href="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/img_4850-2/" border="0" itemprop="url"> <meta itemprop="width" content="202"> <meta itemprop="height" content="269"> <img class="" data-attachment-id="1206" data-orig-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4850-2.jpg" data-orig-size="2448,3264" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;2.2&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;iPhone 6&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1500469455&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;4.15&quot;,&quot;iso&quot;:&quot;500&quot;,&quot;shutter_speed&quot;:&quot;0.066666666666667&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="IMG_4850 2" data-image-description="" data-medium-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4850-2.jpg?w=225" data-large-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4850-2.jpg?w=616" src="https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4850-2.jpg?w=202&#038;h=269&#038;ssl=1" srcset="https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4850-2.jpg?w=202&amp;h=269&amp;ssl=1 202w, https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4850-2.jpg?w=404&amp;h=539&amp;ssl=1 404w, https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4850-2.jpg?w=113&amp;h=150&amp;ssl=1 113w, https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4850-2.jpg?w=225&amp;h=300&amp;ssl=1 225w" width="202" height="269" loading="lazy" data-original-width="202" data-original-height="269" itemprop="http://schema.org/image" title="IMG_4850 2" alt="IMG_4850 2" style="width: 202px; height: 269px;" /> </a> </div> </div> <!-- close group --> <div class="gallery-group images-1" style="width: 410px; height: 546px;" data-original-width="410" data-original-height="546" > <div class="tiled-gallery-item tiled-gallery-item-large" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"> <a href="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/img_4848/" border="0" itemprop="url"> <meta itemprop="width" content="406"> <meta itemprop="height" content="542"> <img class="" data-attachment-id="1205" data-orig-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4848.jpg" data-orig-size="2448,3264" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;2.2&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;iPhone 6&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1500466870&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;4.15&quot;,&quot;iso&quot;:&quot;400&quot;,&quot;shutter_speed&quot;:&quot;0.058823529411765&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="IMG_4848" data-image-description="" data-medium-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4848.jpg?w=225" data-large-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4848.jpg?w=616" src="https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4848.jpg?w=406&#038;h=542&#038;ssl=1" srcset="https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4848.jpg?w=406&amp;h=541&amp;ssl=1 406w, https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4848.jpg?w=812&amp;h=1083&amp;ssl=1 812w, https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4848.jpg?w=113&amp;h=150&amp;ssl=1 113w, https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4848.jpg?w=225&amp;h=300&amp;ssl=1 225w, https://i0.wp.com/mzdonline.wordpress.com/wp-content/uploads/2017/07/img_4848.jpg?w=768&amp;h=1024&amp;ssl=1 768w" width="406" height="542" loading="lazy" data-original-width="406" data-original-height="542" itemprop="http://schema.org/image" title="IMG_4848" alt="IMG_4848" style="width: 406px; height: 542px;" /> </a> </div> </div> <!-- close group --> </div> <!-- close row --> </div>
+<p><img data-attachment-id="5180" data-permalink="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/2561-02-12-at-16-36-56/" data-orig-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/2561-02-12-at-16-36-56.jpg" data-orig-size="1288,566" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="2561-02-12 at 16.36.56" data-image-description="" data-image-caption="" data-large-file="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/2561-02-12-at-16-36-56.jpg?w=616" class="alignnone size-full wp-image-5180" src="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/2561-02-12-at-16-36-56.jpg?w=616" alt=" 2561-02-12 at 16.36.56.jpg"   srcset="https://mzdonline.wordpress.com/wp-content/uploads/2017/07/2561-02-12-at-16-36-56.jpg 1288w, https://mzdonline.wordpress.com/wp-content/uploads/2017/07/2561-02-12-at-16-36-56.jpg?w=150&amp;h=66 150w, https://mzdonline.wordpress.com/wp-content/uploads/2017/07/2561-02-12-at-16-36-56.jpg?w=300&amp;h=132 300w, https://mzdonline.wordpress.com/wp-content/uploads/2017/07/2561-02-12-at-16-36-56.jpg?w=768&amp;h=337 768w, https://mzdonline.wordpress.com/wp-content/uploads/2017/07/2561-02-12-at-16-36-56.jpg?w=1024&amp;h=450 1024w" sizes="(max-width: 1288px) 100vw, 1288px" /></p>
+<p>ใช้ในกรณี CMU เกิดปัญหา Boot Loop, หน้าจอค้าง ทดลองแก้วิธีอื่นแล้วไม่ได้ผลจึงเลือกวิธีนี้เป็นขั้นตอนสุดท้าย วิธีนี้ผู้เขียนเชื่อว่าเป็นท้ายสุด โอกาสทำพังที่ขั้นตอนนี้สูงพอกับโอกาสแก้ไขสำเร็จ เหมาะสำหรับผู้ที่เข้าใจหลักการทำงานวงจรดิจิตอล วงจรไฟฟ้า</p>
+<h2>อ้างอิง</h2>
+<p>[1] <a href="https://libreboot.org/docs/install/rpi_setup.html" rel="nofollow">https://libreboot.org/docs/install/rpi_setup.html</a><br />
+[2] <a href="http://www.2x4logic.com/jci-failsafe.html" rel="nofollow">http://www.2x4logic.com/jci-failsafe.html</a></p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-twitter-1083"
+				class="share-twitter sd-button share-icon"
+				href="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/?share=twitter"
+				target="_blank"
+				aria-labelledby="sharing-twitter-1083"
+				>
+				<span id="sharing-twitter-1083" hidden>Share on X (Opens in new window)</span>
+				<span>X</span>
+			</a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-facebook-1083"
+				class="share-facebook sd-button share-icon"
+				href="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/?share=facebook"
+				target="_blank"
+				aria-labelledby="sharing-facebook-1083"
+				>
+				<span id="sharing-facebook-1083" hidden>Share on Facebook (Opens in new window)</span>
+				<span>Facebook</span>
+			</a></li><li class="share-email"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-email-1083"
+				class="share-email sd-button share-icon"
+				href="mailto:?subject=%5BShared%20Post%5D%20Reset%20CMU%20NOR%20Flash%20with%20RPi&#038;body=https%3A%2F%2Fmzdonline.wordpress.com%2F2017%2F07%2F19%2Freset-cmu-nor-flash-with-rpi%2F&#038;share=email"
+				target="_blank"
+				aria-labelledby="sharing-email-1083"
+				data-email-share-error-title="Do you have email set up?" data-email-share-error-text="If you&#039;re having problems sharing via email, you might not have email set up for your browser. You may need to create a new email yourself." data-email-share-nonce="3853b07ffa" data-email-share-track-url="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/?share=email">
+				<span id="sharing-email-1083" hidden>Email a link to a friend (Opens in new window)</span>
+				<span>Email</span>
+			</a></li><li class="share-pinterest"><a rel="nofollow noopener noreferrer"
+				data-shared="sharing-pinterest-1083"
+				class="share-pinterest sd-button share-icon"
+				href="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/?share=pinterest"
+				target="_blank"
+				aria-labelledby="sharing-pinterest-1083"
+				>
+				<span id="sharing-pinterest-1083" hidden>Share on Pinterest (Opens in new window)</span>
+				<span>Pinterest</span>
+			</a></li><li class="share-end"></li></ul></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-131539937-1083-6a8a3be0f3c8d' data-src='//widgets.wp.com/likes/index.html?ver=20260823#blog_id=131539937&amp;post_id=1083&amp;origin=mzdonline.wordpress.com&amp;obj_id=131539937-1083-6a8a3be0f3c8d' data-name='like-post-frame-131539937-1083-6a8a3be0f3c8d' data-title='Like or Reblog'><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class='loading'>Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div>
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div></div>
+							
+						</div>
+
+					
+					<footer class="post-footer">
+
+						
+							<div class="post-tags">
+
+								<a href="https://mzdonline.wordpress.com/tag/%e0%b8%a1%e0%b8%b2%e0%b8%aa%e0%b8%94%e0%b9%89%e0%b8%b2%e0%b8%ab%e0%b8%99%e0%b9%89%e0%b8%b2%e0%b8%99%e0%b8%88%e0%b8%ad%e0%b8%84%e0%b9%89%e0%b8%b2%e0%b8%87/" rel="tag">มาสด้าหน้านจอค้าง</a><a href="https://mzdonline.wordpress.com/tag/%e0%b8%ab%e0%b8%99%e0%b9%89%e0%b8%b2%e0%b8%88%e0%b8%ad%e0%b8%84%e0%b9%89%e0%b8%b2%e0%b8%87/" rel="tag">หน้าจอค้าง</a><a href="https://mzdonline.wordpress.com/tag/boot-loop/" rel="tag">boot loop</a><a href="https://mzdonline.wordpress.com/tag/boot-process/" rel="tag">boot process</a><a href="https://mzdonline.wordpress.com/tag/brick/" rel="tag">brick</a><a href="https://mzdonline.wordpress.com/tag/cmu/" rel="tag">CMU</a><a href="https://mzdonline.wordpress.com/tag/mzd-connect-%e0%b8%ab%e0%b8%99%e0%b9%89%e0%b8%b2%e0%b8%88%e0%b8%ad%e0%b8%84%e0%b9%89%e0%b8%b2%e0%b8%87/" rel="tag">mzd connect หน้าจอค้าง</a>
+							</div>
+
+						
+								<div class="entry-author author-avatar-show">
+						<div class="author-avatar">
+				<img referrerpolicy="no-referrer" alt='Unknown&#039;s avatar' src='https://2.gravatar.com/avatar/8edc62968c56d88961d2d7d1f2270e8af5a57feaf90a4ffe026399affd36b1b7?s=100&#038;d=identicon&#038;r=G' srcset='https://2.gravatar.com/avatar/8edc62968c56d88961d2d7d1f2270e8af5a57feaf90a4ffe026399affd36b1b7?s=100&#038;d=identicon&#038;r=G 1x, https://2.gravatar.com/avatar/8edc62968c56d88961d2d7d1f2270e8af5a57feaf90a4ffe026399affd36b1b7?s=150&#038;d=identicon&#038;r=G 1.5x, https://2.gravatar.com/avatar/8edc62968c56d88961d2d7d1f2270e8af5a57feaf90a4ffe026399affd36b1b7?s=200&#038;d=identicon&#038;r=G 2x, https://2.gravatar.com/avatar/8edc62968c56d88961d2d7d1f2270e8af5a57feaf90a4ffe026399affd36b1b7?s=300&#038;d=identicon&#038;r=G 3x, https://2.gravatar.com/avatar/8edc62968c56d88961d2d7d1f2270e8af5a57feaf90a4ffe026399affd36b1b7?s=400&#038;d=identicon&#038;r=G 4x' class='avatar avatar-100' height='100' width='100' loading='lazy' decoding='async' />			</div><!-- .author-avatar -->
+			
+			<div class="author-heading">
+				<h2 class="author-title">
+					Published by <span class="author-name">mzdonline</span>				</h2>
+			</div><!-- .author-heading -->
+
+			<p class="author-bio">
+				# About members
+
+Khan Na | คันแทนา 
+GPG2 : BA73F1D93A945BC17CDF10A4E921F803539BBD1E 
+Keyserver : hkp://pgp.mit.edu				<a class="author-link" href="https://mzdonline.wordpress.com/author/mzdonline/" rel="author">
+					View all posts by mzdonline				</a>
+			</p><!-- .author-bio -->
+		</div><!-- .entry-auhtor -->
+		
+					</footer>
+
+				</div> <!-- /post-inner -->
+
+			</article> <!-- /post -->
+
+		
+	<nav class="navigation post-navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://mzdonline.wordpress.com/2017/07/13/%e0%b8%ad%e0%b8%b1%e0%b8%9e%e0%b9%80%e0%b8%81%e0%b8%a3%e0%b8%94%e0%b9%80%e0%b8%9f%e0%b8%b4%e0%b8%a3%e0%b9%8c%e0%b8%a1%e0%b9%81%e0%b8%a7%e0%b8%a3%e0%b9%8c-cmu-%e0%b8%aa%e0%b8%b3%e0%b8%84%e0%b8%b1/" rel="prev"><span class="meta-nav" aria-hidden="true">Previous</span> <span class="screen-reader-text">Previous post:</span> <span class="navigation-post-title previous-post-title">อัพเกรดเฟิร์มแวร์ CMU สำคัญหรือไม่</span></a></div><div class="nav-next"><a href="https://mzdonline.wordpress.com/2017/07/23/%e0%b8%95%e0%b8%b4%e0%b8%94%e0%b8%95%e0%b8%b1%e0%b9%89%e0%b8%87-opkg-%e0%b9%83%e0%b8%99-mzd-connect/" rel="next"><span class="meta-nav" aria-hidden="true">Next</span> <span class="screen-reader-text">Next post:</span> <span class="navigation-post-title next-post-title">ติดตั้ง OPKG ใน MZD Connect V55&nbsp;V56</span></a></div></div>
+	</nav>
+		
+<div id="comments" class="comments-area clear-fix">
+
+	
+	<div class="comments-container">
+
+		<div class="comments-inner">
+
+			<a name="comments"></a>
+
+			<div class="comments-title-container clear-fix">
+
+				<h3 class="comments-title">
+					One thought on &ldquo;<span>Reset CMU NOR Flash with&nbsp;RPi</span>&rdquo;				</h3>
+
+				<p class="comments-title-link">
+
+					<a href="#respond">Add Comment</a>
+
+				</p>
+
+			</div><!-- /comments-title-link -->
+
+			<div class="comments">
+
+				<ol class="comment-list">
+							<li id="comment-5" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href="https://mzdonline.wordpress.com/2017/07/23/flash-cmu-spi-flash-chip-spansion-fl064p-vf-301qq043-a/" class="url" rel="ugc">Flash CMU SPI flash chip (SPANSION FL064P VF 301QQ043 A) &#8211; mzdonline</a> 			</div>
+		</li><!-- #comment-## -->
+				</ol><!-- .comment-list -->
+
+				
+			</div> <!-- /comments -->
+
+		</div> <!-- /comments-inner -->
+
+	</div> <!-- /comments-container -->
+
+	
+		<p class="no-comments">Comments are closed.</p>
+
+	
+</div><!-- #comments -->
+		
+	
+	</main> <!-- /content -->
+
+	
+<div class="sidebar">
+	<aside id="archives-3" class="widget widget_archive"><div class="widget-content"><h3 class="widget-title">Archives</h3>
+			<ul>
+					<li><a href='https://mzdonline.wordpress.com/2023/07/'>July 2023</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2023/06/'>June 2023</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2018/11/'>November 2018</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2018/10/'>October 2018</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2018/09/'>September 2018</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2018/08/'>August 2018</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2018/07/'>July 2018</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2018/06/'>June 2018</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2018/05/'>May 2018</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2018/04/'>April 2018</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2018/03/'>March 2018</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2018/02/'>February 2018</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2018/01/'>January 2018</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2017/12/'>December 2017</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2017/11/'>November 2017</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2017/10/'>October 2017</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2017/09/'>September 2017</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2017/08/'>August 2017</a></li>
+	<li><a href='https://mzdonline.wordpress.com/2017/07/'>July 2017</a></li>
+			</ul>
+
+			</div><div class="clear"></div></aside></div>
+
+	<div class="clear"></div>
+
+</div> <!-- /wrapper -->
+
+
+<footer class="site-footer">
+
+	<div class="section-inner">
+		<a href="#" class="to-the-top" title="To the top"><div class="fa fw fa-arrow-up"></div></a>
+		<p class="copyright">&copy; 2026 <a href="https://mzdonline.wordpress.com/" title="mzdonline &mdash; mzdonline, cmu-opkg ,MZD Connect, AIO, เขียนโปรแกรม" rel="home">mzdonline</a></p>
+		<p class="attribution"><a href="https://wordpress.com/?ref=footer_custom_svg" title="Create a website or blog at WordPress.com" rel="nofollow"><svg style="fill: currentColor; position: relative; top: 1px;" width="14px" height="15px" viewBox="0 0 14 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-labelledby="title" role="img">
+				<desc id="title">Create a website or blog at WordPress.com</desc>
+				<path d="M12.5225848,4.97949746 C13.0138466,5.87586309 13.2934037,6.90452431 13.2934037,7.99874074 C13.2934037,10.3205803 12.0351007,12.3476807 10.1640538,13.4385638 L12.0862862,7.88081544 C12.4453251,6.98296834 12.5648813,6.26504621 12.5648813,5.62667922 C12.5648813,5.39497674 12.549622,5.17994084 12.5225848,4.97949746 L12.5225848,4.97949746 Z M7.86730089,5.04801561 C8.24619178,5.02808979 8.58760099,4.98823815 8.58760099,4.98823815 C8.9267139,4.94809022 8.88671369,4.44972248 8.54745263,4.46957423 C8.54745263,4.46957423 7.52803983,4.54957381 6.86996227,4.54957381 C6.25158863,4.54957381 5.21247202,4.46957423 5.21247202,4.46957423 C4.87306282,4.44972248 4.83328483,4.96816418 5.17254589,4.98823815 C5.17254589,4.98823815 5.49358462,5.02808979 5.83269753,5.04801561 L6.81314716,7.73459399 L5.43565839,11.8651647 L3.14394256,5.04801561 C3.52312975,5.02808979 3.86416859,4.98823815 3.86416859,4.98823815 C4.20305928,4.94809022 4.16305906,4.44972248 3.82394616,4.46957423 C3.82394616,4.46957423 2.80475558,4.54957381 2.14660395,4.54957381 C2.02852925,4.54957381 1.88934333,4.54668493 1.74156477,4.54194422 C2.86690406,2.83350881 4.80113651,1.70529256 6.99996296,1.70529256 C8.638342,1.70529256 10.1302017,2.33173369 11.2498373,3.35765419 C11.222726,3.35602457 11.1962815,3.35261718 11.1683554,3.35261718 C10.5501299,3.35261718 10.1114609,3.89113285 10.1114609,4.46957423 C10.1114609,4.98823815 10.4107217,5.42705065 10.7296864,5.94564049 C10.969021,6.36482346 11.248578,6.90326506 11.248578,7.68133501 C11.248578,8.21992476 11.0413918,8.84503256 10.7696866,9.71584277 L10.1417574,11.8132391 L7.86730089,5.04801561 Z M6.99996296,14.2927074 C6.38218192,14.2927074 5.78595654,14.2021153 5.22195356,14.0362644 L7.11048207,8.54925635 L9.04486267,13.8491542 C9.05760348,13.8802652 9.07323319,13.9089317 9.08989995,13.9358945 C8.43574834,14.1661896 7.73285573,14.2927074 6.99996296,14.2927074 L6.99996296,14.2927074 Z M0.706448182,7.99874074 C0.706448182,7.08630113 0.902152921,6.22015756 1.25141403,5.43749503 L4.25357806,13.6627848 C2.15393732,12.6427902 0.706448182,10.4898387 0.706448182,7.99874074 L0.706448182,7.99874074 Z M6.99996296,0.999 C3.14016476,0.999 0,4.13905746 0,7.99874074 C0,11.8585722 3.14016476,14.999 6.99996296,14.999 C10.8596871,14.999 14,11.8585722 14,7.99874074 C14,4.13905746 10.8596871,0.999 6.99996296,0.999 L6.99996296,0.999 Z" id="wordpress-logo-simplified-cmyk" stroke="none" fill=“currentColor” fill-rule="evenodd"></path>
+			</svg></a></p>
+	</div>
+
+</footer> <!-- /site-footer -->
+
+<!--  -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/files/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/pub/rowling/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="grofiles-cards-js" src="//0.gravatar.com/js/hovercards/hovercards.min.js?ver=202634d1133547e8a1f2801609f51cef12522abe7f6647d869e9fbc974fe356a37e613"></script>
+<script id="wpgroho-js-extra">
+var WPGroHo = {"my_hash":""};
+//# sourceURL=wpgroho-js-extra
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1610363240i'></script>
+
+	<script>
+		// Initialize and attach hovercards to all gravatars
+		( function() {
+			function init() {
+				if ( typeof Gravatar === 'undefined' ) {
+					return;
+				}
+
+				if ( typeof Gravatar.init !== 'function' ) {
+					return;
+				}
+
+				Gravatar.profile_cb = function ( hash, id ) {
+					WPGroHo.syncProfileData( hash, id );
+				};
+
+				Gravatar.my_hash = WPGroHo.my_hash;
+				Gravatar.init(
+					'body',
+					'#wp-admin-bar-my-account',
+					{
+						i18n: {
+							'Edit your profile →': 'Edit your profile →',
+							'View profile →': 'View profile →',
+							'Contact': 'Contact',
+							'Send money': 'Send money',
+							'Sorry, we are unable to load this Gravatar profile.': 'Sorry, we are unable to load this Gravatar profile.',
+							'Gravatar not found.': 'Gravatar not found.',
+							'Too Many Requests.': 'Too Many Requests.',
+							'Internal Server Error.': 'Internal Server Error.',
+							'Is this you?': 'Is this you?',
+							'Claim your free profile.': 'Claim your free profile.',
+							'Email': 'Email',
+							'Home Phone': 'Home Phone',
+							'Work Phone': 'Work Phone',
+							'Cell Phone': 'Cell Phone',
+							'Contact Form': 'Contact Form',
+							'Calendar': 'Calendar',
+						},
+					}
+				);
+			}
+
+			if ( document.readyState !== 'loading' ) {
+				init();
+			} else {
+				document.addEventListener( 'DOMContentLoaded', init );
+			}
+		} )();
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-4f3f5b12dc0da97f7b3e2a2f4d69d8d6">
+	</div>
+	</div>
+		<div id="actionbar" dir="ltr" style="display: none;"
+			class="actnbr-pub-rowling actnbr-has-follow actnbr-has-actions">
+		<ul>
+								<li class="actnbr-btn actnbr-hidden">
+						<a class="actnbr-action actnbr-actn-reblog" href="">
+							<svg class="gridicon gridicons-reblog" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M22.086 9.914L20 7.828V18c0 1.105-.895 2-2 2h-7v-2h7V7.828l-2.086 2.086L14.5 8.5 19 4l4.5 4.5-1.414 1.414zM6 16.172V6h7V4H6c-1.105 0-2 .895-2 2v10.172l-2.086-2.086L.5 15.5 5 20l4.5-4.5-1.414-1.414L6 16.172z"/></g></svg><span>Reblog</span>
+						</a>
+					</li>
+									<li class="actnbr-btn actnbr-hidden">
+								<a class="actnbr-action actnbr-actn-follow " href="">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V3H17.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H14.5V13.5H10.5V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path d="M19.5303 15.0303L15.5 19.0605L12.9697 16.5303L14.0303 15.4697L15.5 16.9395L18.4697 13.9697L19.5303 15.0303Z" fill="#008A20"></path></svg>
+			<span>Subscribed</span>
+		</a>
+							<div class="actnbr-popover tip tip-top-left actnbr-notice" id="follow-bubble">
+							<div class="tip-arrow"></div>
+							<div class="tip-inner actnbr-follow-bubble">
+															<ul>
+											<li class="actnbr-sitename">
+			<a href="https://mzdonline.wordpress.com">
+				<img loading='lazy' alt='' src='https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=50' srcset='https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=50 1x, https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=75 1.5x, https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=100 2x, https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=150 3x, https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=200 4x' class='avatar avatar-50' height='50' width='50' />				mzdonline			</a>
+		</li>
+										<div class="actnbr-message no-display"></div>
+									<form method="post" action="https://subscribe.wordpress.com" accept-charset="utf-8" style="display: none;">
+																				<div>
+										<input type="email" name="email" placeholder="Enter your email address" class="actnbr-email-field" aria-label="Enter your email address" />
+										</div>
+										<input type="hidden" name="action" value="subscribe" />
+										<input type="hidden" name="blog_id" value="131539937" />
+										<input type="hidden" name="source" value="https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/" />
+										<input type="hidden" name="sub-type" value="actionbar-follow" />
+										<input type="hidden" id="_wpnonce" name="_wpnonce" value="758cd5d3ba" />										<div class="actnbr-button-wrap">
+											<button type="submit" value="Sign me up">
+												Sign me up											</button>
+										</div>
+									</form>
+									<li class="actnbr-login-nudge">
+										<div>
+											Already have a WordPress.com account? <a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fmzdonline.wordpress.com%2F2017%2F07%2F19%2Freset-cmu-nor-flash-with-rpi%2F&#038;signup_flow=account">Log in now.</a>										</div>
+									</li>
+								</ul>
+															</div>
+						</div>
+					</li>
+									<li class="actnbr-btn actnbr-hidden no-display" onclick="javascript:__tcfapi( 'showUi' );">
+						<a class="actnbr-action actnbr-actn-privacy" href="#">
+							<svg class="gridicon gridicons-info-outline" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M13 9h-2V7h2v2zm0 2h-2v6h2v-6zm-1-7c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8m0-2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/></g></svg>							<span>Privacy						</span>
+						</a>
+					</li>
+							<li class="actnbr-ellipsis actnbr-hidden">
+				<svg class="gridicon gridicons-ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M7 12c0 1.104-.896 2-2 2s-2-.896-2-2 .896-2 2-2 2 .896 2 2zm12-2c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm-7 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z"/></g></svg>				<div class="actnbr-popover tip tip-top-left actnbr-more">
+					<div class="tip-arrow"></div>
+					<div class="tip-inner">
+						<ul>
+								<li class="actnbr-sitename">
+			<a href="https://mzdonline.wordpress.com">
+				<img loading='lazy' alt='' src='https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=50' srcset='https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=50 1x, https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=75 1.5x, https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=100 2x, https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=150 3x, https://mzdonline.wordpress.com/wp-content/uploads/2017/11/19248117_454097928287362_6007540563051978365_n.jpg?w=200 4x' class='avatar avatar-50' height='50' width='50' />				mzdonline			</a>
+		</li>
+								<li class="actnbr-folded-follow">
+										<a class="actnbr-action actnbr-actn-follow " href="">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path clip-rule="evenodd" d="m4 4.5h12v6.5h1.5v-6.5-1.5h-1.5-12-1.5v1.5 10.5c0 1.1046.89543 2 2 2h7v-1.5h-7c-.27614 0-.5-.2239-.5-.5zm10.5 2h-9v1.5h9zm-5 3h-4v1.5h4zm3.5 1.5h-1v1h1zm-1-1.5h-1.5v1.5 1 1.5h1.5 1 1.5v-1.5-1-1.5h-1.5zm-2.5 2.5h-4v1.5h4zm6.5 1.25h1.5v2.25h2.25v1.5h-2.25v2.25h-1.5v-2.25h-2.25v-1.5h2.25z"  fill-rule="evenodd"></path></svg>
+			<span>Subscribe</span>
+		</a>
+		<a class="actnbr-action actnbr-actn-following  no-display" href="">
+			<svg class="gridicon" height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 4.5H4V15C4 15.2761 4.22386 15.5 4.5 15.5H11.5V17H4.5C3.39543 17 2.5 16.1046 2.5 15V3H17.5V12.5H16V4.5ZM5.5 6.5H14.5V8H5.5V6.5ZM5.5 9.5H9.5V11H5.5V9.5ZM12 11H13V12H12V11ZM10.5 9.5H14.5V13.5H10.5V9.5ZM5.5 12H9.5V13.5H5.5V12Z" fill="#008A20"></path><path d="M19.5303 15.0303L15.5 19.0605L12.9697 16.5303L14.0303 15.4697L15.5 16.9395L18.4697 13.9697L19.5303 15.0303Z" fill="#008A20"></path></svg>
+			<span>Subscribed</span>
+		</a>
+								</li>
+														<li class="actnbr-signup"><a href="https://wordpress.com/start/">Sign up</a></li>
+							<li class="actnbr-login"><a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fmzdonline.wordpress.com%2F2017%2F07%2F19%2Freset-cmu-nor-flash-with-rpi%2F&#038;signup_flow=account">Log in</a></li>
+																<li class="actnbr-shortlink">
+										<a href="https://wp.me/p8TVxT-ht">
+											<span class="actnbr-shortlink__text">Copy shortlink</span>
+											<span class="actnbr-shortlink__icon"><svg class="gridicon gridicons-checkmark" height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M9 19.414l-6.707-6.707 1.414-1.414L9 16.586 20.293 5.293l1.414 1.414"/></g></svg></span>
+										</a>
+									</li>
+																<li class="flb-report">
+									<a href="https://wordpress.com/abuse/?report_url=https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/" target="_blank" rel="noopener noreferrer">
+										Report this content									</a>
+								</li>
+															<li class="actnbr-reader">
+									<a href="https://wordpress.com/reader/blogs/131539937/posts/1083">
+										View post in Reader									</a>
+								</li>
+															<li class="actnbr-subs">
+									<a href="https://subscribe.wordpress.com/">Manage subscriptions</a>
+								</li>
+																<li class="actnbr-fold"><a href="">Collapse this bar</a></li>
+														</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+<script>
+window.addEventListener( "DOMContentLoaded", function( event ) {
+	var link = document.createElement( "link" );
+	link.href = "/wp-content/mu-plugins/actionbar/actionbar.css?v=20250116";
+	link.type = "text/css";
+	link.rel = "stylesheet";
+	document.head.appendChild( link );
+
+	var script = document.createElement( "script" );
+	script.src = "/wp-content/mu-plugins/actionbar/actionbar.js?v=20250204";
+	document.body.appendChild( script );
+} );
+</script>
+
+			<div id="jp-carousel-loading-overlay">
+			<div id="jp-carousel-loading-wrapper">
+				<span id="jp-carousel-library-loading"><svg class="jetpack-spinner" width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="50" cy="50" r="46" fill="none" stroke="#ddd" stroke-width="8"/><path d="M 50 4 A 46 46 0 0 1 96 50" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" dur="1.4s" from="0 50 50" to="360 50 50" repeatCount="indefinite"/></path></svg></span>
+			</div>
+		</div>
+		<div class="jp-carousel-overlay" style="display: none;">
+
+		<div class="jp-carousel-container">
+			<!-- The Carousel Swiper -->
+			<div
+				class="jp-carousel-wrap swiper jp-carousel-swiper-container jp-carousel-transitions"
+				itemscope
+				itemtype="https://schema.org/ImageGallery">
+				<div class="jp-carousel swiper-wrapper"></div>
+				<div class="jp-swiper-button-prev swiper-button-prev">
+					<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<mask id="maskPrev" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="9" height="12">
+							<path d="M16.2072 16.59L11.6496 12L16.2072 7.41L14.8041 6L8.8335 12L14.8041 18L16.2072 16.59Z" fill="white"/>
+						</mask>
+						<g mask="url(#maskPrev)">
+							<rect x="0.579102" width="23.8823" height="24" fill="#FFFFFF"/>
+						</g>
+					</svg>
+				</div>
+				<div class="jp-swiper-button-next swiper-button-next">
+					<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<mask id="maskNext" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="8" height="12">
+							<path d="M8.59814 16.59L13.1557 12L8.59814 7.41L10.0012 6L15.9718 12L10.0012 18L8.59814 16.59Z" fill="white"/>
+						</mask>
+						<g mask="url(#maskNext)">
+							<rect x="0.34375" width="23.8822" height="24" fill="#FFFFFF"/>
+						</g>
+					</svg>
+				</div>
+			</div>
+			<!-- The main close buton -->
+			<div class="jp-carousel-close-hint">
+				<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<mask id="maskClose" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="5" width="15" height="14">
+						<path d="M19.3166 6.41L17.9135 5L12.3509 10.59L6.78834 5L5.38525 6.41L10.9478 12L5.38525 17.59L6.78834 19L12.3509 13.41L17.9135 19L19.3166 17.59L13.754 12L19.3166 6.41Z" fill="white"/>
+					</mask>
+					<g mask="url(#maskClose)">
+						<rect x="0.409668" width="23.8823" height="24" fill="#FFFFFF"/>
+					</g>
+				</svg>
+			</div>
+			<!-- Image info, comments and meta -->
+			<div class="jp-carousel-info">
+				<div class="jp-carousel-info-footer">
+					<div class="jp-carousel-pagination-container">
+						<div class="jp-swiper-pagination swiper-pagination"></div>
+						<div class="jp-carousel-pagination"></div>
+					</div>
+					<div class="jp-carousel-photo-title-container">
+						<div class="jp-carousel-photo-caption"></div>
+					</div>
+					<div class="jp-carousel-photo-icons-container">
+						<a href="#" class="jp-carousel-icon-btn jp-carousel-icon-info" aria-label="Toggle photo metadata visibility">
+							<span class="jp-carousel-icon">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="maskInfo" mask-type="alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="21" height="20">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M12.7537 2C7.26076 2 2.80273 6.48 2.80273 12C2.80273 17.52 7.26076 22 12.7537 22C18.2466 22 22.7046 17.52 22.7046 12C22.7046 6.48 18.2466 2 12.7537 2ZM11.7586 7V9H13.7488V7H11.7586ZM11.7586 11V17H13.7488V11H11.7586ZM4.79292 12C4.79292 16.41 8.36531 20 12.7537 20C17.142 20 20.7144 16.41 20.7144 12C20.7144 7.59 17.142 4 12.7537 4C8.36531 4 4.79292 7.59 4.79292 12Z" fill="white"/>
+									</mask>
+									<g mask="url(#maskInfo)">
+										<rect x="0.8125" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+							</span>
+						</a>
+												<a href="#" class="jp-carousel-icon-btn jp-carousel-icon-comments" aria-label="Toggle photo comments visibility">
+							<span class="jp-carousel-icon">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="maskComments" mask-type="alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="21" height="20">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M4.3271 2H20.2486C21.3432 2 22.2388 2.9 22.2388 4V16C22.2388 17.1 21.3432 18 20.2486 18H6.31729L2.33691 22V4C2.33691 2.9 3.2325 2 4.3271 2ZM6.31729 16H20.2486V4H4.3271V18L6.31729 16Z" fill="white"/>
+									</mask>
+									<g mask="url(#maskComments)">
+										<rect x="0.34668" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+
+								<span class="jp-carousel-has-comments-indicator" aria-label="This image has comments."></span>
+							</span>
+						</a>
+											</div>
+				</div>
+				<div class="jp-carousel-info-extra">
+					<div class="jp-carousel-info-content-wrapper">
+						<div class="jp-carousel-photo-title-container">
+							<div class="jp-carousel-photo-title"></div>
+						</div>
+						<div class="jp-carousel-comments-wrapper">
+															<div id="jp-carousel-comments-loading">
+									<span>Loading Comments...</span>
+								</div>
+								<div class="jp-carousel-comments"></div>
+								<div id="jp-carousel-comment-form-container">
+									<span id="jp-carousel-comment-form-spinner"><svg class="jetpack-spinner" width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="50" cy="50" r="46" fill="none" stroke="#ddd" stroke-width="8"/><path d="M 50 4 A 46 46 0 0 1 96 50" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" dur="1.4s" from="0 50 50" to="360 50 50" repeatCount="indefinite"/></path></svg></span>
+									<div id="jp-carousel-comment-post-results"></div>
+																														<div id="jp-carousel-comment-form-commenting-as">
+												<p id="jp-carousel-commenting-as">
+													You must be <a href="#" class="jp-carousel-comment-login">logged in</a> to post a comment.												</p>
+											</div>
+																											</div>
+													</div>
+						<div class="jp-carousel-image-meta">
+							<div class="jp-carousel-title-and-caption">
+								<div class="jp-carousel-photo-info">
+									<div class="jp-carousel-caption" itemprop="caption description"></div>
+								</div>
+
+								<div class="jp-carousel-photo-description"></div>
+							</div>
+							<a class="jp-carousel-image-download" href="#" aria-label="Download image" target="_blank" style="display: none;">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="19" height="18">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.84615 5V19H19.7775V12H21.7677V19C21.7677 20.1 20.8721 21 19.7775 21H5.84615C4.74159 21 3.85596 20.1 3.85596 19V5C3.85596 3.9 4.74159 3 5.84615 3H12.8118V5H5.84615ZM14.802 5V3H21.7677V10H19.7775V6.41L9.99569 16.24L8.59261 14.83L18.3744 5H14.802Z" fill="white"/>
+									</mask>
+									<g mask="url(#mask0)">
+										<rect x="0.870605" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+								<span class="jp-carousel-download-text"></span>
+							</a>
+							<div class="jp-carousel-image-map" style="display: none;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</div>
+		
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https://mzdonline.wordpress.com/2017/07/19/reset-cmu-nor-flash-with-rpi/":1083};
+	</script>
+						<script crossorigin='anonymous' type='text/javascript'  src='/_static/??-eJzTLy/QTc7PK0nNK9EvyClNz8wr1i+uzCtJrMjITM/IAeKS1CJMEWP94uSizIISoOIM5/yiVL2sYh19yo1yKioFEonFGUDz7HNtDU3NDYwMTCwtTLMA0I5ABA=='></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?m=1363304414i&amp;ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	document.addEventListener( 'is.post-load', function () {
+		SyntaxHighlighter.highlight();
+	} );
+</script>
+
+	<script type="text/javascript">
+		(function () {
+			var wpcom_reblog = {
+				source: 'toolbar',
+
+				toggle_reblog_box_flair: function (obj_id, post_id) {
+
+					// Go to site selector. This will redirect to their blog if they only have one.
+					const postEndpoint = `https://wordpress.com/post`;
+
+					// Ideally we would use the permalink here, but fortunately this will be replaced with the 
+					// post permalink in the editor.
+					const originalURL = `${ document.location.href }?page_id=${ post_id }`; 
+					
+					const url =
+						postEndpoint +
+						'?url=' +
+						encodeURIComponent( originalURL ) +
+						'&is_post_share=true' +
+						'&v=5';
+
+					const redirect = function () {
+						if (
+							! window.open( url, '_blank' )
+						) {
+							location.href = url;
+						}
+					};
+
+					if ( /Firefox/.test( navigator.userAgent ) ) {
+						setTimeout( redirect, 0 );
+					} else {
+						redirect();
+					}
+				},
+			};
+
+			window.wpcom_reblog = wpcom_reblog;
+		})();
+	</script>
+<script id="comment-like-js-extra">
+var comment_like_text = {"loading":"Loading...","swipeUrl":"https://s0.wp.com/wp-content/mu-plugins/comment-likes/js/lib/swipe.js?m=1382645497i&amp;ver=20131008"};
+//# sourceURL=comment-like-js-extra
+</script>
+<script id="jetpack-carousel-js-extra">
+var jetpackSwiperLibraryPath = {"url":"/wp-content/mu-plugins/jetpack-plugin/moon/_inc/blocks/swiper.js"};
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https://mzdonline.wordpress.com/wp-admin/admin-ajax.php","nonce":"f0c40753cf","display_exif":"1","display_comments":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","image_label":"Open image in full-screen.","download_original":"View full size \u003Cspan class=\"photo-size\"\u003E{0}\u003Cspan class=\"photo-size-times\"\u003E\u00d7\u003C/span\u003E{1}\u003C/span\u003E","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"1","require_name_email":"1","login_url":"https://mzdonline.wordpress.com/wp-login.php?redirect_to=https%3A%2F%2Fmzdonline.wordpress.com%2F2017%2F07%2F19%2Freset-cmu-nor-flash-with-rpi%2F","blog_id":"131539937","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"stats_query_args":"blog=131539937&v=wpcom&tz=7&user_id=0&subd=mzdonline","is_public":"1"};
+//# sourceURL=jetpack-carousel-js-extra
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='/_static/??-eJyNkO1uwjAMRV+IYE0TH/0x7VGmNHGLW8cOTSzg7SniQxpDEz99dc6VbThkF1QqSoVkLrP1JAWYRiywNzTceYmM03IoC3gNB01pjtxVGp6CZ7HuMM1YthYmPTBJf1HKSHnmZXSdBiuuo+N7Ysd4LEzx74av+ajWMlafq/b6ntKztp7vLElgi78PnTDzaZlI/vnSgDX7MN5mSKoCP3MZtEYcIfhJrSA/uHtwq/1OXx+b7ar5bFbNejgD6UikeA=='></script>
+<script data-wp-strategy="defer" defer id="tiled-gallery-js" src="/wp-content/mu-plugins/jetpack-plugin/moon/_inc/build/tiled-gallery/tiled-gallery/tiled-gallery.min.js?m=1755006225i&#038;ver=16.2-a.2"></script>
+<script id="sharing-js-js-extra">
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+//# sourceURL=sharing-js-js-extra
+</script>
+<script crossorigin='anonymous' type='text/javascript'  src='/_static/??/wp-content/mu-plugins/carousel-wpcom/carousel-wpcom.js,/wp-content/mu-plugins/jetpack-plugin/moon/_inc/build/sharedaddy/sharing.min.js?m=1786736522j'></script>
+<script id="sharing-js-js-after">
+var windowOpen;
+			( function () {
+				var shareWindowName = 'wpcomtwitter-' + Math.random().toString( 36 ).slice( 2 );
+
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-twitter' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-twitter' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), shareWindowName, 'menubar=1,resizable=1,width=600,height=350' );
+						return false;
+					}
+				} );
+			} )();
+var windowOpen;
+			( function () {
+				var shareWindowName = 'wpcomfacebook-' + Math.random().toString( 36 ).slice( 2 );
+
+				function matches( el, sel ) {
+					return !! (
+						el.matches && el.matches( sel ) ||
+						el.msMatchesSelector && el.msMatchesSelector( sel )
+					);
+				}
+
+				document.body.addEventListener( 'click', function ( event ) {
+					if ( ! event.target ) {
+						return;
+					}
+
+					var el;
+					if ( matches( event.target, 'a.share-facebook' ) ) {
+						el = event.target;
+					} else if ( event.target.parentNode && matches( event.target.parentNode, 'a.share-facebook' ) ) {
+						el = event.target.parentNode;
+					}
+
+					if ( el ) {
+						event.preventDefault();
+
+						// If there's another sharing window open, close it.
+						if ( typeof windowOpen !== 'undefined' ) {
+							windowOpen.close();
+						}
+						windowOpen = window.open( el.getAttribute( 'href' ), shareWindowName, 'menubar=1,resizable=1,width=600,height=400' );
+						return false;
+					}
+				} );
+			} )();
+//# sourceURL=sharing-js-js-after
+</script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/","ext":".png","svgUrl":"https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js?m=1783090810i&ver=7.1-RC3-63319"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
+//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
+</script>
+	<iframe src='https://widgets.wp.com/likes/master.html?ver=20260823#ver=20260823' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+	<div id='likes-other-gravatars' role="dialog" aria-hidden="true" tabindex="-1"><div class="likes-text"><span>%d</span></div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+	<script src="//stats.wp.com/w.js?69" defer></script> <script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'131539937','blog_tz':'7','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+		// Prevent sending pageview tracking from WP-Admin pages.
+		_stq.push(['view', {'blog':'131539937','v':'wpcom','tz':'7','user_id':'0','post':'1083','subd':'mzdonline'}]);
+		_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE0/bU8yQkx3RTR3RmZTSndoTltKYUtEYz9mTHN3MlJ2cWh3ZmwzZGYubUxraS83bFJ8by9SUXlTXWIrWEkxPVl5dG5KUVJXZlFEZ1A2XU1HbmNrJjI3eC8mXUV8bHNKNXx1VEZ3WjNDdThMd1hbMU5CbiU/ZFclaXRXaEcmR1ksKys9VVE0Uzg5TGF1Y3RtaE8uY0V0UUg2aElEK2xoVHFKVjBweTVYcVZGJiVpZV8lXV1uQnxdbXkrbnlqTUgvSm0tL1t0bzdEP0JTeD8scFNLV3pkWlJrX3V8Q25deEExTVNTPy5XJnJ3STRRS25udFpDeTc0LXVlbytYcUNb'}]);
+_stq.push([ 'clickTrackerInit', '131539937', '1083' ]);
+</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:1px;width:1px;overflow:hidden;position:absolute;bottom:1px;" alt="" /></noscript>
+<meta id="bilmur" property="bilmur:data" content="" data-provider="wordpress.com" data-service="simple" data-site-tz="Etc/GMT-7" data-custom-props="{&quot;enq_jquery&quot;:&quot;1&quot;,&quot;logged_in&quot;:&quot;0&quot;,&quot;wptheme&quot;:&quot;pub\/rowling&quot;,&quot;wptheme_is_block&quot;:&quot;0&quot;}"   >
+		<script defer src="/wp-content/js/bilmur.min.js?i=17&amp;m=202634"></script> 	<div id="marketingbar" class="marketing-bar noskim  "><div class="marketing-bar-text">Design a site like this with WordPress.com</div><a class="marketing-bar-button" href="https://wordpress.com/start/?ref=marketing_bar">Get started</a><a class="marketing-bar-link" tabindex="-1" aria-label="Create your website at WordPress.com" href="https://wordpress.com/start/?ref=marketing_bar"></a></div>		<script type="text/javascript">
+			window._tkq = window._tkq || [];
+
+			window._tkq.push( [ 'recordEvent', 'wpcom_marketing_bar_impression', {"is_current_user_blog_owner":false} ] );
+
+			document.querySelectorAll( '#marketingbar > a' ).forEach( link => {
+				link.addEventListener( 'click', ( e ) => {
+					window._tkq.push( [ 'recordEvent', 'wpcom_marketing_bar_cta_click', {"is_current_user_blog_owner":false} ] );
+				} );
+			});
+		</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+== v2.8.6 v2.8.6 2020-04-08T22:59:47Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.8.6
+    MZD-AIO-TI-linux_2.8.6.deb 160111756 26567 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.6/MZD-AIO-TI-linux_2.8.6.deb
+    MZD-AIO-TI-mac_2.8.6.dmg 217128280 35145 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.6/MZD-AIO-TI-mac_2.8.6.dmg
+    MZD-AIO-TI_Setup_2.8.6.exe 191084384 195941 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.6/MZD-AIO-TI_Setup_2.8.6.exe
+    MZD-AIO-TI_Setup_2.8.6_Win32.exe 189101720 83225 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.6/MZD-AIO-TI_Setup_2.8.6_Win32.exe
+== v2.8.5  2020-02-21T07:17:41Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.8.5
+    MZD-AIO-TI-linux_2.8.5.deb 160132770 644 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.5/MZD-AIO-TI-linux_2.8.5.deb
+    MZD-AIO-TI_Setup_2.8.5.exe 194580965 19223 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.5/MZD-AIO-TI_Setup_2.8.5.exe
+    MZD-AIO-TI_Setup_2.8.5_Win32.exe 192690282 4116 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.5/MZD-AIO-TI_Setup_2.8.5_Win32.exe
+== v2.8.4  2019-02-25T15:50:24Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.8.4
+    MZD-AIO-TI-linux_2.8.4.deb 157905512 2831 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.4/MZD-AIO-TI-linux_2.8.4.deb
+    MZD-AIO-TI-mac_2.8.4.dmg 204312456 12512 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.4/MZD-AIO-TI-mac_2.8.4.dmg
+    MZD-AIO-TI_Setup_2.8.4.exe 186968312 94743 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.4/MZD-AIO-TI_Setup_2.8.4.exe
+    MZD-AIO-TI_Setup_2.8.4_Win32.exe 185468112 22227 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.4/MZD-AIO-TI_Setup_2.8.4_Win32.exe
+== v2.8.3 AIO v2.8.3 2018-11-19T13:01:02Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.8.3
+    MZD-AIO-TI-linux_2.8.3.deb 149875942 975 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.3/MZD-AIO-TI-linux_2.8.3.deb
+    MZD-AIO-TI-mac_2.8.3.dmg 206966950 2946 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.3/MZD-AIO-TI-mac_2.8.3.dmg
+    MZD-AIO-TI_Setup_2.8.3.exe 186410568 31350 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.3/MZD-AIO-TI_Setup_2.8.3.exe
+    MZD-AIO-TI_Setup_2.8.3_Win32.exe 180400752 7580 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.3/MZD-AIO-TI_Setup_2.8.3_Win32.exe
+== v2.8.1 AIO v2.8.1 2018-09-30T18:45:43Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.8.1
+    MZD-AIO-TI-linux_2.8.1.deb 147307294 416 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.1/MZD-AIO-TI-linux_2.8.1.deb
+    MZD-AIO-TI-mac_2.8.1.dmg 203630893 1375 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.1/MZD-AIO-TI-mac_2.8.1.dmg
+    MZD-AIO-TI_Setup_2.8.1.exe 183096296 15667 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.1/MZD-AIO-TI_Setup_2.8.1.exe
+    MZD-AIO-TI_Setup_2.8.1_Win32.exe 177189480 3292 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.1/MZD-AIO-TI_Setup_2.8.1_Win32.exe
+== v2.8.0 v2.8.0 2018-07-29T15:08:28Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.8.0
+    MZD-AIO-TI-linux_2.8.0.deb 147126766 516 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.0/MZD-AIO-TI-linux_2.8.0.deb
+    MZD-AIO-TI-mac_2.8.0.dmg 204430970 2542 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.0/MZD-AIO-TI-mac_2.8.0.dmg
+    MZD-AIO-TI_Setup_2.8.0.exe 183608200 26370 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.0/MZD-AIO-TI_Setup_2.8.0.exe
+    MZD-AIO-TI_Setup_2.8.0_Win32.exe 177717824 6093 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.0/MZD-AIO-TI_Setup_2.8.0_Win32.exe
+== v2.7.9 AIO v2.7.9 2018-04-11T05:18:47Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.7.9
+    MZD-AIO-TI-linux_2.7.9.deb 148369170 1039 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.9/MZD-AIO-TI-linux_2.7.9.deb
+    MZD-AIO-TI-mac_2.7.9.dmg 201570468 3785 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.9/MZD-AIO-TI-mac_2.7.9.dmg
+    MZD-AIO-TI_Setup_2.7.9.exe 183235576 37054 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.9/MZD-AIO-TI_Setup_2.7.9.exe
+    MZD-AIO-TI_Setup_2.7.9_Win32.exe 176569760 10743 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.9/MZD-AIO-TI_Setup_2.7.9_Win32.exe
+== v2.7.8  AIO v2.7.8 2018-03-03T22:52:04Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.7.8
+    MZD-AIO-TI-linux_2.7.8.deb 147950328 456 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.8/MZD-AIO-TI-linux_2.7.8.deb
+    MZD-AIO-TI-mac_2.7.8.dmg 199652969 1772 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.8/MZD-AIO-TI-mac_2.7.8.dmg
+    MZD-AIO-TI_Setup_2.7.8.exe 181699968 18037 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.8/MZD-AIO-TI_Setup_2.7.8.exe
+    MZD-AIO-TI_Setup_2.7.8_Win32.exe 175089960 3827 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.8/MZD-AIO-TI_Setup_2.7.8_Win32.exe
+== v2.7.6 v2.7.6 2018-01-16T10:33:11Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.7.6
+    MZD-AIO-TI-linux_2.7.6.deb 142455744 480 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.6/MZD-AIO-TI-linux_2.7.6.deb
+    MZD-AIO-TI-mac_2.7.6.dmg 186705620 2040 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.6/MZD-AIO-TI-mac_2.7.6.dmg
+    MZD-AIO-TI_Setup_2.7.6.exe 144561872 21515 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.6/MZD-AIO-TI_Setup_2.7.6.exe
+    MZD-AIO-TI_Setup_2.7.6_Win32.exe 139031528 5430 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.6/MZD-AIO-TI_Setup_2.7.6_Win32.exe
+== vv2.7.4 2.7.4 2017-12-26T13:06:50Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/vv2.7.4
+    MZD-AIO-TI-linux_2.7.4.deb 113296432 231 https://github.com/Trevelopment/MZD-AIO/releases/download/vv2.7.4/MZD-AIO-TI-linux_2.7.4.deb
+    MZD-AIO-TI-mac_2.7.4.dmg 157007668 954 https://github.com/Trevelopment/MZD-AIO/releases/download/vv2.7.4/MZD-AIO-TI-mac_2.7.4.dmg
+    MZD-AIO-TI_2.7.4_win32.exe 130466360 3258 https://github.com/Trevelopment/MZD-AIO/releases/download/vv2.7.4/MZD-AIO-TI_2.7.4_win32.exe
+    MZD-AIO-TI_Setup_2.7.4.exe 136411312 9223 https://github.com/Trevelopment/MZD-AIO/releases/download/vv2.7.4/MZD-AIO-TI_Setup_2.7.4.exe
+== v2.7.2 2.7.2 2017-11-26T10:54:25Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.7.2
+    MZD-AIO-TI-linux_2.7.2.deb 112856028 180 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.2/MZD-AIO-TI-linux_2.7.2.deb
+    MZD-AIO-TI-mac_2.7.2.dmg 156925495 844 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.2/MZD-AIO-TI-mac_2.7.2.dmg
+    MZD-AIO-TI_Setup_2.7.2.exe 110962920 7065 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.2/MZD-AIO-TI_Setup_2.7.2.exe
+    MZD-AIO-TI_Setup_2.7.2_Win32.exe 105418904 2751 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.2/MZD-AIO-TI_Setup_2.7.2_Win32.exe
+== v2.7.0 v2.7.0 2017-09-21T08:20:10Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.7.0
+    MZD-AIO-TI-linux_2.7.0.deb 112412326 632 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.0/MZD-AIO-TI-linux_2.7.0.deb
+    MZD-AIO-TI-mac_2.7.0.dmg 150468284 3291 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.0/MZD-AIO-TI-mac_2.7.0.dmg
+    MZD-AIO-TI_2.7.0_Win32.exe 105009688 6342 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.0/MZD-AIO-TI_2.7.0_Win32.exe
+    MZD-AIO-TI_Setup_2.7.0.exe 110553864 29488 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.7.0/MZD-AIO-TI_Setup_2.7.0.exe
+== v2.6.8 v2.6.8 2017-07-29T08:13:35Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.6.8
+    MZD-AIO-TI-linux_2.6.8.deb 120453462 369 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.6.8/MZD-AIO-TI-linux_2.6.8.deb
+    MZD-AIO-TI-mac_2.6.8.dmg 159329785 1477 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.6.8/MZD-AIO-TI-mac_2.6.8.dmg
+    MZD-AIO-TI_Setup.exe 110482832 402 https://github.com/Trevelopment/MZD-AIO/releases/download/v2.6.8/MZD-AIO-TI_Setup.exe
+== colors Color Schemes 2017-07-27T01:43:22Z  https://github.com/Trevelopment/MZD-AIO/releases/tag/colors
+    color-schemes.zip 107864518 181 https://github.com/Trevelopment/MZD-AIO/releases/download/colors/color-schemes.zip

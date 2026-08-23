@@ -1,0 +1,323 @@
+Page 1 of 21
+CONSUMER NOTICE:  The information and instructions in this bulletin are intended for use by skilled technicians.  Mazda technicians utilize the proper tools/ 
+equipment and take training to correctly and safely maintain Mazda vehicles.  These instructions should not be performed by “do-it-yourselfers.”  Customers 
+should not assume this bulletin applies to their vehicle or that their vehicle will develop the described concern.  To determine if the information applies, 
+customers should contact their nearest authorized Mazda dealership. Mazda North American Operations reserves the right to alter  the specifications and 
+contents of this bulletin without obligation or advance notice. All rights reserved. No part of this bulletin may be reproduced  in any form or by any means, 
+electronic or mechanical---including photocopying and recording and the use of any kind of information storage and retrieval sy stem ---without permission in 
+writing.
+© 2016 Mazda Motor of America, Inc.
+ Subject:
+      AUDIO, NAVIGATION AND PHONE CONCERNS WITH MAZDA CONNECT 
+INFOTAINMENT SYSTEM
+Bulletin No: 09-024/16
+Last Issued: 07/05/2016 
+Service Bulletin
+Mazda North American Operations
+Irvine, CA 92618-2922
+MULTI-MODEL - AUDIO, NAVIGATION AND PHONE CONCERNS WITH MAZDA CONNECT INFOTAINMENT
+SYSTEM
+BULLETIN NOTE
+All Mazda Connect vehicles in new car inventory must be updated to this software version listed below in this 
+TSB as part of the New Car Ready Step 3 process. Make sure the new vehicle specialist receives a copy of this 
+bulletin.
+This bulletin supersedes the previously issued bulletin(s) listed below. The changes are noted below in Red 
+beside the change bars.
+APPLICABLE MODEL(S)/VINS
+2014-16 Mazda3
+2016 Mazda6
+2016 CX-3
+2016 CX-5
+2016 MX-5
+DESCRIPTION
+Some vehicles may experience the symptoms mentioned below, which can be fixed with the latest software 
+update (Version 55.00.760 or later).
+• Some street names in Canada are not displayed.
+• Navigation does not allow to set certain cities as destination.
+• Navigation does not announce vo ice guidance for street names.
+• Navigation turns to a black screen remaining the task bar.
+• Turn -by-turn navigation guidance does not display on on the active driving display (for vehicles with 
+55.00.750).
+• Every time the navigation is turned on, the vehicle po sition starts from the location (dealer) where the CMU 
+was updated from version 55.00.650 to 55.00.750.
+• Navigation or other screen turn black, freeze or reboot.
+• System does not recognize USB/SD card.
+Previously Issued TSBs: Date(s) Issued
+09-024/16 05/03/16 and 04/19/16
+09-022/15 08/10/15,  06/02/15, 06/10/15 and 07/01/15
+09-006/14 01/24/14, 03/25/14,  03/28/14, 04/23/14, 05/01/14, 06/05/14 and 09/16/14
+09-034/13 (MSP41) 12/4/13
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 2 of 21
+• Some menu of music source selection is grayed out.
+• When using the call button on the cell phone to make a call, the call sound is short.
+• Favorites disappear.
+• Vehicle current position is not accurate enough.
+• Rear view monitor does not show up on screen.
+• Text information of HD radio is not displayed when switching music source.
+• When asking for current location with voice command “W here am I?”, the system responds with “Your loca-
+tion is comma.”
+• Contact information cannot be loaded co rrectly from phones other than iPhone.
+NOTE: Mazda is working to make further improvements to the Mazda Connect Infotainment System software, 
+and may issue future software updates to improve system operation and performance. Software ver-
+sion updates can be found on MS3 under IDS/Infotainment.
+Customers having any of these concern should have their vehicle repaired using the following repair procedure.
+REPAIR PROCEDURE
+1. Verify customer concern.
+2. Update MAZDA CONNECT with software version 55.0 0.760 or later using the following instructions.
+CAUTION: More than one software version can be placed on a memory stick, but Mazda recom-
+mends placing only one version on a memory stick to avoid updating the system with 
+the wrong version.
+MAZDA CONNECT Software Version Verification Procedure
+1. Select “Settings” from the Home screen to check the software version.
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 3 of 21
+2. Select “System” and scroll down to the “About” option.
+3. Select “Version Info” from the “About” screen.
+4. Make sure the software version is 55.00.760 or later, then select OK. If it is not 55.00.760 or later, update 
+the system using a USB memory stick with the latest software according to the “Reflash Procedure.” If 
+needed, refer to “Downloading Update Software to a USB Memory Stick (for additional USB memory sticks)” 
+below.
+
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 4 of 21
+Downloading Update Software to a USB Memory Stick (for additional USB memory sticks)
+1. Install the USB memory stick with a minumum 2G of me mory into the USB port of a computer with internet 
+access.
+NOTE: The update files can also be copied from one USB memory stick to another.
+2. Go to “Start” and select “Computer,” then double-click on the memory stick “removable disk” (A).
+NOTE: The memory stick may have a different name. Look for “Removable Disk.”
+3. Delete any existing files (A).
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 5 of 21
+4. Confirm that no files are left on the memory stick.
+5. Log on to MS3 and select “IDS/Infotainment.”
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 6 of 21
+6. Select “Mazda Connect Updates.”
+7. Select the FailSafe file (A) and “Save.”
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 7 of 21
+8. Change the file extension from “,zip” to “.up” (A).
+NOTE: If you do not save the file with a “.up” file extension, you will have to delete the download and start 
+again.
+9. Save the file to the memory stick.
+10. Repeat step 7, 8, and 9 for the Reinstall file.
+11. After completing the downloads, compare the size of the files to the ones on the download page.
+• If the size is the same, proceed to the reflash procedure.
+• If the size is not the same, delete the files on the memory stick and start over.
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 8 of 21
+Reflash Procedure
+NOTE: When the system is updated, all factory defaults are restored and personal settings (such as 
+display and sound adjustments) are lost, including favorites information and phones paired 
+with the system. Before starting the reflash procedure, obtain the customer’s acceptance for 
+this loss.
+1. Record the customer’s radio favorites (AM/FM/XM).
+2. Turn the ignition switch to OFF.
+NOTE: All electrical loads should be turned off during the reflashing process, especially the air conditioner 
+(blower), rear defogger, and room lamps.
+3. Remove the SD card from the sl ot and any USB devices if present.
+4. Install the ROOM FUSE and AUDIO FUSE to the fuse block in the engine compartment (if not installed).
+5. Connect battery charger (charge curr ent maintained about 7A) to the vehicle to stabilize voltage fluctuation.
+6. Press the START/STOP ENGINE push button 1 time without depressing the clutch pedal (manual transaxle) 
+or the brake pedal (automatic transaxle), to switch the ignition position to ACC. Confirm that the push button 
+start indicator light (A) is illuminated (amber) and the display in the instrument cluster is OFF (ignition posi-
+tion is in ACC).
+NOTE: The engine starts by pressing the push button start while depressing the clutch pedal (manual tran-
+saxle) or the brake pedal (automatic transaxle). To switch the ignition position without starting the 
+engine, press the START/STOP ENGINE push button without depressing the pedal.
+NOTE: If the ignition is left in the ACC position it will automatically switch off after 25 minutes. Pressing and 
+releasing the clutch pedal (Manual Transaxle) or the brake pedal (Automatic Transaxle) before 25 
+minutes resets the timer to ensure the vehicle does not switch off during the reflash process.
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 9 of 21
+7. Select the radio source (AM/FM/XM) and verify that there is a sound coming from the speakers. If sound 
+cannot be heard, turn the volume dial (A) to turn the volume up, or make sure that MUTE is not on.
+NOTE: When sound is heard from the speakers, the system is in stand-by condition.
+8. Press the three buttons (Music (A) + Favorites (B) + Volume Mute(C)) on the commander switch at the 
+same time for 2-5 seconds and the Diagnostic Test Screen will appear.
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 10 of 21
+9. On the test screen, input ‘3’ and then select “ENTER” to verify whether any DTCs (in the CMU) are active. 
+Select “CLEAR” to go to next step.
+10. Whether any DTCs are present or not, input ‘2’ on the test screen and then select “ENTER”. This will inter-
+nally clear all the earlier set DTCs (in the CMU). Select “CLEAR” to go to next step.
+11. To complete the DTC deletion, press the START/STOP push button to turn the ignition OFF and remove all 
+key fobs from the vehicle and lock all doors (except hood), wait for 3 minutes.
+12. Press the START/STOP ENGINE push button 1 time without depressing the clutch pedal (manual transaxle) 
+or the brake pedal (automatic transaxle), to switch the ignition position to ACC.
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 11 of 21
+13. Connect the prepared USB memory stick to the either one of the two USB port (A), depending on vehicle 
+equipment.
+NOTE: There should only be the prepared USB memory stick inserted in one of the USB ports. Nothing 
+else should be inserted in the other USB port during the re-flashing process. 
+14. When the USB memory stick is recognized, the following message will appear briefly on the screen.
+NOTE: If the USB memory stick is not recognized by the system, return to step 11.
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 12 of 21
+15. Press the three buttons (Music (A) + Favorites (B) + Volume Mute(C)) on the commander switch at the 
+same time for 2-5 seconds.
+16. Use the touchscreen or the commander switch to input ‘99’ and then select “ENTER” on the Test screen.
+17. Select “Search” on the screen below.
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 13 of 21
+18. Select “Fail Safe Package” first using the touch screen.
+CAUTION: Always do the “Fail Safe Package” first, followed by “Reinstallation Package”.
+19. Select “Install” on the screen below.
+20.  Failsafe installation process will start.
+
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 14 of 21
+21. After the Failsafe installation process is completed, select “OK”.
+22. Press and release the clutch pedal (Manual Transaxle) or the brake pedal (Automatic Transaxle) and 
+proceed with the following steps without stopping.
+NOTE: If the ignition is left in the ACC position it will automatically switch off after 25 minutes. Performing 
+this step resets the timer to ensure the vehicle does not switch off while installing the reinstallation 
+package.
+23. Press the three buttons (Music (A) + Favorites (B) + Volume Mute(C)) on the commander switch at the 
+same time for 2-5 seconds to open the Diagnostics Test screen again.
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 15 of 21
+24. Use the touchscreen or the commander switch to input ‘99’ and then select “ENTER” on the Test screen.
+25. Select “Search” on the screen below.
+26. Select “Reinstallation Package” on the screen below.
+
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 16 of 21
+27. Select “Install” on the screen below.
+28. The screen below will be displayed.
+NOTE: Blank screens (black and white) are displayed momentarily. It will take approx. 2 minutes before 
+the reflashing process moves to the next screen.
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 17 of 21
+29. Reinstallation will start from 0% and as the reflashing process takes place, the progress bar will gradually 
+increase to 100%.
+NOTE: In order to avoid the ACC power being turned off during the reflashing process, press and release 
+the clutch pedal (Manual Transaxle) or the brake pedal (Automatic Transaxle) before 25 minutes if 
+needed.
+NOTE: It may be difficult to read the display at times as it becomes dark, but “Do not restart vehicle at this 
+time” is displayed.
+CAUTION: DO NOT turn the the ignition ON to avoid damaging the CMU.
+NOTE: It will take some time for the reflashing process to get from 98 % to “100%. After the installation, do 
+not follow “re-start” message. Proceed to next step.
+
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 18 of 21
+30. After the update is completed with the above right screen, confirm that the push button start indicator light is 
+illuminated (amber) and the display in the instrument cluster is OFF (ignition is in “ACC”). If the ignition is 
+“OFF” and the push button start indicator light is not illuminated (amber), turn the ignition to “ACC” and one 
+of the following two screens will be displayed.
+Type A: Reprogramming has already been completed. Go to next step.
+Type B: The ignition was turned “OFF” during the reflashing process. This screen will continue to be dis-
+played until reflashing is completed. After the reflashing is completed, go to next step.
+Updating process will not finish:
+After the task bar is shown, if the screen turns to white or freezes without showing a completion screen, fol-
+low this step:
+a. Push the START/STOP button to turn the ignition switch OFF.
+NOTE: DO NOT start the engine.
+b. Wait until the screen turns to black.
+c. Remove the USB memory stick.
+d. Remove ROOM fuse and wait for one minute.
+e. Install ROOM fuse.
+f. Press the START/STOP ENGINE push button 1 time without depressing the clutch pedal (manual tran-
+saxle) or the brake pedal (automatic transaxle) to switch the ignition position to ACC.
+
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 19 of 21
+NOTE: DO NOT start the engine.
+g. Confirm the screen shown below appears.
+h. Connect the USB memory stick to the USB port.
+i. Confirm the task bar appears on screen.
+31. Push the START/STOP button to turn the ignition switch OFF.
+32. To stabilize the system, turn IG off and remove all key fobs from the vehicle and lock all doors (except
+hood), wait for 3 minutes.
+33. Press the START/STOP ENGINE push button 1 time without depressing the clutch pedal (manual transaxle)
+or the brake pedal (automatic transaxle) to switch the ignition position to ACC.
+34. After the system starts, wait for a minute without any operation to have the configuration finished. (Ignition 
+switch may be at ON and the vehicle may be driven.)
+35. Check the software version to make sure it is the same as on the USB memory stick. See MAZDA CON-
+NECT Software Version Verification Procedure.
+36. Press the three buttons (Music (A) + Favorites (B) + Volume Mute(C)) on the commander switch at the 
+same time for 2-5 seconds to open the Diagnostics Test screen again.
+
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 20 of 21
+37. On the test screen, input ‘3’ and then select “ENTER” to verify whether any DTCs (in the CMU) are active. 
+Select “EXIT“ to go to next step. If any DTC are present, diagnose it following to the Workshop Manual.
+38. Turn the ignition switch OFF, then remove the USB memory stick from the USB port.
+NOTE: Before attempting to re-pair a phone to the system, delete MAZDA from the list of Bluetooth 
+devices on any phone that is paired with the system. If not deleted, the phone will not be 
+able to be paired with the system because the phone will think it is already paired.
+39. Disconnect the battery charger from the vehicle.
+40. Insert the SD card into the slot.
+41. Turn the ignition switch ON.
+42. Go to NAV screen and confirm current vehicle location is correctly displayed.
+• If it is not correct, drive the vehi cle at a speed of 15 km/h (10 mph) or faster until the correct location is 
+shown.
+43. Set the customer’s radio favorites (AM/FM/XM).
+44. Verify repair.
+
+ Bulletin No:  09-024/16
+© 2016 Mazda Motor of America, Inc.
+ Last Issued:  07/05/2016 
+Page 21 of 21
+WARRANTY INFORMATION
+NOTE:
+• This warranty information applies on ly to verified customer complaints on vehicles eligible for war-
+ranty repair.
+• This repair will be covered under Mazda’s New Vehicl e Limited Warranty term.
+• Additional diagnostic time cannot be claimed for this repair.
+• This TSB can be performed by D329 Mazda Certified Lube Technicians.
+• For Mazda3, check the SSP98 status first.
+- If SSP98 is OPEN, submit the claim using SSP98 warrant y information. 
+- If SSP98 is CLOSED, submit the clai m using this TSB warranty information.
+- If vehicle is NOT SUBJECT to SSP98, submit th e claim using this TSB warranty information.
+Warranty Type A 
+Symptom Code 61 
+Damage Code 9W 
+Part Number Main Cause 5555-RP-CMU
+Quantity 0
+Operation Number / Labor Hours: XX557BFX / 0.3 Hrs.
+TSB can be performed by D329 
+Mazda Certified Lube Technicians:
+Yes

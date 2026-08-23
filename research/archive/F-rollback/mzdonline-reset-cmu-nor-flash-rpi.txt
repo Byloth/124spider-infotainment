@@ -1,0 +1,138 @@
+ 
+ Reset CMU NOR Flash with RPi – mzdonline 
+ Skip to content 
+ Home 
+ About 
+ FAQ 
+ LICENSE 
+ Activate opkg 
+ Note 
+ มาทักทายปี 2566 
+ mzdonline ครบ 1 ปี (4 กค 2561) 
+ จากข่าวบริษัท มาสด้า เซลส์ (ประเทศไทย) ฟ้องผู้บริโภค  
+ Facebook 
+ sourceforge 
+ GitLab 
+ WordPress.com 
+ Search 
+ Search for: 
+ Search 
+ mzdonline 
+ mzdonline, cmu-opkg ,MZD Connect, AIO, เขียนโปรแกรม
+ CMU , failsafe , Firmware , Hardware , linux , SPI 
+ Reset CMU NOR Flash with RPi
+ Date: July 19, 2017 Author: mzdonline 
+ สรุป : แก้ปัญหา MZD Connect หน้าจอค้าง, บูตไม่ขึ้น
+ วิธีทำ : รีเซต NOR Chip เซตแอดเดรช 0x1000 เป็น 0 ทำให้ cmu บูตสู่ failsafe partition แล้วจึงติดตั้งเฟิร์มแวร์ใหม่ผ่านยูเอสบี
+ เครื่องมือ และงบประมาณ :
+– Raspberry PI 2 หรือ 3 model B ราคาประมาณ 1200บาท
+– IC TEST CLIP 16ขา ราคาประมาณ 250บาท
+ ซอฟต์แวร์ 
+– flashrom 
+ Raspberry PI
+ GPIO ใน Raspbery PI(RPi) มี 40ขาเรียง 2แถว มีพอร์ตชนิดต่างอยู่มาก เราต้องการใช้ SPI เริ่มเปิดใช้ผ่านคำสั่ง sudo raspi-config เลือก Interfacing Options เปิด SPI แล้วรีบูต
+ https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md 
+ ติดตั้ง flashrom
+sudo apt install flashrom
+ โปรแกรม flashrom 
+ +++สำคัญ+++ ควร backup NOR-flash ก่อนทำคำสั่งใดๆ คำสั่ง backup เป็นไฟล์ชื่อ backup-cmu.bin
+ flashrom -r backup-cmu.bin -c "S25FL064A/P" -V -p linux_spi:dev=/dev/spidev0.0 
+ คำสั่งต่อไปนี้ป้อนใน Raspbery PI console
+ อ่านวิธีทดสอบ loop back เพื่อความแน่ใจว่า RPi พร้อมใช้SPIได้ที่ http://elinux.org/RPi_SPI 
+ โปรแกรม flashrom ส่งคำสั่งทดสอบ NAND/NOR flash
+ คำสั่งตรวจสอบ NOR flash เพื่อทดสอบว่า RaspPI มองเห็นชิป
+ flashrom -c "S25FL064A/P" -p linux_spi:dev=/dev/spidev0.0,spispeed=8000
+ คำสั่ง backup NOR flash
+ flashrom -r backup-cmu.bin -c "S25FL064A/P" -V -p linux_spi:dev=/dev/spidev0.0,spispeed=8000
+ คำสั่ง reflash ใช้กรณีต้องการกู้ SPI flash ROM
+ flashrom -w backup-cmu.bin -c "S25FL064A/P" -V -p linux_spi:dev=/dev/spidev0.0,spispeed=8000
+ CMU
+ เว็บไซต์ 2x4logic.com เป็นเว็บที่เผยแพร่ข้อมูลทั้งหมดที่ปรากฏในบทความนี้ มีวิธีทำให้ CPU อยู่โหมด Reset ทำให้ขาต่างๆมีสถานะเป็น High impedance (High-Z) เขาพบขา 29 ทำงานด้วยไฟ 0 (active low) ใช้วิธีต่อกราวด์ 24 (GND) กับขา 29 ถ้าไม่ทำขั้นตอน Reset CPU มีโอกาสทำให้วงจรเสียหายถาวร 
+ ผู้เขียนเลือกวิธีเสี่ยงสูงขึ้น เสี่ยงมาก ผิดหลักวิศวกรรมไฟฟ้า แต่ทำให้งานง่ายขึ้นมาก(ใช้ได้กับเครื่องผู้เขียน ไม่ประกันว่าใช้ได้กับทุกเครื่อง ถือว่าเสี่ยงเพิ่ม) ใช้วิธี ไม่จ่ายไฟเลี้ยงให้ CMU และไม่ได้เซตCPUให้อยู่โหมด Reset ในรูปต่อ SPI จาก RPi เข้ากับ Spansion NOR Flash ผ่าน Test clip ผู้เขียนได้ใช้วิธีนี้แล้วมากกว่า 5ครั้ง
+ 1 .ทดสอบเชื่อมต่อกับชิป
+ flashrom -c "S25FL064A/P" -p linux_spi:dev=/dev/spidev0.0,spispeed=8000
+ ทดสอบการเชื่อมต่อ เมื่อการต่อวงจรถูกต้อง ขั้นต่อไปเขียนคำสั่งลง NOR flash ขั้นตอนนี้เป็นขั้นตอนที่เสี่ยงที่สุด
+ 2 .สำรองรอม
+ flashrom -r backup-cmu.bin -c "S25FL064A/P" -V -p linux_spi:dev=/dev/spidev0.0,spispeed=8000
+ 3 .ส่งคำสั่ง Reset NOR flash
+ CMU มี 2 partition เป็น  rootfs กับ fail-safe เมื่อระบบทำงานปกติจะบูทเข้า rootfs การ   Reset CMU NOR Flash with RPi   คือสั่งให้ บูทเข้า fail-safe ด้วยการเซต SPI flash ที่ address 0x1000 เป็น 0x00
+ ป้อนบน terminal ของ RPi
+ echo -ne "\x06" > /dev/spidev0.0
+ echo -ne "\x02\x01\x00\x00\x00" > /dev/spidev0.0
+  บรรทัดแรก เซต SPI flash เป็นโหมด write enable (0x06) เป็นคำสั่งเฉพาะของชิป spansion  S25FL064A 
+ บรรทัดที่สอง ส่งคำสั่งเขียน รูปแบบคำสั่งอธิบายด้านล่าง \x02 คือ 02 ในฐาน16 (ดูคำสั่งใน datasheet ตาราง 9.4 )
+ ที่หน้าจอไม่มีการรายงานใดๆ แต่มีการเขียน flash เสร็จสิ้นแล้วขั้นต่อไป ถอดสายทั้งหมดและต่อ power ให้ CMU ให้อยู่ภาวะปกติและติดตั้งเฟิร์มแวร์โดย copy เฟิร์มแวร์ใส่ USB โปรแกรมจะค้นหาและติดตั้งอัตโนมัติ
+ ใช้ในกรณี CMU เกิดปัญหา Boot Loop, หน้าจอค้าง ทดลองแก้วิธีอื่นแล้วไม่ได้ผลจึงเลือกวิธีนี้เป็นขั้นตอนสุดท้าย วิธีนี้ผู้เขียนเชื่อว่าเป็นท้ายสุด โอกาสทำพังที่ขั้นตอนนี้สูงพอกับโอกาสแก้ไขสำเร็จ เหมาะสำหรับผู้ที่เข้าใจหลักการทำงานวงจรดิจิตอล วงจรไฟฟ้า
+ อ้างอิง
+ [1] https://libreboot.org/docs/install/rpi_setup.html 
+[2] http://www.2x4logic.com/jci-failsafe.html 
+ Share this:
+ Share on X (Opens in new window) 
+ X 
+ Share on Facebook (Opens in new window) 
+ Facebook 
+ Email a link to a friend (Opens in new window) 
+ Email 
+ Share on Pinterest (Opens in new window) 
+ Pinterest 
+ Like Loading... 
+ Related 
+ มาสด้าหน้านจอค้าง หน้าจอค้าง boot loop boot process brick CMU mzd connect หน้าจอค้าง 
+ Published by mzdonline 
+ # About members
+Khan Na | คันแทนา 
+GPG2 : BA73F1D93A945BC17CDF10A4E921F803539BBD1E 
+Keyserver : hkp://pgp.mit.edu 
+ View all posts by mzdonline 
+ Post navigation
+ Previous Previous post: อัพเกรดเฟิร์มแวร์ CMU สำคัญหรือไม่ 
+ Next Next post: ติดตั้ง OPKG ใน MZD Connect V55 V56 
+ One thought on “ Reset CMU NOR Flash with RPi ” 
+ Add Comment 
+ Pingback: Flash CMU SPI flash chip (SPANSION FL064P VF 301QQ043 A) – mzdonline 
+ Comments are closed.
+ Archives
+ July 2023 
+ June 2023 
+ November 2018 
+ October 2018 
+ September 2018 
+ August 2018 
+ July 2018 
+ June 2018 
+ May 2018 
+ April 2018 
+ March 2018 
+ February 2018 
+ January 2018 
+ December 2017 
+ November 2017 
+ October 2017 
+ September 2017 
+ August 2017 
+ July 2017 
+ © 2026 mzdonline 
+ Create a website or blog at WordPress.com 
+ Reblog 
+ Subscribe 
+ Subscribed 
+ mzdonline 
+ Sign me up 
+ Already have a WordPress.com account? Log in now. 
+ Privacy 
+ mzdonline 
+ Subscribe 
+ Subscribed 
+ Sign up 
+ Log in 
+ Copy shortlink 
+ Report this content 
+ View post in Reader 
+ Manage subscriptions 
+ Collapse this bar 
+ Loading Comments... 
+ You must be logged in to post a comment. 
+ %d 
+ Design a site like this with WordPress.com
+ Get started 
+ 

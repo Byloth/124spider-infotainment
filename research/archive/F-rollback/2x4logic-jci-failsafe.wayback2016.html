@@ -1,0 +1,118 @@
+<html>
+<head><script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=2N_sDSC0" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=o9P2E1FK" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden","showSwfDownload":true};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("http://web.archive.org/web");
+  __wm.wombat("http://www.2x4logic.com:80/jci-failsafe.html","20170212073504","http://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1486884904");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>JCI: "fail-safe" code that isn't</title>
+</head>
+<body>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+The <a href="mazdaconnect.html">controller unit</a> of the Mazda Connect (aka MZD Connect) was designed by JCI (Johnson Controls Inc.).
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+It uses an 8MByte SPI NOR flash for booting.  The lion's share of that memory goes to a Linux-based "failsafe" image to upgrade firmware.  However, despite the name, it is anything BUT failsafe in operation.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+The memory is segmented as follows:
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+<table border="1">
+<tr><th>official partition name<th>offset prior to v31<th>offset after v31</tr>
+<tr><td>bootstrap<td>0x000000<td>0x000000</tr>
+<tr><td>boot-select<td>0x010000<td>0x010000</tr>
+<tr><td>ibc1<td>0x020000<td>0x020000</tr>
+<tr><td>ibc2<td>0x040000<td>0x040000</tr>
+<tr><td>nv-config<td>0x060000<td>0x060000</tr>
+<tr><td>config<td>0x070000<td>0x070000</tr>
+<tr><td>jci-boot-diag<td>n/a<td>0x0D0000</tr>
+<tr><td>fail-safe<td>0x0E0000<td>0x0E0000</tr>
+<tr><td>update<td>0x7E0000<td>0x7E0000</tr>
+</table>
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+The bootstrap image corresponds to the Boot Devices Program image documented by Freescale for the i.MX6.  Based on the state of the boot-select partition, it either executes code from ibc1 (normal operation) or ibc2 (upgrade operation).
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+Execution from the ibc1 goes to the NAND-flash image (~5GBytes of storage) main application.  Execution from the ibc2 goes to the 7MB "fail-safe" image.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+The "fail-safe" image is what drives the LCD display to provide the progress bar during the lengthy upgrade process.  It reads an upgrade image from a USB drive and reprograms the NAND-flash as well as the firmware of on-board peripherals.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+For the user, upgrading the firmware consists of two portions: the "failsafe" (bootstrap, ibc2, and fail-safe) and the application (ibc1, NAND-flash, and peripheral firmware).
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+JCI's reasoning was clearly rooted in the (misguided) belief that this made it failsafe, since the unit will only boot to ibc2 + fail-safe until the firmware is completely updated.  However, as always, the devil is in the details.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+The most vulnerable portion of the firmware update is any writes to the bootstrap.  If the user's "failsafe" image contains a different bootstrap image, the code gleefully rewrites it.  A power failure at this point effectively "bricks" the unit with no hope of recovery.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+I take issue with such a design.  In my opinion, such bootstrap code should NEVER be re-written in the field.  It is such a small enough amount of code (under 3 kBytes) that it should be heavily tested and audited in development, programmed in the factory (preferably in a write-protected portion of memory), and never touched again.  However, this is not what JCI has done.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+Another questionable design is the "fail-safe".  As an experiment, I deliberately disrupted power during the fail-safe execution.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+The result was a "bricked" unit.  It endlessly rebooted (briefly flashing the backlight of the display each time).  I've provided the exact console output that was endlessly repeated <a href="endless.txt">here</a>.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+The failure mode was as follows: rather than adopt the safest practice of starting the upgrade process from the very beginning at every boot of the boot-strap code, it tries to detect existing NAND-flash partitions and resume from the point it left off.  No doubt, they thought their super-fancy NAND-flash routines (advertised as <a href="http://web.archive.org/web/20170212073504/http://www.datalight.com/products/flash-memory-managers/">"risk-free mobile data"</a>) would protect them.  However, that hubris was to assume the entire file system AND the hardware was going to be in the exact same state as before the disruption.  As a result, the "fail-safe" code just FAILS... and this is exactly what it should NOT do.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+By deliberately corrupting the NAND-flash, I was able to force the "fail-safe" to start from the very beginning (instead of the partial-resume feature it wants), and that allowed me to "unbrick" the unit.  However, for a normal user or mechanic, this bad behavior would require an expensive replacement of the unit.
+</p>
+
+<p style="margin-bottom:0px;font-family: Arial, Helvetica, sans-serif;">
+.
+</p>
+
+<p>
+<a href="index.html">back to main page</a> <a href="contact.html">contact</a>
+</p>
+
+</body>
+</html><!--
+     FILE ARCHIVED ON 07:35:04 Feb 12, 2017 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 00:17:54 Aug 23, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.331
+  exclusion.robots: 0.035
+  exclusion.robots.policy: 0.028
+  esindex: 0.007
+  cdx.remote: 62.014
+  LoadShardBlock: 164.98 (3)
+  PetaboxLoader3.datanode: 130.496 (4)
+  PetaboxLoader3.resolve: 75.327 (2)
+  load_resource: 189.309
+-->

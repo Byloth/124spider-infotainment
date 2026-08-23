@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <script>
+  var host = "mazdatweaks.com";
+  if ((host == window.location.host) && (window.location.protocol != 'https:')) {
+    window.location = window.location.toString().replace(/^http:/, "https:");
+  }
+  </script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <title>Mazda AIO Tweaks</title>
+	<link rel="canonical" href="https://mazdatweaks.com" />
+  <meta name="description" content="All-in-one installer/uninstaller for many available Mazda MZD Infotainment System tweaks.
+">
+  <meta name="keywords" content="Mazda tweaks, Mazda CMU hacks, MZD hacks, AIO all in one tweaks, Mazda AIO tweaks,Infotainment tweaks, Mazda Infotainment hacks"/>
+  <meta name="robots" content="index,follow"/>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" type="image/ico" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="icon" href="favicon.png">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  <meta name='dmca-site-verification' content='TDlYQ0psY0lWYmI0Lzg5bFdEUUtYZz090' />
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/featherlight.min.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/featherlight.gallery.min.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/w3.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/prism.css" media="screen">
+  <!-- Compiled and minified CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="jquery-2.2.4.min.js" ></script>
+  <script src="ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  <script src="js/w3data.js"></script>
+  <script src="js/featherlight.min.js"></script>
+  <script src="js/featherlight.gallery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.min.css" media="screen">
+  <style>
+  @font-face {
+    font-family: Mazda;
+    src: url('images/SF_Automaton.ttf');
+  }
+  section.page-header, #mySidenav, .project-name {
+    font-family: Mazda,"Segoe UI",Verdana,sans-serif;
+    letter-spacing: 1px;
+  }
+  h1.project-name {
+    letter-spacing:5px;
+  }
+  </style>
+</head>
+  <body>
+    <nav class="w3-sidenav w3-black w3-card-2 w3-animate-left w3-text-shadow" style="display:none" id="mySidenav">
+	<a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-xxlarge">&times;</a>
+	<a class=" w3-hover-green  w3-blue " href="/">Home</a>
+	<a class="page-link w3-hover-green " href="faq">FAQ</a>
+	<a class="page-link w3-hover-green " href="changelog2">Changelog</a>
+	<a class="page-link w3-hover-green " href="androidauto">Android Auto</a>
+	<a class="page-link w3-hover-green " href="casdk">CASDK</a>
+	<a class="page-link w3-hover-green " href="serial">Serial Connection</a>
+	<a class=" w3-hover-green" href="http://dl.mazdatweaks.win/">Download</a>
+	Thread
+	GitHub
+	<a href="screenshots" class="w3-hover-green">Screenshots</a>
+	<a href="videoplayer" class="w3-hover-green">VideoPlayer Info</a>
+	<a href="castscreen" class="w3-hover-green">CastScreen-Receiver</a>
+	<!--a class=" w3-hover-green" href="./faq/"></a-->
+</nav>
+	<div id="main" style="margin-left: 0%;">
+		<header class="site-header">
+			<div class="wrapper navbar-wrapper w3-hide-small w3-hide-medium w3-text-shadow">
+				<ul class="navbar w3-dark-grey">
+					<li><a href="/">Home</a></li>
+					<li><a href="faq">FAQ</a> </li>
+					<li><a href="changelog2">Changelog</a> </li>
+					<li><a href="androidauto">Android Auto</a> </li>
+					<li><a href="casdk">CASDK</a> </li>
+					<li><a href="serial">Serial Connection</a> </li>
+					<li class="w3-dropdown-hover">
+    <a href="#" class="moar">Moar</a>
+    <div class="w3-dropdown-content w3-bar-block">
+      <a id="supported-fw-btn" class="supported-fw-btn w3-bar-item" style="cursor:pointer;">Supported Firmware</a>
+      <a href="screenshots" class="w3-bar-item">Screenshots</a>
+      <a href="videoplayer" class="w3-bar-item">VideoPlayer Info</a>
+      <a href="castscreen" class="w3-bar-item">CastScreen-Receiver</a>
+  </div>
+					</ul>
+					<div style="display:none;">
+						<div id="supported-fw">
+							<h2 id="which-fw-versions-are-supported">WHICH FW VERSIONS ARE SUPPORTED?:</h2>
+							<strong>ALL FW V55, V56, V58, AND V59 UP TO V59.00.500 ARE SUPPORTED
+							<br>TO INSTALL ON FW V59.00.502+ YOU MUST FIRST <a href="serial">MAKE A SERIAL CONNECTION (INSTRUCTIONS)</a></strong>
+						</div>
+					</div>
+				</div>
+				<section class="page-header">
+					<span class="w3-opennav w3-xxlarge w3-display-topleft w3-padding" onclick="w3_open()" id="openNav">&#9776;</span>
+					<h1 class="project-name"><a href="/">Mazda AIO Tweaks</a><br><small></small></h1>
+					<h2 class="project-tagline">MZD-AIO-TI | MZD All In One Tweaks Installer<br>All-in-one installer/uninstaller for many available Mazda MZD Infotainment System tweaks.
+</h2>
+					AIO 2.8.6<img src="images/download_version-MZD-AIO-TI.svg">
+					Mazda3Revolution
+					<s>View on GitHub<br></s>
+                    <div class="w3-panel w3-container w3-red w3-center ">
+                        If MZD-AIO throws an error when opened, try turning off your internet connection, then launch AIO.  
+                    </div>
+</header>
+    <div class="page-content">
+      <div class="wrapper main-content ">
+        <div class="downloads">
+  <h1 id="mzd-aio-ti-v286---"><strong>MZD-AIO-TI v2.8.6</strong>  <img src="images/download_version-MZD-AIO-TI.svg" alt="MZD-AIO-WIN"/> </h1>
+  <p><strong>32bit Windows</strong> <img src="images/download.svg" alt="MZD-AIO-32-BIT"/>
+<strong>Mac OSX:</strong>  AIO v2.8.6 OSX 
+<strong>Linux:</strong>
+ AIO v2.8.6 Linux (deb) </p>
+</div>
+<div class="resources">
+  <h3 id="some-additional-resources-can-be-found-here-disable-touchscreen-remove-wifi-ap-xx-folder-for-serial-connection--v70-color-scheme-files">Some additional resources can be found here (Disable Touchscreen, Remove Wifi AP, XX folder for serial connection &gt;= v70, Color Scheme files)</h3>
+  <h4 id="also-some-other-mzd-themes-can-be-found-here">Also some other MZD themes can be found Here</h4>
+</div>
+<h2 id="mzd-all-in-one-tweaks-installer">MZD All In One tweaks Installer</h2>
+<h4 id="installer-for-many-different-system-tweaks-for-mazda-mzd-infotainment-system">Installer for many different system tweaks for Mazda MZD Infotainment System</h4>
+<h5 id="mazda-2-dj-mazda-3-bm-mazda-6-gj-mazda-cx-3-dk-mazda-cx-5-ke-mazda-mx-5-roadster-nd-and-mazda-cx-9-tc">Mazda 2 (DJ), Mazda 3 (BM), Mazda 6 (GJ), Mazda CX-3 (DK), Mazda CX-5 (KE), Mazda MX-5 Roadster (ND) and Mazda CX-9 (TC)</h5>
+<hr/>
+<h2 id="which-fw-versions-are-supported">WHICH FW VERSIONS ARE SUPPORTED?:</h2>
+<p><strong>ALL FW V55, V56, V58, V59 & V70 ARE SUPPORTED</strong></p>
+<ul>
+  <li>To install tweaks on:
+    <ul>
+      <li><strong>v59.00.502+</strong> Requires making a <em><a href="serial">serial connection</a></em></li>
+      <li><strong>v70.00.335+</strong> Requires a <em><a href="id7">slightly different approach</a></em></li>
+    </ul>
+  </li>
+</ul>
+<hr/>
+<h3 id="information-on-android-auto-headunit">Information on <a href="androidauto">Android Auto Headunit</a></h3>
+<hr/>
+<h3 id="information-on-casdk">Information on <a href="casdk">CASDK</a></h3>
+<hr/>
+<h3 id="important-all-changes-happen-at-your-own-risk"><strong>IMPORTANT: All changes happen at your own risk!</strong></h3>
+<h5 id="please-understand-that-you-can-damage-or-brick-your-infotainment-system-running-these-tweaks"><strong>Please understand that you can damage or brick your infotainment system running these tweaks!</strong></h5>
+<h5 id="anyone-who-is-unsure-should-leave-it-alone-ask-someone-with-experience-to-help-or-ask-in-the-forum"><strong>Anyone who is unsure should leave it alone, ask someone with experience to help or ask in the forum.</strong></h5>
+<h5 id="i-am-not-responsible-for-damages-that-may-incur-from-the-use"><strong>I am not responsible for damages that may incur from the use.</strong></h5>
+<h2 id="only-use-with-firmware--v55--do-not-use-with-v303133-or-the-system-will-bootloop-at-mazda-boot-logo"><strong>Only use with Firmware &gt;= v55.  DO NOT USE with V30/31/33 OR THE SYSTEM WILL BOOTLOOP AT MAZDA BOOT LOGO!!!!!</strong></h2>
+<hr/>
+<h5 id="app-size--280mb">App Size ~ 280MB</h5>
+<p>AIO Rebuilt with Electron & <a href="/">AngularJS</a><br/>
+Included Translator & Photo-Joiner (for background rotator tweak)</p>
+<h3 id="special-thanks-to-all-the-developers-out-there-that-made-this-possible">Special thanks to all the developers out there that made this possible!</h3>
+<h3 id="and-of-course-thanks-to-siutsch-for-aio-1x">And of course, Thanks to @Siutsch for AIO 1.x</h3>
+<hr/>
+<video alt="FSF 30 video" style="width: 100%;" controls="controls" poster="https://static.fsf.org/nosvn/FSF30-video/fsf30-poster.png" crossorigin="anonymous">
+    <source src="nosvn/FSF30-video/FSF_30_720p.webm" type="video/webm"/></video>
+<h1 id="the-mzd-aio-tweaks">The MZD-AIO Tweaks:</h1>
+<h5 id="touchscreen">Touchscreen</h5>
+<p>Allows the use of the touchscreen while driving.<br/>
+Fix Cluster Compass: Some things will be disabled while driving but the touchscreen itself and the cluster compass will work</p>
+<h5 id="no-more-disclaimer">No More Disclaimer</h5>
+<p>Completely remove the disclaimer.</p>
+<h5 id="reverse-camera-safety-warning">Reverse Camera Safety Warning</h5>
+<p>No warning across the bottom of the screen in reverse.</p>
+<h5 id="semi-transparent-parking-sensor-graphics">Semi-Transparent Parking Sensor Graphics.</h5>
+<p>Semitransparent parking sensor graphics for proximity sensors. When activating the rear camera, the car is displayed at the top right corner. The graphics now appear semitransparent by installing tweak.</p>
+<h5 id="main-menu-loop">Main Menu Loop.</h5>
+<p>Loop for the main menu.<br/>
+You can jump from left to far right, and vice versa.</p>
+<h5 id="improved-list-loop">Improved List Loop.</h5>
+<p>Loop for all lists and submenu (music, contacts, etc.).<br/>
+You can now jump from the top position of a list to the bottom and vice versa.</p>
+<h5 id="shorter-delay-mod">Shorter Delay Mod.</h5>
+<p>Reduces the waiting time for switching between pages with the multi commander from 1.5 to 0.3 seconds.</p>
+<h5 id="no-more-beeps">No More Beeps</h5>
+<p>Disable all ‘Beeps’ made by the system that are not silenced by the ‘Settings &gt; Sound &gt; Beep’ option. This also includes the beeps that cannot be silenced by the settings option.</p>
+<h5 id="change-order-of-the-audio-source-list">Change Order of the Audio Source List.</h5>
+<p>Customize The order of the audio sources list.</p>
+<h5 id="pause-on-mute">Pause On Mute.</h5>
+<p>When pressing mute (pressing the volume button) played media are also paused. Only works in the music player screen.</p>
+<h5 id="remove-message-replies">Remove Message Replies</h5>
+<p>Removes the text ‘Sent from my Mazda Quick Text System’ if answering messages.</p>
+<h5 id="1-sec-diag-menu">1 Sec Diag Menu</h5>
+<p>Allows you to open the diagnostic menu by touching the clock at the top right of the <em>display settings menu</em> for one second.</p>
+<h5 id="boot-animation">Boot Animation</h5>
+<p>Customize the boot animation.</p>
+<h5 id="date-in-status-bar-mod">Date In Status Bar Mod.</h5>
+<p>Permanently visible date + icons above the clock, even if system messages are displayed.  Choose between 3 date formats.</p>
+<h5 id="usb-audio-mod-by-enlsen">USB Audio Mod. By: Enlsen</h5>
+<p><em>(NOT Compatible with FW v59.00.502+)</em></p>
+<p>** Patches The USB Audio App With These Mods:</p>
+<ol>
+  <li>Long press (click hold) folders/all songs to play</li>
+  <li>Adds new icon for USB root menu on the UMP control</li>
+  <li>Removes “More like this” button from UMP control</li>
+  <li>Adds folders button to UMP control</li>
+  <li>Set folders and song list icons correctly (were switched) on UMP control</li>
+  <li>Removes trailing “/” character from folder names for list control and title of now playing</li>
+  <li>Adds folder and song icons to the list control</li>
+  <li>Adds folder and playlist icons to now playing</li>
+  <li>At the begining or each track shows <em>Artist - Title</em> in a status-bar notification.</li>
+</ol>
+<h5 id="bigger-album-art">Bigger Album Art</h5>
+<p>You get a bigger album art graphic.
+Extra Options:</p>
+<ul>
+  <li>Full Width Titles: Song/Album/Artist will span across the entire screen.</li>
+  <li>Hide Album Art: Hides all album art.</li>
+</ul>
+<h5 id="no-background-behind-buttons">No Background Behind Buttons</h5>
+<p>Remove the background behind the buttons and other semi-transparent overlay backgrounds. Overlays that can be removed: Now Playing, List View, In Call, Text Message View, and Behind Buttons</p>
+<h5 id="change-blank-album-art-frame">Change Blank Album Art Frame</h5>
+<p>The empty album cover frame is removed, which is displayed when there is no entry in the Gracenote database for the artist. Then the image of your choice (or transparent image) is displayed, if there is no cover in the MP3 tag too. Supported image formats are: jpg, jpeg, and png (any size). Note: The image chosen will be resized to 146px x 146px <em>BUT +NOT CROPPED</em> and converted to .png format</p>
+<h5 id="swapfile">Swapfile</h5>
+<p>The Swapfile will provide your system with an additional 1 GB of RAM running from the USB drive for playing videos. The installation of the swap file must be done on a USB drive with music and/or movies, that remains in the car. The installation files are automatically deleted, the drive may no longer be removed during operation, because the system will use it also as memory. Only remove the USB drive if the MZD system is off.</p>
+<h5 id="fuel-consumption-tweak">Fuel Consumption Tweak.</h5>
+<p>Additional display of KM/100L, L/KM, or MPG.</p>
+<h5 id="videoplayer">Videoplayer</h5>
+<p><a href="videoplayer">The VideoPlayer App.</a></p>
+<h5 id="speedometer">Speedometer</h5>
+<p>Speedometer App with many options and features.</p>
+<h5 id="castscreen-receiver">Castscreen receiver.</h5>
+<p>After installation you can mirror the smartphone screen at the infotainment display (mirroring).</p>
+<ul>
+  <li>You have to install the castscreen app on your Android Phone (castscreen-1.0.apk) The app can be found in the ‘config’ folder of your USB drive</li>
+  <li>activate the debug mode on your smartphone</li>
+  <li>connect the smartphone with USB cable to the infotainment system</li>
+  <li>start the app settings: H264, 800x480 @ 160, 1 mbps, then input 127.0.0.1 and press input receiver, then tap Start on right-up corner.</li>
+</ul>
+<h5 id="android-auto-headunit-app">Android Auto Headunit App.</h5>
+<ol>
+  <li>Install the Android app from google play store</li>
+  <li>Connect the phone to USB and pair the phone bluetooth with the CMU</li>
+  <li>Android Auto will then start. If it does not try to open from the ‘Applications’ menu</li>
+  <li>3 ways to stop AA
+    <ol>
+      <li>Hold Call End Button on the stearing wheel or Back Button on the Mazda’s Commander for 3 seconds</li>
+      <li>Disconnect the USB cable</li>
+      <li>Use the onscreen menu ‘Return to Mazda Connect’ on last screen with speedo icon.</li>
+    </ol>
+  </li>
+</ol>
+<h5 id="aio-tweaks-app">AIO Tweaks App.</h5>
+<p>AIO Tweaks App is an experimental app by Trezdog44 made to test the capabilities, functionalities, and limitations of apps in the MZD Infotainment System.</p>
+<p>This app has some useful and fun functions although it is not guaranteed that everything works.  There may be non-functioning or experimental features.</p>
+<hr/>
+<h2 id="changelog"><a href="changelog2">CHANGELOG</a></h2>
+<h3 id="new-features">NEW FEATURES</h3>
+<h2 id="v28x">v2.8.x</h2>
+<ul>
+  <li>Android Auto Wifi Suport</li>
+  <li>VideoPlayer v3.5</li>
+  <li>Speedometer v5.7</li>
+  <li>AIO Tweaks App v0.7</li>
+</ul>
+<h2 id="v27x">v2.7.x</h2>
+<ul>
+  <li>Android Auto Headunit 1.07 + <a href="androidauto">AA Info & Updates</a></li>
+  <li>VideoPlayer v3.1 w/ Options/Info Panel</li>
+  <li>AIO Tweaks App v0.4</li>
+  <li>Speedometer v4.8</li>
+</ul>
+<h2 id="v26x">v2.6.x</h2>
+<ul>
+  <li>Autorun scripts for testing and recovery</li>
+  <li>ID7_Recovery Pack for recovering access to the CMU</li>
+  <li>AIO Tweaks App</li>
+  <li>Speedometer upgrades</li>
+  <li>Extended compatibility to all v55, v56, v58 and v59 FW versions</li>
+  <li>USB Audio Mod</li>
+  <li>Full width titles</li>
+  <li>Hide Album Art</li>
+  <li>Hide Background Overlays</li>
+</ul>
+<h2 id="v25x">v2.5.x</h2>
+<ul>
+  <li>Video Player v2.9 w/ localStorage Saving</li>
+  <li>Custom Boot Animations</li>
+  <li>New ScreenCast App for Android 7.0</li>
+  <li>Improved ScreenCasting Functionality</li>
+  <li>Force Update SSH option</li>
+  <li>Zip backup option (takes a long time)</li>
+  <li>Choice of Android Auto Version to install (v0.99 or v1.02)</li>
+  <li>Video Player v2.8 rollback version in downloads menu for those with Unicode character issues.</li>
+</ul>
+<h2 id="v24x">v2.4.x</h2>
+<ul>
+  <li>Video Player v2.8 w/ Multicontroller functionality</li>
+  <li>New themes
+    <ul>
+      <li>Smooth Azure</li>
+      <li>Smooth Violet</li>
+    </ul>
+  </li>
+  <li>Update SSH Bringback</li>
+</ul>
+<h2 id="v23x">v2.3.x</h2>
+<ul>
+  <li>Video Player v2.7</li>
+  <li>Android Auto v1.02</li>
+  <li>Remove List Beep</li>
+  <li>Skip Confirmation Option</li>
+  <li>6 New Themes</li>
+  <li>Custom Theme Support</li>
+</ul>
+<h2 id="v22x">v2.2.x</h2>
+<ul>
+  <li>User Interface Style Tweaks (UI Style)</li>
+  <li>Set Music Song Title Color</li>
+  <li>Set Music Artist Color</li>
+  <li>Set Other Text Colors</li>
+  <li>Text Shadows</li>
+  <li>Date2Statusbar v3.3</li>
+  <li>Main Menu Tweaks</li>
+  <li>Layouts</li>
+  <li>3d Main Menu label</li>
+  <li>Small Coins</li>
+  <li>Remove Ellipse</li>
+  <li>Touchscreen Tweak Compass Fix</li>
+  <li>Options For Background Rotator Tweak</li>
+  <li>Set how many images to rotate through.</li>
+  <li>Set amount of time for each image to show.</li>
+  <li>Backup Options</li>
+</ul>
+<h2 id="v21x">v2.1.x:</h2>
+<ul>
+  <li>Statusbar Tweaks</li>
+  <li>Set App Name Color</li>
+  <li>Set Clock Color</li>
+  <li>Set Navigation Notifications Color</li>
+  <li>Remove Statusbar Image</li>
+  <li>Set Statusbar Opacity (0 - 1: 0 - Transparent / 1 - Black)</li>
+  <li>Off Screen Background</li>
+  <li>Set a background image for “Turn Display Off and Show Clock” in the Settings Menu.</li>
+  <li>Will also display on system shutdown.</li>
+</ul>
+<h2 id="new-features-in-20">New Features in 2.0:</h2>
+<ul>
+  <li>Completely Rebuilt Desktop App GUI.</li>
+  <li>Ability to install and uninstall tweaks in the same installation (Be careful this is a Beta feature).</li>
+  <li>Tweak files for ‘Color Scheme’ (105MB) <del>and ‘Speedcam Patch’ (207MB)</del> are downloadable extras to keep the app size small.</li>
+  <li>Choose an image to replace your infotainment background, automatically resized to 480x800px to fit the screen.</li>
+  <li>Replace blank album art with any image, automatically resized to 146x146px.</li>
+  <li>Image-Joiner for joining multiple images for the ‘Background Rotator’ tweak. Each Image is resized to 480x800px.</li>
+  <li>Also, a choice to upload an image that will not get resized for background rotator.</li>
+  <li>Separated the ‘Improved List Loop’ and ‘Shorter Delay Mod’ into individual tweaks.</li>
+  <li>Choice for ‘Enable Wifi’ and ‘CID to SD’ tweaks (enabled by default).</li>
+  <li>Choice to use color scheme background or not.</li>
+  <li>More information and backups are collected during tweak installation (For planned ‘Save Backups to PC’ and ‘System Analysis’ tweaks).</li>
+  <li>Copy Files to USB Drive (works for a single plugged in drive or choose 1 out of a list of all available external drives)</li>
+  <li>Save/Load tweak options.</li>
+  <li>All 40+ tweaks from AIO 1.x with variations.</li>
+  <li>Automatic Updates.</li>
+  <li>Updated to most current version of Android Auto.</li>
+  <li>More to come!</li>
+</ul>
+<h4 id="--image-formats-supported-png-jpg-jpeg-bmp-tiff">- Image formats supported: .png .jpg .jpeg .bmp .tiff</h4>
+<h4 id="--images-are-converted-to-png-format">- Images are converted to .png format</h4>
+<h4 id="--built-in-translator">- Built in Translator</h4>
+<hr/>
+<h4 id="what-is-mzd-aio-ti"><strong>What is ‘MZD-AIO-TI’?</strong></h4>
+<p>My good friend Siutsch copied files from many different tweaks for his infotainment system and thought, it would be helpful if you could choose what tweaks you wanted to install or uninstall. He went on to develop a CMD based program to accomplish this and it worked well but lacked that modern app feel and faced other limitations.  As a developer, I felt like I should upgrade AIO into a full fledged desktop app but with the same underlying tweaks that we all know from AIO v1.5.x. It was around that time I came across Electron and I went on to develop MZD-AIO-TI.</p>
+<p>This Project has 2 particular aspects, user interface and the custom built installer script: <strong>tweaks.sh</strong> and associated files. @Siutsch and I continue to work together on that aspect to this project to optimize the tweaks.sh script for safety, efficiency, and in the future analysis.</p>
+<h3 id="how-to-install">How to install:</h3>
+<h6 id="download-and-open-the-setup-file-and-it-will-install-and-start-up">Download and open the setup file and it will install and start up.</h6>
+<ul>
+  <li>Select Desired Tweaks and Press the “Start Compilation” Button.</li>
+  <li>Insert a blank FAT32 USB flash drive to copy files directly to the drive</li>
+  <li>Or copy the contents of “<em>copy to usb</em>” (created on your desktop) to the root of a blank USB flash drive.</li>
+</ul>
+<h6 id="before-car-installation">Before Car Installation:</h6>
+<ul>
+  <li>Start with the vehicle off</li>
+  <li>Unplug any other USB drives from the car except this flash drive.</li>
+  <li><del>For installation of speedcam patch (see below), the NAVI SD card must remain in the car, because speedcam.txt file will be copied directly to SD card.</del></li>
+  <li>For installation of speedometer, the NAVI SD card must remain in the car too, without NAVI SD card a special patch will be installed, otherwise the compass is rotated 180 degrees.</li>
+  <li>In general, the SD card can remain in the car during the tweak installations.</li>
+</ul>
+<h4 id="installation-into-mzd-infotainment-system">Installation Into MZD Infotainment System:</h4>
+<ul>
+  <li>Plugin USB drive, turn on car and wait for the “==  MZD-AIO-TI ==” window to appear (This may take 2 - 20 minutes so be patient).</li>
+  <li>At that point you will be given the option to continue or abort the installation.</li>
+  <li>Associated messages with pop up during installation (No further user interaction is needed).</li>
+  <li>The system will be restarted automatically.</li>
+  <li>Remove the USB drive after restart.</li>
+  <li>Tweaks will be applied upon reboot.</li>
+</ul>
+<p><em><strong>Compatibility will be generally checked at the beginning of an installation, if your FW is not compatible the installation will abort at this point.  This is for the safety of incompatible systems.</strong></em></p>
+<h5 id="the-following-tweaks-are-checked-individually-during-installation-of-tweakssh-because-there-are-different-config-files-to-consider">The following tweaks are checked individually during installation of tweaks.sh, because there are different (config)-files to consider:</h5>
+<ul>
+  <li>No More Disclaimer</li>
+  <li>Order of Audio Source List</li>
+  <li>List Loop</li>
+  <li>
+    <p>Date To Statusbar Mod</p>
+  </li>
+  <li>Apps check for v58+ to apply app list patch</li>
+</ul>
+<h3 id="for-more-information-visit-the-faq-page">For More information visit the <a href="faq" title="Frequently Asked Questions">FAQ</a> Page</h3>
+<hr/>
+<h4 id="tools">TOOLS:</h4>
+<ul>
+  <li>
+    <p>Electron is an amazing shell developed by Github utilizing the awesome power of both the NodeJS and Chromium APIs into a single runtime harnessing web based programming languages into beautifully packaged desktop apps.</p>
+  </li>
+  <li>
+    <p>AngularJS Javascript app framework by Google</p>
+  </li>
+</ul>
+<hr/>
+<h1 id="list-of-the-original-tweaks-that-inspired-aio"><strong>List of the original tweaks that inspired AIO:</strong></h1>
+<h2 id="tweaks-master-bundle-v55"><strong>Tweaks Master Bundle (v55)</strong></h2>
+<h4 id="by-miket0429">by miket0429</h4>
+<ul>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-258.html#post1442746</p>
+  </li>
+  <li><strong>Reduce disclaimer time</strong> (actually no longer necessary, because it can be completely disabled by “No_More_Disclaimer” tweak)</li>
+  <li><strong>Enable the touchscreen</strong> while moving</li>
+  <li><strong>Turn on WIFI</strong> (not necessary with EU versions)</li>
+  <li><strong>Change the background image</strong>: replace background.png inside config folder with own 800x480 .png</li>
+  <li><strong>Remove the safety warning label</strong> from the reverse camera (10 different countries)</li>
+  <li><strong>Remove the blank album art frame</strong>
+    <ul>
+      <li>now with additional picture of a radio, if there is no entry in the gracenote database or no album art is found in mp3 tag.</li>
+      <li>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-526.html#post1656898</li>
+    </ul>
+  </li>
+</ul>
+<hr/>
+<h2 id="speedometer_v44"><strong>Speedometer_v4.4</strong></h2>
+<h4 id="by_diginix">by_Diginix</h4>
+<ul>
+  <li>
+    <p>Based on mod by Trookam (which is based on mod by anderml1955 I think), first version of speedometer by serezhka, mph changes first done by windwalker</p>
+  </li>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-373.html#post1537450</p>
+  </li>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-384.html#post1548834</p>
+  </li>
+  <li>For changelog look at speedometer_changelog.txt</li>
+  <li>And look at speedometer_readme.txt</li>
+</ul>
+<hr/>
+<h2 id="video-player-v2"><strong>Video player v2</strong></h2>
+<h4 id="by-waisky2-with-mods-by-vic_bam85">by Waisky2 with mods by vic_bam85</h4>
+<p>Use H264 video codec and MPEG-4 AAC audio codec<br/>
+You have to place your videos in a folder “Movies”!</p>
+<ul>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-477.html#post1596306</p>
+  </li>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-480.html#post1597962</p>
+  </li>
+  <li>
+    <p><a href="http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-295.html#post1466322">http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-295.html#post1466322</a></p>
+  </li>
+  <li>It uses page up/down button to navigate video list (previous version scroll bar too heavy and slow)</li>
+  <li>It uses websocket to handle all functions request so the response is instant (no more using nc command)</li>
+  <li>Functions remain Load Video List / Start Stop Playback / Next Track / Repeat 1 (looping the same video)</li>
+  <li>Integrated as native app in menu (thanks to Diginix)</li>
+</ul>
+<h5 id="changes-by-vic_bam85">Changes by vic_bam85:</h5>
+<h6 id="multicontroller-support-by-trezdog44">Multicontroller support by Trezdog44</h6>
+<ul>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-518.html#post1634913</p>
+  </li>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/122458-aio-all-one-tweaks-49.html#post1691370</p>
+  </li>
+  <li>v2.0 Initial Version</li>
+  <li>v2.1 Included more video types (previous release)</li>
+  <li>v2.2 Enabled the fullscreen Option (not released)</li>
+  <li>v2.3 Included the status bar and adjusts to play in a window (not full screen) (not released)</li>
+  <li>v2.4 Included a shuffle option
+    <ul>
+      <li>fixed the problem of pressing the next button rapidly</li>
+      <li>The list updates automatically at start</li>
+      <li>Option to stop the video when you go backwards (doesn’t work well), but it stops the video, so it doesn’t stays playing on the video in the background</li>
+    </ul>
+  </li>
+  <li>v2.5
+    <ul>
+      <li>It can now logs the steps (have to enable it on the videoplayer-v2.js & videoplayer.sh files)</li>
+      <li>closes the app if is not the current (first attempt)</li>
+      <li>fixes the issue of pressing mutiple times the search video button</li>
+      <li>fixes the application not showing the controls again when a video play fails</li>
+      <li>fixes playing the same video when shuffle is active</li>
+      <li>starts using a swap file on start of the app if not running (still have to create the swap with the AIO)</li>
+    </ul>
+  </li>
+  <li>v2.6 Change gst-launch for gplay, incorporate pause, resume, rw, ff
+    <ul>
+      <li>Direct send of commands to sh (Better control)</li>
+      <li>Close of WebSocket as it should be (saves memory)</li>
+      <li>Change of port 55555 to 9998 in order to avoid problems with some cmu processes</li>
+      <li>Bugfix for files with more than one consecutive white space</li>
+      <li>Most of the times it stops the video when you put reverse with no problems</li>
+    </ul>
+  </li>
+  <li>v2.7 Include pause when touching the video in the center, rewind when touching the left side and Fast Forward when touching the right side. (15% of the screen each)
+    <ul>
+      <li>Correct problem when stopping a paused video (the icon shows an incorrect image at the beginning of the next video)</li>
+    </ul>
+  </li>
+  <li>v2.8 Multicontroller support - Tilt up/down = Scroll video list
+    <ul>
+      <li>Press command knob - Play/pause</li>
+      <li>Tilt Right - Next</li>
+      <li>Tilt left - Stop</li>
+      <li>Rotate command knob CCW/CW - RW/FF</li>
+      <li>Lowered RW/FF time from 30s =&gt; 10s for better control with command knob rotation</li>
+    </ul>
+  </li>
+</ul>
+<hr/>
+<h2 id="date_to_statusbar_mod"><strong>Date_to_statusbar_mod</strong></h2>
+<h4 id="by-diginix">by Diginix</h4>
+<h4 id="v10-v21-and-v22-by-diginix-base-by-foreveryoung-icons-and-date-smaller-just-above-the-clock">v1.0, v2.1 and v2.2 by Diginix, base by ForeverYoung (icons and date smaller just above the clock)</h4>
+<h4 id="v33-moded-for-v59-by-trezdog44">v3.3 MODED for v59 by Trezdog44</h4>
+<ul>
+  <li>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-370.html#post1533778</li>
+</ul>
+<h4 id="changes-done-by-diginix">Changes done by Diginix:</h4>
+<ul>
+  <li>numeric date</li>
+  <li>increase icon size (Wifi, Bluetooth…)</li>
+  <li>a little more distance from the right and the top border</li>
+  <li>disabled red border of system messages</li>
+  <li>smaller font size for all statusbar texts</li>
+</ul>
+<hr/>
+<h2 id="custom-infotainment-colors"><strong>Custom infotainment colors</strong></h2>
+<h4 id="blue-green-orange-pink-purple-silver-yellow-by-mrnerdbanger">(blue, green, orange, pink, purple, silver, yellow) by mrnerdbanger</h4>
+<ul>
+  <li><strong>Info: a color matching background image will be replaced too and the speedometer graphics also, if you install speedometer.</strong></li>
+  <li>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/92330-custom-infotainment-colors.html</li>
+</ul>
+<hr/>
+<h2 id="pause-on-mute-1"><strong>Pause on mute</strong></h2>
+<h4 id="by-jimmyfergus-usb-script-by-foreveryoung">by jimmyfergus, USB script by ForeverYoung</h4>
+<ul>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-331.html#post1484922</p>
+  </li>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-349.html#post1517210</p>
+  </li>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-439.html#post1573354</p>
+  </li>
+</ul>
+<hr/>
+<h2 id="semi-transparent_parking_sensors_mod"><strong>Semi-transparent_parking_sensors_mod</strong></h2>
+<h4 id="by-diginix-1">by Diginix</h4>
+<h4 id="folders-horizontalsensors-and-verticalsensors-used">(folders “HorizontalSensors” and “VerticalSensors” used)</h4>
+<h4 id="original-patch-by-vic_bam85-not-working-on-v-5600230a-german-version-because-only-folder-horizontalsensors-used">Original patch by vic_bam85 not working on V 56.00.230A german version, because only folder “HorizontalSensors” used</h4>
+<ul>
+  <li>
+    <p><a href="http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-346.html#post1515386">http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-346.html#post1515386</a></p>
+  </li>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-376.html#post1540882</p>
+  </li>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-342.html#post1507786</p>
+  </li>
+</ul>
+<hr/>
+<h2 id="improved-list-loop-1"><strong>Improved list loop</strong></h2>
+<h4 id="by-yuikjh">by yuikjh</h4>
+<h4 id="with-additional-shorter-delay-mod-by-yuikjh-generates-frequent-beeps">With additional shorter delay mod by yuikjh (generates frequent beeps!)</h4>
+<ul>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-342.html#post1507786</p>
+  </li>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-332.html#post1486914</p>
+  </li>
+</ul>
+<hr/>
+<h2 id="main-menu-loop-1"><strong>Main menu loop</strong></h2>
+<h4 id="by-foreveryoung">by ForeverYoung</h4>
+<ul>
+  <li><a href="http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-344.html#post1510946">http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-344.html#post1510946</a></li>
+</ul>
+<hr/>
+<h2 id="no_more_disclaimer"><strong>No_more_disclaimer</strong></h2>
+<h4 id="by-bob12x">by bob12x</h4>
+<ul>
+  <li>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/117850-way-remove-disclaimer-boot.html</li>
+</ul>
+<hr/>
+<h2 id="media-order-patch-and-flac-support"><strong>Media order patch</strong> and <strong>FLAC Support</strong></h2>
+<h4 id="by-diorcety">by diorcety</h4>
+<ul>
+  <li><a href="http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/117162-media-flac-support-track-ordering.html">http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/117162-media-flac-support-track-ordering.html</a></li>
+</ul>
+<hr/>
+<h2 id="change-order-of-the-audio-source-list-1"><strong>Change order of the audio source list</strong></h2>
+<h4 id="order-the-list-of-audio-sources">Order the list of audio sources</h4>
+<hr/>
+<h1 id="no-longer-available"><strong>NO LONGER AVAILABLE</strong></h1>
+<h2 id="speedcam-patch"><del><strong>Speedcam patch</strong></del></h2>
+<hr/>
+<h2 id="castscreen-receiver-1"><strong>Castscreen receiver</strong></h2>
+<h4 id="version-2016--03--08-mirroring-of-android-smartphone-by-daguschi-usb-script-by-trookam">Version 2016- 03- 08 (mirroring of Android Smartphone) by daguschi, USB script by trookam</h4>
+<ul>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-418.html#post1564545</p>
+  </li>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-422.html#post1566625</p>
+  </li>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-486.html#post1603929</p>
+  </li>
+  <li>Install the CastScreen App on your Android phone (castscreen- 1.0.apk) and enable debug mode on your device
+    <ul>
+      <li><strong>you will find the app in config folder of your USB drive</strong></li>
+    </ul>
+  </li>
+  <li>Connect your Android device with USB cable to infotainment system</li>
+  <li>Launch CastScreen App, change setting to H264, 800x480@160, 1 Mbps, then input 127.0.0.1 and press input receiver, then tap Start on right- up corner</li>
+</ul>
+<h5 id="changelog-1">Changelog:</h5>
+<ul>
+  <li>Use ‘adb reverse’ instead of ‘adb forward’. (I also reverse ssh port to 2222 after device connect to infotainment system.)</li>
+  <li>Fix unexpected close during mirroring</li>
+  <li>Support mirroring via both USB and WiFi (You can input the WiFi IP address of your car instead of 127.0.0.1 in the following steps)</li>
+</ul>
+<hr/>
+<h2 id="ssh_bringback"><strong>SSH_bringback</strong></h2>
+<h4 id="for-5600511a512a513b--eu-by-mzd3-k">for 56.00.511A/512A/513B- EU by mzd3-k</h4>
+<h3 id="expanded-compatibility-to-all-fw-v56-59">Expanded compatibility to all FW v56-59</h3>
+<ul>
+  <li>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-436.html#post1571842</li>
+  <li>http://mazda3revolution.com/forums/2014-2017-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-605.html#post1956634</li>
+</ul>
+<hr/>
+<h2 id="open-jci-test-console"><strong>Open JCI test console</strong></h2>
+<h4 id="diagnostic-menu-by-1-sec-clock-pressing-in-display-settings-no-more-pressing-music--favorites--powermute">Diagnostic menu by 1 sec. clock pressing in display settings, no more pressing music + favorites + power/mute</h4>
+<ul>
+  <li>
+    <p>http://minkara.carview.co.jp/userid/448162/car/1572030/3274514/3/note.aspx#title</p>
+  </li>
+  <li>
+    <p>http://minkara.carview.co.jp/en/userid/448162/profile/</p>
+  </li>
+</ul>
+<hr/>
+<h2 id="swapfile-1"><strong>Swapfile</strong></h2>
+<h4 id="by-waisky2">by Waisky2</h4>
+<ul>
+  <li>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-480.html#post1597962</li>
+</ul>
+<hr/>
+<h2 id="disableenable-the-boot-animation"><strong>Disable/Enable the boot animation</strong></h2>
+<h4 id="custom-boot-animations-by-hrangel-to-red-button-menu-by-siutsch">Custom boot animations by HRangel to red button menu by Siutsch</h4>
+<ul>
+  <li>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/125545-easy-way-get-cid-any-sd-card-cmu-usb-tweak.html#post1618697</li>
+</ul>
+<hr/>
+<h2 id="get-cid-of-any-sd-card"><strong>Get CID</strong> of any SD card</h2>
+<h4 id="by-modfreakz">by Modfreakz</h4>
+<ul>
+  <li>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/125545-easy-way-get-cid-any-sd-card-cmu-usb-tweak.html#post1618697</li>
+</ul>
+<hr/>
+<h2 id="new-scheme-caros"><strong>New scheme ‘carOS’</strong></h2>
+<h4 id="by-epadillac">by epadillac</h4>
+<ul>
+  <li>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/92330-custom-infotainment-colors-14.html#post1627265</li>
+</ul>
+<hr/>
+<h2 id="bigger-album-art-tweak"><strong>Bigger album art</strong> tweak</h2>
+<h4 id="by-epadillac-1">by epadillac</h4>
+<ul>
+  <li>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/92330-custom-infotainment-colors-14.html#post1627033</li>
+</ul>
+<hr/>
+<h2 id="no-buttons-background-graphics-tweak"><strong>No buttons background graphics</strong> tweak</h2>
+<h4 id="by-epadillac-2">by epadillac</h4>
+<ul>
+  <li>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/92330-custom-infotainment-colors-14.html#post1627033</li>
+</ul>
+<hr/>
+<h2 id="fuel-consumption-tweak-1"><strong>Fuel Consumption Tweak</strong></h2>
+<h4 id="by-edyvsr-from-mazdateammexicocom---add-fuel-efficiency-unit-kml">by edyvsr from mazdateammexico.com - add fuel efficiency unit KM/L</h4>
+<ul>
+  <li>
+    <p>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/122458-aio-all-one-tweaks-49.html#post1658314</p>
+  </li>
+  <li>
+    <p>http://mazdateammexico.com/index.php?topic=16015.msg267577#msg267577</p>
+  </li>
+</ul>
+<hr/>
+<h2 id="background-rotator"><strong>Background Rotator</strong></h2>
+<h4 id="by-trezdog44">by Trezdog44</h4>
+<ul>
+  <li>This was my first tweak I wrote with pure CSS animation</li>
+  <li>Image Joiner is now included in 2.0</li>
+</ul>
+<hr/>
+<h2 id="text-color-tweaks"><strong>Text Color Tweaks</strong></h2>
+<h4 id="by-trezdog44-1">by Trezdog44</h4>
+<ul>
+  <li>Change the colors of all the UI text.</li>
+  <li>Song Title</li>
+  <li>List Items (disabled and enabled)</li>
+  <li>Body text (Album, Artists, Messages etc.)</li>
+  <li>Radio Station Title</li>
+</ul>
+<hr/>
+<h2 id="main-menu-layout"><strong>Main Menu Layout</strong></h2>
+<h4 id="by-trezdog44-2">by Trezdog44</h4>
+<ul>
+  <li>Tweak you main menu Layout</li>
+  <li>Star Points (A & B)</li>
+  <li>Inverted</li>
+  <li>Mini Coins</li>
+  <li>3D Label</li>
+</ul>
+<hr/>
+<h2 id="usb-audio-mod"><strong>USB Audio Mod</strong></h2>
+<h4 id="by-enslen">By Enslen</h4>
+<ul>
+  <li>Patches The USB Audio App With These Mods:
+    <ul>
+      <li>Long press (click hold) folders/all songs to play</li>
+      <li>Adds new icon for USB root menu on the UMP control</li>
+      <li>Removes “More like this” button from UMP control</li>
+      <li>Adds folders button to UMP control</li>
+      <li>Set folders and song list icons correctly (were switched) on UMP control</li>
+      <li>Removes trailing “/” character from folder names for list control and title of now playing</li>
+      <li>Adds folder and song icons to the list control</li>
+      <li>Adds folder and playlist icons to now playing</li>
+    </ul>
+  </li>
+</ul>
+<hr/>
+<h2 id="android-auto-headunit-app-1"><strong>Android Auto Headunit App</strong></h2>
+<h4 id="contributors-spadival-agartner-lmagder-mishaaq--trezdog44">Contributors: spadival, agartner, lmagder, mishaaq & Trezdog44</h4>
+<h4 id="changelog-since-v1--more-headunit-info"><a href="androidauto">Changelog Since v1 & More Headunit Info</a></h4>
+<ul>
+  <li>Latest AA Release</li>
+  <li>
+    <p>Latest AA W/ Beta Features (if there is one)</p>
+  </li>
+  <li>Headunit Repository
+    <ul>
+      <li>http://github.com/gartnera/headunit/releases</li>
+    </ul>
+  </li>
+  <li>mazda3revolution thread.
+    <ul>
+      <li>http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/121561-android-auto-headunit-app-beta.html</li>
+    </ul>
+  </li>
+  <li></li>
+</ul>
+<ol>
+  <li>Install Android Auto app on your phone: http://play.google.com/store/apps/details?id=com.google.android.projection.gearhead or here: http://www.apkmirror.com/apk/google-inc/android-auto/android-auto-1-5-100945-2462389-release-release/android-auto-1-5-100945-2462389-release-android-apk-download/</li>
+  <li>Pair the phone Bluetooth with the CMU</li>
+  <li>Connect the phone to USB</li>
+  <li>Android Auto will then start. If it does not, pull out the USB and start over again</li>
+  <li>Press ‘Home’ button to return to MZD GUI</li>
+  <li>
+    <p>Click on Android Auto under Applications Menu on the CMU to reopen Android Auto</p>
+    <hr/>
+    <h5 id="version-093a-change-log">Version 0.93A Change log</h5>
+  </li>
+</ol>
+<ul>
+  <li>Working again with newer google play services</li>
+</ul>
+<h5 id="version-092ab-change-log">Version 0.92A/B Change log</h5>
+<ul>
+  <li>When using fav key to switch to radio, track keys allow you to change between presets</li>
+  <li>When exiting AA, audio automatically switches back to radio</li>
+  <li>Added oppo to the vendor list</li>
+</ul>
+<h5 id="version-091b-change-log">Version 0.91b Change log</h5>
+<ul>
+  <li>Backup cam is no longer broken</li>
+  <li>Media keys work and voice button works</li>
+  <li>Press favorite key to toggle between AA audio and radio audio</li>
+  <li>Press home key to quickly kill AA</li>
+  <li>Some startup issues fixed</li>
+</ul>
+<h5 id="todo">TODO:</h5>
+<ul>
+  <li>fix phone</li>
+  <li>use track keys to switch radio stations when in radio mode</li>
+  <li>fix audio level issues (try skipping a song, then pause and press play again)</li>
+</ul>
+<h5 id="version-083-change-log">Version 0.83 Change log</h5>
+<ol>
+  <li>Performance improvements via sequential operation and removal of mutex locks - provided by @agartner</li>
+  <li>Changed Video sink to mfw_isink - supposed to be faster and also now opera status (volume) bar can be overlayed if required - need some javascript expertise to make it a floating bar.</li>
+  <li>Hide the disclaimer/credits after 2- 3 seconds</li>
+  <li>Now you can touch drag/swipe</li>
+  <li>Added VID for Lenovo</li>
+</ol>
+<h5 id="version-07-change-log">Version 0.7 Change log</h5>
+<ol>
+  <li>USB Audio is enabled - to actually use this, you need a separate USB thumb drive in one of the slots, as this is the only way for you to be able to select USB audio in the CMU. Please do not try to use MTP option on your android phone, as it is not going to work</li>
+  <li>Since there was a severe case of audio stuttering once for me, I have included an option to disable USB audio and switch back to AUX. You can do this by placing a file called hu_disable_audio_out in the SD CARD (which, of course, means you now need an SD card ). I haven’t actually tested this out as USB Audio worked fine at all times except that one instance.</li>
+  <li>Nexus fix provided by @agartner</li>
+</ol>
+<h5 id="version-06-change-log">Version 0.6 Change log</h5>
+<ol>
+  <li>Voice control should not cause app to quit</li>
+  <li>More VIDs added, including a possible fix for Nexus phones with VID 0x18D1</li>
+</ol>
+<h5 id="version-05-change-log">Version 0.5 Change log</h5>
+<ol>
+  <li>Voice control enabled</li>
+  <li>More VIDs added, including a possible fix for Nexus phones with VID 0x18D1</li>
+  <li>Graceful kill when reverse gear engaged - App will restart when reverse gear is disengaged. However, reverse camera is still dark (because same V4L device?) as app isn’t killed fast enough.</li>
+</ol>
+<h5 id="version-04-change-log">Version 0.4 Change log</h5>
+<ol>
+  <li>Performance improvement to the gstreamer pipeline - testing shows no issues with Nav now. However, need some feedback to check if it is the same for everyone.</li>
+  <li>Removed auto switch to Bluetooth as it causes problems with the UI. Need to switch manually now.</li>
+  <li>Added a bunch of other Vendor id to Android USB Device VID list</li>
+  <li>Removed aaserver and switched to websocketd.</li>
+  <li>New gstreamer plugin h264parse compiled and added.</li>
+  <li>UI now has USB/Gstreamer debug message window</li>
+</ol>
+<h5 id="version-03-change-log">Version 0.3 Change log</h5>
+<ol>
+  <li>Night Mode - Simple logic for now - 6AM to 6PM is day. Night afterwards</li>
+  <li>First attempt at making libssl/libusb calls thread safe (Voice control will crash otherwise ocassionally).</li>
+  <li>Increased USB send timeouts for better screen refresh.</li>
+  <li>Added LG’s Vendor id to Android USB Device VID list</li>
+</ol>
+<h5 id="version-02-change-log">Version 0.2 Change log</h5>
+<ol>
+  <li>Code sync with Mikereidis/Master</li>
+  <li>aaserver - microhttpd server to launch and pass status back to UI - no more messy sh, watch and other hoops.</li>
+  <li>UI integration using Herko ter Horst’s method.</li>
+  <li>
+    <p>Exit AA using on screen menu (last screen with speedo icon)</p>
+    <hr/>
+  </li>
+</ol>
+<!--div class="home">
+  <h1 class="page-heading">Posts</h1>
+  <ul class="post-list">
+      <li>
+        <span class="post-meta">Oct 29, 2018</span>
+        <h2>
+          <a class="post-link" href="/casdk/2018/10/29/breakout.html">Breakout</a>
+        </h2>
+      </li>
+      <li>
+        <span class="post-meta">Oct 28, 2018</span>
+        <h2>
+          <a class="post-link" href="/casdk/2018/10/28/clock.html">Clock</a>
+        </h2>
+      </li>
+      <li>
+        <span class="post-meta">Sep 21, 2018</span>
+        <h2>
+          <a class="post-link" href="/casdk/2018/09/21/gpsspeed.html">GPS Speed</a>
+        </h2>
+      </li>
+      <li>
+        <span class="post-meta">Sep 19, 2018</span>
+        <h2>
+          <a class="post-link" href="/casdk/2018/09/19/tetris.html">Tetris</a>
+        </h2>
+      </li>
+      <li>
+        <span class="post-meta">Aug 24, 2018</span>
+        <h2>
+          <a class="post-link" href="/casdk/2018/08/24/simplespeed.html">Simple Speedometer</a>
+        </h2>
+      </li>
+      <li>
+        <span class="post-meta">Aug 11, 2018</span>
+        <h2>
+          <a class="post-link" href="/casdk/2018/08/11/snake.html">Snake</a>
+        </h2>
+      </li>
+      <li>
+        <span class="post-meta">Jul 8, 2018</span>
+        <h2>
+          <a class="post-link" href="/casdk/2018/07/08/mulitdash.html">MultiDash</a>
+        </h2>
+      </li>
+      <li>
+        <span class="post-meta">Jul 8, 2018</span>
+        <h2>
+          <a class="post-link" href="/casdk/2018/07/08/background.html">Background</a>
+        </h2>
+      </li>
+      <li>
+        <span class="post-meta">Jun 20, 2018</span>
+        <h2>
+          <a class="post-link" href="/casdk/2018/06/20/vdd.html">VDD Vehicle Data Diagnostic</a>
+        </h2>
+      </li>
+      <li>
+        <span class="post-meta">Jun 19, 2018</span>
+        <h2>
+          <a class="post-link" href="/casdk/2018/06/19/simpledash.html">Simple Dashboard</a>
+        </h2>
+      </li>
+      <li>
+        <span class="post-meta">Apr 6, 2018</span>
+        <h2>
+          <a class="post-link" href="/serial/2018/04/06/im-super-serial.html">Serial</a>
+        </h2>
+      </li>
+  </ul>
+  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+</div-->
+      </div>
+    </div>
+    <div id="snackbar"></div>
+<footer class="site-footer ">
+  <div class="wrapper">
+    <h2 class="footer-heading"><a href="/">Mazda AIO Tweaks</a> | Mazda3Revolution Thread | <a href="/cdn-cgi/l/email-protection#6337110619230e021907021714060208104d000c0e5c101601090600175e2e02190702371406020810465153200c0d17020017">Contact</a></h2>
+		<footer class="site-footer">
+			MZD-AIO-TI | MZD All In One Tweaks Installer is maintained by <a href="https://github.com/Trevelopment"><span class="icon icon--github"><svg viewbox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">Trevelopment</span></a>. 
+Site by <span class="icon icon--github"><svg viewbox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">Trevelopment</span>  &copy; 2016
+		</footer>
+	</div>
+    <!--ddiv class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Mazda AIO Tweaks</li>
+          <li><a href="mailto:aio@MazdaTweaks.com">aio@MazdaTweaks.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-col-2">
+          <div>
+            <p><a href="">MZD-AIO-TI | MZD All In One Tweaks Installer</a> is maintained by <a href="//github.com/Siutsch"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">Siutsch</span></a>. 
+Site by <a href="//github.com/Trevelopment"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">Trevelopment</span></a>  &copy; 2016
+</p>
+          </div>
+      </div>
+      <iv class="footer-col footer-col-3">
+        <p></p>
+        <p>All-in-one installer/uninstaller for many available Mazda MZD Infotainment System tweaks.
+</p>
+      </div>
+    </div-->
+  </div>
+</footer>
+</div>
+<link href="noelboss/featherlight/1.7.0/release/featherlight.min.css" type="text/css" rel="stylesheet"/>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="noelboss/featherlight/1.7.0/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/prism.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/totop.js"></script>
+<script>
+	w3IncludeHTML();
+	function w3_open() {
+	  document.getElementById("main").style.marginLeft = "33%";
+	  document.getElementById("mySidenav").style.width = "33%";
+	  document.getElementById("mySidenav").style.display = "block";
+	  document.getElementById("openNav").style.display = 'none';
+	}
+	function w3_close() {
+	  document.getElementById("main").style.marginLeft = "0%";
+	  document.getElementById("mySidenav").style.display = "none";
+	  document.getElementById("openNav").style.display = "inline-block";
+	}
+  $(function(){
+    $('.supported-fw-btn').featherlight($('#supported-fw'));
+  })
+</script>
+  </body>
+</html>

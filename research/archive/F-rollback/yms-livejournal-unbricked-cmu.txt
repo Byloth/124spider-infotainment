@@ -1,0 +1,180 @@
+ 
+ How I unbricked CMU in my Mazda: yms — LiveJournal 
+ ? 
+ ? 
+ LiveJournal 
+ Find more 
+ Communities 
+ RSS Reader 
+ Shop 
+ Help
+ Search
+ Log in 
+ yms 
+ Log in 
+ Join free
+ Join
+ English
+ (en)
+ English (en) 
+ Русский (ru) 
+ Українська (uk) 
+ Français (fr) 
+ Português (pt) 
+ español (es) 
+ Deutsch (de) 
+ Italiano (it) 
+ Беларуская (be) 
+ yms 
+ — 
+ < no suspend reason > 
+ Readability 
+ More
+ yms 
+ Archive
+ Photos
+ Video
+ Readability 
+ Log in
+ No account? 
+ Create an account 
+ Remember me 
+ Forgot password
+ Log in
+ Log in 
+ QR code 
+ No account? 
+ Create an account
+ By logging in to LiveJournal using a third-party service you accept LiveJournal's User agreement 
+ Michael Yutsis ( yms ) wrote, 
+ 2017 - 08 - 05 15:54:00 
+ Michael Yutsis
+ yms 
+ 2017 - 08 - 05 15:54:00 
+ Previous 
+ Share
+ Flag 
+ Next 
+ How I unbricked CMU in my Mazda 
+ (Note: the Russian version is here .)
+ What happened 
+Several months ago, I decided to upgrade the firmware in the CMU (Connectivity Master Unit, the infotainment computer) in my Mazda 3 (2014). I already did it at least two times before, quite successfully. As you may know if you did it too, the firmware package consists of two files, names ending with ..._failsafe.up and ..._reinstall.up, which are copied to a USB drive to start the upgrade process. The main part of the firmware is in the 2Gb reinstall file, the smaller failsafe part contains some code controlling the upgrade process including bootloader, progress indicator, etc. When I upgrade, I usually launch both of these files, failsafe first. This time, I upgraded from EU 56.00.513B to EU 59.00.443C version; I decided to launch only the reinstall part after having read somewhere that it's not mandatory to upgrade failsafe each time. When I ran reinstall , after some time it said, "Failed to validate package certificate". At this stage, I should have seen the "red flag" and realize that something is unusually wrong here. But I decided that if I would install failsafe first (which is supposed to contain some basic launching code), the main part has a chance to start.
+I ran failsafe , it upgraded successfully. But when I ran reinstall again, I got the same error message. I thought OK, I'll look at it later, but now I have to drive somewhere. I started the engine and set out. Everything worked fine.
+When I arrived to my destination, I left the car and came back in half an hour. When I started the engine again, the screen was black. Nothing worked, except for the last radio channel that was tuned in (luckily it was the classical music one), and the volume and mute controls. The unit obviously didn't boot, it was bricked (there was no way to do anything with standard controls).
+ What was next 
+With some effort, I took the unit out (the CMU and the screen); there are videos and pictures in the web how to do it (e.g. here ); the service manual is helpful too. At first, I made an attempt, as it was written here , to connect to the TTL console via the known pins of the connector; then I even opened the unit's case and soldered wires right to the PCB contacts. There were no signs of life; now I understand there could not be any.
+Only two ways were left: either buy a new CMU (I found some on eBay), or get the old firmware back. From these   two pages, I realized that what is to be restored is the SPI NOR flash, a 8-megabyte chip. When I opened the case, I looked at its type, it was Spansion S25FL064A. After some search in the Web, I've found that it's quite possible to reflash it with minimal "investments". I started two things in parallel: on eBay, I ordered a used CMU and a programmer device. The CMU arrived first, but it was not working; I got a refund and sent it back.
+ What to do 
+Here is what you need to unbrick your CMU:
+ know that it's quite possible and not that hard;
+ at every stage, know exactly what you're doing and understand possible risks (if your unit is bricked, you have probably nothing to lose except for the chance to repair it);
+ buy a USB programmer based on the CH341A chip ($3.5 on eBay, $10 on Amazon);
+ find a way to unsolder a SOIC-16 chip from the PCB and then solder it back. You may need a soldering iron with special soldering tips; I was lucky to have a friend, an electronic engineer, with necessary equipment and skills. Be careful with (un)soldering, PCB tracks may be damaged by overheating! );
+ be able to analyze the firmware structure, understand what was wrong and how to fix it at the level of binary editing. Note: you probably don't have to unsolder the chip. There exist programmer test clips for such chip packages. I ordered one on eBay but it came too late, I managed without it. I don't know if the programmer would work with the chip staying on the PCB. With this clip, you'll need some soldering too (wires etc.), but without the risk to damage the chip or PCB tracks. The clip looks like this:
+If you succeeded to reflash the chip in place (without unsoldering) using the clips, please let me know. 
+When I received the programmer, I installed the software which is easy to find in the web; there are YouTube videos where people install it. The programmer is suitable for several kinds of chips; this is how it looked when assembled with my chip, soldered on the special panel (which is enclosed with the device):
+There is a jumper there, initially connecting pins 1 and 2; you don't need to change it, this position fits the driver installed with the CH341PAR.EXE installer (there is another one, CH341SER, which you won't need). Besides the chip, we soldered two rows ot contacts to the panel, they were also included in the package. You can see how they should be soldered on the picture. In fact, this panel is an adapter between the 16-pin chip and the 8-pin half of the socket. (The other half of the socket is for other chip types, we're not interested in it.)
+ Healing the binary contents 
+I unzipped several failsafe.up packages from different firmware versions (the older one, the newer one, and also several yet older and yet newer versions), they are zip files with the same known password (you can find it in the web). Inside each one, besides root files, there are three directories: bootstrap, fail-safe and ibc2. Each directory contains a number of .gz files, I unpacked them too. They are regular gzip packages.
+When the programmer (with my chip in it) was ready, the first thing I did was of course reading the 8-megabyte contents and saving it in a file. Thanks to this page (really thanks!!) I knew what I had to do with it.
+In the bootstrap directory of each package, there are three files, e0000000001.dat, e0000000002.dat and execute.ini. The contents of the .ini file implies that the actual name of e0000000001.dat is update-bootstrap.sh (that is, a shell script starting the upgrade), and e0000000002.dat is actually ibc-cmu-bootstrap.bin, which is the contents of the bootstrap partition itself. The ibc2 directory contained the binary.ini file and two parts of the ibc2 partition. In the fail-safe directory, I found another binary.ini and four parts of a bigger binary file sliced in 2M pieces.
+I compared partitions of the chip with the files I unpacked. The contents of the bootstrap partition was exactly equal to the file e0000000002.dat from the bootstrap directory of the new firmware. Interestingly, up to the version 56.00.513B, the bootstrap code was the same in all versions; it changed in 59.00.443C, and all subsequent packages have the same bootstrap code too. This means, the trap was just in this upgrade. Further, the contents of the ibc1 partition on the chip was identical to the ibc2 file from the old firmware, and ibc2 partition was identical to the new ibc2 file. That is quite logical: ibc1 loads the main system which was not upgraded, but ibc2 was upgraded together with the failsafe code. And finally, the fail-safe partition was an exact copy of the sliced binary file from the unpacked fail-safe directory, about 7.5M.
+It was clear that all I have to do is replace all new parts of the firmware with the old ones, that is, the bootloader, ibc2 and fail-safe. I didn't touch configuration sections; other partitions were either absent or contained some data including version number in the text form, I changed the version to the old one and dind't touch the rest.
+There was some doubt whether I should change one byte at the address 0x10000 ("boot-select"), from FF (boot the main system from ibc1) to 00 (boot failsafe from ibc2 to start upgrade from the USB drive). I reasoned that all I needed for the system to work was restoring the old bootloader as it was, and there was no reason to start the failsafe part at all. At the same time, I realized that my case is virtually the same that was described on the same page : the new bootloader wouldn't load the old main part of the firmware. Only the treatment was different.
+I flashed the chip (it took two extra times to flash it before I figured out I have to erase it first, otherwise nobody would turn zero bits into ones for me). My friend soldered the chip to its place on PCB, I connected everything and the system booted as if nothing had happened.
+ Update Oct 2017: Now I successfully upgraded to EU 59.00.449A (first failsafe, then reinstall, no reboot between them). I think my USB drive was defective when I made the previous attempt, but I didn't try again with that unlucky 59.00.443C. 
+ Subscribe 
+ Мои твиты 
+ Вт, 20:55: Нацгвирдия.
+ Мои твиты 
+ Сб, 09:27: Девки спорили на даче, что такое Фибоначчи. Оказалось, Фибоначчи - это кролики на даче. Сб, 09:28: Кто умножает знанья сам, тот…
+ Мои твиты 
+ Ср, 12:01: Песец велел передать, что он занят и прислал вместо себя скунса.
+ Post a new comment Error
+ Anonymously 
+ Log in 
+ default userpic 
+ Your IP address will be recorded  
+ When you submit the form an invisible reCAPTCHA check will be performed. 
+ You must follow the Privacy Policy and Google Terms of use . 
+ Post a new comment 
+ Preview comment 
+ Help 
+ 89 comments 
+ Previous 
+ ← Ctrl
+ ← Alt
+ 1 
+ 2 
+ Next 
+ Ctrl →
+ Alt →
+ Post a new comment 
+ 89 comments 
+ Previous 
+ ← Ctrl
+ ← Alt
+ 1 
+ 2 
+ Next 
+ Ctrl →
+ Alt →
+ Мои твиты 
+ Вт, 20:55: Нацгвирдия.
+ Мои твиты 
+ Сб, 09:27: Девки спорили на даче, что такое Фибоначчи. Оказалось, Фибоначчи - это кролики на даче. Сб, 09:28: Кто умножает знанья сам, тот…
+ Мои твиты 
+ Ср, 12:01: Песец велел передать, что он занят и прислал вместо себя скунса.
+ Applications
+ Download
+ Huawei
+ RuStore
+ Follow us: 
+ Follow us on Twitter 
+ LiveJournal 
+ COMPANY
+ About
+ News
+ Help
+ PRODUCTS
+ "Share" button
+ COMMUNITY
+ Frank
+ CHOOSE LANGUAGE
+ English 
+ Deutsch 
+ Dansk 
+ español 
+ Français 
+ Italiano 
+ Русский 
+ Українська 
+ Беларуская 
+ 日本語 
+ Português 
+ Esperanto 
+ עברית 
+ Nederlands 
+ Magyar 
+ Gaeilge 
+ íslenska 
+ suomi 
+ Ελληνικά 
+ Norsk bokmål 
+ Svenska 
+ polski 
+ 简体中文 
+ Latviešu 
+ Türkçe 
+ Bahasa Melayu 
+ हिन्दी 
+ Brazilian Portuguese 
+ Chinese Traditional 
+ Lietuvių 
+ Norsk nynorsk 
+ v.845 
+ Privacy Policy
+ User Agreement
+ Recommendation technologies
+ Help
+ 

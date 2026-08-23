@@ -28,9 +28,12 @@ installed — the car is the test bench; nothing can be verified on hardware by 
 ## Hard constraints / ground truth to keep in mind
 
 - Firmware is **region-locked**; files carry a region suffix. Wrong region = brick risk.
-- Mazda **70.00.335+ neutralises the ID7 tweak / serial access**; 70.00.367 reportedly cannot be
-  serial-enabled at all. Anyone already on 70.00.335+ *without* ID7 installed beforehand can no
-  longer side-load tweaks (logo/nav fix). This must be stated as a prominent disclaimer everywhere.
+- Mazda **70.00.335+ neutralises the ID7 tweak / serial access**; 70.00.367 cannot be serial-enabled
+  at all (updates are signed). Classic rule: without ID7 installed beforehand you can no longer
+  side-load the logo/nav fix. **Nuance discovered in research:** since 2024–25 the "mp3 method"
+  (`mzd-evo/mzd-connect-1-root` payload + USB keyboard → JCI terminal) runs the tweaks with neither
+  ID7 nor serial — confirmed on 70.00.100 and 74.00.324, thin evidence elsewhere. State both, with
+  confidence levels. See `research/FIRMWARE-MATRIX.md` §4.
 - Fiat-specific 59.00.5xx firmware newer than the factory one exists (e.g. 59.00.562/563-NA) and is
   reported to break CarPlay/AA compatibility — treat "latest Fiat firmware" as a trap, verify.
 - Online sources are decaying (dead links, re-hosted/"hacked" files). Every source must be archived
@@ -40,15 +43,21 @@ installed — the car is the test bench; nothing can be verified on hardware by 
 
 ```
 CLAUDE.md                  – this file (keep it updated when scope/layout/status changes)
-research/                  – phase 1 deliverables (plain Markdown, later fed into the site)
-  SOURCES.md               – every source: URL, type, author, dates, coverage, link status, archive
-  INVENTORY.md             – every file/artifact: firmware, tweaks, PDFs, hardware part numbers
-  FIRMWARE-MATRIX.md       – version × region matrix, upgrade/downgrade paths, point of no return
-  PROCEDURE-DRAFT.md       – reconstructed end-to-end procedure, each step cites a source
-  OPEN-QUESTIONS.md        – unknowns, contradictions, lost material, what to test on the car
-  raw/                     – per-theme raw research notes written by research agents
-  archive/                 – local copies of key web pages / PDFs
+research/
+  SOURCES.md               – deduplicated master source index [S-nn], link status, trust level
+  INVENTORY.md             – every file/artifact + hardware part numbers; what we hold and its status
+  FIRMWARE-MATRIX.md       – version × region matrix, upgrade/downgrade rules, points of no return
+  PROCEDURE-DRAFT.md       – reconstructed end-to-end procedure (route table, flash, tweaks, hub,
+                             troubleshooting, rollback) — untested on hardware
+  OPEN-QUESTIONS.md        – blockers, contradictions, lost material, what only the car can answer
+  raw/                     – the seven per-theme research reports (A,B,C1,C2,D,E,F) these were built
+                             from; keep them, they hold the per-post detail the summaries drop
+  archive/                 – ~430 local copies of key pages/PDFs (178 MB), incl. Wayback captures
 downloads/                 – git-ignored binaries; CHECKSUMS.sha256 + README.md are tracked
+  firmware/NA/             – 7 NA .up files straight from Mazda's dealer CDN (2.8 GB)
+  ameridan/                – the 12 MediaFire tweak packages + Mazda's update-procedure PDF
+  tweaks/                  – ID7_Recovery_XX.zip, mzd-connect-1-root-main.zip
+  guides/                  – 68wooley's PDF guide zip
 ```
 
 No site scaffold yet. Planned: VitePress (`npm`), Node is available via nvm (v24).
@@ -64,8 +73,31 @@ No site scaffold yet. Planned: VitePress (`npm`), Node is available via nvm (v24
   less is "collected" / "unverified".
 - Mark unverified or contradictory statements explicitly (`⚠️ unverified`, `❓ contradictory`).
 
+## Key findings from the research phase (2026-08-23)
+
+Read `research/` before doing anything; the headlines:
+
+- **Mazda's own dealer CDN is still open for NA files**: `https://s3.amazonaws.com/tsd.mazdausa.com/
+  MAZDA_CONNECT/<file>` (direct object GET; listing denied; **EU/ADR return 403**). Four downloaded NA
+  files matched the community-published MD5s exactly → genuine, unmodified, free. **EU is the open gap**
+  and the maintainer's car is EU.
+- **The target version is 70.00.100A**, not the newest. It is the last build where the Fiat rebrand +
+  nav-restore tool installs unmodified. 70.00.335/352/367 and 74.x progressively close the door.
+- **Fiat never released a v70+ firmware** — the whole procedure is "flash Mazda firmware, then rebrand".
+  There is no path back to stock Fiat.
+- **The single tool that matters is Ameridan's `MazdaToFiatV70AIO.zip`** (branding + boot animations +
+  CarPlay icon + factory-nav restore + BT name). Upstream MZD-AIO contains none of that and has had no
+  release since 2020.
+- **The 2025 "mp3 method" changed the rules** — tweaks without ID7 or serial on 70.00.100 and 74.00.324.
+  Most guides online still predate it.
+- All 12 of Ameridan's MediaFire packages and 68wooley's PDF guide are **still alive and now held locally**;
+  most other historic mirrors (HiDrive, MEGA, 1fichier, mazdatweaks.com) are dead — `mazdatweaks.com` is
+  now hijacked/spam.
+
 ## Status
 
-- 2026-08-23: repo bootstrapped; research sweep (sources, inventory, firmware matrix, procedure
-  draft, open questions) in progress. Next decision after research: VitePress scaffold + where to
-  publish binaries.
+- 2026-08-23: repo bootstrapped; **research phase complete** — six consolidated docs in `research/`,
+  ~430 archived pages, 2.9 GB of binaries collected and hashed.
+- **Next decisions (not yet taken):** (1) source verified EU firmware; (2) VirusTotal/manual scan of
+  everything in `downloads/`; (3) VitePress scaffold + page structure; (4) where/whether to publish the
+  binaries (Mazda firmware is proprietary — takedown risk is precisely why every historic mirror died).

@@ -1,0 +1,182 @@
+Page 1 of 9
+MZD - MAZDA Connect CMU Software Update Procedure WORLDWIDE
+NOTE:
+Revisions compared to are written in red texts or accompanied by red bars on the left.
+Software update procedure: There are two versions: A) Full version and B) One Page version.
+Both versions contain the instruction to avoid update failure.
+The One Page version’s purpose is to print and use for update procedure in the vehicle.
+A) Full version:
+1. Remove Navigation SD card (if customer has one) and all other devices (USB, AUX, Mobile
+phones. …) connected to the MZD Connect when ignition position is OFF.
+2. Push engine start button once without depressing clutch pedal (manual transaxle) or brake pedal
+(automatic transaxle). This will set ignition to ACC.
+Wait until MZD system is booted.
+3. Select AM, FM or DAB radio.
+
+Page 2 of 9
+4. Press three buttons (Music (A) + Favorite (B) + Volume Mute(C)) on the commander switch at
+the same time for 2-5 seconds and the Diagnostic Test Screen will appear.
+5. Use the touchscreen or the commander knob to input ‘3’ on test screen and then select “ENTER”
+and “CLEAR”.
+6. Input ‘2’ on test screen and then select “ENTER”. (This will internally clear earlier set DTCs in
+CMU). Select “CLEAR” and then “EXIT”.
+7. Switch ignition OFF, close all doors (regardless bonnet), lock vehicle with remote, keep all
+remote transmitters 5 m or more away from the vehicle, and wait for 3 minutes (CMU sleep
+mode).
+8. Unlock the vehicle and press the START/STOP ENGINE push button once
+without
+depressing
+the clutch pedal (manual transaxle) or the brake pedal (automatic transaxle), to switch the
+ignition position to ACC.
+
+Page 3 of 9
+9. Connect the prepared USB memory stick to one of the two USB port (A) (depending on vehicle
+equipment).
+NOTE: Only the prepared USB memory
+stick should be inserted in one of USB
+ports. Nothing should be inserted in the
+other USB port and SD slot during the re-flashing process.
+10. When the USB memory stick is recognized, following message will appear briefly on the screen.
+NOTE:
+If USB memory stick is not recognized by the system, return to step 9.
+11. Press again the three buttons (Music (A) + Favorites (B) + Volume Mute(C)) on commander
+switch at the same time for 2-5 seconds.
+12. Use touchscreen or commander knob to input ‘99’ and then select “ENTER” on Diagnostics Test
+screen.
+
+Page 4 of 9
+13. Select “Search” on screen below.
+14. When updating to software version 70.00.335 or later, go to step 22.
+(“Fail Safe Package” has been eliminated since 70.00.335. No need to perform Failsafe
+installation process since then.)
+[Only when updating to software version 31.00.100A]
+Select “Fail Safe Package” first.
+CAUTION:
+Always do the “Fail Safe Package” first.
+Note:
+Please check if CMU S/W is 29.00.000 or older. If yes, refer to Service Information
+R036/18.
+Note:
+Please DO NOT switch ignition OFF or allow system to switch off ignition automatically until
+all updates have been installed.
+Note:
+Stay inside the vehicle until failsafe package installation is finished.
+15. Select “Install” on the screen below and the Failsafe installation process will start.
+
+Page 5 of 9
+16. Failsafe installation process will start and will take several minutes.
+17. After Failsafe installation process is completed, select “OK”
+18. Press and release clutch pedal (Manual Transaxle) or brake pedal (Automatic Transaxle) and
+proceed with following steps without stopping.
+NOTE:
+If the ignition is left in ACC position it will automatically switch off after 25 minutes.
+Performing this step resets timer to ensure vehicle does not switch off while installing
+reinstallation package.
+19. Press the three buttons (Music (A) + Favorite (B) + Volume Mute(C)) on commander switch at
+the same time for 2-5 seconds to open the Diagnostics Test screen again.
+
+Page 6 of 9
+20. Use touchscreen or commander knob to input ‘99’ and then select “ENTER” on Diagnostics Test
+screen.
+21. Select “Search” on screen below.
+22. Select “Reinstallation Package” or “Update Package” on the screen below.
+NOTE:
+“Reinstallation Package” appears when current version is 70.00.110 or before.
+“Update Package” appears when current version is 70.00.335 or later.
+(“Fail Safe Package” has been eliminated since 70.00.335. No need to perform Failsafe
+installation process since then.)
+
+Page 7 of 9
+23. Select “Install” (or “Update” for 70.00.335 or later versions) on the screen below.
+24. Screen below will be displayed.
+“Preparing to update”→“black screen”→“White screen”. This will take several minutes.
+Reinstallation / Update will start from 0% and during the update process, the progress bar will
+gradually increase to 100%. It will take about 40 minutes.
+DO NOT turn IG OFF to avoid damaging CMU.
+NOTE:
+In order to avoid ACC power being turned off during update process, press and release
+clutch pedal (Manual Transaxle) or brake pedal (Automatic Transaxle) after approx. 25 minutes.
+We strongly recommend to set a timer to 25 minutes.
+
+Page 8 of 9
+25. Confirm that update is completed and turn ignition switch OFF.
+If you see “Please restart” on the screen, DO NOT restart the engine.
+26. Remove USB stick, close all doors (incl. lift gate), lock vehicle with remote, keep all remote
+transmitters 5 m or more away from vehicle, and wait for 3 minutes (CMU sleep mode).
+27. Unlock vehicle with remote control and push engine start button once without depressing clutch
+pedal (manual transaxle) or brake pedal (automatic transaxle) (IG ACC).
+Wait 1 minute without any operation of any switch of any system.
+28. Confirm software version in MZD settings.
+29. Turn ignition switch OFF.
+30. Insert Navigation-SD card (if removed in step 1) into slot. Go to NAV screen and confirm current
+vehicle location is correctly displayed. If it is not correct, check GPS signal status and drive
+vehicle for approx. 50 m at 15 km/h or faster speed.
+If updating process will not finish successfully:
+a. Turn the ignition switch OFF. (Do not start the engine.)
+b. Wait until the screen turns to black.
+c. Remove the USB memory stick.
+d. Remove ROOM fuse and wait for one minute.
+e. Install ROOM fuse.
+f. Turn ignition switch to ACC. (Do not turn to ON or Start.)
+g. Confirm the screen below appears.
+h. Connect the USB memory stick to the USB port.
+i. Confirm that update process restarts.
+j. Continue from step 25 (update successful) again.
+
+Page 9 of 9
+B) One Page version:
+1. Switch ignition OFF.
+2. Remove SD card and all other devices (USB devices, mobile phones, AUX devices).
+3. Switch ignition to ACC position.
+(Push engine start button once without depressing clutch pedal for manual (MT) or brake pedal for
+automatic transmission (AT)).
+4. Wait until MZD has started, select AM or FM radio.
+5. Press at the same time for 2 seconds
+Music (
+) + Favourite (
+) + Volume Mute (
+)
+on command switch until Diagnostic Test Screen will appear.
+6. Use the touchscreen or the command knob to input ‘3’ on test screen and then select “ENTER” and
+“CLEAR”.
+7. Input ‘2’ on test screen and then select “ENTER”. (This will internally clear earlier set DTCs in CMU).
+Select “CLEAR” and then “EXIT”.
+8. Switch ignition OFF, close all doors (incl. bonnet and lift gate), lock vehicle with remote, keep all
+remote transmitters 5 m or more from the vehicle, and wait for 3 minutes (CMU sleep mode).
+9. Unlock vehicle with remote control and switch ignition to ACC.
+10. Insert USB stick with CMU update software and wait for message that USB is recognized.
+11. Start Diagnostic Test Screen, enter ‘99’ and select “ENTER” on screen.
+12. Select “Search” and verify that both packages have actual version.
+13. When updating to software version 70.00.335 or later, go to POINT 16.
+[Only when updating to software version 31.00.100A]
+Select “Fail Safe Package” and “Install” on
+next screen.
+DO NOT RESTART OR SWITCH IGNITION OFF UP TO POINT 17!
+14. Failsafe installation process will start. Update will take several minutes. Stay inside vehicle and select
+“OK” after Fail Safe installation process is completed.
+15. Start Diagnostic Test Screen and enter ‘99’ and select “ENTER” on screen.
+16. Select “Reinstallation Package” or “Update Package” and on next screen “Install” or “Update”.
+17. Complete installation of Reinstall / Update Package will take about 40 minutes.
+“Preparing to update”, black screen and Update process bar will appear. Reinstallation will start
+from 0%, the progress bar will gradually increase to 100%. The update progress bar may
+pause for several minutes, please wait,
+DO NOT SWITCH IGNITION OFF OR RESTART.
+In order to avoid the ACC power being turned off automatically during CMU update,
+press and release clutch pedal (MT) or the brake pedal (AT) after approx. 25 minutes to
+reset power safe function. This will disable CMU sleep mode for next 25 minutes.
+Please set a timer as a reminder for you.
+18. Message to restart the vehicle will be shown short time after update reached 100%
+DO NOT
+RESTART,
+just switch
+IGNITION OFF without pressing brake or clutch pedal
+.
+19. Remove USB stick, close all doors (incl. bonnet and lift gate), lock vehicle with remote, keep all remote
+transmitters 5 m or more from the vehicle, and wait for 3 minutes (CMU sleep mode).
+20. Unlock the vehicle and switch ignition to ACC.
+Wait 1 minute without any operation of any switch of any system.
+21. Confirm the software version in MZD settings.
+22. Switch ignition OFF and insert Navigation-SD card.
+23.
+Switch ignition ON and check system for operation step by step (Navigation, WiFi, Connected Service,
+Radio, Bluetooth, USB, etc.)
