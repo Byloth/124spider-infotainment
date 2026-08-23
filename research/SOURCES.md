@@ -111,3 +111,8 @@ experienced community author corroborated by others · **C** = single community 
 
 **Full per-theme source detail** (with exact post ids, dates and page-by-page notes) lives in the
 seven `research/raw/*.md` files; this file is the deduplicated index those raw files feed.
+
+**Note on the second id space:** `INVENTORY.md` cites `[A-nn]`/`[B-nn]`/`[C2-nn]`/`[D-nn]`/`[E-nn]`/
+`[F-nn]` instead of `[S-nn]` — those resolve to the Sources table of the matching
+`research/raw/<X>-*.md`, which is finer-grained than this index. Both conventions are intentional; see
+`INVENTORY.md` §"Source-id convention".

@@ -65,7 +65,10 @@ No site scaffold yet. Planned: VitePress (`npm`), Node is available via nvm (v24
 ## Conventions
 
 - Language of all docs: English. Commit messages: English.
-- Every factual claim in research docs cites its source (`[S-nn]` id from `SOURCES.md`).
+- Every factual claim in research docs cites its source. Two id spaces, both intentional:
+  `[S-nn]` → `research/SOURCES.md` (used by FIRMWARE-MATRIX / PROCEDURE-DRAFT / OPEN-QUESTIONS);
+  `[A-nn]`…`[F-nn]` → the Sources table of the matching `research/raw/<X>-*.md` (used by INVENTORY.md,
+  which needs the finer per-post granularity).
 - Every file in `downloads/` is listed in `research/INVENTORY.md` and hashed in
   `downloads/CHECKSUMS.sha256` (`sha256sum <file> >> downloads/CHECKSUMS.sha256`).
 - "Verified" in this repo means: SHA256 matches ≥2 independent community-reported hashes **or** the
