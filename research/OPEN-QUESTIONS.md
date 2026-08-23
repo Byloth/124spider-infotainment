@@ -7,17 +7,19 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
 
 ## A. Blocking — must be resolved before the maintainer's own car is touched
 
-1. **EU firmware: no verified source.**
-   Mazda's dealer CDN [D-01] serves **NA** objects openly but returns 403 for EU/ADR. The maintainer's car
-   is EU. Options: probe other S3 key patterns; buy from `mazdashare.com/mtds` (paid, official) or a
-   reseller (€29–39); use the 124spider.org Google-Drive EU zip and hash-check it. **Nothing EU is
-   currently held or verified.**
+1. ~~**EU firmware: no verified source.**~~ → **RESOLVED 2026-08-23.** The 124spider.org Google-Drive
+   zips were downloaded and unpacked. We now hold `cmu150_EU_70.00.100A_failsafe.up` (7,078,085 B) and
+   `_reinstall.up` (2,355,206,863 B), plus the full ADR pair. Both zips passed `unzip -t`. [A-12]
 
-2. **The two contradictory EU 70.00.100A reinstall MD5s.**
-   `d5c042588b5de7f0d72e02b03ec78590` vs `279f1b81e1fa43b1b43ea1af38aab834`. One may be a different
-   revision, a re-packed copy, or a corrupted one. A German installer used the second successfully on three
-   cars and then hit "Invalid packet certificate" on a fourth; a UK owner **bricked** a car in June 2025
-   using the EU Google-Drive file. Until this is reconciled, no EU file can be called verified.
+2. ~~**The two contradictory EU 70.00.100A reinstall MD5s.**~~ → **RESOLVED 2026-08-23.** The file we
+   obtained hashes to **`d5c042588b5de7f0d72e02b03ec78590`**, matching the value reported by the
+   2024-04-22 Google-Drive uploader; the EU failsafe matches its community MD5
+   `cc485f4f16541cd803f615df42dc3512` exactly. The competing `279f1b81e1fa43b1b43ea1af38aab834` is
+   jayrock's 2020 copy — the one that threw "Invalid packet certificate" on his fourth car. Working
+   conclusion: `d5c0…` is the good file, `279f…` was a bad/older copy.
+   ⚠️ **Caveat:** the two sources agreeing on `d5c0…` are both Google Drive re-hosts and may share an
+   upstream, so this is corroboration, not true independence. The **ADR** pair is stronger: both halves
+   match community MD5s (`46d7a81a…`, `afb5cf9a…`) from a different source lineage.
 
 3. **What firmware is actually on the maintainer's car?**
    Assumed EU 59.00.5xx, not confirmed. Read HOME → SETTINGS → SYSTEM → ABOUT → VERSION INFORMATION and
@@ -52,15 +54,40 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
    owner ended with a mismatched OS/failsafe pair. Needs a definitive answer before publishing a rollback
    procedure.
 
-9. **Are the 124spider.org Google-Drive zips unmodified Mazda files?** The uploader says they are "from
-   Mazda … but have been tweaked by people to be optimized for Fiat". Probably means the bundled extras,
-   not the `.up` files — but this is exactly the kind of ambiguity the project exists to remove. Download,
-   hash, compare with published MD5s.
+9. ~~**Are the 124spider.org Google-Drive zips unmodified Mazda files?**~~ → **RESOLVED 2026-08-23.**
+   The uploader's "tweaked … optimized for Fiat" wording refers to the *bundled extras*, not the
+   firmware. Verified: the `.up` files match community MD5s, and every bundled tweak file
+   (`autorun_copy_to_usb/tweaks.sh`, `autorun`, `cmu_dataretrieval.up`, `dataRetrieval_config.txt`,
+   `passwd`, and `MazdaToFiatV70AIO/tweaks.sh`) is **byte-identical** to Ameridan's MediaFire originals,
+   as is the 68wooley guide PDF (SHA256 `56a1ee28…`). The zips are a convenience bundle, unmodified.
 
 10. **Can a Fiat 59.00.5xx package be re-installed over Mazda 70.x** (return to stock)? No report exists,
     and Fiat packages do not circulate at all. Probably "no" — worth stating definitively.
 
+## B-bis. Findings from the 2026-08-23 script review (new)
+
+10b. **The unidentified `adb` binary in ID7 v2.** A 220 KB stripped ARM ELF shipped in
+    `44-recovery-recovery/` and installed persistently on the CMU. Undocumented in every source we have.
+    Should be disassembled, or at minimum hash-checked against a known Android `adb` build, before the
+    guide recommends ID7 v2.
+10c. **ID7's SSH exposure is undocumented everywhere.** See PROCEDURE-DRAFT §4b. Root accounts with
+    published hashes + sshd with `PermitEmptyPasswords yes` on all interfaces, and the CMU WiFi is
+    **enabled on EU cars**. No community guide mentions this. Decide how prominently the site warns about
+    it — and whether to recommend the mp3 route by default on EU cars for this reason.
+
 ## C. Documentation gaps to close by more research
+
+10d. ~~**Lost: Ameridan's "TESTING BEFORE YOU DOWNLOAD" MD5 PDF**~~ → **RECOVERED 2026-08-23**, found
+    inside the EU/ADR zips; archived at `research/archive/recovered/`. It is ASH8's 5-page guide to
+    verifying `.up` files and **testing the USB stick with H2testw before flashing** — directly relevant
+    to the #1 brick cause. It yields two ADR 70.00.021A SHA-1s and documents the ROOM-fuse rescue
+    sequence. ⚠️ The per-region hash tables it points to still live only in the dead HiDrive `yChecksum`
+    folder.
+10e. **HiDrive is definitively gone**, not merely rearranged: the share API returns
+    `{"msg":"Not Found: share"}`. The 200 on the share root is only the JavaScript shell. Mazda's own
+    trim PDFs and install videos are lost from that source. **Partial replacement found and mirrored:**
+    the ND workshop manual at `hexorcism.com/16ND/` is alive; 13 relevant trim-removal sections are now
+    in `research/archive/workshop-manual/`.
 
 11. **Sources we could not read** (need a human with a browser/login):
     - `forum.miata.net` t=782788 posts 142/143 — **the origin of the mp3 method** (login-walled)

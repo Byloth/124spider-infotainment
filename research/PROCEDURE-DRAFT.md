@@ -145,6 +145,66 @@ fallback, not the recommendation.
 
 ---
 
+## 4b. Security implications of the three routes (read before choosing)
+
+**This section is original analysis** — the tweak scripts were read line by line on 2026-08-23. No
+community guide documents any of this. Nothing here says the tools are malicious: they do exactly what
+they claim. It is about what they *leave behind*.
+
+**How the ID7 install mechanism actually works** (not documented anywhere we found). The package ships
+`cmu_dataretrieval.up` — a **genuine Johnson Controls diagnostic data-retrieval package**, dated 2014-11-20
+and carrying JCI's own `publisher_cert.pem` and `jci_subord_cert.pem` (2013). Alongside it sits
+`dataRetrieval_config.txt`, in which every real diagnostic option (`SCREENSHOT`, `MEMINFO`, `NVRAM_DATA`,
+`FLASHINFO`, …) is set to `no`, and one line does the work:
+
+```
+CMD_LINE=sh /mnt/sd*/tweaks.sh
+```
+
+So ID7 is not an exploit against the firmware: it is **command injection into Mazda's own signed
+diagnostic tool**, which the CMU accepts precisely *because* the signature is valid. That explains two
+things the guides state without explaining: why it still works on firmware where plain USB autorun was
+removed, and why Mazda needed several firmware releases (`neutralizeid7`, `passwdupdate`) to shut it down
+rather than simply revoking a key. The identical `cmu_dataretrieval.up` and config ship inside
+`MazdaToFiatV70AIO.zip` too (byte-identical — verified). `jci-autoupdate` is a 1-byte marker file.
+
+**What ID7 (v1 and v2) actually installs.** Both versions install a **byte-identical `/etc/passwd`**
+containing three UID-0 (root) accounts — `cmu`, `jci` and `user` — whose password hashes are published in
+every copy of the package (the `jci` one is a 1970s-era DES hash, trivially reversible). They then start a
+**second SSH daemon** with:
+
+- `PermitRootLogin yes`
+- `PasswordAuthentication yes`
+- **`PermitEmptyPasswords yes`**
+- `ListenAddress 0.0.0.0` · `StrictModes no` · `UsePrivilegeSeparation no`
+
+and run a firewall script that opens the ports on **every interface, wlan0 included** — the rule that
+would have blocked SSH over WiFi is present but commented out. The script deliberately re-opens the ports
+a second time 90 seconds later, because the CMU's own firewall closes them at boot.
+
+ID7 **v2 is broader than v1**: it listens on ports **22, 24000 *and* 36000** (v1 used only 24000).
+
+**Why this matters specifically for an EU car:** the CMU's WiFi is **disabled on NA units but enabled on
+EU/JP ones**. On an EU 124, ID7 therefore means a root-login SSH server with publicly-known credentials,
+reachable over the car's own wireless interface, permanently — it lives in `data_persist` and survives
+firmware updates by design. That is the entire point of the tool, and it is why Mazda spent three firmware
+releases trying to remove it.
+
+**The mp3 method installs none of this.** The `mzd-connect-1-root` payload is four fake MP3 files, one
+HTML page, one CSS file and a 5 KB JavaScript — **no `/etc/passwd`, no sshd, no iptables, no persistence
+at all**. It opens a terminal for one session and leaves nothing behind.
+
+⚠️ **One unexplained artifact:** ID7 v2 ships a 220 KB stripped ARM binary named `adb` in
+`44-recovery-recovery/`, installed persistently. Nobody in any source we captured has analysed it. Its
+name suggests Android Debug Bridge, its purpose in this package is undocumented. Treat as unknown.
+
+**Practical consequence for route choice.** Where both work, the mp3 method is the *less* invasive option,
+not merely the more convenient one — which inverts the usual framing ("ID7 is the easy way, mp3 is the
+fallback"). If you do install ID7, know that you are choosing a permanent remote-access backdoor on the
+car, and prefer it on a car whose CMU WiFi is off.
+
+---
+
 ## 5. Install the hardware (~2.5 h)
 
 Only now. Mazda: *"once the CMU has been attached to the CarPlay/AA-compatible USB hub, the software cannot
