@@ -24,16 +24,16 @@ in `FIRMWARE-MATRIX.md`. Four starting points:
 
 **Before anything else:** do **not** let a dealer touch the CMU. Mazda dealers flash the newest firmware
 they have (today 74.00.324); Fiat dealers have flashed Mazda firmware onto 124s by mistake. Multiple owners
-lost their branding and nav this way. [S-10, S-11]
+lost their branding and nav this way. [B-01, A-01]
 
 ---
 
 ## 1. Prerequisites
 
 **Car**
-- 7" display (3" Classica not compatible) [S-11]
+- 7" display (3" Classica not compatible) [A-01]
 - Battery in good health; a charger/tender is Mazda's own requirement (TSB 09-024/16: "charge current
-  maintained about 7 A") [S-05]
+  maintained about 7 A") [F-50]
 
 **Parts** (fit them *after* the firmware — §5)
 - Hub `TK78-66-9U0C` (or 9U0D/9U0E) + region cable set (EU: `C830-V6-60Z`) — see INVENTORY §3
@@ -61,14 +61,14 @@ lost their branding and nav this way. [S-10, S-11]
 ## 2. Preparation (before you flash)
 
 1. **Record what you will lose**: radio favourites, sound settings, all personalisation. Any re-flash
-   resets them. [S-05]
+   resets them. [F-50]
 2. **Un-pair every phone** — in the car *and* on the phone. After the flash the car's Bluetooth identity
-   becomes "Mazda" and the old pairings are invalid; you cannot clean them up afterwards. [S-10]
-3. **Remove the navigation SD card** and every other USB/AUX device. [S-04]
+   becomes "Mazda" and the old pairings are invalid; you cannot clean them up afterwards. [B-01]
+3. **Remove the navigation SD card** and every other USB/AUX device. [D-04]
 4. **Uninstall existing tweaks.** Two bricks were attributed to AIO tweaks left in place during a flash;
    ❓ the AIO FAQ says updating with tweaks installed is safe — the failure reports outweigh it. Speedometer
    and the community Android-Auto tweak in particular must go.
-5. **Clear DTCs** in the diagnostic screen (Music + Favorites + Mute → 3 → ENTER/CLEAR, 2 → ENTER). [S-04b]
+5. **Clear DTCs** in the diagnostic screen (Music + Favorites + Mute → 3 → ENTER/CLEAR, 2 → ENTER). [F-49]
 6. If your car is on **56.x**: install **ID7 now**, from USB — this is the single most important step, and
    it is impossible later.
    - Copy the *contents* of `autorun_copy_to_usb.zip` to the stick root (not the folder).
@@ -89,18 +89,18 @@ gloss on it.
    one; all electrical loads off.
 2. Park, engine **off**, press START once → **ACC**. Stay in the car with the key.
 3. Diagnostic screen: **Music + Mute + Favorites** held together → keypad → software-update entry.
-4. **Install the `_failsafe.up` FIRST**, alone. ~8 min. [S-04]
+4. **Install the `_failsafe.up` FIRST**, alone. ~8 min. [D-04]
 5. Then the `_reinstall.up`. ~27–40 min.
 6. **Press and release the clutch (MT) / brake (AT) right after the failsafe finishes and again roughly
    every 20 minutes** — ACC times out at 25 min and a mid-flash power loss is the classic brick. **Never
-   switch the ignition off during the process.** [S-04b]
+   switch the ignition off during the process.** [F-49]
 7. When it completes: IG OFF, wait for the black screen, remove the stick. Do not start the engine
    immediately.
 8. Verify: ABOUT → VERSION should read `70.00.100 EU N` (or your region). The boot animation is now Mazda,
    the Bluetooth name is "Mazda", and **navigation shows only a compass** — all expected at this stage.
 
 **If it fails** (Mazda's own recovery): IG OFF → wait for black screen → remove stick → pull the **ROOM
-fuse for 1 minute** → refit → ACC → the update screen reappears → re-insert the stick. [S-04b]
+fuse for 1 minute** → refit → ACC → the update screen reappears → re-insert the stick. [F-49]
 
 ---
 
@@ -148,7 +148,7 @@ fallback, not the recommendation.
 ## 5. Install the hardware (~2.5 h)
 
 Only now. Mazda: *"once the CMU has been attached to the CarPlay/AA-compatible USB hub, the software cannot
-be updated."* [S-06]
+be updated."* [E-08]
 
 Tools: 10 mm socket + 200 mm extension, Phillips + flat screwdrivers (taped), trim tools, scissors, ties.
 

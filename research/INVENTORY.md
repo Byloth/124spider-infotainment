@@ -9,17 +9,11 @@ raw research notes (`research/raw/A…F`), the local downloads, or the archived 
 
 ## Source-id convention
 
-**Two id spaces exist in this repo — both are valid, they point at different files:**
-
-- `[S-nn]` — the deduplicated master index in `SOURCES.md`. Used by `FIRMWARE-MATRIX.md`,
-  `PROCEDURE-DRAFT.md` and `OPEN-QUESTIONS.md`.
-- `[A-nn]`, `[B-nn]`, `[C2-nn]`, `[D-nn]`, `[E-nn]`, `[F-nn]`, `[C1]` — **this file's** citations, which
-  point into the per-theme reports in `research/raw/` (A = 124spider.org forum, B = Ameridan blog,
-  C1 = MZD-AIO project (its sources are unnumbered), C2 = firmware×tweak matrix, D = firmware
-  availability, E = hardware, F = rollback/failures). They resolve to the "Sources" table at the top of
-  the matching `research/raw/<X>-*.md`, which carries the per-post/per-page detail `SOURCES.md` drops.
-
-When you touch a citation here, keep the raw-file id — do not silently renumber to `[S-nn]`.
+One convention across the whole repo: `[A-nn]` (124spider.org forum), `[B-nn]` (Ameridan blog),
+`[C1-nn]` (MZD-AIO project), `[C2-nn]` (firmware × tweak matrix), `[D-nn]` (firmware availability),
+`[E-nn]` (hardware), `[F-nn]` (rollback/failures). They resolve in `SOURCES.md`, which registers all
+231 sources and carries an "Alias / see also" column for URLs that several themes found independently.
+The finest-grained detail (exact posts, dates, page numbers) stays in `research/raw/<X>-*.md`.
 
 ## Status legend (from CLAUDE.md)
 

@@ -15,13 +15,13 @@ Markers: ✅ confirmed by ≥2 independent sources · ⚠️ single report / unv
 | Part | Meaning |
 |---|---|
 | `70.00.100` | firmware version |
-| trailing `A`/`B`/`C` | minor revision (later letter = newer, e.g. 335C newer than 335) [S-13] |
-| `NA` / `EU` / `4A` / `JP` | region. **`4A` = ADR** = Australia/NZ/Middle East/Asia-Pacific/South Africa/South America [S-13] |
-| final `N` / `M` | **nav protocol**: `N` = NNG/iGO (all regions), `M` = Matsukone/Zenrin (Japan only). Not a revision letter. [S-13] |
+| trailing `A`/`B`/`C` | minor revision (later letter = newer, e.g. 335C newer than 335) [C2-16] |
+| `NA` / `EU` / `4A` / `JP` | region. **`4A` = ADR** = Australia/NZ/Middle East/Asia-Pacific/South Africa/South America [C2-16] |
+| final `N` / `M` | **nav protocol**: `N` = NNG/iGO (all regions), `M` = Matsukone/Zenrin (Japan only). Not a revision letter. [C2-16] |
 
 Filenames: `cmu150_<REGION>_<VERSION><rev>_<type>.up`, where `cmu150` is the head-unit family.
 Types: `_failsafe.up` (~7 MB, bootloader/updater — install **first**), `_reinstall.up` (0.9–2.3 GB, the OS —
-install **second**), `_update.up` (single-file, from 70.00.335 onward; failsafe folded in). [S-04, S-13]
+install **second**), `_update.up` (single-file, from 70.00.335 onward; failsafe folded in). [D-04, C2-16]
 
 ---
 
@@ -34,29 +34,29 @@ working · **other route** = what is left if you have neither.
 | Version | Region(s) | CP/AA | USB tweaks OOTB | ID7 v1 survives | Other route | Notes |
 |---|---|---|---|---|---|---|
 | 55.00.7xx | all | no | ✅ yes | n/a | — | 124 never shipped this |
-| **56.00.521 / 56.00.530** | NA/EU/4A (+JP) | no | ✅ **yes** | n/a — **install ID7 v1 here** | — | **Factory firmware of MY2017 & early-2018 124/Abarth.** 530 = Abarth-branded boot animation. [S-10] |
+| **56.00.521 / 56.00.530** | NA/EU/4A (+JP) | no | ✅ **yes** | n/a — **install ID7 v1 here** | — | **Factory firmware of MY2017 & early-2018 124/Abarth.** 530 = Abarth-branded boot animation. [B-01] |
 | 56.00.511/513 (Mazda) | all | no | ✅ yes | n/a | — | Mazda base of Fiat 56.00.521 |
-| 59.00.441–59.00.449 (Mazda) | all | no | ✅ yes | n/a | — | Last USB-tweakable Mazda builds [S-10, S-14] |
-| **59.00.502** (Mazda, Jun-2017) | all | no | ❌ **no** | ✅ yes | serial ✅; mp3 ⚠️ | **★ POINT OF NO RETURN #1.** Patches the USB-autorun hole → side-loading dead. **Downgrade floor: nothing below this via USB.** [S-14, S-13] |
+| 59.00.441–59.00.449 (Mazda) | all | no | ✅ yes | n/a | — | Last USB-tweakable Mazda builds [B-01, C2-10] |
+| **59.00.502** (Mazda, Jun-2017) | all | no | ❌ **no** | ✅ yes | serial ✅; mp3 ⚠️ | **★ POINT OF NO RETURN #1.** Patches the USB-autorun hole → side-loading dead. **Downgrade floor: nothing below this via USB.** [C2-10, C2-16] |
 | 59.00.504/540/545/546 (Mazda) | NA/EU/4A | no | ❌ no | ✅ yes | serial ✅ | 545 is the target if you want the old AIO Android-Auto tweak |
-| **59.00.524** (**124-only**) | NA/EU/4A | no | ❌ no | ✅ (only if car was on 56 with ID7) | serial ✅; mp3 ⚠️ | Fiat equivalent of Mazda 59.00.502; on 124s built from ~Nov-2017 [S-10] |
-| **59.00.562 / 59.00.563** (**124-only**) | NA/EU/4A | no | ❌ no | ✅ (rare) | serial ✅ (assumed); **mp3 ⚠️ 1 report** on .563 | **Factory firmware of MY2019–2020 124s.** The "latest Fiat firmware" trap: no CarPlay, tweak-locked. Also arrives on replacement CMUs. [S-10, S-11] |
+| **59.00.524** (**124-only**) | NA/EU/4A | no | ❌ no | ✅ (only if car was on 56 with ID7) | serial ✅; mp3 ⚠️ | Fiat equivalent of Mazda 59.00.502; on 124s built from ~Nov-2017 [B-01] |
+| **59.00.562 / 59.00.563** (**124-only**) | NA/EU/4A | no | ❌ no | ✅ (rare) | serial ✅ (assumed); **mp3 ⚠️ 1 report** on .563 | **Factory firmware of MY2019–2020 124s.** The "latest Fiat firmware" trap: no CarPlay, tweak-locked. Also arrives on replacement CMUs. [B-01, A-01] |
 | 70.00.000A | EU beta | yes | — | — | — | First build with CP/AA code; never distributed |
-| **70.00.021A/B** | NA=**B**, EU/4A=**A** | ✅ **yes** (first public) | ❌ no | ✅ yes | serial ✅ | Hub is recognised from here up. Two-file. Reported buggiest v70. [S-18] |
-| **70.00.100A** | NA/EU/4A | ✅ yes | ❌ no | ✅ **yes** | serial ✅; **mp3 ✅** | **★ THE COMMUNITY TARGET.** Last v70 where ID7 v1 works and where `MazdaToFiatV70AIO` installs **unmodified** (its script accepts only `70.00.xxx` with ext ≤100). Last two-file build for the 124 path. [S-10, S-11, S-12] |
+| **70.00.021A/B** | NA=**B**, EU/4A=**A** | ✅ **yes** (first public) | ❌ no | ✅ yes | serial ✅ | Hub is recognised from here up. Two-file. Reported buggiest v70. [E-06] |
+| **70.00.100A** | NA/EU/4A | ✅ yes | ❌ no | ✅ **yes** | serial ✅; **mp3 ✅** | **★ THE COMMUNITY TARGET.** Last v70 where ID7 v1 works and where `MazdaToFiatV70AIO` installs **unmodified** (its script accepts only `70.00.xxx` with ext ≤100). Last two-file build for the 124 path. [B-01, A-01, A-02] |
 | 70.00.110 | JP | yes | — | — | — | JP only (Matsukone) |
 | 70.00.120 | NA | yes | — | — | — | Echo fix; via Mazda repair contractor only, never released |
 | 70.00.130 / 137 / 150A | NA/EU/4A | yes | ❌ no | ❓ unknown | — | Interim builds; **no data in any source about tweak status** ❓ |
-| **70.00.335C** | NA/EU/4A | yes | ❌ no | ❌ **NO** | **ID7v2-at-install** ✅ (serial during the flash); mp3 ⚠️ (one 124 owner failed) | **★★ POINT OF NO RETURN #2.** Runs `neutralizeid7` + forced `passwdupdate`: deletes ID7 v1 *and* any pre-installed "v2", removes the serial credentials. First **single-file** `update.up`. Fixes BT echo. [S-15, S-36] |
-| 70.00.352B | NA/EU/4A | yes | ❌ no | ❌ no | **ID7v2-at-install ✅** (last version where it works); mp3 ⚠️ | Same neutralize as 335. MazdaToFiat needs the `_VER_EXT -le 360` edit [S-23]. |
-| **70.00.367A** | NA/EU/4A | yes | ❌ no | ❌ no | **serial ✗, ID7v2 ✗**; escape = downgrade to 352/335 ✅; mp3 ⚠️ 1 report (2026-04) | **★★★ POINT OF NO RETURN #3.** Serial login credentials gone entirely; updates are **signed** so repacking is infeasible [S-36]. Last v70. |
-| 74.00.230A | NA/EU/4A | yes | ❌ no | ❌ no | ID7v2 ✗; **mp3 ✅** | First v74. Downgradable to v70 by USB (bench-tested) [S-16] |
-| 74.00.311A / 74.00.310 | NA/EU/4A | yes | ❌ no | ❌ no | mp3 ✅ | **★ Downgrade floor rises: from ≥74.00.310 USB cannot go below 74.00.310** [S-17] |
-| **74.00.324A** | NA/EU/4A | yes | ❌ no | ❌ no | **mp3 ✅** (confirmed on 124s) | **The final MZD-Connect-1 firmware** (2022-11). ~50 fixes over v70. MazdaToFiat needs 3 line edits + AIO `run.sh` edit [S-10, S-17] |
-| 74.00.331 | NA/EU/4A | yes | ❌ no | ❌ no | mp3 ✅ but **may disable wireless CarPlay** | "AIO tweaks only recommended for 74.00.324 and lower" [S-10] |
+| **70.00.335C** | NA/EU/4A | yes | ❌ no | ❌ **NO** | **ID7v2-at-install** ✅ (serial during the flash); mp3 ⚠️ (one 124 owner failed) | **★★ POINT OF NO RETURN #2.** Runs `neutralizeid7` + forced `passwdupdate`: deletes ID7 v1 *and* any pre-installed "v2", removes the serial credentials. First **single-file** `update.up`. Fixes BT echo. [C2-11, C2-14] |
+| 70.00.352B | NA/EU/4A | yes | ❌ no | ❌ no | **ID7v2-at-install ✅** (last version where it works); mp3 ⚠️ | Same neutralize as 335. MazdaToFiat needs the `_VER_EXT -le 360` edit [A-08]. |
+| **70.00.367A** | NA/EU/4A | yes | ❌ no | ❌ no | **serial ✗, ID7v2 ✗**; escape = downgrade to 352/335 ✅; mp3 ⚠️ 1 report (2026-04) | **★★★ POINT OF NO RETURN #3.** Serial login credentials gone entirely; updates are **signed** so repacking is infeasible [C2-14]. Last v70. |
+| 74.00.230A | NA/EU/4A | yes | ❌ no | ❌ no | ID7v2 ✗; **mp3 ✅** | First v74. Downgradable to v70 by USB (bench-tested) [F-19] |
+| 74.00.311A / 74.00.310 | NA/EU/4A | yes | ❌ no | ❌ no | mp3 ✅ | **★ Downgrade floor rises: from ≥74.00.310 USB cannot go below 74.00.310** [C2-17] |
+| **74.00.324A** | NA/EU/4A | yes | ❌ no | ❌ no | **mp3 ✅** (confirmed on 124s) | **The final MZD-Connect-1 firmware** (2022-11). ~50 fixes over v70. MazdaToFiat needs 3 line edits + AIO `run.sh` edit [B-01, C2-17] |
+| 74.00.331 | NA/EU/4A | yes | ❌ no | ❌ no | mp3 ✅ but **may disable wireless CarPlay** | "AIO tweaks only recommended for 74.00.324 and lower" [B-01] |
 
 **No Fiat firmware above 59 exists.** FCA never released a v70+ or any CarPlay build for the 124;
-the only Fiat move was a NA 59.00.5xx update. There is therefore **no "back to stock Fiat" path**. [S-10]
+the only Fiat move was a NA 59.00.5xx update. There is therefore **no "back to stock Fiat" path**. [B-01]
 
 ---
 
@@ -64,28 +64,28 @@ the only Fiat move was a NA 59.00.5xx update. There is therefore **no "back to s
 
 1. **≤ 59.00.560 (this includes every Fiat 124 factory build)** → you must pass through **70.00.100A as a
    two-file step**: `_failsafe.up` **first**, then `_reinstall.up`. Direct single-file jumps from 59.x are
-   not the documented path. [S-04, S-13] ❓ one reseller claims direct-from-59.x to 74.00.324 works —
+   not the documented path. [D-04, C2-16] ❓ one reseller claims direct-from-59.x to 74.00.324 works —
    treat as reseller optimism until a first-hand report exists.
 2. **≥ 70.00.021A** → single `_update.up` direct to any later version, including 74.00.324A. Real example:
-   70.00.367 EU N → 74.00.324 EU N in one file. [S-13, S-17]
-3. **Failsafe package exists only up to ~70.00.110**; from 70.00.335 every build is one `update.up`. [S-04, S-13]
+   70.00.367 EU N → 74.00.324 EU N in one file. [C2-16, C2-17]
+3. **Failsafe package exists only up to ~70.00.110**; from 70.00.335 every build is one `update.up`. [D-04, C2-16]
 4. **Always use your own region's files.** A wrong-region flash did **not** brick in the one report we have
    (NA firmware on an ADR car — CarPlay worked, auto-lock setting missing) ⚠️, but region mismatch shifts
    radio behaviour and is treated as brick risk everywhere. Flashing another region deliberately is the
-   documented way to switch tuner markets; the **TAU tuner module** still holds the original band plan. [S-13, S-10]
+   documented way to switch tuner markets; the **TAU tuner module** still holds the original band plan. [C2-16, B-01]
 5. **Firmware BEFORE hardware**, with the **old hub fitted**. Mazda: "once the CMU has been attached to the
    CarPlay/AA-compatible USB hub, the software cannot be updated." If the new hub is already in, refit an
-   old one to flash. [S-06, S-18]
+   old one to flash. [E-08, E-06]
 
 ## 3. Downgrade rules and walls
 
 | From | To | Method | Caveats |
 |---|---|---|---|
 | 70.00.021/100 | 59.00.545 / 59.00.502 | USB, same procedure | ❓ file order disputed: some did failsafe-first (upgrade order) successfully; an old guide says reinstall-first for downgrades. One owner ended with **OS 59.00.502 + Fail-Safe 70.00.100A** — it ran, but it is an undefined state. |
-| 70.00.335/352/367 | 70.00.100 / 59.00.502+ | USB | **Being back on 70.00.100 does NOT restore USB tweaking** — the credentials are gone. [S-11 thread 39292] |
+| 70.00.335/352/367 | 70.00.100 / 59.00.502+ | USB | **Being back on 70.00.100 does NOT restore USB tweaking** — the credentials are gone. [A-03] |
 | 70.00.367 | 70.00.352 | USB | The documented escape for 367; 352 can then take ID7v2-at-install. |
-| 74.00.230 | 70.x / 59.00.502+ | USB | bench-tested [S-16] |
-| 74.00.310/311/324 | anything < 74.00.310 | **NOT by USB** | Only by SPI-NOR surgery (write a 70.00.100 failsafe dump + boot-select 0x00). [S-16] |
+| 74.00.230 | 70.x / 59.00.502+ | USB | bench-tested [F-19] |
+| 74.00.310/311/324 | anything < 74.00.310 | **NOT by USB** | Only by SPI-NOR surgery (write a 70.00.100 failsafe dump + boot-select 0x00). [F-19] |
 | ≥59.00.502 | anything < 59.00.502 | **NOT by USB** (the update screen simply does not list lower versions) | Only by SPI-NOR. Mazda: "if your car was born with any 59.00.xxxx or above, DO NOT roll back." |
 | Mazda 70.x | **Fiat 59.00.5xx** | ❓ **no report of anyone doing it**; Fiat packages do not circulate | Open question. |
 

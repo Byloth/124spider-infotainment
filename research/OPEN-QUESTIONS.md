@@ -8,7 +8,7 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
 ## A. Blocking — must be resolved before the maintainer's own car is touched
 
 1. **EU firmware: no verified source.**
-   Mazda's dealer CDN [S-01] serves **NA** objects openly but returns 403 for EU/ADR. The maintainer's car
+   Mazda's dealer CDN [D-01] serves **NA** objects openly but returns 403 for EU/ADR. The maintainer's car
    is EU. Options: probe other S3 key patterns; buy from `mazdashare.com/mtds` (paid, official) or a
    reseller (€29–39); use the 124spider.org Google-Drive EU zip and hash-check it. **Nothing EU is
    currently held or verified.**
@@ -68,7 +68,7 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
     - 124spider.org threads 39292 ("Mazda made up a mess, FW 70.00.367"), 42352, 41206, and the 2022–2025
       hardware threads (43650 USB-C hub, 43766 wireless, 42115, 43933, 43852) — no captures
     - Scribd "EU N CMU HASH Value" doc 838112560 — likely holds the missing EU hashes
-12. **Mirror before it disappears:** the HiDrive `-CarPlay-AndroidAuto INSTALL` folder [S-67] holds Mazda's
+12. **Mirror before it disappears:** the HiDrive `-CarPlay-AndroidAuto INSTALL` folder [E-42] holds Mazda's
     own trim-removal PDFs and full-install videos — the only copy known.
 13. **70.00.130 / 70.00.137 / 70.00.150** — no source we read says anything about their tweak status.
 14. **74.00.331** — barely documented; reportedly breaks wireless CarPlay if tweaked. Public release or
