@@ -55,12 +55,33 @@ research/
   archive/                 – ~430 local copies of key pages/PDFs (178 MB), incl. Wayback captures
 downloads/                 – git-ignored binaries; CHECKSUMS.sha256 + README.md are tracked
   firmware/NA/             – 7 NA .up files straight from Mazda's dealer CDN (2.8 GB)
+  firmware/EU/, ADR/       – 70.00.100A failsafe+reinstall pairs, hash-checked (+ source bundles)
   ameridan/                – the 12 MediaFire tweak packages + Mazda's update-procedure PDF
   tweaks/                  – ID7_Recovery_XX.zip, mzd-connect-1-root-main.zip
   guides/                  – 68wooley's PDF guide zip
+docs/                      – the VitePress site (reader-facing)
+  .vitepress/config.mts    – nav, per-section sidebars, local search, footer disclaimer
+  index.md                 – home
+  guide/ procedure/ firmware/ hardware/ recovery/ security/ reference/
+tools/
+  vt-check.sh              – VirusTotal hash-lookup / URL-scan helper (needs VT_API_KEY)
+package.json               – docs:dev, docs:build, docs:preview
 ```
 
-No site scaffold yet. Planned: VitePress (`npm`), Node is available via nvm (v24).
+## The site
+
+VitePress 1.6.4, npm, Node v24 via nvm. `npm run docs:dev` to serve, `npm run docs:build` to build.
+
+- **Deploy is not decided** — local only for now, so `base: '/'` and there is no CI workflow. A GitHub
+  Pages project site would need `base: '/124spider-infotainment/'`.
+- **The 27 pages are stubs.** The scaffold and navigation are real; the content has *not* been ported
+  from `research/`. Every stub carries a warning block pointing at its backing document — keep that
+  warning until the page is actually written, so an empty page is never mistaken for guidance.
+- **i18n**: English content stays at the root of `docs/` on purpose. VitePress keeps the root locale in
+  place and gives other locales a subdirectory, so adding Italian later needs only a `locales` key.
+- `npm run docs:build` fails on dead links by design — use it as the link checker.
+- Known: `npm audit` reports esbuild advisories reaching in through vite. Dev-server-only, no fix on the
+  VitePress 1.x line. Accepted for a locally-served docs site; revisit if the site is ever deployed.
 
 ## Conventions
 
@@ -99,8 +120,15 @@ Read `research/` before doing anything; the headlines:
 
 ## Status
 
-- 2026-08-23: repo bootstrapped; **research phase complete** — six consolidated docs in `research/`,
-  ~430 archived pages, 2.9 GB of binaries collected and hashed.
-- **Next decisions (not yet taken):** (1) source verified EU firmware; (2) VirusTotal/manual scan of
-  everything in `downloads/`; (3) VitePress scaffold + page structure; (4) where/whether to publish the
-  binaries (Mazda firmware is proprietary — takedown risk is precisely why every historic mirror died).
+- 2026-08-23: repo bootstrapped; **research phase complete** — five consolidated docs in `research/`,
+  ~430 archived pages, ~11 GB of binaries collected and hashed.
+- 2026-08-23: **EU and ADR firmware acquired and hash-checked** (the long-standing blocker); tweak scripts
+  reviewed by hand (see `research/PROCEDURE-DRAFT.md` §4b — ID7 is command injection into Mazda's own
+  signed diagnostic package and leaves a permanent root SSH service); a document previously recorded as
+  lost was recovered; ND workshop-manual trim sections mirrored (HiDrive confirmed dead).
+- 2026-08-23: **VitePress scaffold in place** — structure, navigation, 27 stub pages. No content ported.
+- **Next:** (1) port the research content into the pages, highest value first (procedure, firmware
+  matrix, security); (2) run `tools/vt-check.sh` once a VirusTotal key is available; (3) get the
+  maintainer's exact firmware version string — it decides the route and is the last thing blocking a real
+  attempt; (4) decide where/whether to publish the binaries (proprietary — takedown risk killed every
+  past mirror).

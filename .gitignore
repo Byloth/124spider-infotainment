@@ -4,6 +4,6 @@ downloads/*
 !downloads/README.md
 
 node_modules/
-.vitepress/cache/
-.vitepress/dist/
+**/.vitepress/cache/
+**/.vitepress/dist/
 .DS_Store
