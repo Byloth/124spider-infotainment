@@ -1,0 +1,9 @@
+# Binaries collected locally (firmware, tweaks packages) — not committed (size + licensing TBD)
+downloads/*
+!downloads/CHECKSUMS.sha256
+!downloads/README.md
+
+node_modules/
+.vitepress/cache/
+.vitepress/dist/
+.DS_Store
