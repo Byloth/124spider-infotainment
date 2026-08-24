@@ -134,5 +134,12 @@ export default defineConfig({
         },
 
         docFooter: { prev: "Previous", next: "Next" }
+    },
+
+    // Vite 5 still hands SCSS to SASS through the legacy JS API, which emits a deprecation notice per
+    // file — around fifty lines per build, enough to bury the output we actually check. Asking for the
+    // modern compiler changes nothing about the CSS; `vitest.config.ts` does the same.
+    vite: {
+        css: { preprocessorOptions: { scss: { api: "modern-compiler" } } }
     }
 });
