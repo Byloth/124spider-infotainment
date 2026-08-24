@@ -33,13 +33,20 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
    guide only warns that the newer Fiat firmware "breaks CarPlay/AA compatibility" without saying whether
    it blocks the flash or just the tweaks. Needs a confirmed report before the guide promises it.
 
-5. **Integrity check: half done.** ✅ The tweak scripts *have* been read by hand (2026-08-23) — findings in
-   PROCEDURE-DRAFT §4b and items 10b/10c below; that is the control that actually matters for shell-script
-   payloads. ❌ **No antivirus pass has run**: `tools/vt-check.sh` is written but needs a `VT_API_KEY`.
-   Note the hard limit: the three large firmware images (883–957 MB) exceed VirusTotal's analysis cap, so
-   they cannot be scanned by upload *or* by URL — for those, matching community MD5s is the only available
-   evidence, and all four that have a published MD5 matched. Everything from MediaFire/GitHub still rests
-   on a single host.
+5. **Integrity check: source review done, antivirus pass done, one gap remains.**
+   - ✅ **Tweak scripts read by hand** (2026-08-23) — findings in PROCEDURE-DRAFT §4b and items 10b/10c.
+     For shell-script payloads this is the control that actually matters.
+   - ✅ **VirusTotal hash lookup run on all 28 collected files** (`research/VT-RESULTS-hashes.tsv`):
+     **0 malicious, 0 suspicious.** 8 files were already known to VT and came back clean across 53–68
+     engines — including `MazdaToFiatV70AIO.zip`, `autorun_copy_to_usb.zip` (ID7), the mp3 payload, and
+     the NA/EU/ADR 70.00.100A failsafes. The other 20 are **`not-in-VT`**: nobody ever submitted them, so
+     there is no verdict either way — expected for proprietary firmware and niche community packages.
+   - ❌ **The three large firmware images cannot ever be scanned** (883–957 MB, over VirusTotal's analysis
+     cap) by upload or by URL. For those, matching community MD5s is the only available evidence — and
+     all four with a published MD5 matched.
+   - ⏳ **Optional next step:** 12 of the `not-in-VT` files are under 32 MB and *could* be submitted for
+     actual analysis. That means publishing them to a third party, which is a deliberate decision —
+     harmless for the community freeware, a judgement call for Mazda's proprietary `.up` files.
 
 ## B. High value — would materially change the guide
 
