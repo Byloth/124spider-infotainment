@@ -21,8 +21,8 @@ when every child is `[X]`.
 | 00 | [Toolchain](00-toolchain.md) | 42 | `[~]` | TypeScript, ESLint + `@byloth/eslint-config-nuxt`, SASS, Husky, `@vueuse/core` pinning — and the rejected dependencies, with reasons |
 | 01 | [Theme foundation](01-theme-foundation.md) | 30 | `[X]` | `theme/index.ts`, brand tokens, the styling contract, the SSR rule, conventions into `CLAUDE.md` |
 | 02 | [Data layer](02-data-layer.md) | 27 | `[~]` | Seven typed data modules — firmware, files, parts, sources, failures, links, glossary |
-| 03 | [Components](03-components.md) | 35 | `[ ]` | `useProfile()` plus 17 components, each with its contract and its no-JS obligation |
-| 03b | [Testing](03b-testing.md) | 35 | `[~]` | Vitest 3, data invariants and the two resolver functions — plus the three logic pieces to write test-first in 03 |
+| 03 | [Components](03-components.md) | 41 | `[X]` | `useProfile()` plus 17 components, each with its contract and its no-JS obligation |
+| 03b | [Testing](03b-testing.md) | 35 | `[X]` | Vitest 3, data invariants and the two resolver functions — plus the three logic pieces to write test-first in 03 |
 | 04 | [Diagrams](04-diagrams.md) | 15 | `[ ]` | Eight original SVGs, light/dark aware, each with a text equivalent |
 | 05 | [Pages · Security](05-pages-security.md) | 30 | `[ ]` | The original findings and the live hijacked domain — **written first** |
 | 06 | [Pages · Firmware](06-pages-firmware.md) | 31 | `[ ]` | Matrix, regions, points of no return, obtaining and verifying |
@@ -32,9 +32,9 @@ when every child is `[X]`.
 | 10 | [Pages · Recovery](10-pages-recovery.md) | 33 | `[ ]` | Troubleshooting, downgrading, un-bricking |
 | 11 | [Pages · Reference](11-pages-reference.md) | 31 | `[ ]` | Sources, inventory, open questions, glossary, changelog |
 | 12 | [Verification](12-verification.md) | 28 | `[ ]` | Build, typecheck, lint, no-JS, dark mode, responsive, hash verifier |
-| 99 | [Deferred](99-deferred.md) | 24 | `[ ]` | Deploy, i18n, binary hosting, the maintainer's own car |
+| 99 | [Deferred](99-deferred.md) | 26 | `[ ]` | Deploy, i18n, binary hosting, the maintainer's own car |
 
-**458 tasks.** Update this table's state column as files progress.
+**466 tasks.** Update this table's state column as files progress.
 
 ## Why this order
 
@@ -72,9 +72,13 @@ today serves a scam site.
 - **Site: scaffold only.** VitePress 1.6.4 in `docs/`, 27 stub pages, nav and sidebars wired, build green.
   No content ported. Five more pages to create: `guide/route`, `security/link-safety`,
   `reference/changelog`.
+- **Components: done** (file 03). `useProfile()` plus 16 components in `docs/.vitepress/theme/components/`,
+  and three pure-logic modules in `docs/.vitepress/logic/` — the version parser, the route derivation and
+  an incremental SHA-256 (WebCrypto cannot hash a 2.4 GB file). A development gallery at
+  `docs/dev/components.md`, unlisted in the navigation, renders every one of them.
 - **Testing: set up** (file 03b). Vitest 3 (not 4 — 4 needs vite ≥6 and VitePress pins 5), 37 tests
   covering data invariants and the two resolver functions, type-checked via a third tsconfig project.
-  The three logic pieces in task 03 are to be written test-first.
+  Now 75 tests, after the three logic pieces in task 03 were written test-first.
 - **Data layer: done** (file 02). Seven typed modules in `docs/.vitepress/data/` — 21 firmware versions,
   28 artifacts with hashes generated from the files themselves, 200 sources, 19 failure modes, the
   external-link health register, the parts catalogue and the glossary. `bun run verify:data` re-checks

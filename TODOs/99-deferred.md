@@ -54,10 +54,17 @@ in every planning conversation — each one is a real decision, just not this on
 - [ ] The car is an EU Abarth 124 Spider, retrofit kit not yet fitted. The EU 70.00.100A pair is already
       held and hash-verified.
 
+## The development gallery
+
+- [ ] `docs/dev/components.md` mounts every component with sample state. It is unlisted in the navigation
+      and written for us, not for readers — but it currently builds and would ship.
+- [ ] Decide at deploy time: exclude it via `srcExclude` in `config.mts`, or keep it. It stays useful for
+      as long as pages are being written, and it is where the no-JavaScript and dark-mode checks run.
+
 ## Nice-to-have, unprioritised
 
 - [ ] A printable one-page checklist for use in the car (offline, no phone signal in a garage).
 - [ ] Offline/PWA support for the same reason.
 - [ ] Contribution guide: how someone with a different car or a forum login can close an open question.
-- [ ] Re-check external link health periodically and update `links.data.ts` — decay is the project's
+- [ ] Re-check external link health periodically and update `links.ts` — decay is the project's
       permanent adversary.

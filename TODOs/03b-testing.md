@@ -49,7 +49,7 @@ retrofitted.
 - [X] **`tests/glossary.test.ts`** — `glossaryFor()`: exact, alias, case-insensitive, whitespace,
       unknown, and that a partial word (`CM`) does **not** match `CMU`.
 
-**37 tests.**
+**37 tests here; 75 in total once task 03 added the version parser, the route derivation and the digest.**
 
 ## What is deliberately NOT tested — do not "fix" this later
 
@@ -69,14 +69,14 @@ retrofitted.
       no module resolution and cannot be fooled by a module that fails to load; the **tests** check the
       modules against *each other*.
 
-## To write test-first in task 03
+## Written test-first in task 03 — done
 
-- [ ] **The version-string parser** (`70.00.100A EU N` → structured). The most testable thing in the
+- [X] **The version-string parser** (`70.00.100A EU N` → structured). The most testable thing in the
       project: missing suffix, `JP M`, lower case, stray whitespace, malformed input.
-- [ ] **Route derivation** `(version, id7) → Route`. Safety-critical — pointing someone at the wrong
+- [X] **Route derivation** `(version, id7) → Route`. Safety-critical — pointing someone at the wrong
       route can send them down a path that bricks the unit. Table-driven across all 21 firmware versions
       × ID7 states.
-- [ ] **`HashVerifier`'s chunked digest** — that hashing in chunks yields the same digest as a one-shot
+- [X] **`HashVerifier`'s chunked digest** — that hashing in chunks yields the same digest as a one-shot
       for a known input, and that a multi-chunk file works. A bug here would quietly tell someone a good
       file is corrupt.
 
