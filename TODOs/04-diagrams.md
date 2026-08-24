@@ -3,67 +3,114 @@
 Original SVGs only. No third-party images are republished — the archive holds Mazda TSB pages, workshop
 manual scans and forum photos, all under someone else's copyright.
 
-**Requirements for every diagram:**
-
-- [ ] Hand-authored SVG, committed as a file under `docs/public/diagrams/` (or inlined in a component
-      where it needs to react to the profile).
-- [ ] Uses `currentColor` and `var(--vp-c-*)` tokens for strokes, fills and text — so it flips with dark
-      mode for free and needs no second asset.
-- [ ] Readable at 375 px wide; text stays real `<text>` (selectable, translatable, searchable), never
-      outlined paths.
-- [ ] `role="img"` with a `<title>` and `<desc>`, plus a prose description in the page for anyone who
-      cannot see it. These diagrams carry safety information; they cannot be the only channel.
+**Status: done.** Eight diagrams in `docs/.vitepress/theme/components/diagrams/`, all mounted in
+`docs/dev/components.md`, all rendering server-side. Two corrections were made to this backlog while
+executing it; both are recorded below rather than quietly edited away.
 
 ---
 
+## Correction 1 — they could not be files in `docs/public/`
+
+This file originally asked for the SVGs to be committed under `docs/public/diagrams/` **and** to be
+styled with `var(--vp-c-*)` so they flip with dark mode for free. Those two cannot both be true: an SVG
+referenced through `<img src>` is an isolated document and cannot see the page's CSS custom properties,
+so a file in `public/` would need one hand-maintained copy per colour scheme.
+
+So every diagram is **inline SVG inside a `.vue` component**. That also gives them scoped styles and, for
+three of them, the data.
+
+## Correction 2 — three of them are generated, not drawn
+
+A hand-drawn version timeline falls behind the moment a firmware version is added to `firmware.ts` —
+exactly the drift this project exists to prevent, and avoidable because the geometry is computable.
+
+- `VersionTimeline` — one marker per entry in `FIRMWARE`; walls and target read off the flags; the
+  `<desc>` names the first and last version from the data rather than from memory.
+- `DowngradeWalls` — bands are a partition of `FIRMWARE` at the entries flagged `downgradeFloor`, computed
+  in `logic/bands.ts`. The canvas width grows with the band count, so a third floor could not draw itself
+  off the edge.
+- `RouteComparison` — the three routes against what each leaves installed.
+
+`downgradeFloor` was added to `firmware.ts` for this. Two of the four points of no return are version
+floors; the other two close tweak access without moving the floor, so it is its own flag rather than
+something inferred from the numbering.
+
+---
+
+## Requirements for every diagram
+
+- [X] Hand-authored inline SVG in a component (see correction 1).
+- [X] `var(--vp-c-*)` tokens only — verified: no hex, `rgb()`, `hsl()`, `<image>` or `<foreignObject>`
+      anywhere in the eight components, and every token used is one VitePress itself defines in both
+      colour schemes.
+- [X] Text stays real `<text>` — selectable, translatable, searchable; never outlined paths.
+- [X] `role="img"` with `<title>` and `<desc>`, **plus a full prose equivalent inside the component
+      itself** rather than left to the page. These carry safety information and cannot depend on the
+      page author remembering.
+- [~] Readable at 375 px. Honestly: the four 900-unit-wide diagrams are comfortable on a desktop column
+      and need panning on a phone. `.diagram` is therefore a horizontal scroll container with a 600 px
+      floor (`theme/style.css`), the way VitePress already treats wide tables, and the prose equivalent
+      is the reading path on a narrow screen. Smallest label is now 10 px, up from 9.
+
 ## The set
 
-- [ ] **Version timeline with the points of no return** — `/guide/risks`, `/firmware/points-of-no-return`.
-  Horizontal timeline 55.x → 74.00.331. Marks the four thresholds (59.00.502, 70.00.335, 70.00.367,
-  74.00.310), what each closes, and where 70.00.100A sits as the community target. Must visually separate
-  "confirmed" from the 2025 mp3-method nuance rather than presenting one flat truth.
-  Source: `research/FIRMWARE-MATRIX.md` §1 and §4.
+- [X] **Version timeline with the points of no return** — `VersionTimeline.vue`.
+      Positions by rank rather than by value: the 70.00.1xx builds would otherwise collapse into a
+      smudge. The axis is a sequence, not a measurement. Labels stagger on two rows.
+  - [ ] The original ask also wanted it to separate "confirmed" from the 2025 mp3-method nuance. It does
+        not — that nuance is carried by `RouteComparison`, which states the confidence per route. Decide
+        when writing `/firmware/points-of-no-return` whether the timeline needs it too, or whether
+        putting the two diagrams on the same page is enough.
+- [X] **Two-file flash sequence** — `FlashSequence.vue`. The danger window between the two files, with
+      the pedal rule spanning it.
+- [X] **Downgrade walls** — `DowngradeWalls.vue`. Free movement inside a band, upward crossings fine,
+      downward crossings marked "no USB path".
+- [X] **SPI-NOR layout and boot-select** — `NorLayout.vue`. The partition map with `0x010000` called out,
+      and what it costs to own the programmer.
+- [X] **ID7 mechanism** — `Id7Mechanism.vue`. The project's own finding drawn: a genuine signed
+      diagnostic package plus one `CMD_LINE` line, executed *because* the signature is valid.
+- [X] **Route comparison** — `RouteComparison.vue`. The inversion made unavoidable: the route everyone
+      calls a fallback is the one that leaves nothing behind.
+- [X] **Hub and cable schematic** — `HubWiring.vue`. One cable becomes two; the phone-marked port; the
+      blue GPS plug; firmware-before-hardware stated on the picture.
+- [X] **Trim removal order** — `TrimOrder.vue`. Fourteen steps grouped by area, numbers derived from the
+      order so inserting a step cannot leave the numbering behind. Drawn from the written step list, not
+      traced from the workshop-manual scans.
 
-- [ ] **Two-file flash sequence** — `/procedure/flash`.
-  `failsafe.up` → reboot into the failsafe updater → `reinstall.up` → complete. Annotate where power loss
-  bricks the unit and where the 20-minute pedal press falls. Shows why the order is not interchangeable.
-  Source: `research/raw/F-rollback-failures.md` §2 (SPI-NOR/boot-select mechanism).
+## Tests
 
-- [ ] **Downgrade walls** — `/recovery/downgrade`.
-  Two bands (`≥59.00.502` and `≥74.00.310`) with USB arrows inside each band and the SPI-NOR-only
-  crossings between them. Makes "you cannot go back" concrete.
-  Source: `research/FIRMWARE-MATRIX.md` §3.
+- [X] `tests/bands.test.ts` (6) — the partition: one more band than floors, every version placed exactly
+      once, no empty band, ordering preserved, each floor opening its own band.
+- [X] `tests/diagrams.test.ts` (10) — rendered through `@vue/server-renderer`, which needs no DOM, so
+      `@vue/test-utils` and `happy-dom` (56 packages) stay out of the tree. Properties only: one marker
+      per firmware entry, every version named, walls in order, both floors named, band count following
+      the floor count, and `<title>`/`<desc>`/`<figcaption>` present on all three.
+- [X] `@vitejs/plugin-vue@5.2.4` added so Vitest can import `.vue` — the exact version VitePress already
+      pulls in, so `bun pm ls` shows the same 467 packages and a single `vite@5.4.21`.
+- [X] Provably fails when broken: dropping a `downgradeFloor` flag from the data failed
+      `DowngradeWalls > names both floors` by name.
 
-- [ ] **SPI-NOR layout and boot-select** — `/recovery/brick`.
-  The 8 MB flash map (bootstrap · boot-select `0x010000` · ibc1 · ibc2 · config · failsafe), showing which
-  byte is rewritten to force the failsafe boot and why that revives a black-screen unit.
-  Source: `research/raw/F-rollback-failures.md` §2.
+**91 tests in total, up from 75.**
 
-- [ ] **ID7 mechanism** — `/security/`.
-  The project's original finding, drawn: a genuine JCI-signed diagnostic package whose
-  `dataRetrieval_config.txt` carries `CMD_LINE=sh /mnt/sd*/tweaks.sh`, so the CMU executes an arbitrary
-  script *because* the signature is valid. Then what is left behind: three UID-0 accounts, a second sshd,
-  the firewall opened on all interfaces.
-  Source: `research/PROCEDURE-DRAFT.md` §4b.
+## Refactors this pulled in
 
-- [ ] **Route comparison** — `/security/`, `/procedure/index`.
-  The three tweak routes (ID7 · serial · mp3) side by side against what each requires and what each leaves
-  installed permanently. This is the diagram that shows mp3 is the least invasive, which inverts the usual
-  framing.
-
-- [ ] **Hub and cable schematic** — `/hardware/`.
-  Old hub (USB1 + USB2 + SD + AUX, one cable to the CMU) vs new hub (phone-marked USB3 port, two cables).
-  Explains why the retrofit needs the harness and why Android Auto is gated by hub detection too.
-  Source: `research/raw/E-hardware-retrofit-kit.md` §2.1.
-
-- [ ] **Trim removal order** — `/procedure/hardware`.
-  Numbered exploded view of the 124's centre console sequence. Marks the GPS connector everyone forgets
-  to re-seat.
-  ⚠️ Draw from the written step list, **not** by tracing the workshop-manual scans.
-  Source: `research/PROCEDURE-DRAFT.md` §5.
+- [X] `versionOrdinal` moved into `logic/version.ts`. It existed twice — in `logic/route.ts` and again
+      inside `VersionTimeline` — with different failure behaviour (`NaN` vs `0`). One copy now, returning
+      `NaN`, which is the safe one: every comparison against `NaN` is false, so an unplaceable version
+      never satisfies a threshold test by accident.
+- [X] `logic/bands.ts` extracted from `DowngradeWalls`, so the partition can be tested without rendering.
+- [X] `.diagram` scroll container in `theme/style.css`, with the figcaption pinned so the prose stays in
+      view while panning.
 
 ## Done when
 
-- [ ] Every diagram renders correctly in light and dark without a second asset.
-- [ ] Each has a text equivalent in its page.
-- [ ] Total weight is sane (these are line drawings; if one exceeds ~30 KB it has been over-detailed).
+- [X] Every diagram renders in light and dark without a second asset — all tokens are VitePress's own,
+      defined in both schemes.
+- [X] Each carries its text equivalent (in the component, not the page).
+- [X] Weight is sane: largest rendered SVG is 6.9 KB, largest component 8.5 KB. The ~30 KB line is not
+      close.
+- [X] `bun run lint`, `bun run typecheck`, `bun run test`, `bun run docs:build` all clean.
+- [X] Verified in the **built** HTML: eight SVGs, eight `<title>`, eight `<figcaption>`, no hex colours.
+      This is also where a real bug was caught — adjacent `<tspan>` lines concatenate in SVG, so
+      "Command injection into Mazda's" + "own signed…" read as "Mazda'sown" to a screen reader and to the
+      clipboard. Fixed with trailing spaces; the visual output never showed it.

@@ -13,6 +13,9 @@
     // what lets this project type-check the imports without a project reference (which would need
     // declaration emit, and `_base.json` sets `noEmit`).
     "../docs/.vitepress/data/**/*",
-    "../docs/.vitepress/logic/**/*"
+    "../docs/.vitepress/logic/**/*",
+
+    // `tests/diagrams.test.ts` renders the three data-driven diagrams to check they follow the data.
+    "../docs/.vitepress/theme/components/diagrams/**/*"
   ]
 }

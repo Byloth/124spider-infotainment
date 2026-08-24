@@ -30,6 +30,15 @@ import RouteWizard from "@theme/components/RouteWizard.vue";
 import SourceTable from "@theme/components/SourceTable.vue";
 import SymptomTree from "@theme/components/SymptomTree.vue";
 import VersionDecoder from "@theme/components/VersionDecoder.vue";
+
+import DowngradeWalls from "@theme/components/diagrams/DowngradeWalls.vue";
+import FlashSequence from "@theme/components/diagrams/FlashSequence.vue";
+import HubWiring from "@theme/components/diagrams/HubWiring.vue";
+import Id7Mechanism from "@theme/components/diagrams/Id7Mechanism.vue";
+import NorLayout from "@theme/components/diagrams/NorLayout.vue";
+import RouteComparison from "@theme/components/diagrams/RouteComparison.vue";
+import TrimOrder from "@theme/components/diagrams/TrimOrder.vue";
+import VersionTimeline from "@theme/components/diagrams/VersionTimeline.vue";
 </script>
 
 ## LinkStatus
@@ -118,3 +127,46 @@ This one applies to 70.00.367 and the 74.x builds, where serial access is gone.
 ## SourceTable
 
 <SourceTable />
+
+---
+
+# Diagrams
+
+Eight inline SVGs. They live in components rather than in `docs/public/` on purpose: an SVG loaded
+through `<img src>` is an isolated document and cannot read the page's `var(--vp-c-*)` tokens, so a file
+would need one hand-maintained copy per colour scheme.
+
+Three of them are generated from `firmware.ts`, so adding a firmware version cannot leave the picture
+behind. The other five are illustrations of things that are not in the data.
+
+## VersionTimeline
+
+<VersionTimeline />
+
+## DowngradeWalls
+
+<DowngradeWalls />
+
+## RouteComparison
+
+<RouteComparison />
+
+## FlashSequence
+
+<FlashSequence />
+
+## NorLayout
+
+<NorLayout />
+
+## Id7Mechanism
+
+<Id7Mechanism />
+
+## HubWiring
+
+<HubWiring />
+
+## TrimOrder
+
+<TrimOrder />

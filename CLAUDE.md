@@ -67,18 +67,27 @@ downloads/                 – git-ignored binaries; CHECKSUMS.sha256 + README.m
   guides/                  – 68wooley's PDF guide zip
 docs/                      – the VitePress site (reader-facing)
   .vitepress/config.mts    – nav, per-section sidebars, local search, footer disclaimer
+  .vitepress/data/         – seven typed modules: firmware, files, sources, failures, links,
+                             parts, glossary. Plain `.ts` — a `*.data.ts` name would make VitePress
+                             treat them as build-time loaders needing a `load()` export.
+  .vitepress/logic/        – pure functions, no Vue: version parsing + `versionOrdinal`, route
+                             derivation, the firmware band partition, incremental SHA-256
   .vitepress/theme/        – index.ts (extends DefaultTheme), style.css (brand tokens),
-                             components/ — imported via the `@theme/*` alias
+                             components/ and components/diagrams/ — via the `@theme/*` alias
   index.md                 – home
+  dev/components.md        – unlisted gallery mounting every component and diagram
   guide/ procedure/ firmware/ hardware/ recovery/ security/ reference/
+tests/                     – Vitest; data invariants, the resolvers, the logic modules, the diagrams
+TODOs/                     – the backlog, one file per phase + README.md as the index
 tools/
   vt-check.sh              – VirusTotal hash-lookup / URL-scan helper (needs VT_API_KEY)
-package.json               – docs:dev, docs:build, docs:preview
+  verify-data.mjs          – checks the data modules against CHECKSUMS.sha256 and the research docs
+package.json               – docs:dev, docs:build, docs:preview, lint, typecheck, test, verify:data
 ```
 
 ## The site
 
-VitePress 1.6.4, npm, Node v24 via nvm. `npm run docs:dev` to serve, `npm run docs:build` to build.
+VitePress 1.6.4, **bun**, Node v24 via nvm. `bun run docs:dev` to serve, `bun run docs:build` to build.
 
 - **Deploy is not decided** — local only for now, so `base: '/'` and there is no CI workflow. A GitHub
   Pages project site would need `base: '/124spider-infotainment/'`.
@@ -87,8 +96,8 @@ VitePress 1.6.4, npm, Node v24 via nvm. `npm run docs:dev` to serve, `npm run do
   warning until the page is actually written, so an empty page is never mistaken for guidance.
 - **i18n**: English content stays at the root of `docs/` on purpose. VitePress keeps the root locale in
   place and gives other locales a subdirectory, so adding Italian later needs only a `locales` key.
-- `npm run docs:build` fails on dead links by design — use it as the link checker.
-- Known: `npm audit` reports esbuild advisories reaching in through vite. Dev-server-only, no fix on the
+- `bun run docs:build` fails on dead links by design — use it as the link checker.
+- Known: `bun audit` reports esbuild advisories reaching in through vite. Dev-server-only, no fix on the
   VitePress 1.x line. Accepted for a locally-served docs site; revisit if the site is ever deployed.
 
 ## Writing components (VitePress theme)
@@ -131,6 +140,23 @@ time.
   borders, paragraph margins and link colours. Keep component markup in its own scoped styles.
 - Icons: the theme masks any `.vp-icon` / `.vpi-*` element with `background-color: currentColor`, so an
   inline SVG using the same pattern inherits colour for free.
+
+**Diagrams** live in `theme/components/diagrams/` as **inline SVG inside components**, never as files in
+`docs/public/`: an SVG loaded through `<img src>` is an isolated document and cannot read the page's
+`var(--vp-c-*)` tokens, so a file would need one hand-maintained copy per colour scheme. Rules:
+
+- `viewBox` only, no fixed `width`/`height`; `role="img"` with `<title>` and `<desc>`; **and a full prose
+  equivalent inside the component itself** — these carry safety information, so it must not depend on
+  whoever writes the page remembering.
+- Text stays real `<text>`, never outlined paths — selectable, searchable, translatable when Italian
+  arrives. No `<foreignObject>`, no `<image>`.
+- ⚠️ Adjacent `<tspan>` line breaks are visual only: SVG concatenates their content, so every line but
+  the last needs a **trailing space** or a screen reader reads "Mazda'sown".
+- `.diagram` is a horizontal scroll container with a 600 px floor (`theme/style.css`) — below that the
+  labels stop being readable, and on a phone the prose equivalent is the reading path.
+- Anything derivable from `data/` **is** derived, geometry included: three of the eight are generated
+  from `firmware.ts` so the picture cannot drift, and their canvases grow with the data rather than the
+  data having to fit a hardcoded `viewBox`.
 
 **Dark mode** is a `.dark` class on `<html>`. Best practice: define no `.dark` rule at all and only
 consume tokens. Inside a `scoped` block, `.dark .thing` will **not** match (the scope attribute lands on
@@ -206,6 +232,10 @@ Read `research/` before doing anything; the headlines:
   signed diagnostic package and leaves a permanent root SSH service); a document previously recorded as
   lost was recovered; ND workshop-manual trim sections mirrored (HiDrive confirmed dead).
 - 2026-08-23: **VitePress scaffold in place** — structure, navigation, 27 stub pages. No content ported.
+- 2026-08-24: **the substrate is complete** — toolchain (bun, TS 6, ESLint 10, husky), theme foundation,
+  seven data modules, 16 components, four logic modules and eight diagrams, with **91 Vitest tests**.
+  The backlog lives in `TODOs/`; `TODOs/README.md` is its index and its current-state summary.
+  Everything a page needs now exists; the pages themselves are still stubs.
 - **Next:** (1) port the research content into the pages, highest value first (procedure, firmware
   matrix, security) — written generically for all markets and all starting versions; (2) decide
   where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).

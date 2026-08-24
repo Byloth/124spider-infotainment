@@ -39,6 +39,12 @@ export interface FirmwareVersion
 
     packaging?: "two-file" | "single-file";
     pointOfNoReturn?: 1 | 2 | 3 | 4;
+    /**
+     * The lowest version of a band you cannot leave downwards over USB. Two of the four points of
+     * no return are floors of this kind; the other two close tweak access without moving the
+     * floor, which is why this is its own flag rather than something inferred from the numbering.
+     */
+    downgradeFloor?: true;
     communityTarget?: true;
     factoryOn?: string;
     notes: string;
@@ -113,6 +119,7 @@ export const FIRMWARE: readonly FirmwareVersion[] = [
             { method: "mp3", available: true, confidence: "single-report" }
         ],
         pointOfNoReturn: 1,
+        downgradeFloor: true,
         notes: "Mazda, June 2017. Patches the USB-autorun hole, so side-loading dies here. Also the " +
             "downgrade floor: nothing below this version can be reached over USB.",
         sourceIds: ["C2-10", "C2-16"]
@@ -356,6 +363,7 @@ export const FIRMWARE: readonly FirmwareVersion[] = [
         otherRoutes: [{ method: "mp3", available: true, confidence: "confirmed" }],
         packaging: "single-file",
         pointOfNoReturn: 4,
+        downgradeFloor: true,
         notes: "The downgrade floor rises here: from 74.00.310 upwards, USB cannot reach anything below " +
             "74.00.310.",
         sourceIds: ["C2-17"]
@@ -402,3 +410,13 @@ export const POINTS_OF_NO_RETURN = FIRMWARE
     .sort((a, b) => (a.pointOfNoReturn ?? 0) - (b.pointOfNoReturn ?? 0));
 
 export const COMMUNITY_TARGET = FIRMWARE.find((f) => f.communityTarget);
+
+/**
+ * The two version floors, low to high.
+ *
+ * A car can move freely up and down by USB *within* a band, but never down across a floor — the update
+ * screen simply does not offer the lower versions. Getting back below one needs an SPI-NOR programmer.
+ */
+export const DOWNGRADE_FLOORS = FIRMWARE
+    .filter((f) => f.downgradeFloor === true)
+    .sort((a, b) => (a.pointOfNoReturn ?? 0) - (b.pointOfNoReturn ?? 0));

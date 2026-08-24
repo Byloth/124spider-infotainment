@@ -75,3 +75,23 @@ export const formatVersion = (parsed: ParsedVersion): string =>
 
     return parts.join(" ");
 };
+
+/**
+ * Sort key for a version string, so ranges can be compared numerically.
+ *
+ * Some entries in the data carry a wildcard — `55.00.7xx` covers a family rather than one build. Those
+ * resolve to the bottom of their range, which is the conservative reading: it places them below the next
+ * threshold rather than above it.
+ *
+ * `NaN` for anything unrecognised, on purpose: every comparison against `NaN` is false, so a version we
+ * cannot place never satisfies a threshold test by accident.
+ */
+export const versionOrdinal = (version: string): number =>
+{
+    const match = (/^(\d{2})\.(\d{2})\.([\dx]{3})/i).exec(version);
+    if (!match) { return Number.NaN; }
+
+    const patch = Number(match[3].replace(/x/gi, "0"));
+
+    return (Number(match[1]) * 1_000_000) + (Number(match[2]) * 10_000) + patch;
+};

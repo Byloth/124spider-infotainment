@@ -141,3 +141,32 @@
         --vp-home-hero-image-filter: blur(68px);
     }
 }
+
+/* -------------------------------------------------------------------------------------------------- *
+ *  Diagrams
+ *
+ *  Every diagram in `theme/components/diagrams/` renders as `<figure class="diagram">` wrapping an
+ *  inline SVG. The rule lives here rather than in each component because it is one behaviour shared by
+ *  all eight, and because a `scoped` style cannot express it any more cheaply.
+ *
+ *  The SVGs scale to the column, but scaling has a floor: below roughly 600 CSS pixels the labels stop
+ *  being readable, and a diagram nobody can read is worse than one that has to be panned. So the figure
+ *  scrolls horizontally on narrow screens, the way VitePress already treats wide tables.
+ *
+ *  On a phone the honest reading path is the prose under each diagram, which is why every one of them
+ *  carries a full written equivalent rather than a caption.
+ * -------------------------------------------------------------------------------------------------- */
+
+.diagram {
+    overflow-x: auto;
+}
+
+.diagram > svg {
+    min-width: 600px;
+}
+
+.diagram > figcaption {
+    position: sticky;
+    left: 0;
+    max-width: 100%;
+}

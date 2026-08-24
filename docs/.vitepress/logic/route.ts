@@ -19,30 +19,15 @@
 import { FIRMWARE } from "../data/firmware";
 import type { Route } from "../data/types";
 
+import { versionOrdinal } from "./version";
+
 export const ROUTES: readonly Route[] = ["id7-from-usb", "serial-or-mp3", "id7v2-serial", "mp3-only"];
 
 export type Id7State = "yes" | "no" | "unknown";
 
-/**
- * Sort key for a version string, so ranges can be compared numerically.
- *
- * Some entries in the data carry a wildcard — `55.00.7xx` covers a family rather than one build. Those
- * resolve to the bottom of their range, which is the conservative reading: it places them below the next
- * threshold rather than above it.
- */
-const ordinal = (version: string): number =>
-{
-    const m = (/^(\d{2})\.(\d{2})\.([\dx]{3})/i).exec(version);
-    if (!m) { return Number.NaN; }
-
-    const patch = Number(m[3].replace(/x/gi, "0"));
-
-    return (Number(m[1]) * 1_000_000) + (Number(m[2]) * 10_000) + patch;
-};
-
-const V59_502 = ordinal("59.00.502");
-const V70_335 = ordinal("70.00.335");
-const V70_367 = ordinal("70.00.367");
+const V59_502 = versionOrdinal("59.00.502");
+const V70_335 = versionOrdinal("70.00.335");
+const V70_367 = versionOrdinal("70.00.367");
 
 export const routeFor = (version: string, id7: Id7State): Route | undefined =>
 {
@@ -51,7 +36,7 @@ export const routeFor = (version: string, id7: Id7State): Route | undefined =>
     const known = FIRMWARE.some((f) => f.id === version || f.label.includes(version));
     if (!known) { return undefined; }
 
-    const n = ordinal(version);
+    const n = versionOrdinal(version);
     if (Number.isNaN(n)) { return undefined; }
 
     // 70.00.367 and everything above it: the serial credentials are gone, and updates are signed, so
