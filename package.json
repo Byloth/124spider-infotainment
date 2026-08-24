@@ -7,9 +7,22 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "typecheck": "vue-tsc --build --force",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "vitepress": "^1.6.3"
+    "@byloth/eslint-config-nuxt": "^4.0.2",
+    "@eslint/compat": "^2.1.0",
+    "@types/node": "^26.2.0",
+    "@vueuse/core": "^12.8.2",
+    "eslint": "^10.9.0",
+    "husky": "^9.1.7",
+    "sass": "^1.103.1",
+    "typescript": "^6.0.3",
+    "vitepress": "^1.6.3",
+    "vue-tsc": "^3.3.11"
   }
 }
