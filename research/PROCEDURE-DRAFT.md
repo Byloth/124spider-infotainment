@@ -39,8 +39,9 @@ lost their branding and nav this way. [B-01, A-01]
 - Hub `TK78-66-9U0C` (or 9U0D/9U0E) + region cable set (EU: `C830-V6-60Z`) — see INVENTORY §3
 
 **Files** (region-matched — EU car → `EU N` files)
-- `cmu150_EU_70.00.100A_failsafe.up` **and** `cmu150_EU_70.00.100A_reinstall.up` ⚠️ *we do not yet hold
-  verified EU files — see OPEN-QUESTIONS #1*
+- `cmu150_EU_70.00.100A_failsafe.up` **and** `cmu150_EU_70.00.100A_reinstall.up` — **held**, both
+  matching their community MD5s (`cc485f4f…` / `d5c04258…`). The ADR pair is held too. See
+  INVENTORY §1 for provenance and the caveat on how independent those MD5 reports really are.
 - `MazdaToFiatV70AIO.zip` (held) — Fiat/Abarth branding + nav restore
 - One of: `autorun_copy_to_usb.zip` (ID7 v1, only if you are on 56.x) · `ID7_Recovery_XX.zip` (v2, serial
   route) · `mzd-connect-1-root` payload + a USB keyboard (mp3 route) — all held

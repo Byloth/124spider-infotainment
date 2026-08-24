@@ -32,10 +32,13 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
    guide only warns that the newer Fiat firmware "breaks CarPlay/AA compatibility" without saying whether
    it blocks the flash or just the tweaks. Needs a confirmed report before the guide promises it.
 
-5. **Malware / integrity check is not done.** Every file in `downloads/` is hashed but nothing has been
-   scanned. Minimum: VirusTotal hash lookups for all tweak ZIPs and the `.up` files; inspect the tweak
-   scripts (`tweaks.sh`) by hand. The `.up` files coming from Mazda's own CDN with matching community MD5s
-   are the strongest position we have; everything from MediaFire/GitHub rests on one host.
+5. **Integrity check: half done.** ✅ The tweak scripts *have* been read by hand (2026-08-23) — findings in
+   PROCEDURE-DRAFT §4b and items 10b/10c below; that is the control that actually matters for shell-script
+   payloads. ❌ **No antivirus pass has run**: `tools/vt-check.sh` is written but needs a `VT_API_KEY`.
+   Note the hard limit: the three large firmware images (883–957 MB) exceed VirusTotal's analysis cap, so
+   they cannot be scanned by upload *or* by URL — for those, matching community MD5s is the only available
+   evidence, and all four that have a published MD5 matched. Everything from MediaFire/GitHub still rests
+   on a single host.
 
 ## B. High value — would materially change the guide
 
