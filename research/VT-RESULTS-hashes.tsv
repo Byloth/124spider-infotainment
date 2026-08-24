@@ -1,0 +1,7 @@
+sha256	file	malicious	suspicious	undetected	verdict
+2c347d3dcd16328f85f6d19af94320998807846d34a3223d94a4db7027eab54d	ameridan/2018_Connect_CMU_Software_Update_Procedure.pdf	-	-	-	not-in-VT
+f3e3f7289a12a1e5d97e47f5a62d7232ba7959948f57521f7c93a0eede7b3f17	ameridan/Fix_ver70_NNG.zip	-	-	-	not-in-VT
+24bad77f82421e871ee8889d97490eb2d7df1be3dd41fe3c5fda5a6d135b579c	ameridan/Fully-Disable-Touchscreen.zip	0	0	61	clean
+59f103ca59c548fdc1a6edd73a9bba274e157f5709efe8ed230706a5749ed6fb	ameridan/JCI_Test_Mode_Control.zip	0	0	65	clean
+9d8fe6d8107ee038295e19a3a7c578f34530adbbdcd3321a26d4f3c8d7c58b20	ameridan/MazdaToFiatV70AIO.zip	0	0	53	clean
+34cf324c91bc361f59daf0a41bf7b23014c2ba098cdf0073288b1ef0142585c6	ameridan/RemoveNNG.zip	-	-	-	not-in-VT

@@ -18,7 +18,7 @@ in `FIRMWARE-MATRIX.md`. Four starting points:
 | You are on | Route |
 |---|---|
 | **56.00.521 / 56.00.530** (MY2017, early 2018) | **The easy path.** Install ID7 from USB *first*, then flash, then run the Fiat tweak from USB. |
-| **59.00.524 / 562 / 563** (late-2018 → 2020) — *this includes the maintainer's car* ⚠️ verify | USB side-loading is already dead. Either (a) serial console to install ID7 before flashing, or (b) flash first, then use the **mp3 method** to run the Fiat tweak. (b) is the 2025+ community answer. |
+| **59.00.524 / 562 / 563** (late-2018 → 2020) | USB side-loading is already dead. Either (a) serial console to install ID7 before flashing, or (b) flash first, then use the **mp3 method** to run the Fiat tweak. (b) is the 2025+ community answer. |
 | **70.00.335 / 352** | ID7 is gone. Serial-during-flash (ID7v2) or mp3 method (⚠️ one 124 failure on .335). |
 | **70.00.367 / 74.x** | Serial is dead. mp3 method (✅ confirmed on 74.00.324; ⚠️ single report on .367), or downgrade to 352 and use serial. |
 

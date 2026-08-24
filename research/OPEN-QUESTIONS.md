@@ -5,7 +5,7 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
 
 ---
 
-## A. Blocking — must be resolved before the maintainer's own car is touched
+## A. Blocking — must be resolved before this documentation can tell anyone to proceed
 
 1. ~~**EU firmware: no verified source.**~~ → **RESOLVED 2026-08-23.** The 124spider.org Google-Drive
    zips were downloaded and unpacked. We now hold `cmu150_EU_70.00.100A_failsafe.up` (7,078,085 B) and
@@ -21,10 +21,11 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
    upstream, so this is corroboration, not true independence. The **ADR** pair is stronger: both halves
    match community MD5s (`46d7a81a…`, `afb5cf9a…`) from a different source lineage.
 
-3. **What firmware is actually on the maintainer's car?**
-   Assumed EU 59.00.5xx, not confirmed. Read HOME → SETTINGS → SYSTEM → ABOUT → VERSION INFORMATION and
-   record the exact string including the region and `N` suffix. It decides the whole route (see
-   PROCEDURE-DRAFT §0) — in particular whether ID7 from USB is still possible (56.x) or not (59.x).
+3. **Every route must be documented to the same standard.** The guide cannot lean on whichever path the
+   maintainer's own car happens to need. Each of the four starting points in PROCEDURE-DRAFT §0 has to be
+   written out fully, for every market, including the ones we are least able to test. Where a route rests
+   on thinner evidence than another, say so on the page rather than quietly preferring the well-trodden
+   one.
 
 4. **Can you flash 70.00.100 over Fiat 59.00.562/563 at all?**
    Everyone assumes yes, but **no explicit first-hand success report was found** in anything we captured.
@@ -46,7 +47,7 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
    Confirmed on 70.00.100 and 74.00.324/311. ⚠️ Single reports on 59.00.563 and 70.00.367. ⚠️ One 124 owner
    **failed on 70.00.335** (unclear whether the payload didn't launch or the `tweaks.sh` version gate
    stopped it). This determines whether the "point of no return" disclaimer stays absolute or becomes
-   conditional. The maintainer's car can test the 59.x case directly.
+   conditional. The 59.x case is the one most needing a first-hand report.
 
 7. **Does the mp3 method need the new hub for the USB keyboard?**
    madfiat used the new hub; whether the old hub's ports enumerate a keyboard is unknown; one owner with

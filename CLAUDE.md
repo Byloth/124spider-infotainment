@@ -22,8 +22,14 @@ Apple CarPlay work**, including:
 Audience: 124 Spider owners only (Mazda owners go to a dealer). Mazda MX-5 ND / MZD sources are
 used freely because the hardware and firmware are shared.
 
-Owner context: the maintainer has an EU Abarth 124 Spider on 59.xx firmware, retrofit kit not yet
-installed — the car is the test bench; nothing can be verified on hardware by Claude.
+**The documentation is generic by design.** It must serve every 124 Spider owner equally: all markets
+(EU / NA / ADR / JP) and every starting firmware, with no route privileged because it happens to match
+one particular car. Do not tailor procedures, examples or defaults to the maintainer's vehicle, and do
+not treat any fact about it as a prerequisite for writing a page.
+
+The maintainer does own an EU Abarth 124 Spider (retrofit kit not yet fitted), and it will eventually be
+the first real-world test. That is **a separate task, to be started only once the documentation site is
+finished** — deliberately kept out of this one. Nothing can be verified on hardware by Claude in any case.
 
 ## Hard constraints / ground truth to keep in mind
 
@@ -103,8 +109,8 @@ Read `research/` before doing anything; the headlines:
 
 - **Mazda's own dealer CDN is still open for NA files**: `https://s3.amazonaws.com/tsd.mazdausa.com/
   MAZDA_CONNECT/<file>` (direct object GET; listing denied; **EU/ADR return 403**). Four downloaded NA
-  files matched the community-published MD5s exactly → genuine, unmodified, free. **EU is the open gap**
-  and the maintainer's car is EU.
+  files matched the community-published MD5s exactly → genuine, unmodified, free. EU/ADR had to come
+  from elsewhere (community re-hosts) — since acquired and hash-checked.
 - **The target version is 70.00.100A**, not the newest. It is the last build where the Fiat rebrand +
   nav-restore tool installs unmodified. 70.00.335/352/367 and 74.x progressively close the door.
 - **Fiat never released a v70+ firmware** — the whole procedure is "flash Mazda firmware, then rebrand".
@@ -128,7 +134,7 @@ Read `research/` before doing anything; the headlines:
   lost was recovered; ND workshop-manual trim sections mirrored (HiDrive confirmed dead).
 - 2026-08-23: **VitePress scaffold in place** — structure, navigation, 27 stub pages. No content ported.
 - **Next:** (1) port the research content into the pages, highest value first (procedure, firmware
-  matrix, security); (2) run `tools/vt-check.sh` once a VirusTotal key is available; (3) get the
-  maintainer's exact firmware version string — it decides the route and is the last thing blocking a real
-  attempt; (4) decide where/whether to publish the binaries (proprietary — takedown risk killed every
-  past mirror).
+  matrix, security) — written generically for all markets and all starting versions; (2) decide
+  where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).
+- **Deferred to a separate task, after the site is complete:** anything specific to the maintainer's own
+  car (reading its version string, choosing its route, an actual attempt).
