@@ -92,6 +92,12 @@ VitePress 1.6.4, npm, Node v24 via nvm. `npm run docs:dev` to serve, `npm run do
 ## Conventions
 
 - Language of all docs: English. Commit messages: English.
+- **Commits: plain `git commit`.** Never pass `-c user.name=…`, `-c user.email=…`, `--author`, or set
+  `GIT_AUTHOR_*`/`GIT_COMMITTER_*`. Identity is routed by directory through `includeIf` in
+  `~/.gitconfig` (this repo resolves to `~/byloth/.gitconfig`), and `commit.gpgsign = true` means commits
+  are **already GPG-signed** — do not add signing flags either. Note that `git config --local` and
+  `--global` report nothing for `user.name` because it comes from the included file; use
+  `git config --show-origin --get user.name` before concluding it is unset.
 - Every factual claim in research docs cites its source using the single repo-wide id scheme
   `[A-nn]` `[B-nn]` `[C1-nn]` `[C2-nn]` `[D-nn]` `[E-nn]` `[F-nn]`, registered in `research/SOURCES.md`
   (231 sources, with an alias column for URLs several themes found independently). Per-post detail lives
