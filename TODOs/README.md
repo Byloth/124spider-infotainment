@@ -1,0 +1,91 @@
+# TODO index
+
+The backlog for turning the research into the documentation site. Work the files in numeric order —
+the numbering *is* the dependency order.
+
+## Checkbox convention
+
+| Mark | Meaning |
+| --- | --- |
+| `- [ ]` | not started |
+| `- [X]` | done |
+| `- [~]` | this task's children are partially done |
+
+A parent task becomes `[~]` as soon as one child is `[X]` and at least one is still `[ ]`, and `[X]` only
+when every child is `[X]`.
+
+## The files
+
+| # | File | Tasks | State | What it covers |
+| --- | --- | ---: | :---: | --- |
+| 00 | [Toolchain](00-toolchain.md) | 26 | `[ ]` | TypeScript, ESLint + `@byloth/eslint-config-nuxt`, SASS, Husky, `@vueuse/core` pinning — and the rejected dependencies, with reasons |
+| 01 | [Theme foundation](01-theme-foundation.md) | 25 | `[ ]` | `theme/index.ts`, brand tokens, the styling contract, the SSR rule, conventions into `CLAUDE.md` |
+| 02 | [Data layer](02-data-layer.md) | 20 | `[ ]` | Seven typed data modules — firmware, files, parts, sources, failures, links, glossary |
+| 03 | [Components](03-components.md) | 35 | `[ ]` | `useProfile()` plus 17 components, each with its contract and its no-JS obligation |
+| 04 | [Diagrams](04-diagrams.md) | 15 | `[ ]` | Eight original SVGs, light/dark aware, each with a text equivalent |
+| 05 | [Pages · Security](05-pages-security.md) | 30 | `[ ]` | The original findings and the live hijacked domain — **written first** |
+| 06 | [Pages · Firmware](06-pages-firmware.md) | 31 | `[ ]` | Matrix, regions, points of no return, obtaining and verifying |
+| 07 | [Pages · Start here](07-pages-guide.md) | 30 | `[ ]` | Overview, eligibility, what changes, risks, the route wizard |
+| 08 | [Pages · Procedure](08-pages-procedure.md) | 45 | `[ ]` | Route selector and the five steps — the operational core |
+| 09 | [Pages · Hardware](09-pages-hardware.md) | 22 | `[ ]` | The kit, part numbers per market, genuine vs clone |
+| 10 | [Pages · Recovery](10-pages-recovery.md) | 33 | `[ ]` | Troubleshooting, downgrading, un-bricking |
+| 11 | [Pages · Reference](11-pages-reference.md) | 31 | `[ ]` | Sources, inventory, open questions, glossary, changelog |
+| 12 | [Verification](12-verification.md) | 28 | `[ ]` | Build, typecheck, lint, no-JS, dark mode, responsive, hash verifier |
+| 99 | [Deferred](99-deferred.md) | 24 | `[ ]` | Deploy, i18n, binary hosting, the maintainer's own car |
+
+**395 tasks.** Update this table's state column as files progress.
+
+## Why this order
+
+**00–01 first** so the first component written is already linted, typed and styled to the contract, rather
+than retrofitted later.
+
+**02–04 next** because they are the shared substrate: pages consume the data modules and mount the
+components, so building a page before them means writing it twice.
+
+**05 before everything else in the pages** because `/security/` is the only part of this site that exists
+nowhere else — it comes from reading the tweak packages line by line — and because it carries a hazard
+that is live right now: the canonical community guide still points firmware-59 owners at a domain that
+today serves a scam site.
+
+**06 next** because the firmware reference is what every other page links into.
+
+**07–11** follow the reader's own path, then the reference material that indexes it all.
+
+**12 continuously**, not just at the end. Run the automated checks per section.
+
+## Current state of the repository
+
+- **Research: complete.** Five consolidated documents in `research/` — 22-version firmware matrix,
+  198-source registry, 174-row inventory, reconstructed procedure, 19-entry failure catalogue — plus
+  ~430 archived pages and seven per-theme raw reports.
+- **Binaries: collected and verified.** ~11 GB in the git-ignored `downloads/`, all 28 files hashed in
+  `downloads/CHECKSUMS.sha256`. EU, ADR and NA 70.00.100A all present and matching community MD5s.
+  20 files scanned clean by VirusTotal; 7 exceed every scanner's size limit and never can be.
+- **Site: scaffold only.** VitePress 1.6.4 in `docs/`, 27 stub pages, nav and sidebars wired, build green.
+  No content ported. Five more pages to create: `guide/route`, `security/link-safety`,
+  `reference/changelog`.
+- **Not decided:** deploy target, i18n, whether binaries are ever hosted. See `99-deferred.md`.
+
+## Source of truth
+
+The pages are a distillation. The full record stays in the repository:
+
+| Document | What it holds |
+| --- | --- |
+| `research/PROCEDURE-DRAFT.md` | The reconstructed end-to-end procedure, plus §4b — the original script review |
+| `research/FIRMWARE-MATRIX.md` | Version × region matrix, upgrade/downgrade rules, the points of no return |
+| `research/INVENTORY.md` | Every file and part, with hashes and status |
+| `research/SOURCES.md` | The 198-source registry with link status and trust level |
+| `research/OPEN-QUESTIONS.md` | What is unknown, contradictory, or answerable only by a car |
+| `research/raw/*.md` | The seven per-theme reports, with the per-post detail the summaries drop |
+
+## Two rules that override convenience
+
+**Progressive enhancement.** This is safety-critical documentation. With JavaScript disabled, every page
+must still show every route and every market. Components filter, highlight and reorder — they never gate.
+No content may exist only inside a component.
+
+**Confidence markers survive.** The research is full of ⚠️ (single report) and ❓ (sources contradict).
+Those must reach the reader intact. Flattening them into confident prose is the one failure mode that
+would make this site actively worse than the forum posts it replaces.
