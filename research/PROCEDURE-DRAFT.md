@@ -22,6 +22,11 @@ in `FIRMWARE-MATRIX.md`. Four starting points:
 | **70.00.335 / 352** | ID7 is gone. Serial-during-flash (ID7v2) or mp3 method (⚠️ one 124 failure on .335). |
 | **70.00.367 / 74.x** | Serial is dead. mp3 method (✅ confirmed on 74.00.324; ⚠️ single report on .367), or downgrade to 352 and use serial. |
 
+> 🔴 **Do not follow `mazdatweaks.com` links from the old guides.** 68wooley's Part 1 and many forum
+> posts send firmware-59 owners to `mazdatweaks.com/serial/`. As of 2026-08-24 that page serves a
+> gambling/scam site, while the site's front page still looks legitimate. `/id7/` is gone (404). The only
+> surviving copy of that material is the GitHub mirror `Trevelopment/mazdatweaks`.
+
 **Before anything else:** do **not** let a dealer touch the CMU. Mazda dealers flash the newest firmware
 they have (today 74.00.324); Fiat dealers have flashed Mazda firmware onto 124s by mistake. Multiple owners
 lost their branding and nav this way. [B-01, A-01]

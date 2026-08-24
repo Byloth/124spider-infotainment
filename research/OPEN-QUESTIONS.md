@@ -33,20 +33,33 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
    guide only warns that the newer Fiat firmware "breaks CarPlay/AA compatibility" without saying whether
    it blocks the flash or just the tweaks. Needs a confirmed report before the guide promises it.
 
-5. **Integrity check: source review done, antivirus pass done, one gap remains.**
-   - ✅ **Tweak scripts read by hand** (2026-08-23) — findings in PROCEDURE-DRAFT §4b and items 10b/10c.
-     For shell-script payloads this is the control that actually matters.
-   - ✅ **VirusTotal hash lookup run on all 28 collected files** (`research/VT-RESULTS-hashes.tsv`):
-     **0 malicious, 0 suspicious.** 8 files were already known to VT and came back clean across 53–68
-     engines — including `MazdaToFiatV70AIO.zip`, `autorun_copy_to_usb.zip` (ID7), the mp3 payload, and
-     the NA/EU/ADR 70.00.100A failsafes. The other 20 are **`not-in-VT`**: nobody ever submitted them, so
-     there is no verdict either way — expected for proprietary firmware and niche community packages.
-   - ❌ **The three large firmware images cannot ever be scanned** (883–957 MB, over VirusTotal's analysis
-     cap) by upload or by URL. For those, matching community MD5s is the only available evidence — and
-     all four with a published MD5 matched.
-   - ⏳ **Optional next step:** 12 of the `not-in-VT` files are under 32 MB and *could* be submitted for
-     actual analysis. That means publishing them to a third party, which is a deliberate decision —
-     harmless for the community freeware, a judgement call for Mazda's proprietary `.up` files.
+5. ~~**Integrity check**~~ → **DONE 2026-08-24.**
+   - ✅ **Tweak scripts read by hand** — findings in PROCEDURE-DRAFT §4b and items 10b/10c. For
+     shell-script payloads this is the control that actually matters.
+   - ✅ **VirusTotal hash lookup on all 28 files** (`research/VT-RESULTS-hashes.tsv`) and **upload +
+     full analysis of the 13 that VT had never seen and that fit its size limits**
+     (`research/VT-RESULTS-uploads.tsv`). Combined result: **20 files scanned clean** across 57–68
+     engines — every tweak package, the ID7 packages, the mp3 payload, and every failsafe image.
+   - ⚠️ **One detection, investigated and dismissed:** `124Spider_CP_AA_Upgrade_Guide.zip` →
+     ESET-NOD32 alone (1 of 65) reports `PDF/Phishing.A.Gen` on **Part 1** of the guide. Isolated to that
+     PDF (Part 2 is clean) and the file was examined directly: **zero active content** — no
+     `/JavaScript`, `/OpenAction`, `/Launch`, `/EmbeddedFile`, `/SubmitForm` or `/XFA`, only 9 plain
+     hyperlinks. A generic heuristic firing on a document whose whole purpose is to point at download
+     links. **False positive** — but see 5b, because it is pointing at something real.
+   - ❌ **7 files can never be scanned** (883 MB–2.3 GB, over VirusTotal's ~650 MB analysis cap) by
+     hash, upload or URL. For those, matching community MD5s is the only evidence — and all four with a
+     published MD5 matched.
+
+5b. **🔴 The canonical guide sends readers to a domain that is now attacker-controlled.**
+   68wooley's Part 1 — still the reference guide, still bundled in every firmware package circulating
+   today — instructs owners on firmware 59 to follow `https://mazdatweaks.com/serial/`. Checked
+   2026-08-24: **that page now serves an Indonesian lottery/gambling site** ("Kpktoto — Agen Nomor Lotre
+   Togel"), while `mazdatweaks.com/` still renders a legitimate-looking "Mazda AIO Tweaks" homepage. The
+   plausible front page makes it *more* deceptive, not less. `/id7/` is 404.
+   **Consequence for this project:** wherever we reproduce or link the historic guides, every
+   `mazdatweaks.com` reference must carry a warning, and the surviving content should be cited from the
+   GitHub mirror `Trevelopment/mazdatweaks` instead. This is a live hazard for anyone following the
+   community guides today — arguably the most immediately useful thing this project can publish.
 
 ## B. High value — would materially change the guide
 

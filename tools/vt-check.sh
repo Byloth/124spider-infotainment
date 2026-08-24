@@ -3,6 +3,7 @@
 #
 #   VT_API_KEY=<key> ./tools/vt-check.sh            # mode 1: hash lookup (default)
 #   VT_API_KEY=<key> ./tools/vt-check.sh urls       # mode 2: submit direct URLs
+#   VT_API_KEY=<key> ./tools/vt-check.sh upload     # mode 3: upload files VT has never seen
 #
 # Free key: https://www.virustotal.com/gui/my-apikey  (4 requests/min — the script paces itself)
 #
@@ -67,7 +68,7 @@ if [ "$MODE" = "hashes" ]; then
   done < downloads/CHECKSUMS.sha256
   echo "-> $OUT"
 
-else
+elif [ "$MODE" = "urls" ]; then
   # Direct-URL sources only (see header for why the rest are excluded).
   OUT=research/VT-RESULTS-urls.tsv
   printf 'url\tmalicious\tsuspicious\tundetected\tverdict\n' > "$OUT"
@@ -92,6 +93,63 @@ https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.6/MZD-AIO-TI_Setu
     read -r mal sus und <<<"$(parse_stats "$resp")"
     printf '%s\t%s\t%s\t%s\t%s\n' "$u" "${mal:-?}" "${sus:-?}" "${und:-?}" "$(verdict_of "$mal" "$sus")" >> "$OUT"
     sleep 16
+  done
+  echo "-> $OUT"
+fi
+
+# ---------------------------------------------------------------------------
+# MODE 3 — upload. Only for files that came back "not-in-VT" in mode 1 and that
+# fit VirusTotal's limits: 32 MB via the plain endpoint, ~650 MB via an upload_url.
+# NOTE this PUBLISHES the file to a third party. Fine for community freeware;
+# a deliberate choice for proprietary firmware.
+# ---------------------------------------------------------------------------
+if [ "$MODE" = "upload" ]; then
+  OUT=research/VT-RESULTS-uploads.tsv
+  SIMPLE_MAX=$((32*1024*1024))
+  BIG_MAX=$((650*1024*1024))
+  printf 'file\tbytes\tmalicious\tsuspicious\tundetected\tverdict\n' > "$OUT"
+
+  awk -F'\t' 'NR>1 && $6=="not-in-VT" {print $2}' research/VT-RESULTS-hashes.tsv | while read -r rel; do
+    f="downloads/$rel"
+    [ -f "$f" ] || continue
+    sz=$(stat -c%s "$f")
+    if [ "$sz" -gt "$BIG_MAX" ]; then
+      printf '%s\t%s\t-\t-\t-\ttoo-large-for-VT\n' "$rel" "$sz" >> "$OUT"
+      echo "skip (too large): $rel"; continue
+    fi
+
+    echo "upload: $rel ($sz bytes)"
+    if [ "$sz" -le "$SIMPLE_MAX" ]; then
+      ep="https://www.virustotal.com/api/v3/files"
+    else
+      ep=$(vt_get "https://www.virustotal.com/api/v3/files/upload_url" \
+           | sed -n 's/.*"data": *"\([^"]*\)".*/\1/p')
+      sleep 16
+      [ -z "$ep" ] && { echo "  no upload_url"; printf '%s\t%s\t-\t-\t-\tupload-url-failed\n' "$rel" "$sz" >> "$OUT"; continue; }
+    fi
+
+    resp=$(curl -s --max-time 900 -H "x-apikey: ${VT_API_KEY}" -F "file=@${f}" "$ep")
+    aid=$(sed -n 's/.*"id": *"\([^"]*\)".*/\1/p' <<<"$resp" | head -1)
+    if [ -z "$aid" ]; then
+      echo "  upload failed"; printf '%s\t%s\t-\t-\t-\tupload-failed\n' "$rel" "$sz" >> "$OUT"; sleep 16; continue
+    fi
+
+    # poll the analysis until it completes (queued files can take minutes)
+    status=""; mal=""; sus=""; und=""
+    for _ in $(seq 1 40); do
+      sleep 16
+      a=$(vt_get "https://www.virustotal.com/api/v3/analyses/${aid}")
+      status=$(sed -n 's/.*"status": *"\([^"]*\)".*/\1/p' <<<"$a" | head -1)
+      [ "$status" = "completed" ] && { read -r mal sus und <<<"$(parse_stats "$a")"; break; }
+    done
+
+    if [ "$status" != "completed" ]; then
+      printf '%s\t%s\t-\t-\t-\tstill-queued\n' "$rel" "$sz" >> "$OUT"
+      echo "  still queued after ~10 min"
+    else
+      printf '%s\t%s\t%s\t%s\t%s\t%s\n' "$rel" "$sz" "${mal:-?}" "${sus:-?}" "${und:-?}" "$(verdict_of "$mal" "$sus")" >> "$OUT"
+      echo "  -> $(verdict_of "$mal" "$sus") (mal=${mal:-?} sus=${sus:-?})"
+    fi
   done
   echo "-> $OUT"
 fi
