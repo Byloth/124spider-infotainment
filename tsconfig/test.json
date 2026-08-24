@@ -1,0 +1,17 @@
+{
+  "extends": "./_base.json",
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "../node_modules/.tmp/tsconfig.test.tsbuildinfo",
+    "types": ["node"]
+  },
+  "include": [
+    "../tests/**/*",
+    "../vitest.config.ts",
+
+    // The data modules the tests import. They also belong to `app.json`; listing them here as well is
+    // what lets this project type-check the imports without a project reference (which would need
+    // declaration emit, and `_base.json` sets `noEmit`).
+    "../docs/.vitepress/data/**/*"
+  ]
+}

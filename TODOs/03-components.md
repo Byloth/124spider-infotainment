@@ -41,6 +41,12 @@ inside `<ClientOnly>` or `onMounted`, and the server-rendered state is the neutr
   - [ ] Must be safe to call during SSR (returns the empty profile).
   - [ ] Expose a `reset()`; the reader must be able to clear what the site remembers about them.
 
+## Write these three test-first
+
+See `03b-testing.md`. The runner is already in place, and these are the pieces where a silent bug does
+real damage: the **version-string parser**, the **route derivation** `(version, id7) → Route`, and
+**`HashVerifier`'s chunked digest**.
+
 ## 2. Components
 
 Each entry: what it does · where it is used · what it must do without JS.
@@ -61,13 +67,13 @@ Each entry: what it does · where it is used · what it must do without JS.
       version, surface the confidence markers.
       *No JS:* the full matrix is a static Markdown table underneath.
 - [ ] **`HashVerifier`** — `/firmware/obtaining`. **The most valuable interactive piece.**
-  - [ ] Drag or pick a file → SHA-256 via `crypto.subtle.digest` → matched against `files.data.ts`.
+  - [ ] Drag or pick a file → SHA-256 via `crypto.subtle.digest` → matched against `files.ts`.
   - [ ] ⚠️ Must hash in **chunks** (`File.stream()` / incremental read): the firmware images are
         0.9–2.4 GB and reading them into one `ArrayBuffer` will fail or exhaust memory.
   - [ ] Show progress; the whole point is that a 2.3 GB file takes a while.
   - [ ] State prominently in the UI that **nothing is uploaded** — it runs entirely in the browser.
   - [ ] Handle "hash not known to us" as a distinct, non-alarming outcome.
-- [ ] **`DownloadSources`** — `/firmware/obtaining`. Per-region source list from `links.data.ts`, each
+- [ ] **`DownloadSources`** — `/firmware/obtaining`. Per-region source list from `links.ts`, each
       with status and last-checked date, ranked (first-party first).
 - [ ] **`HashTable`** — `/reference/inventory`. Filter by region/kind/status; copy-to-clipboard on hashes.
 - [ ] **`PartFinder`** — `/hardware/part-numbers`, `/procedure/hardware`. Market → hub, cable set, kit
@@ -79,16 +85,16 @@ Each entry: what it does · where it is used · what it must do without JS.
 - [ ] **`FlashTimer`** — `/procedure/flash`. The 20-minute pedal reminder (ACC times out at 25 min and a
       mid-flash power loss is the classic brick). Audible + visible. Must work offline.
       Keep it honest: it is an aid, not a guarantee — say so in the component.
-- [ ] **`SymptomTree`** — `/recovery/`. Guided narrowing over `failures.data.ts`.
+- [ ] **`SymptomTree`** — `/recovery/`. Guided narrowing over `failures.ts`.
       *No JS:* the full 19-row catalogue is rendered statically on the same page.
 - [ ] **`DowngradeMatrix`** — `/recovery/downgrade`. From/to grid with the two version walls
       (`<59.00.502` and `<74.00.310` reachable only via SPI-NOR).
 - [ ] **`LinkStatus`** — site-wide, and the backbone of `/security/link-safety`. Renders an external link
-      together with its status from `links.data.ts`; a `hijacked` or `dead` link is visually unmistakable
+      together with its status from `links.ts`; a `hijacked` or `dead` link is visually unmistakable
       and carries the replacement.
-- [ ] **`SourceTable`** — `/reference/sources`. Filter 198 rows by category, link status, trust level.
+- [ ] **`SourceTable`** — `/reference/sources`. Filter 200 rows by category, link status, trust level.
 - [ ] **`GlossaryTip`** — site-wide. Definition on hover **and focus** (keyboard accessible), sourced from
-      `glossary.data.ts`. Falls back to a plain link to `/reference/glossary`.
+      `glossary.ts`. Falls back to a plain link to `/reference/glossary`.
 
 ## Accessibility — applies to all of the above
 
@@ -100,7 +106,7 @@ Each entry: what it does · where it is used · what it must do without JS.
 
 ## Done when
 
-- [ ] Every component renders correctly server-side (`npm run docs:build` produces the neutral state in
+- [ ] Every component renders correctly server-side (`bun run docs:build` produces the neutral state in
       the emitted HTML — check the `dist/` output, not just the dev server).
 - [ ] Every page carrying a component was loaded with JS disabled and still showed all content.
 - [ ] No component defines a colour outside `var(--vp-*)`.
