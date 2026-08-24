@@ -18,7 +18,7 @@ when every child is `[X]`.
 
 | # | File | Tasks | State | What it covers |
 | --- | --- | ---: | :---: | --- |
-| 00 | [Toolchain](00-toolchain.md) | 26 | `[ ]` | TypeScript, ESLint + `@byloth/eslint-config-nuxt`, SASS, Husky, `@vueuse/core` pinning — and the rejected dependencies, with reasons |
+| 00 | [Toolchain](00-toolchain.md) | 35 | `[ ]` | TypeScript, ESLint + `@byloth/eslint-config-nuxt`, SASS, Husky, `@vueuse/core` pinning — and the rejected dependencies, with reasons |
 | 01 | [Theme foundation](01-theme-foundation.md) | 25 | `[ ]` | `theme/index.ts`, brand tokens, the styling contract, the SSR rule, conventions into `CLAUDE.md` |
 | 02 | [Data layer](02-data-layer.md) | 20 | `[ ]` | Seven typed data modules — firmware, files, parts, sources, failures, links, glossary |
 | 03 | [Components](03-components.md) | 35 | `[ ]` | `useProfile()` plus 17 components, each with its contract and its no-JS obligation |
@@ -33,12 +33,14 @@ when every child is `[X]`.
 | 12 | [Verification](12-verification.md) | 28 | `[ ]` | Build, typecheck, lint, no-JS, dark mode, responsive, hash verifier |
 | 99 | [Deferred](99-deferred.md) | 24 | `[ ]` | Deploy, i18n, binary hosting, the maintainer's own car |
 
-**395 tasks.** Update this table's state column as files progress.
+**404 tasks.** Update this table's state column as files progress.
 
 ## Why this order
 
 **00–01 first** so the first component written is already linted, typed and styled to the contract, rather
-than retrofitted later.
+than retrofitted later. The toolchain follows Matteo's own repositories rather than inventing a house
+style for this repo alone: `Byloth/tuemplate` (the newest template) and `Byloth/website` (a VitePress
+1.6.4 project, so the closest existing model — its `tsconfig/` split is copied almost verbatim).
 
 **02–04 next** because they are the shared substrate: pages consume the data modules and mount the
 components, so building a page before them means writing it twice.
