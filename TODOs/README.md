@@ -67,17 +67,15 @@ today serves a scam site.
 - **Site: scaffold only.** VitePress 1.6.4 in `docs/`, 27 stub pages, nav and sidebars wired, build green.
   No content ported. Five more pages to create: `guide/route`, `security/link-safety`,
   `reference/changelog`.
-- **Theme foundation: done** (file 01).  extends the default theme;  carries
-  a contrast-checked brand scale derived from ; the styling contract, the slot list and the SSR
-  rule are recorded in .
 - **Theme foundation: done** (file 01). `docs/.vitepress/theme/index.ts` extends the default theme and
   `style.css` carries a contrast-checked brand scale derived from `#8c1007` (dark variants are *lighter*,
   since the base reads 1.79:1 on the dark background). The styling contract, the full slot list and the
   SSR rule are now recorded in `CLAUDE.md`, so no future session has to re-read `node_modules`.
 - **Toolchain: done** (file 00). `bun` as package manager, TypeScript 6.0.3 with the `tsconfig/` split,
   ESLint 10 + `@byloth/eslint-config-nuxt`, SASS, and a husky pre-commit running lint → typecheck →
-  build. Two items stay open there: whether to adopt `@byloth/core`, and an `.editorconfig`-vs-ESLint
-  indentation conflict on `config.mts`.
+  build. One item stays open there: whether to adopt `@byloth/core`. (The suspected
+  `.editorconfig`-vs-ESLint conflict turned out not to exist — `*.config.mts` does not match a bare
+  `config.mts`, so both agree on 4 spaces.)
 - **Not decided:** deploy target, i18n, whether binaries are ever hosted. See `99-deferred.md`.
 
 ## Source of truth

@@ -190,11 +190,20 @@ An earlier draft of this file overstated two of these. Corrected against `npm in
 - [X] **`@parcel/watcher` postinstall stays blocked.** bun blocks it by default; it is an *optional*
       dependency of `sass` (for sass's own watch mode, which we do not use — Vite watches). Build and
       typecheck both pass without it, so it is left untrusted rather than compiled from source.
-- [ ] ⚠️ **`.editorconfig` and ESLint disagree on `docs/.vitepress/config.mts`.** The editorconfig rule
-      `[*.config.{js,mjs,ts,mts}]` asks for 2-space indentation, but `@stylistic/indent` enforces 4 and
-      that file matches the glob. ESLint won (it is in the pre-commit hook) and the file is now 4-space.
-      The same conflict exists in `Byloth/website`. **Decide which one should give way** — this is the one
-      open item in this file.
+- [X] ✅ **There is no `.editorconfig`-vs-ESLint conflict** — an earlier note in this file claimed one and
+      was wrong. `*.config.mts` does **not** match `config.mts`: the glob's `*` may match the empty
+      string, but the pattern still requires a literal `.` before `config`, and the basename has no
+      leading dot. Verified with the official implementation (`bunx editorconfig`):
+
+      | file | resolved `indent_size` | why |
+      |---|---:|---|
+      | `docs/.vitepress/config.mts` | **4** | no prefix → falls through to `[*]` |
+      | `eslint.config.mjs` | 2 | has the `eslint` prefix → matches `*.config.mjs` |
+      | `tsconfig.json` | 2 | matches `*.{json,yml}` |
+      | `docs/.vitepress/theme/index.ts` | 4 | `[*]` |
+
+      So editorconfig and ESLint agree: that file is 4-space, which is what it now is. The
+      `*.config.*` rule is aimed at `vite.config.ts` / `eslint.config.mjs`, exactly as intended.
 
 ## Done when
 
