@@ -21,10 +21,10 @@ when every child is `[X]`.
 | 00 | [Toolchain](00-toolchain.md) | 42 | `[~]` | TypeScript, ESLint + `@byloth/eslint-config-nuxt`, SASS, Husky, `@vueuse/core` pinning — and the rejected dependencies, with reasons |
 | 01 | [Theme foundation](01-theme-foundation.md) | 30 | `[X]` | `theme/index.ts`, brand tokens, the styling contract, the SSR rule, conventions into `CLAUDE.md` |
 | 02 | [Data layer](02-data-layer.md) | 27 | `[~]` | Seven typed data modules — firmware, files, parts, sources, failures, links, glossary |
-| 03 | [Components](03-components.md) | 41 | `[X]` | `useProfile()` plus 17 components, each with its contract and its no-JS obligation |
+| 03 | [Components](03-components.md) | 41 | `[X]` | `useProfile()` plus 18 components, each with its contract and its no-JS obligation (`SourceCite` and `LinkTable` were added later, in 05) |
 | 03b | [Testing](03b-testing.md) | 35 | `[X]` | Vitest 3, data invariants and the two resolver functions — plus the three logic pieces to write test-first in 03 |
 | 04 | [Diagrams](04-diagrams.md) | 35 | `[~]` | Eight original SVGs — inline in components, three generated from the data, each with a text equivalent |
-| 05 | [Pages · Security](05-pages-security.md) | 30 | `[ ]` | The original findings and the live hijacked domain — **written first** |
+| 05 | [Pages · Security](05-pages-security.md) | 38 | `[X]` | The original findings and the live hijacked domain — **written first**, and the house style for every page after |
 | 06 | [Pages · Firmware](06-pages-firmware.md) | 31 | `[ ]` | Matrix, regions, points of no return, obtaining and verifying |
 | 07 | [Pages · Start here](07-pages-guide.md) | 30 | `[ ]` | Overview, eligibility, what changes, risks, the route wizard |
 | 08 | [Pages · Procedure](08-pages-procedure.md) | 45 | `[ ]` | Route selector and the five steps — the operational core |
@@ -34,7 +34,7 @@ when every child is `[X]`.
 | 12 | [Verification](12-verification.md) | 28 | `[ ]` | Build, typecheck, lint, no-JS, dark mode, responsive, hash verifier |
 | 99 | [Deferred](99-deferred.md) | 26 | `[ ]` | Deploy, i18n, binary hosting, the maintainer's own car |
 
-**486 tasks.** Update this table's state column as files progress.
+**494 tasks.** Update this table's state column as files progress.
 
 ## Why this order
 
@@ -69,18 +69,20 @@ today serves a scam site.
 - **Binaries: collected and verified.** ~11 GB in the git-ignored `downloads/`, all 28 files hashed in
   `downloads/CHECKSUMS.sha256`. EU, ADR and NA 70.00.100A all present and matching community MD5s.
   20 files scanned clean by VirusTotal; 7 exceed every scanner's size limit and never can be.
-- **Site: scaffold only.** VitePress 1.6.4 in `docs/`, 27 stub pages, nav and sidebars wired, build green.
-  No content ported. Five more pages to create: `guide/route`, `security/link-safety`,
-  `reference/changelog`.
-- **Components: done** (file 03). `useProfile()` plus 16 components in `docs/.vitepress/theme/components/`,
+- **Site: the first two pages are written** (file 05). `/security/` and `/security/link-safety` are
+  finished prose — the section that exists nowhere else, plus the live hijacked-domain warning. The other
+  27 pages are still stubs. Two more pages remain to create: `guide/route` and `reference/changelog`.
+- **Components: done** (file 03, plus two from 05). `useProfile()` plus 18 components in `docs/.vitepress/theme/components/`,
   and three pure-logic modules in `docs/.vitepress/logic/` — the version parser, the route derivation and
   an incremental SHA-256 (WebCrypto cannot hash a 2.4 GB file). A development gallery at
   `docs/dev/components.md`, unlisted in the navigation, renders every one of them.
 - **Testing: set up** (file 03b). Vitest 3 (not 4 — 4 needs vite ≥6 and VitePress pins 5), 37 tests
   covering data invariants and the two resolver functions, type-checked via a third tsconfig project.
-  Now **91 tests**: the three logic pieces in task 03 were written test-first, and task 04 added the
-  band partition and the three data-driven diagrams (rendered through `@vue/server-renderer`, which
-  needs no DOM — so `@vue/test-utils` and `happy-dom` stay out of the tree).
+  Now **105 tests**: the three logic pieces in task 03 were written test-first, task 04 added the band
+  partition and the three data-driven diagrams, and task 05 added `SourceCite` and `LinkTable` — the
+  latter carrying the rule that nothing on a hostile *host* may ever be rendered as a clickable link.
+  All of it renders through `@vue/server-renderer`, which needs no DOM, so `@vue/test-utils` and
+  `happy-dom` stay out of the tree.
 - **Diagrams: done** (file 04). Eight in `docs/.vitepress/theme/components/diagrams/`, inline in
   components rather than files in `docs/public/` — an SVG in an `<img src>` cannot read the page's
   `var(--vp-c-*)` tokens, so a file would need one copy per colour scheme. Three are generated from

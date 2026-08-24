@@ -23,10 +23,12 @@ import GlossaryTip from "@theme/components/GlossaryTip.vue";
 import HashTable from "@theme/components/HashTable.vue";
 import HashVerifier from "@theme/components/HashVerifier.vue";
 import LinkStatus from "@theme/components/LinkStatus.vue";
+import LinkTable from "@theme/components/LinkTable.vue";
 import MarketSelect from "@theme/components/MarketSelect.vue";
 import PartFinder from "@theme/components/PartFinder.vue";
 import RouteBranch from "@theme/components/RouteBranch.vue";
 import RouteWizard from "@theme/components/RouteWizard.vue";
+import SourceCite from "@theme/components/SourceCite.vue";
 import SourceTable from "@theme/components/SourceTable.vue";
 import SymptomTree from "@theme/components/SymptomTree.vue";
 import VersionDecoder from "@theme/components/VersionDecoder.vue";
@@ -123,6 +125,22 @@ This one applies to 70.00.367 and the 74.x builds, where serial access is gone.
 ## RouteWizard
 
 <RouteWizard />
+
+## SourceCite
+
+Citations resolve through `sourceById()`, which pads short ids and follows the alias column. An id that
+resolves to nothing is marked rather than dropped — the last one below is deliberately broken.
+
+A canonical id<SourceCite ids="B-04" />, two at once<SourceCite ids="C2-25,B-05" />, an unpadded
+id<SourceCite ids="A-1" />, and one that does not exist<SourceCite ids="ZZ-99" />.
+
+## LinkTable
+
+<LinkTable />
+
+### …filtered to the problems only
+
+<LinkTable filter="problems" />
 
 ## SourceTable
 

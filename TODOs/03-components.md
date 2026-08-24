@@ -136,3 +136,15 @@ Each entry: what it does · where it is used · what it must do without JS.
 - [X] Every page carrying a component was loaded with JS disabled and still showed all content.
 - [X] No component defines a colour outside `var(--vp-*)`.
 - [X] `grep -L 'script lang="ts" setup' docs/.vitepress/theme/components/*.vue` returns nothing.
+
+---
+
+## Added later, in task 05
+
+- [X] **`SourceCite`** — inline citations resolving through `sourceById()`. Not foreseen here because the
+      citation convention for reader-facing pages had not been decided when this file was written.
+- [X] **`LinkTable`** — the external-link register rendered whole. `LinkStatus` handles one URL inline;
+      nothing rendered the register itself, and `/security/link-safety` needs it.
+- [X] Both are pure functions of the data, server-rendered, and need no JavaScript. See
+      `TODOs/05-pages-security.md` for what writing them turned up — including the `LinkStatus` bug where
+      a merely-`dead` page on a hijacked domain was still being rendered as a live link.

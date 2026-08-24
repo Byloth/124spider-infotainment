@@ -76,7 +76,8 @@ docs/                      – the VitePress site (reader-facing)
                              components/ and components/diagrams/ — via the `@theme/*` alias
   index.md                 – home
   dev/components.md        – unlisted gallery mounting every component and diagram
-  guide/ procedure/ firmware/ hardware/ recovery/ security/ reference/
+  security/                – the only section that exists nowhere else; the first pages written
+  guide/ procedure/ firmware/ hardware/ recovery/ reference/
 tests/                     – Vitest; data invariants, the resolvers, the logic modules, the diagrams
 TODOs/                     – the backlog, one file per phase + README.md as the index
 tools/
@@ -91,9 +92,10 @@ VitePress 1.6.4, **bun**, Node v24 via nvm. `bun run docs:dev` to serve, `bun ru
 
 - **Deploy is not decided** — local only for now, so `base: '/'` and there is no CI workflow. A GitHub
   Pages project site would need `base: '/124spider-infotainment/'`.
-- **The 27 pages are stubs.** The scaffold and navigation are real; the content has *not* been ported
-  from `research/`. Every stub carries a warning block pointing at its backing document — keep that
-  warning until the page is actually written, so an empty page is never mistaken for guidance.
+- **Two of the 29 pages are written**; the rest are stubs. `/security/` and `/security/link-safety` are
+  finished prose. Every remaining stub carries a warning block pointing at its backing document — keep
+  that warning until the page actually stands on its own, so an empty page is never mistaken for
+  guidance, and delete it only in the commit that writes the page.
 - **i18n**: English content stays at the root of `docs/` on purpose. VitePress keeps the root locale in
   place and gives other locales a subdirectory, so adding Italian later needs only a `locales` key.
 - `bun run docs:build` fails on dead links by design — use it as the link checker.
@@ -178,6 +180,26 @@ there *replaces* the default one — to use a layout slot, wrap it:
 ⚠️ Using `layout-top` or `doc-top` requires setting `--vp-layout-top-height` / `--vp-doc-top-height`
 yourself.
 
+## Writing pages
+
+Established by `/security/` and `/security/link-safety`, the first two real pages — follow them rather
+than re-deciding.
+
+- **Citations are inline**: `<SourceCite ids="B-04,C2-25" />` at the end of the sentence it supports,
+  resolving through `sourceById()`. An id that resolves to nothing renders visibly marked. Where a claim
+  comes from a file the project holds rather than from a source, the page says that instead of citing.
+- **Numbers that live in the data are interpolated from it** — `{{ UNSCANNABLE.length }}`, never typed.
+  A `<script lang="ts" setup>` block in the `.md` imports what the page needs; `@theme/*` resolves for
+  components, and data is a relative path (`../.vitepress/data/files`).
+- **Market-dependent facts are stated for every market at once**, never gated behind a selector.
+- **Where the sources do not support a recommendation, say so** rather than implying one by omission.
+  The ID7-vs-mp3 comparison is the model: both costs stated, no winner declared.
+- **Never render a link to a hostile host.** `links.ts` exports `isHostile()`; `LinkStatus` refuses an
+  `href` for anything on a domain with a `hijacked` entry, whatever that page's own status says.
+- **The last step before calling a page done is reading it.** Render the built HTML to plain text and
+  read it end to end — three presentation bugs on the first two pages were invisible in the source and
+  obvious in the output.
+
 **Progressive enhancement is a hard rule.** This is safety-critical documentation: with JavaScript
 disabled, every page must still show every route and every market. Components filter, highlight and
 reorder — they never gate. No content may exist only inside a component.
@@ -236,8 +258,13 @@ Read `research/` before doing anything; the headlines:
   seven data modules, 16 components, four logic modules and eight diagrams, with **91 Vitest tests**.
   The backlog lives in `TODOs/`; `TODOs/README.md` is its index and its current-state summary.
   Everything a page needs now exists; the pages themselves are still stubs.
-- **Next:** (1) port the research content into the pages, highest value first (procedure, firmware
-  matrix, security) — written generically for all markets and all starting versions; (2) decide
-  where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).
+- 2026-08-25: **the security section is written** — `/security/` and `/security/link-safety`, the first
+  two real pages, plus `SourceCite` and `LinkTable`. 105 tests. Writing them found a live bug: the site
+  was rendering a clickable link to a page on the hijacked domain because that page's own status was
+  merely `dead`; the check is now on the host.
+- **Next:** (1) continue porting the research into the pages — firmware matrix next, then guide,
+  procedure, hardware, recovery, reference — written generically for all markets and all starting
+  versions; (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every
+  past mirror).
 - **Deferred to a separate task, after the site is complete:** anything specific to the maintainer's own
   car (reading its version string, choosing its route, an actual attempt).

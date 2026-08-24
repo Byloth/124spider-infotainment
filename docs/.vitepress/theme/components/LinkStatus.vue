@@ -1,7 +1,7 @@
 <script lang="ts" setup>
     import { computed } from "vue";
 
-    import { linkFor } from "../../data/links";
+    import { isHostile, linkFor } from "../../data/links";
     import type { ExternalLink } from "../../data/links";
 
     const props = defineProps<{
@@ -28,8 +28,12 @@
     });
 
     // A hijacked destination must never be a live link: the whole point is to stop the reader arriving
-    // there. Everything else stays clickable.
-    const clickable = computed(() => entry.value?.status !== "hijacked");
+    // there.
+    //
+    // The check is on the *host*, not just this URL. `mazdatweaks.com/id7/` is a harmless 404 today, but
+    // the party serving a gambling site from `/serial/` decides what `/id7/` returns tomorrow — so
+    // nothing on a domain with a hijacked page gets an `href`, whatever its own status says.
+    const clickable = computed(() => entry.value?.status !== "hijacked" && !isHostile(props.url));
 </script>
 
 <template>

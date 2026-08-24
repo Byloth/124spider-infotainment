@@ -6,92 +6,108 @@ right now for anyone following the community guides.
 
 Backing: `research/PROCEDURE-DRAFT.md` §4b · `research/OPEN-QUESTIONS.md` items 5, 5b, 10b, 10c.
 
+**Status: done.** Both pages written, 2026-08-25. They are also the first real pages on the site, so they
+set the house style for tasks 06–11 — see "What these two established" at the bottom.
+
 ---
 
 ## `/security/index.md` — What the tweaks leave on your car
 
-- [ ] **Framing paragraph.** Nothing here says the tools are malicious. They do exactly what they claim,
-      they are the work of people who solved a real problem, and the whole community depends on them. This
-      is about what they *leave behind* — which no published guide documents.
+- [X] **Framing paragraph.** Nothing here says the tools are malicious. They do exactly what they claim,
+      they are the work of people who solved a real problem, and the whole community depends on them.
+      This is about what they *leave behind* — which no published guide documents.
 
-- [ ] **How tweak installation actually works.**
-  - [ ] `59.00.502` removed the USB autorun path. Everything since is about getting back in.
-  - [ ] **ID7 is not an exploit against the firmware.** The package ships `cmu_dataretrieval.up`, a
-        genuine Johnson Controls diagnostic package dated 2014-11-20 carrying JCI's own
-        `publisher_cert.pem` and `jci_subord_cert.pem` (2013). Beside it, `dataRetrieval_config.txt` has
-        every real diagnostic option set to `no` and one line doing the work:
-        `CMD_LINE=sh /mnt/sd*/tweaks.sh`.
-  - [ ] So it is **command injection into Mazda's own signed diagnostic tool**, accepted by the CMU
-        *because* the signature is valid. State why that matters: it explains why it kept working after
-        the autorun path was closed, and why Mazda needed three firmware releases (`neutralizeid7`,
-        `passwdupdate`) to shut it down instead of revoking a key.
-  - [ ] Note the identical `cmu_dataretrieval.up` ships inside `MazdaToFiatV70AIO.zip` too — verified
-        byte-identical.
-  - [ ] Diagram: **ID7 mechanism** (`04-diagrams.md`).
+- [X] **How tweak installation actually works.**
+  - [X] `59.00.502` removed the USB autorun path. Everything since is about getting back in.
+  - [X] **ID7 is not an exploit against the firmware.** The genuine JCI diagnostic package, its 2013
+        certificates, and the one line in `dataRetrieval_config.txt` that does the work.
+  - [X] Command injection into Mazda's own signed diagnostic tool, accepted *because* the signature is
+        valid — stated with why it matters, on both counts.
+  - [X] The byte-identical copy inside `MazdaToFiatV70AIO.zip`, with the consequence spelled out: anyone
+        who ran the rebranding tool ran this mechanism whether they thought of it that way or not.
+  - [X] Diagram: `<Id7Mechanism />`.
 
-- [ ] **What ID7 installs, stated plainly.**
-  - [ ] v1 and v2 install a **byte-identical `/etc/passwd`** with three UID-0 accounts (`cmu`, `jci`,
-        `user`) whose password hashes ship in every copy of the package — the `jci` one is a DES hash.
-  - [ ] A second sshd with `PermitRootLogin yes`, `PasswordAuthentication yes`,
-        **`PermitEmptyPasswords yes`**, `ListenAddress 0.0.0.0`, `StrictModes no`,
-        `UsePrivilegeSeparation no`.
-  - [ ] A firewall script opening the ports on **every interface including `wlan0`** — the rule that would
-        have blocked SSH over WiFi is present but commented out. It deliberately re-opens 90 seconds later
-        because the CMU's own firewall closes them at boot.
-  - [ ] **v2 is broader than v1**: ports 22, 24000 *and* 36000 (v1 used only 24000).
-  - [ ] It lives in `data_persist` and survives firmware updates by design. That is the point of the tool.
-  - [ ] **Why this matters more on an EU car:** the CMU's WiFi is disabled on NA units but **enabled on
-        EU/JP** ones.
+- [X] **What ID7 installs, stated plainly.** The three UID-0 accounts and their published hashes; the
+      second sshd as a table, because six settings in prose is unreadable; the firewall script on every
+      interface with the WiFi rule commented out and the deliberate 90-second re-run; v2's wider port
+      set; `data_persist` and why surviving updates is the *point* of the tool.
+  - [X] The market difference — WiFi disabled on NA, enabled on EU/JP — in its own callout.
 
-- [ ] **What the mp3 method installs: nothing.** Four fake MP3 files, one HTML page, one CSS file, ~5 KB
-      of JavaScript. No `/etc/passwd`, no sshd, no iptables, no persistence. It opens a terminal for one
-      session and leaves nothing.
+- [X] **What the mp3 method installs: nothing.** Four fake MP3s, a page, a stylesheet, ~5 KB of
+      JavaScript. One session, nothing left.
 
-- [ ] **The route comparison table** + diagram. Conclusion to state explicitly: where both work, **mp3 is
-      the less invasive option, not merely the more convenient one** — which inverts how every existing
-      guide frames it ("ID7 is the easy way, mp3 is the fallback").
+- [X] **The route comparison** as a table plus `<RouteComparison />`.
+  - [X] ⚠️ **Changed from the original ask, with the user.** The backlog said to conclude that "mp3 is
+        the less invasive option, not merely the more convenient one". It is — but stopping there reads
+        as a recommendation, and the evidence does not support one. ID7 has been in use since 2017 on
+        thousands of cars; the mp3 method is confirmed on 70.00.100 and 74.00.324/311 and is one forum
+        post deep everywhere else, with one 124 owner for whom it did not run at all. The page presents
+        **both costs** and explicitly declines to choose: *"Neither of them is the safe one."* What it
+        refuses to allow is a reader believing the routes differ only in convenience.
 
-- [ ] **The unexplained artifact.** ID7 v2 ships a 220 KB stripped ARM ELF named `adb` in
-      `44-recovery-recovery/`, installed persistently, undocumented in every source we found. Say that it
-      has not been analysed. Do not speculate beyond the name.
+- [X] **The unexplained artifact.** The 220 KB stripped ARM `adb` in `44-recovery-recovery/`. Says it has
+      not been analysed; does not speculate past the name.
 
-- [ ] **Antivirus results**, honestly framed: 20 files scanned clean across 57–68 engines; 7 firmware
-      images are over VirusTotal's ~650 MB analysis cap and **cannot be scanned by any method**, so for
-      those the matching community MD5s are the only evidence. Link `/firmware/obtaining`.
+- [X] **Antivirus results**, honestly framed — and the counts are rendered from `files.ts` rather than
+      typed, so the page cannot drift from the data. Plus the point that matters more than the numbers:
+      a clean scan of a shell script proves very little, because "opens an SSH server with empty
+      passwords permitted" is not malware, it is a configuration choice.
 
-- [ ] Cross-links: `/procedure/rebrand` (the routes in practice), `/firmware/points-of-no-return`,
-      `/security/link-safety`, `/reference/open-questions`.
+- [X] Cross-links: `/procedure/rebrand`, `/firmware/points-of-no-return`, `/security/link-safety`,
+      `/reference/open-questions`.
 
 ## `/security/link-safety.md` — Old guides, dead links, one hijacked domain
 
-- [ ] **The headline, up top, unmissable.** 68wooley's Part 1 — still the reference guide, still bundled
-      inside every firmware package circulating today — tells firmware-59 owners to follow
-      `https://mazdatweaks.com/serial/`. As checked on 2026-08-24 that page serves an Indonesian
-      lottery/gambling site ("Kpktoto"), while `mazdatweaks.com/` still renders a plausible
-      "Mazda AIO Tweaks" homepage. `/id7/` returns 404.
-  - [ ] Make the point that the working front page makes it **more** deceptive, not less: a reader
-        arriving from the guide's link has no cue that anything is wrong.
-  - [ ] The surviving copy of that material is the GitHub mirror `Trevelopment/mazdatweaks`.
+- [X] **The headline, up top, unmissable.** A `danger` callout as the first thing on the page.
+  - [X] The working front page makes it **more** deceptive, not less — with the specific reasoning: a
+        reader backs up one level, sees what looks like the real homepage, and concludes they mistyped.
+  - [X] The surviving copy is the GitHub mirror, now registered in `links.ts` in its own right.
 
-- [ ] **How this surfaced**, briefly — it is a good illustration of why the project exists. An antivirus
-      pass flagged the guide PDF (ESET alone, 1 of 65, `PDF/Phishing.A.Gen`). Examining the file showed
-      **no active content at all** — no JavaScript, OpenAction, Launch, EmbeddedFile, SubmitForm or XFA,
-      just 9 hyperlinks — so the detection is a false positive on the *file*. But checking those 9 links
-      is what found the real problem.
+- [X] **How this surfaced.** The ESET false positive, what the PDF actually contains (nothing), and the
+      distinction worth drawing: the scanner was wrong about the file and right that the file was worth
+      looking at.
 
-- [ ] **The link table**, rendered with `LinkStatus` from `links.data.ts`: every historic host with its
-      current state — HiDrive (share API returns `Not Found: share`), MEGA folders, 1fichier,
-      OneDrive/bit.ly, `mazdatweaks.com` (hijacked), `mazdaman.x10host.com` (404) — and what replaced it
-      where anything did.
+- [X] **The link table**, via the new `<LinkTable />`. Four dead firmware mirrors were added to
+      `links.ts` for it — the two MEGA folders, the `bit.ly`/OneDrive share and 1fichier — since the
+      research documented them and the table is meant to be the register, not a selection from it.
+  - [X] Prose reads the *pattern* rather than the rows, and names why each failure mode is its own trap.
 
-- [ ] **What a reader should do**: how to tell whether a guide they found elsewhere is pre-2025, and which
-      links in it to distrust.
+- [X] **What a reader should do**: date the guide, distrust its links, hash what you are about to run,
+      prefer the author's own copy.
 
-- [ ] Cross-links: `/firmware/obtaining`, `/reference/sources`.
+- [X] Cross-links: `/firmware/obtaining`, `/reference/sources`.
+
+## Scope added while writing
+
+- [X] **`theme/components/SourceCite.vue`** — inline citations resolving through the existing
+      `sourceById()`. Named `SourceCite` and not `Cite` because `vue/multi-word-component-names` forbids
+      the short name, the same rule that produced `StepChecklist`. An id that resolves to nothing renders
+      marked rather than dropped: a silently missing citation is indistinguishable from a claim nobody
+      sourced. The separator between adjacent ids is real text, not a CSS pseudo-element, because it has
+      to survive being copied out of the page.
+- [X] **`theme/components/LinkTable.vue`** — the register rendered whole, worst-first, delegating each
+      row to `LinkStatus` rather than re-deriving the badge.
+- [X] **A real bug found by reading the built page.** `LinkStatus` refused to link a `hijacked` URL, but
+      `mazdatweaks.com/id7/` is merely `dead` — so the site was emitting a live link to a page on a
+      domain someone else now controls. A 404 today is not a promise about tomorrow. `links.ts` now
+      exports `HOSTILE_HOSTS` / `isHostile()`, the check is on the **host** rather than the URL, and two
+      tests cover it — including one asserting no `replacement` may point at a hostile host.
+- [X] `tsconfig/test.json` now includes the whole component tree and the DOM libs, since the tests render
+      components that legitimately name `HTMLInputElement` and `navigator.clipboard`.
 
 ## Done when
 
-- [ ] Both pages read as finished prose, not as extracted notes.
-- [ ] Every claim carries its source id.
-- [ ] The hijack warning is visible without scrolling on `/security/link-safety`.
-- [ ] A reader with JS off sees the full link table.
+- [X] Both pages read as finished prose, not as extracted notes — checked by rendering the built HTML to
+      text and reading it end to end, which is also how the three presentation bugs above were caught.
+- [X] Every claim carries its source id, or says explicitly that it comes from a file we hold.
+- [X] The hijack warning is the first thing on `/security/link-safety`, inside a `danger` callout.
+- [X] A reader with JS off sees the full link table: it is server-rendered, verified in the built HTML.
+- [X] `bun run lint`, `typecheck`, `test` (105), `docs:build` all clean.
+
+## What these two established for tasks 06–11
+
+- Citations are `<SourceCite ids="…" />`, inline, at the end of the sentence they support.
+- Numbers that exist in the data are interpolated from it (`{{ UNSCANNABLE.length }}`), never typed.
+- Market-dependent facts are stated for all markets at once, never gated behind a selector.
+- Where the sources do not support a recommendation, the page says so instead of implying one.
+- The last step before calling a page done is rendering the built HTML to plain text and reading it.

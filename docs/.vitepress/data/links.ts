@@ -127,6 +127,15 @@ export const LINKS: readonly ExternalLink[] = [
             "directly by this project — everything about it here is second-hand."
     },
     {
+        url: "https://github.com/Trevelopment/mazdatweaks",
+        // No warning: it is the site's own content, kept in the author's repository rather than on the
+        // domain he no longer controls. `LinkStatus` renders the warning inline wherever it is used, so
+        // a link with nothing to say about it should say nothing.
+        label: "Trevelopment/mazdatweaks — the surviving copy of the tweak site",
+        status: "alive",
+        lastChecked: CHECKED
+    },
+    {
         url: "https://github.com/Trevelopment/MZD-AIO",
         label: "MZD-AIO — the community tweak installer",
         status: "alive",
@@ -157,6 +166,41 @@ export const LINKS: readonly ExternalLink[] = [
     },
 
     // -- Dead mirrors, recorded so nobody chases them ---------------------------------------------
+    //
+    // These are the firmware mirrors the guides and blog comments still point at. Every one of them is
+    // gone, and they are listed rather than deleted because a reader working through a 2021 comment
+    // thread needs to know that the link failing is expected, not their fault.
+    {
+        url: "https://mega.nz/#F!3A0DkA4R!pREP1DJkn0HBqVUolHUbXA",
+        label: "MEGA — ASH8's 2018 manuals and firmware folder",
+        status: "dead",
+        lastChecked: CHECKED,
+        warning: "Reported dead since 2021. Linked from the miata.net and mazda3revolution threads that " +
+            "are still the top search results for the retrofit."
+    },
+    {
+        url: "https://mega.nz/folder/YWx3lCIT#6179hwSHeAaPeLF25wvlYQ",
+        label: "MEGA — Ameridan's 2021 firmware folder",
+        status: "dead",
+        lastChecked: CHECKED,
+        warning: "The page still loads, which is the trap: readers reported it empty of files from " +
+            "November 2021 onwards. A folder that opens and shows nothing reads as a mistake at your end."
+    },
+    {
+        url: "https://bit.ly/3qMnOKP",
+        label: "OneDrive via bit.ly — EU 70.00.100A, shared 2022",
+        status: "dead",
+        lastChecked: CHECKED,
+        warning: "403. Shortened, so there is no way to tell from the link itself what it pointed at " +
+            "or who shared it."
+    },
+    {
+        url: "https://1fichier.com/?sxgyrgc3raoibzjri70q",
+        label: "1fichier — EU 70.00.100 files, shared 2022 and 2023",
+        status: "dead",
+        lastChecked: CHECKED,
+        warning: "No response. A second 1fichier link from the same comment thread is equally dead."
+    },
     {
         url: "http://mazdaman.x10host.com/SM356305/",
         label: "mazdaman — old workshop-manual mirror",
@@ -177,5 +221,24 @@ export const LINKS: readonly ExternalLink[] = [
 
 /** Anything a reader must be warned about before clicking. */
 export const UNSAFE_LINKS = LINKS.filter((l) => l.status === "hijacked" || l.status === "dead");
+
+/**
+ * Hosts where at least one page is known to be hostile.
+ *
+ * `hijacked` is recorded per URL, but control is held per *domain*. `mazdatweaks.com/id7/` is a 404
+ * today, which is harmless — except that whoever is serving a gambling site from `/serial/` decides what
+ * `/id7/` returns tomorrow. So a page's own status is not sufficient grounds to make it clickable: the
+ * host has to be clean too.
+ */
+export const HOSTILE_HOSTS = new Set(LINKS
+    .filter((l) => l.status === "hijacked")
+    .map((l) => new URL(l.url).hostname));
+
+/** Whether it is safe to put this URL behind an `href` at all. */
+export const isHostile = (url: string): boolean =>
+{
+    try { return HOSTILE_HOSTS.has(new URL(url).hostname); }
+    catch { return false; }
+};
 
 export const linkFor = (url: string): ExternalLink | undefined => LINKS.find((l) => l.url === url);

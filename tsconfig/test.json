@@ -2,6 +2,17 @@
   "extends": "./_base.json",
   "compilerOptions": {
     "composite": true,
+
+    // The DOM libs are here for the *components* this project now includes, not for the tests: the
+    // tests run under Node and render through `@vue/server-renderer`, which needs no DOM at all. But
+    // `HashVerifier` and `HashTable` legitimately name `HTMLInputElement` and `navigator.clipboard`,
+    // and a project that includes them has to be able to see those types.
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
+
     "tsBuildInfoFile": "../node_modules/.tmp/tsconfig.test.tsbuildinfo",
     "types": ["node"]
   },
@@ -15,7 +26,8 @@
     "../docs/.vitepress/data/**/*",
     "../docs/.vitepress/logic/**/*",
 
-    // `tests/diagrams.test.ts` renders the three data-driven diagrams to check they follow the data.
-    "../docs/.vitepress/theme/components/diagrams/**/*"
+    // `tests/diagrams.test.ts` and `tests/components.test.ts` render components to check they follow
+    // the data, so the whole component tree has to be visible to this project.
+    "../docs/.vitepress/theme/components/**/*"
   ]
 }

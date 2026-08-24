@@ -102,7 +102,10 @@ export default defineConfig({
             "/security/": [
                 {
                     text: "Security",
-                    items: [{ text: "What the tweaks leave on your car", link: "/security/" }]
+                    items: [
+                        { text: "What the tweaks leave on your car", link: "/security/" },
+                        { text: "Old guides and dead links", link: "/security/link-safety" }
+                    ]
                 }
             ],
 
