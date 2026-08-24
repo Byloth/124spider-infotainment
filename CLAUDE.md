@@ -67,6 +67,8 @@ downloads/                 – git-ignored binaries; CHECKSUMS.sha256 + README.m
   guides/                  – 68wooley's PDF guide zip
 docs/                      – the VitePress site (reader-facing)
   .vitepress/config.mts    – nav, per-section sidebars, local search, footer disclaimer
+  .vitepress/theme/        – index.ts (extends DefaultTheme), style.css (brand tokens),
+                             components/ — imported via the `@theme/*` alias
   index.md                 – home
   guide/ procedure/ firmware/ hardware/ recovery/ security/ reference/
 tools/
@@ -88,6 +90,71 @@ VitePress 1.6.4, npm, Node v24 via nvm. `npm run docs:dev` to serve, `npm run do
 - `npm run docs:build` fails on dead links by design — use it as the link checker.
 - Known: `npm audit` reports esbuild advisories reaching in through vite. Dev-server-only, no fix on the
   VitePress 1.x line. Accepted for a locally-served docs site; revisit if the site is ever deployed.
+
+## Writing components (VitePress theme)
+
+Established by reading `node_modules/vitepress/dist/client/theme-default/` — do not re-derive it.
+
+**SFC block form — mandatory, no exceptions:**
+
+```vue
+<script lang="ts" setup>
+</script>
+
+<style lang="scss" scoped>
+</style>
+```
+
+`lang` comes **before** `setup`; styles are always `lang="scss"` **and** `scoped`. SCSS is for nesting
+and mixins only — colours and spacing come from CSS custom properties, which SCSS cannot read at build
+time.
+
+**Styling contract**
+
+- Consume `--vp-c-*` tokens; **never hardcode a colour**. That is what makes dark mode free.
+  Available: `--vp-c-brand-{1,2,3,soft}`, `--vp-c-bg{,-soft,-alt,-elv}`, `--vp-c-text-{1,2,3}`,
+  `--vp-c-divider`, `--vp-c-border`, `--vp-c-gutter`, and the semantic scales
+  `--vp-c-{tip,note,success,important,warning,danger,caution}-{1,2,3,soft}`.
+  ⚠️ There is **no** `--vp-c-info-*` scale — "info" blocks use `--vp-c-default-soft`.
+- **No radius or transition tokens exist.** Match the theme's literals: `8px` custom/code blocks,
+  `12px` cards and badges, `20px`/`24px` pill buttons, and
+  `transition: color .25s, border-color .25s, background-color .25s` (`.1s` on `:active`).
+- **Callouts:** emit the theme's own markup instead of restyling —
+  `<div class="custom-block warning"><p class="custom-block-title">TITLE</p>…</div>`.
+  Modifiers: `info note tip important warning danger caution details`.
+- **Cards:** copy `VPFeature` — `border: 1px solid var(--vp-c-bg-soft); border-radius: 12px;
+  background: var(--vp-c-bg-soft)`, hover `border-color: var(--vp-c-brand-1)`.
+- Globally registered, no import needed: **only** `Badge`, `Content`, `ClientOnly`. `VPButton`
+  (`theme`, `size`, `text`, `href`) and `VPBadge` are importable from `vitepress/theme` — reuse them
+  rather than writing new ones.
+- Markdown content is wrapped in `.vp-doc`, so markup rendered from inside a `.md` inherits its heading
+  borders, paragraph margins and link colours. Keep component markup in its own scoped styles.
+- Icons: the theme masks any `.vp-icon` / `.vpi-*` element with `background-color: currentColor`, so an
+  inline SVG using the same pattern inherits colour for free.
+
+**Dark mode** is a `.dark` class on `<html>`. Best practice: define no `.dark` rule at all and only
+consume tokens. Inside a `scoped` block, `.dark .thing` will **not** match (the scope attribute lands on
+`.dark` too) — use `:global(.dark) .thing`.
+
+**SSR — the rule that otherwise causes hydration bugs.** VitePress server-renders every page at build
+time. Anything touching `localStorage`, `window` or `document` must be inside `<ClientOnly>` or
+`onMounted`, and a component that reads the reader profile must render its **neutral, show-everything**
+state on the server. That is the same requirement as the progressive-enhancement rule below.
+
+**Theme entry point** is `docs/.vitepress/theme/index.ts` (`extends: DefaultTheme`). Defining a `Layout`
+there *replaces* the default one — to use a layout slot, wrap it:
+`h(DefaultTheme.Layout, null, { "doc-before": () => h(Thing) })`. Slots available: `layout-{top,bottom}`,
+`nav-bar-{title,content}-{before,after}`, `nav-screen-content-{before,after}`,
+`sidebar-nav-{before,after}`, `page-{top,bottom}`, `not-found`,
+`home-hero-{before,info-before,info,info-after,actions-after,image,after}`,
+`home-features-{before,after}`, `doc-{footer-before,before,after,top,bottom}`,
+`aside-{top,bottom,outline-before,outline-after,ads-before,ads-after}`.
+⚠️ Using `layout-top` or `doc-top` requires setting `--vp-layout-top-height` / `--vp-doc-top-height`
+yourself.
+
+**Progressive enhancement is a hard rule.** This is safety-critical documentation: with JavaScript
+disabled, every page must still show every route and every market. Components filter, highlight and
+reorder — they never gate. No content may exist only inside a component.
 
 ## Conventions
 

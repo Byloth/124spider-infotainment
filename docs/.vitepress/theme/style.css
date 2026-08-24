@@ -1,0 +1,143 @@
+/**
+ * Customize default theme styling by overriding CSS variables:
+ * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
+ *
+ * THE CONTRACT (see CLAUDE.md):
+ *
+ * - Consume `--vp-c-*` tokens; never hardcode a colour. That is what makes dark mode free.
+ * - There are NO radius or transition tokens in the theme. Match its literals instead:
+ *     8px  custom blocks, code blocks
+ *     12px cards, badges
+ *     20px / 24px pill buttons
+ *     transition: color .25s, border-color .25s, background-color .25s
+ * - Dark mode is a `.dark` class on <html>. Prefer defining no `.dark` rule at all and
+ *   only consuming tokens, which already flip.
+ * -------------------------------------------------------------------------- */
+
+/**
+ * Colors
+ *
+ * The theme's own scale convention:
+ *
+ * - `XXX-1`: the most solid colour, used mainly for coloured text. Must satisfy the
+ *   contrast ratio when used on top of `XXX-soft`.
+ * - `XXX-2`: used mainly for the hover state of buttons.
+ * - `XXX-3`: solid background, e.g. a button's background colour. Must satisfy the
+ *   contrast ratio with pure white (#ffffff) text on top of it.
+ * - `XXX-soft`: subtle background for custom containers and badges. Must be
+ *   SEMI-TRANSPARENT — that is what lets several "soft" colours stack, such as an
+ *   inline code block inside a custom container.
+ *
+ * Brand: #8c1007, the deep Abarth-ish red already used as `theme-color`.
+ *
+ * It reads at 9.58:1 on white, but only 1.79:1 on the dark background — so the dark
+ * variants are LIGHTER, mirroring how the stock theme takes indigo from #3451b2 (light)
+ * to #a8b1ff (dark). Every pair below was contrast-checked:
+ *
+ *              light                       dark
+ *   -1         9.58:1 on #ffffff           8.44:1 on #1b1b1f
+ *   -2         8.12:1 white on it          5.08:1 white on it
+ *   -3         6.93:1 white on it          7.87:1 white on it
+ *   -1 over -soft   7.37:1                 8.15:1
+ *
+ * All clear WCAG AA (4.5:1); most clear AAA (7:1).
+ * -------------------------------------------------------------------------- */
+
+:root
+{
+    --vp-c-default-1: var(--vp-c-gray-1);
+    --vp-c-default-2: var(--vp-c-gray-2);
+    --vp-c-default-3: var(--vp-c-gray-3);
+    --vp-c-default-soft: var(--vp-c-gray-soft);
+
+    --vp-c-brand-1: #8c1007;
+    --vp-c-brand-2: #a01208;
+    --vp-c-brand-3: #b3150a;
+    --vp-c-brand-soft: rgba(140, 16, 7, 0.14);
+
+    /* The stock theme aliases "tip" to the brand colour; keep that relationship. */
+    --vp-c-tip-1: var(--vp-c-brand-1);
+    --vp-c-tip-2: var(--vp-c-brand-2);
+    --vp-c-tip-3: var(--vp-c-brand-3);
+    --vp-c-tip-soft: var(--vp-c-brand-soft);
+}
+
+.dark
+{
+    --vp-c-brand-1: #ff9b8d;
+    --vp-c-brand-2: #d4291a;
+    --vp-c-brand-3: #a3150a;
+    --vp-c-brand-soft: rgba(140, 16, 7, 0.16);
+}
+
+/**
+ * Component: Button
+ *
+ * The progression is -3 (rest) -> -2 (hover) -> -1 (active), so the button darkens on
+ * interaction in light mode and lightens in dark mode.
+ * -------------------------------------------------------------------------- */
+
+:root
+{
+    --vp-button-brand-border: transparent;
+    --vp-button-brand-text: var(--vp-c-white);
+    --vp-button-brand-bg: var(--vp-c-brand-3);
+    --vp-button-brand-hover-border: transparent;
+    --vp-button-brand-hover-text: var(--vp-c-white);
+    --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+    --vp-button-brand-active-border: transparent;
+    --vp-button-brand-active-text: var(--vp-c-white);
+    --vp-button-brand-active-bg: var(--vp-c-brand-1);
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root
+{
+    --vp-home-hero-name-color: transparent;
+    --vp-home-hero-name-background: -webkit-linear-gradient(
+        120deg,
+        var(--vp-c-brand-1) 30%,
+        var(--vp-c-brand-3)
+    );
+
+    --vp-home-hero-image-background-image: linear-gradient(
+        -45deg,
+        var(--vp-c-brand-1) 50%,
+        var(--vp-c-brand-3) 50%
+    );
+    --vp-home-hero-image-filter: blur(44px);
+}
+
+.dark
+{
+    --vp-home-hero-name-background: -webkit-linear-gradient(
+        120deg,
+        var(--vp-c-brand-3) 30%,
+        var(--vp-c-brand-1)
+    );
+
+    --vp-home-hero-image-background-image: linear-gradient(
+        -45deg,
+        var(--vp-c-brand-3) 50%,
+        var(--vp-c-brand-1) 50%
+    );
+}
+
+@media (min-width: 640px)
+{
+    :root
+    {
+        --vp-home-hero-image-filter: blur(56px);
+    }
+}
+
+@media (min-width: 960px)
+{
+    :root
+    {
+        --vp-home-hero-image-filter: blur(68px);
+    }
+}

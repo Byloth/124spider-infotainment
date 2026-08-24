@@ -19,7 +19,7 @@ when every child is `[X]`.
 | # | File | Tasks | State | What it covers |
 | --- | --- | ---: | :---: | --- |
 | 00 | [Toolchain](00-toolchain.md) | 42 | `[~]` | TypeScript, ESLint + `@byloth/eslint-config-nuxt`, SASS, Husky, `@vueuse/core` pinning — and the rejected dependencies, with reasons |
-| 01 | [Theme foundation](01-theme-foundation.md) | 25 | `[ ]` | `theme/index.ts`, brand tokens, the styling contract, the SSR rule, conventions into `CLAUDE.md` |
+| 01 | [Theme foundation](01-theme-foundation.md) | 30 | `[X]` | `theme/index.ts`, brand tokens, the styling contract, the SSR rule, conventions into `CLAUDE.md` |
 | 02 | [Data layer](02-data-layer.md) | 20 | `[ ]` | Seven typed data modules — firmware, files, parts, sources, failures, links, glossary |
 | 03 | [Components](03-components.md) | 35 | `[ ]` | `useProfile()` plus 17 components, each with its contract and its no-JS obligation |
 | 04 | [Diagrams](04-diagrams.md) | 15 | `[ ]` | Eight original SVGs, light/dark aware, each with a text equivalent |
@@ -33,7 +33,7 @@ when every child is `[X]`.
 | 12 | [Verification](12-verification.md) | 28 | `[ ]` | Build, typecheck, lint, no-JS, dark mode, responsive, hash verifier |
 | 99 | [Deferred](99-deferred.md) | 24 | `[ ]` | Deploy, i18n, binary hosting, the maintainer's own car |
 
-**411 tasks.** Update this table's state column as files progress.
+**416 tasks.** Update this table's state column as files progress.
 
 ## Why this order
 
@@ -67,6 +67,13 @@ today serves a scam site.
 - **Site: scaffold only.** VitePress 1.6.4 in `docs/`, 27 stub pages, nav and sidebars wired, build green.
   No content ported. Five more pages to create: `guide/route`, `security/link-safety`,
   `reference/changelog`.
+- **Theme foundation: done** (file 01).  extends the default theme;  carries
+  a contrast-checked brand scale derived from ; the styling contract, the slot list and the SSR
+  rule are recorded in .
+- **Theme foundation: done** (file 01). `docs/.vitepress/theme/index.ts` extends the default theme and
+  `style.css` carries a contrast-checked brand scale derived from `#8c1007` (dark variants are *lighter*,
+  since the base reads 1.79:1 on the dark background). The styling contract, the full slot list and the
+  SSR rule are now recorded in `CLAUDE.md`, so no future session has to re-read `node_modules`.
 - **Toolchain: done** (file 00). `bun` as package manager, TypeScript 6.0.3 with the `tsconfig/` split,
   ESLint 10 + `@byloth/eslint-config-nuxt`, SASS, and a husky pre-commit running lint → typecheck →
   build. Two items stay open there: whether to adopt `@byloth/core`, and an `.editorconfig`-vs-ESLint
