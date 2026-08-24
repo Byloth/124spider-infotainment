@@ -11,7 +11,8 @@
     "typecheck": "vue-tsc --build --force",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "verify:data": "node tools/verify-data.mjs"
   },
   "devDependencies": {
     "@byloth/eslint-config-nuxt": "^4.0.2",

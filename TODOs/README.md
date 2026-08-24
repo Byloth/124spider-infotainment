@@ -20,7 +20,7 @@ when every child is `[X]`.
 | --- | --- | ---: | :---: | --- |
 | 00 | [Toolchain](00-toolchain.md) | 42 | `[~]` | TypeScript, ESLint + `@byloth/eslint-config-nuxt`, SASS, Husky, `@vueuse/core` pinning — and the rejected dependencies, with reasons |
 | 01 | [Theme foundation](01-theme-foundation.md) | 30 | `[X]` | `theme/index.ts`, brand tokens, the styling contract, the SSR rule, conventions into `CLAUDE.md` |
-| 02 | [Data layer](02-data-layer.md) | 20 | `[ ]` | Seven typed data modules — firmware, files, parts, sources, failures, links, glossary |
+| 02 | [Data layer](02-data-layer.md) | 27 | `[~]` | Seven typed data modules — firmware, files, parts, sources, failures, links, glossary |
 | 03 | [Components](03-components.md) | 35 | `[ ]` | `useProfile()` plus 17 components, each with its contract and its no-JS obligation |
 | 04 | [Diagrams](04-diagrams.md) | 15 | `[ ]` | Eight original SVGs, light/dark aware, each with a text equivalent |
 | 05 | [Pages · Security](05-pages-security.md) | 30 | `[ ]` | The original findings and the live hijacked domain — **written first** |
@@ -33,7 +33,7 @@ when every child is `[X]`.
 | 12 | [Verification](12-verification.md) | 28 | `[ ]` | Build, typecheck, lint, no-JS, dark mode, responsive, hash verifier |
 | 99 | [Deferred](99-deferred.md) | 24 | `[ ]` | Deploy, i18n, binary hosting, the maintainer's own car |
 
-**416 tasks.** Update this table's state column as files progress.
+**423 tasks.** Update this table's state column as files progress.
 
 ## Why this order
 
@@ -67,6 +67,11 @@ today serves a scam site.
 - **Site: scaffold only.** VitePress 1.6.4 in `docs/`, 27 stub pages, nav and sidebars wired, build green.
   No content ported. Five more pages to create: `guide/route`, `security/link-safety`,
   `reference/changelog`.
+- **Data layer: done** (file 02). Seven typed modules in `docs/.vitepress/data/` — 21 firmware versions,
+  28 artifacts with hashes generated from the files themselves, 200 sources, 19 failure modes, the
+  external-link health register, the parts catalogue and the glossary. `bun run verify:data` re-checks
+  hashes and citation coverage. One item deferred: measuring the client-bundle cost, which needs the
+  components to exist first.
 - **Theme foundation: done** (file 01). `docs/.vitepress/theme/index.ts` extends the default theme and
   `style.css` carries a contrast-checked brand scale derived from `#8c1007` (dark variants are *lighter*,
   since the base reads 1.79:1 on the dark background). The styling contract, the full slot list and the
