@@ -92,10 +92,11 @@ VitePress 1.6.4, **bun**, Node v24 via nvm. `bun run docs:dev` to serve, `bun ru
 
 - **Deploy is not decided** — local only for now, so `base: '/'` and there is no CI workflow. A GitHub
   Pages project site would need `base: '/124spider-infotainment/'`.
-- **Two of the 29 pages are written**; the rest are stubs. `/security/` and `/security/link-safety` are
-  finished prose. Every remaining stub carries a warning block pointing at its backing document — keep
-  that warning until the page actually stands on its own, so an empty page is never mistaken for
-  guidance, and delete it only in the commit that writes the page.
+- **Six of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety` and the
+  whole `/firmware/` section (`index`, `regions`, `points-of-no-return`, `obtaining`) are finished prose.
+  Every remaining stub carries a warning block pointing at its backing document — keep that warning until
+  the page actually stands on its own, so an empty page is never mistaken for guidance, and delete it only
+  in the commit that writes the page.
 - **i18n**: English content stays at the root of `docs/` on purpose. VitePress keeps the root locale in
   place and gives other locales a subdirectory, so adding Italian later needs only a `locales` key.
 - `bun run docs:build` fails on dead links by design — use it as the link checker.
@@ -262,9 +263,16 @@ Read `research/` before doing anything; the headlines:
   two real pages, plus `SourceCite` and `LinkTable`. 105 tests. Writing them found a live bug: the site
   was rendering a clickable link to a page on the hijacked domain because that page's own status was
   merely `dead`; the check is now on the host.
-- **Next:** (1) continue porting the research into the pages — firmware matrix next, then guide,
-  procedure, hardware, recovery, reference — written generically for all markets and all starting
-  versions; (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every
-  past mirror).
+- 2026-08-27: **the firmware section is written** (`TODOs/06`) — the four `/firmware/` pages: the version
+  matrix (mounts `FirmwareMatrix`; weight-bearing rows anchored `#v70-00-100a` etc.), regions and file
+  naming (`VersionDecoder`), points of no return (the four thresholds + `VersionTimeline`, classic rule
+  vs. the 2025 mp3 nuance with confidence intact), and obtaining and verifying (per-region sourcing,
+  hand-written MD5/provenance tables + `HashTable`/`HashVerifier`, the H2testw USB-stick test, the EU
+  corroboration-not-independence caveat). No new data or components — data-derived tables are left to the
+  components (SSR-rendered = the no-JS baseline) rather than hand-duplicated. File 06 is `[~]` for one
+  cross-cutting item: anchoring every matrix row waits on the pages that will cite them.
+- **Next:** (1) continue porting the research into the pages — guide next, then procedure, hardware,
+  recovery, reference — written generically for all markets and all starting versions; (2) decide
+  where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).
 - **Deferred to a separate task, after the site is complete:** anything specific to the maintainer's own
   car (reading its version string, choosing its route, an actual attempt).
