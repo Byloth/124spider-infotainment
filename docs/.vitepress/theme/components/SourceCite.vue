@@ -3,6 +3,13 @@
 
     import { sourceById } from "../../data/sources";
 
+    // The base-aware href to the sources page. VitePress rewrites markdown links with the configured
+    // `base`, but not component-authored hrefs — so under a project-site base a bare "/reference/sources"
+    // would 404. `import.meta.env.BASE_URL` is Vite's copy of `base` (always trailing-slashed, "/" in
+    // tests), which is exactly what VitePress's own `withBase()` reads, without pulling the client
+    // runtime into a unit-tested component.
+    const sourcesHref = `${import.meta.env.BASE_URL}reference/sources`;
+
     // Inline citations. Every factual claim on a reader-facing page names the source it rests on, the
     // same way the research documents do — this project's value is the verification, so a claim whose
     // provenance is invisible is worth noticeably less.
@@ -48,7 +55,7 @@
             <span v-if="i > 0" class="sep">,&nbsp;</span>
             <a :class="{ unknown: !entry.known }"
                :title="entry.title"
-               href="/reference/sources">{{ entry.id }}</a>
+               :href="sourcesHref">{{ entry.id }}</a>
         </template>
     </sup>
 </template>

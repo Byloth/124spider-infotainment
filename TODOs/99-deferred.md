@@ -7,14 +7,20 @@ in every planning conversation — each one is a real decision, just not this on
 
 ## Deployment
 
-- [ ] Choose a target. Currently **local only**: `base: '/'`, no CI workflow.
-- [ ] If GitHub Pages as a project site: `base: '/124spider-infotainment/'` plus a Actions workflow.
-      A custom domain or a `<user>.github.io` repo changes the base again.
+- [X] **Decided: GitHub Pages project site.** `base: '/124spider-infotainment/'`;
+      `.github/workflows/publish.yml` builds and deploys on every push to `master`
+      (2026-08-27). `SourceCite` switched to `withBase()`; sitemap added.
+- [X] `package.json` repackaged under `@byloth/` (v0.1.0, Apache-2.0); root `README.md` + `LICENSE` added.
+- [ ] **One-time repo setting still required:** set Pages source to "GitHub Actions" (Settings → Pages,
+      or `gh api -X POST repos/Byloth/124spider-infotainment/pages -f build_type=workflow`). The first
+      push after that publishes.
 - [ ] Consider whether a takedown-resistant host matters here. The site itself carries no binaries, only
       hashes and prose, so the exposure is low — but the subject matter is proprietary firmware and every
       historic mirror in this community died for exactly that reason.
-- [ ] Whatever is chosen, the deploy decision changes one config line and adds one workflow file. It is
-      deliberately cheap to defer.
+- [ ] Latent data bug to fix (found during deploy): 28 `blog-ameridan` sources in `sources.ts` store
+      domain-less relative URLs (`/2016/10/30/navigation/` …) that render as broken links. Fix with the
+      `/reference/sources` page (file 11) or a dedicated data pass; add a `verify:data` check that every
+      source `url` is absolute.
 
 ## Internationalisation
 

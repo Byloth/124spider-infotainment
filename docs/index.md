@@ -38,13 +38,23 @@ features:
       points of no return are documented as prominently as the happy path.
 ---
 
-## This site is being written
+## This site is a work in progress
 
-The research behind it is complete — sources, firmware matrix, procedure reconstruction, inventory and
-open questions all live in the repository under `research/`. What you are looking at is the structure
-those findings are being moved into. **The pages are still empty.**
+::: warning Still being written — and nothing here has been tested on a car yet
+The research behind this guide is complete, but the guide itself is **actively being written**, and two
+things are worth knowing before you rely on any of it:
 
-Until they are written, the working documents are the real content:
+- **Not every page exists yet.** The [security](/security/), [firmware](/firmware/) and
+  [Start here](/guide/) sections are finished prose; the procedure, hardware, recovery and reference
+  sections are still stubs pointing at the working documents. A stub says so at the top of the page.
+- **None of this has been verified on a real car by the author.** It is a careful synthesis of community
+  reports and Mazda's own documents, not yet a first-hand account. **It will be** — the maintainer owns
+  an EU Abarth 124 Spider that is intended as the first real-world test, once the documentation is
+  complete. Until then, treat every procedure as unproven and cross-check it against the sources it cites.
+:::
+
+The finished sections stand on their own. Where a page is still a stub, the working documents in the
+repository under `research/` remain the real content:
 
 | Document | What it holds |
 | --- | --- |

@@ -1,7 +1,10 @@
 import { defineConfig } from "vitepress";
 
-// Deploy target is not decided yet — the site runs locally for now, so base stays '/'.
-// If this ever moves to GitHub Pages as a project site, set base to '/<repo-name>/'.
+// Deployed to GitHub Pages as a project site at https://byloth.github.io/124spider-infotainment/,
+// published by .github/workflows/publish.yml on every push to master. As a project site it lives under
+// a sub-path, so `base` is '/124spider-infotainment/' — VitePress rewrites every markdown link with it;
+// component-authored internal links must prefix it themselves via `import.meta.env.BASE_URL`
+// (see SourceCite.vue).
 //
 // i18n: English content lives at the root of docs/ on purpose. VitePress keeps the root
 // locale in place and gives additional locales their own subdirectory, so adding Italian
@@ -13,9 +16,10 @@ export default defineConfig({
     description: "Upgrading the Fiat and Abarth 124 Spider infotainment unit to Mazda firmware for " +
         "Apple CarPlay and Android Auto — a versioned, sourced, verified knowledge base.",
 
-    base: "/",
+    base: "/124spider-infotainment/",
     cleanUrls: true,
     lastUpdated: true,
+    sitemap: { hostname: "https://byloth.github.io/124spider-infotainment/" },
 
     head: [
         ["meta", { name: "theme-color", content: "#8c1007" }],

@@ -90,8 +90,14 @@ package.json               – docs:dev, docs:build, docs:preview, lint, typeche
 
 VitePress 1.6.4, **bun**, Node v24 via nvm. `bun run docs:dev` to serve, `bun run docs:build` to build.
 
-- **Deploy is not decided** — local only for now, so `base: '/'` and there is no CI workflow. A GitHub
-  Pages project site would need `base: '/124spider-infotainment/'`.
+- **Deploy: GitHub Pages, decided.** `.github/workflows/publish.yml` builds and publishes on every push
+  to `master` (quality-gated: lint → typecheck → test → strict-link build, then the modern
+  configure-pages/upload-pages-artifact/deploy-pages flow). The site is a project site at
+  `https://byloth.github.io/124spider-infotainment/`, so `base: '/124spider-infotainment/'`. VitePress
+  base-rewrites markdown links automatically; **component-authored internal links must prefix the base
+  themselves via `import.meta.env.BASE_URL`** (only `SourceCite.vue` needed it — `withBase()` from
+  `vitepress` is the idiomatic API but is unavailable in the bare Vitest SSR context, so the env var is
+  used instead). A one-time repo setting is required: Pages source = "GitHub Actions".
 - **Eleven of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety`, the
   whole `/firmware/` section (`index`, `regions`, `points-of-no-return`, `obtaining`), and the whole
   `/guide/` "Start here" section (`index`, `eligibility`, `what-changes`, `risks`, and the new `route`) are
@@ -280,6 +286,14 @@ Read `research/` before doing anything; the headlines:
   `guide/route` (mounts `RouteWizard`, then a full static route table + per-route `RouteBranch` cards with
   copyable fenced summaries — the wizard renders no table and points to it). `route.md` registered in the
   `/guide/` sidebar. No new data/components; 105 tests green.
+- 2026-08-27: **the site is set up to publish.** `.github/workflows/publish.yml` deploys to GitHub Pages
+  on every push to `master`; `base` moved to `/124spider-infotainment/` (with the `SourceCite` `withBase`
+  fix and a sitemap); `package.json` repackaged under `@byloth/` (v0.1.0, Apache-2.0, authored metadata);
+  root `README.md` + `LICENSE` added; the homepage now states plainly that the guide is in progress and
+  nothing is hardware-tested yet. **One-time manual step still required: set the repo's Pages source to
+  "GitHub Actions."** Flagged separately: 28 `blog-ameridan` sources in `sources.ts` store domain-less
+  relative URLs — a pre-existing latent bug surfacing on the unlisted `dev/components` gallery (and later
+  on `/reference/sources`); fix with file 11 or a data pass.
 - **Next:** (1) continue porting the research into the pages — procedure next (the operational core),
   then hardware, recovery, reference — written generically for all markets and all starting versions;
   (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).

@@ -1,9 +1,40 @@
 {
-  "name": "124spider-infotainment",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@byloth/124spider-infotainment",
+  "version": "0.1.0",
   "type": "module",
-  "description": "Knowledge base for upgrading the Fiat/Abarth 124 Spider infotainment (CMU) to Mazda firmware with CarPlay and Android Auto",
+  "description": "A versioned, sourced, verified knowledge base for upgrading the Fiat / Abarth 124 Spider infotainment unit (CMU) to Mazda firmware — bringing Apple CarPlay and Android Auto to the 7-inch head unit.",
+  "keywords": [
+    "Fiat 124 Spider",
+    "Abarth 124 Spider",
+    "Mazda MX-5 ND",
+    "MZD Connect",
+    "Mazda Connect",
+    "CMU",
+    "CarPlay",
+    "Android Auto",
+    "firmware",
+    "infotainment",
+    "retrofit",
+    "VitePress"
+  ],
+  "homepage": "https://byloth.github.io/124spider-infotainment/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Byloth/124spider-infotainment.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Byloth/124spider-infotainment/issues"
+  },
+  "author": {
+    "name": "Matteo Bilotta",
+    "email": "me@byloth.dev",
+    "url": "https://www.byloth.dev/"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "bun@1.4.0",
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
@@ -29,5 +60,6 @@
     "vitepress": "^1.6.3",
     "vitest": "^3",
     "vue-tsc": "^3.3.11"
-  }
+  },
+  "private": true
 }
