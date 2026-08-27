@@ -12,7 +12,7 @@ raw research notes (`research/raw/A…F`), the local downloads, or the archived 
 One convention across the whole repo: `[A-nn]` (124spider.org forum), `[B-nn]` (Ameridan blog),
 `[C1-nn]` (MZD-AIO project), `[C2-nn]` (firmware × tweak matrix), `[D-nn]` (firmware availability),
 `[E-nn]` (hardware), `[F-nn]` (rollback/failures). They resolve in `SOURCES.md`, which registers all
-232 sources and carries an "Alias / see also" column for URLs that several themes found independently.
+237 sources and carries an "Alias / see also" column for URLs that several themes found independently.
 The finest-grained detail (exact posts, dates, page numbers) stays in `research/raw/<X>-*.md`.
 
 ## Status legend (from CLAUDE.md)
@@ -283,7 +283,20 @@ datasheets omitted) [F-62]. Public eCatalog cable install sheet:
 | **New CarPlay/AA hub** | **TK78-66-9U0C** | Same worldwide; orange label, "Made in Japan" on genuine. Superseded: **TK78-66-9U0D** (2022), **TK78-66-9U0E** (current, "replaces 9U0B/C/D", US MSRP $164.95). Contains Microchip USB84604 (FlexConnect) on clones. Must be the **C** (or D/E) — plain/A/B and green-label **KD5J-66-9U0** (China CX-4) do NOT work with 70.00.021x+ | [E-01][E-06][E-10][E-17][E-18][D-02] |
 | Predecessor hubs | **TK78-66-9U0 / -9U0A / -9U0B**, **KD5J-66-9U0** (green, China) | earlier revisions; incompatible with v70 CarPlay firmware | [E-01][E-06][E-37] |
 | **Original 124/MX-5 hub** | **N243-66-9U0A / N243-66-9U0B** ("K1414" generic) | the hub being replaced; refit it and everything works except CP/AA (reversible) | [E-01][E-04] |
-| Clone/aftermarket codes | "K1414", "ET-1594 (P2.1 / P3)", "M-HUB", "HMYC 2.1" | brand codes, not Mazda p/n; **ET-1594 P3** = wireless-capable (needs 74.00.200+) | [E-03][E-31][E-39] |
+| Clone/aftermarket codes | "K1414", "ET-1594 (P2.1 / P3)", "M-HUB", "HMYC 2.1", CARABC P2/P3 | brand codes, not Mazda p/n; **ET-1594 P3** = wireless-capable (needs 74.00.200+ per ameridan ❓ — sellers and m3r users claim 70.xx); see the variant table below | [E-03][E-31][E-39][E-45][E-47] |
+
+**Clone-hub variant codes (P-numbers)** — seller codes used by Renwoda / CARABC / HMYC and re-sold under many names; "the same version could be totally different from seller to seller" [E-45]. All are the Mazda-style hub with a wireless box built in behind the phone port; none is OEM. [E-44][E-45][E-47][E-48]
+
+| code | CarPlay | Android Auto | notes |
+|---|---|---|---|
+| **P2 / P2.1** | wired | wired | plain hub clone (USB-A; P2.1 = Type-C / PD). The safe choice for the 70.00.100A route |
+| **P3 (old, ≤2024)** | wireless (default) or wired via switch | **wired only** (switch) | manual: "by default only wireless CarPlay is supported" [E-48]; owner: AA disabled until switched to wired [E-44] |
+| **P3 ("2025/2026 NEW")** | wireless / wired | **wireless** (claimed) + wired | same name, different hub [E-47]; buyer reports mixed (2 of 3 wireless AA OK, 1 wired-only); touch reported dead in wireless; switch fragile |
+| **P3.1** | wireless only (no wired CP) | wired | USB-C fast charge [E-45] |
+| **P3.2** | wireless | wireless | **Android box** (own OS, app store); hardware buttons go to Android, not CarPlay; one owner returned it [E-45] |
+| **P3B** | wireless + wired | wireless only | one owner: wireless AA fails ("carplay not responding") [E-45] |
+
+⚠️ All wireless-mode claims are seller/owner claims, trust C–D. Wireless AA on a box typically needs a first **wired** pairing. Fast-charge variants reportedly push >3 A through the port — one user considers that unsafe for the CMU [E-45]. The wireless box renders the phone session itself, which is why touch and resolution degrade in wireless mode [E-47].
 
 ### 6.2 USB cable sets (per market) & kit numbers
 
@@ -347,7 +360,7 @@ sponge tape ×30, owner's-manual supplement + parts list. [E-2.1]
 
 Carlinkit 2+ (OK, ~35–40 s), Carlinkit 2 air (€32, OK), Motorola MA-1 (OK), AAWireless gen-1 (AA-over-CP
 touch trick), CPLAY2air (poor); Ottocast Mini (124spider.uk £37.50). Wireless-**only** clone hubs push
-you to 74.x. `known-to-exist`. [B-16][E-03][E-04][E-05][A-3]
+you to 74.x per ameridan (❓ contradicted by seller/owner claims of 70.xx — see §6.1 variant table). `known-to-exist`. [B-16][E-03][E-04][E-05][A-3][E-44][E-45]
 
 ---
 

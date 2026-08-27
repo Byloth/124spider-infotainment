@@ -45,7 +45,8 @@ Rules:
   "P2 Wired o P3 Wireless Carplay Android auto Adattatore Per Retrofit Mazda 2 3 6 CX3 CX5 CX8 MX5 USB HUB Kit
   TK78669U0C 00008fz34"; SKUs "P3 Wireless con strumento" / "P3 Wireless Senza Attrezzi" (with/without tools).
   Body text is bot-walled (only title + images retrievable); images archived under
-  `research/archive/hardware/carabc-p3/`.
+  `research/archive/hardware/carabc-p3/`. Registered as [E-47]; the CARABC manual is [E-48]; the mazda3revolution
+  variant threads are [E-44][E-45][E-46].
 - **Seller claim, from the listing images (verbatim):** "The 2025 NEW P3 supports wireless carplay and wireless
   Android auto, while the old P3 does not support wireless Android auto or fast charging" — "2026 NEW P3":
   ✓ wireless CarPlay ✓ wireless Android Auto ✓ fast charging; "Old P3 model": ✓ wireless CarPlay ✗ wireless AA

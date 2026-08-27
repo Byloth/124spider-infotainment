@@ -1,6 +1,6 @@
 /**
- * The source registry — 201 entries: 200 extracted from `research/SOURCES.md` §2.1–2.10, plus F-62 added by hand
- * (2026-08-28).
+ * The source registry — 206 entries: 200 extracted from `research/SOURCES.md` §2.1–2.10, plus F-62 and E-44…E-48
+ * added by hand (2026-08-28).
  *
  * Extracted with a parser rather than transcribed by hand: ~200 rows across ten sub-tables with
  * *different column headers* is exactly the kind of job where typing errors creep in. The parser mapped
@@ -2451,6 +2451,88 @@ export const SOURCES: readonly Source[] = [
         archive: "—",
         alias: "—",
         summary: "ND workshop-manual section used for trim removal (linked by E-01/E-12)"
+    },
+    {
+        id: "E-44",
+        title: "New USB Hub with Wireless Carplay (m3r 248768)",
+        url: "https://www.mazda3revolution.com/threads/new-usb-hub-with-wireless-carplay.248768/",
+        type: "forum thread",
+        author: "dkeske, Ultramic, Deano et al.",
+        dates: "2023-08 → 2025-11",
+        category: "forum-mazda3revolution",
+        status: "bot-blocked",
+        trust: "B",
+        archive: "`wb-m3r-248768-p1.html`",
+        alias: "see E-45, E-46, E-47",
+        summary: "First wireless clone hubs (2023). Ultramic: wireless hub = only wireless CarPlay out of the " +
+            "box, Android Auto disabled; a toggle switch under a sticker selects wired mode, where both " +
+            "CarPlay and AA work. CARABC wired hub one year without problems"
+    },
+    {
+        id: "E-45",
+        title: "Android Auto / CarPlay wired (P2) to wireless upgrade (P3.2) (m3r 250046)",
+        url: "https://www.mazda3revolution.com/threads/android-auto-carplay-wired-p2-to-wireless-upgrade-p3-2.250046/",
+        type: "forum thread",
+        author: "krisztiantobias, dpawlak et al.",
+        dates: "2024-02 → 2024-08",
+        category: "forum-mazda3revolution",
+        status: "bot-blocked",
+        trust: "B",
+        archive: "`wb-m3r-250046-p1.html`",
+        alias: "see E-44, E-46",
+        summary: "The clone-hub variant table: P2.x wired only; P3.x wireless CP + USB-C; P3.1 wireless CP + " +
+            "wired AA; P3.2 = Android box (wireless CP + AA, buttons captured by Android, returned by one " +
+            "owner); P3B wireless CP/AA + wired CP. Maker Renwoda (AliExpress); same version can differ " +
+            "between sellers"
+    },
+    {
+        id: "E-46",
+        title: "Mazda Connect CarPlay/Android Auto retrofit kit options (m3r 251908)",
+        url: "https://www.mazda3revolution.com/threads/" +
+            "mazda-connect-apple-carplay-andriod-auto-retrofit-kit-options.251908/",
+        type: "forum thread",
+        author: "FreeseFrame et al.",
+        dates: "2024-09 → 2025-11",
+        category: "forum-mazda3revolution",
+        status: "bot-blocked",
+        trust: "C",
+        archive: "`wb-m3r-251908-p1.html`",
+        alias: "see E-44, E-45",
+        summary: "Brand round-up (CARabc, HMYC): no OEM kit, same Chinese hubs under different sellers; HMYC 2.1 " +
+            "wired works perfectly; kit instructions inadequate"
+    },
+    {
+        id: "E-47",
+        title: "CARABC \"P2 Wired o P3 Wireless\" hub listing (AliExpress 1005010287487680)",
+        url: "https://it.aliexpress.com/item/1005010287487680.html",
+        type: "listing",
+        author: "CARABC",
+        dates: "2026",
+        category: "hardware-vendor",
+        status: "bot-blocked",
+        trust: "D",
+        archive: "`hardware/carabc-p3/ali-1005010287487680-*.png`",
+        alias: "see E-48, E-44, E-45",
+        summary: "Listing image: the 2025/2026 NEW P3 supports wireless CarPlay and wireless Android Auto, the " +
+            "old P3 does not (nor fast charging) — two hubs sold as P3. Buyer reviews: 2 of 3 got wireless " +
+            "AA, 1 wired-only; USB-A shipped instead of Type-C; touch dead in wireless; switch fragile. No " +
+            "firmware version stated"
+    },
+    {
+        id: "E-48",
+        title: "CARABC wireless CarPlay / Android Auto USB hub — instruction manual",
+        url: "https://manuals.plus/ae/1005009269258401",
+        type: "manual",
+        author: "CARABC",
+        dates: "2025",
+        category: "hardware-vendor",
+        status: "alive",
+        trust: "C",
+        archive: "—",
+        alias: "see E-47",
+        summary: "Variants P2 USB-A wired, P2 Type-C wired, P3 Type-C wireless AI box. By default only wireless " +
+            "CarPlay; the switch enables wired CarPlay + wired Android Auto (the old P3). Requires software " +
+            "v70.00.21 or later"
     },
     {
         id: "E-12",

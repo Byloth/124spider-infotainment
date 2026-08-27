@@ -128,7 +128,7 @@ The pages are a distillation. The full record stays in the repository:
 | `research/PROCEDURE-DRAFT.md` | The reconstructed end-to-end procedure, plus §4b — the original script review |
 | `research/FIRMWARE-MATRIX.md` | Version × region matrix, upgrade/downgrade rules, the points of no return |
 | `research/INVENTORY.md` | Every file and part, with hashes and status |
-| `research/SOURCES.md` | The 232-source registry with link status and trust level |
+| `research/SOURCES.md` | The 237-source registry with link status and trust level |
 | `research/OPEN-QUESTIONS.md` | What is unknown, contradictory, or answerable only by a car |
 | `research/raw/*.md` | The seven per-theme reports, with the per-post detail the summaries drop |
 

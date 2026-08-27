@@ -225,7 +225,7 @@ reorder — they never gate. No content may exist only inside a component.
   `git config --show-origin --get user.name` before concluding it is unset.
 - Every factual claim in research docs cites its source using the single repo-wide id scheme
   `[A-nn]` `[B-nn]` `[C1-nn]` `[C2-nn]` `[D-nn]` `[E-nn]` `[F-nn]`, registered in `research/SOURCES.md`
-  (232 sources, with an alias column for URLs several themes found independently). Per-post detail lives
+  (237 sources, with an alias column for URLs several themes found independently). Per-post detail lives
   in the matching `research/raw/<X>-*.md`.
 - Every file in `downloads/` is listed in `research/INVENTORY.md` and hashed in
   `downloads/CHECKSUMS.sha256` (`sha256sum <file> >> downloads/CHECKSUMS.sha256`).
@@ -308,6 +308,9 @@ Read `research/` before doing anything; the headlines:
   layout confirmed against the held EU failsafe), the failsafe/boot-select mechanism behind the brick recovery,
   a build-date/SWI-part-number table for five NA builds (`FIRMWARE-MATRIX` §1a — 59.00.546 has no CarPlay/AA
   component at all), and a new ❓ contradiction on serial pin polarity (2S/2T TX vs RX) in `OPEN-QUESTIONS` 10a.
+- 2026-08-28: **clone-hub variants documented** — E-44…E-48 (three mazda3revolution threads via Wayback, the CARABC
+  listing and manual): the P2/P3/P3.1/P3.2/P3B table in `INVENTORY.md` §6.1, the "old P3 vs new P3" ambiguity, and
+  OPEN-QUESTIONS 10c (74.00.200+ vs 70.xx for wireless boxes). Field log updated with the maintainer's CARABC P3.
 - **Next:** (1) continue porting the research into the pages — procedure next (the operational core),
   then hardware, recovery, reference — written generically for all markets and all starting versions;
   (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).

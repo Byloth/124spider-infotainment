@@ -99,6 +99,10 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
     locally (`downloads/firmware/EU`, `ADR`). `unzip -l` lists the entries fine (and confirms the [F-62] layout),
     but they are encrypted — reading `versions.ini.gz` needs the zip password, which no source records.
 
+10c. ❓ **Which firmware do the wireless clone hubs need?** Ameridan: 74.00.200+ [E-03]; sellers and m3r users: "all
+    versions support CMU from 70.xx" [E-45][E-48 says v70.00.21+]. Matters because 74.x costs the USB tweaks. The
+    maintainer's own P3 on 70.00.100A will be the first data point (`MAINTAINER-CAR.md`).
+
 10. **Can a Fiat 59.00.5xx package be re-installed over Mazda 70.x** (return to stock)? No report exists,
     and Fiat packages do not circulate at all. Probably "no" — worth stating definitively.
 

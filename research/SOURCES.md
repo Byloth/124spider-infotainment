@@ -8,8 +8,8 @@ appears under several ids. This is the lookup table the other research docs (`IN
 
 **Date of registry:** 2026-08-23 (all link-status checks were done on that date).
 
-**Total sources registered:** 232 — A-01…A-32 (32), B-01…B-29 (29), C1-01…C1-15 (15),
-C2-01…C2-26 (26), D-01…D-25 (25), E-01…E-43 (43), F-01…F-62 (62).
+**Total sources registered:** 237 — A-01…A-32 (32), B-01…B-29 (29), C1-01…C1-15 (15),
+C2-01…C2-26 (26), D-01…D-25 (25), E-01…E-48 (48), F-01…F-62 (62).
 
 ## ID convention
 
@@ -23,7 +23,7 @@ parallel) all resolve:
 - `C2-01…C2-26` — from `raw/C2-firmware-tweak-compatibility.md`.
 - `D-01…D-25` — from `raw/D-firmware-availability.md`. File D used `S-01…S-25`; **renamed
   `S-nn → D-nn`** (S-01→D-01, … S-25→D-25) so the `S-` prefix is free for the merged-doc scheme.
-- `E-01…E-43` — from `raw/E-hardware-retrofit-kit.md`.
+- `E-01…E-43` — from `raw/E-hardware-retrofit-kit.md`; `E-44…E-48` added 2026-08-28 (clone-hub variants, CARABC).
 - `F-01…F-61` — from `raw/F-rollback-failures.md`.
 
 Every id is kept even when the same URL recurs under several ids. The **"Alias / see also"** column
@@ -248,6 +248,9 @@ wrapper. URLs abbreviated to `m3r.com/threads/…<id>`.
 | F-32 | Firmware version mayhem (244479) | 2021-12 → 2023 | live | `F-rollback/m3r-244479-p1.*` | C | 74 is 1-file; 56→74 directly "should be fine"; 70.00.021 buggiest v70; links removed by copyright owners | — |
 | F-29 | ID7 Recovery v2 (234619) | Trezdog44 2019-05-20 | live | `F-rollback/m3r-234619-p1.*` | B | 70.00.335-C neutralizeid7; "no recovery installed = no tweak, serial won't even work" (later relaxed) | **= C2-11** |
 | F-33 | Mazda MZD Connect firmware downloads-updated (180578, sticky) | ASH8 | live | `F-rollback/m3r-180578-p1.*` | B | "Fail Safe Version" in About; "born ≥59.00.xxxx DO NOT roll back"; nav SD locked to CMU+VIN after 100 km | **= D-06** |
+| E-44 | New USB Hub with Wireless Carplay (248768) | dkeske, Ultramic, Deano et al., 2023-08 → 2025-11 | bot-blocked (Tollbit 402) | `wb-m3r-248768-p1.html` (Wayback, 2026-08-28) | B/C | First wireless clone hubs (2023): "essentially a hub with a wireless CarPlay dongle built in"; **Ultramic (2023-09): wireless hub = ONLY wireless CP out of the box, AA disabled; toggle switch hidden under a sticker → wired mode, where BOTH CP and AA work**; CARABC wired hub "about 1 year, no problems"; data-privacy caveat on reverse-engineered CP boxes | see E-45, E-46, E-47 |
+| E-45 | Android Auto / Carplay Wired (P2) to Wireless upgrade (P3.2) (250046) | krisztiantobias, dpawlak, RedDevil1984 et al., 2024-02 → 2024-08 | bot-blocked (Tollbit 402) | `wb-m3r-250046-p1.html` (Wayback, 2026-08-28) | B/C | **The clone-hub variant table**: P2.x wired only; P3.x wireless CP + USB-C; P3.1 wireless CP + wired AA, no wired CP; **P3.2 = Android box** (apps, wireless CP + wireless AA, buttons captured by Android) — returned by one owner, "works, not like a charm" for another; P3B wireless CP/AA + wired CP, no wired AA (one owner: wireless AA fails, "carplay not responding"). Maker = "Renwoda Speciality Store" (AliExpress); "same version could be totally different from seller to seller"; >3 A fast-charge ports considered unsafe by one user; "all versions support CMU from 70.xx" (user claim) | see E-44, E-46 |
+| E-46 | Mazda Connect Apple Carplay/Android Auto Retrofit Kit Options (251908) | FreeseFrame et al., 2024-09 → 2025-11 | bot-blocked (Tollbit 402) | `wb-m3r-251908-p1.html` (Wayback, 2026-08-28) | C | Brand round-up ("Mazda OEM", CARabc, HMYC): "there is no OEM kit … same Chinese upgrades, only the seller is different"; HMYC 2.1 wired "works perfectly", kit instructions "woefully inadequate"; P3.2 Android-11 variant asked about, no answer | see E-44, E-45 |
 
 ### 2.5 Other Mazda / MX-5 forums (miata.net, mazdas247, mazda6club, mx5 clubs, cx3, pistonheads)
 
@@ -343,6 +346,8 @@ wrapper. URLs abbreviated to `m3r.com/threads/…<id>`.
 | E-34 | Amazon listings (B07KRPSRKH etc.) | amazon.com (7 ASINs) | marketplace | live | `hardware/amazon-m-*.html` | C/D | B07KRPSRKH = genuine 0000-8F-Z34 (4.8★/631, $163 in 2019); rest are clones ($51–111) incl. wireless-only | — |
 | E-35 | AliExpress 1005001447410048 | https://www.aliexpress.com/item/1005001447410048.html | marketplace | live | `hardware/aliexpress-1005001447410048.html` | C | The listing most 124 members used 2020–21 (~$80–103), claimed "genuine" by buyers | see E-40 |
 | E-43 | mazdaman workshop-manual mirror (trim removal) | http://mazdaman.x10host.com/SM356305/ | manual mirror | not fetched (404 per B; alt hexorcism.com) | — | B | ND workshop-manual section used for trim removal (linked by E-01/E-12) | — |
+| E-47 | CARABC "P2 Wired o P3 Wireless" hub listing (AliExpress 1005010287487680) | https://it.aliexpress.com/item/1005010287487680.html | listing | bot-walled (title + images only) | `hardware/carabc-p3/ali-1005010287487680-*.png` (3 listing images, 2026-08-28) | D | Combined P2-wired / P3-wireless listing. Listing image (verbatim): "The 2025 NEW P3 supports wireless carplay and wireless Android auto, while the old P3 does not support wireless Android auto or fast charging" — two different hubs sold as "P3". Buyer reviews 2026-03/05 (see `MAINTAINER-CAR.md`): 2 of 3 got wireless AA (one only after a first wired pairing), 1 of 3 wired-only; USB-A shipped instead of Type-C; no fast charge; touch dead in wireless; switch broke. No firmware version stated | see E-48, E-44, E-45 |
+| E-48 | CARABC Wireless CarPlay Android Auto USB Adapter Hub — instruction manual | https://manuals.plus/ae/1005009269258401 | manual (re-host) | live (bot check on curl; fetched 2026-08-28) | — | C | Variants P2 USB-A wired, P2 Type-C wired, P3 Type-C "Wireless AI BOX". **"By default, only wireless CarPlay is supported. To use wired CarPlay and wired Android Auto, adjust the switch"** (= the old P3). "The software must be v70.00.21 or later". Excludes Gen-1 CX-5/6 TomTom units and 2019+ BP/DM | see E-47 |
 
 ### 2.9 Videos
 
@@ -434,4 +439,4 @@ copy, or login-walled). A human with a browser (or the car owner saving the page
 
 ---
 
-*End of registry. 232 sources. Written 2026-08-23 from `research/raw/{A,B,C1,C2,D,E,F}`.*
+*End of registry. 237 sources. Written 2026-08-23 from `research/raw/{A,B,C1,C2,D,E,F}`.*
