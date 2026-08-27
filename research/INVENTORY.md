@@ -12,7 +12,7 @@ raw research notes (`research/raw/A…F`), the local downloads, or the archived 
 One convention across the whole repo: `[A-nn]` (124spider.org forum), `[B-nn]` (Ameridan blog),
 `[C1-nn]` (MZD-AIO project), `[C2-nn]` (firmware × tweak matrix), `[D-nn]` (firmware availability),
 `[E-nn]` (hardware), `[F-nn]` (rollback/failures). They resolve in `SOURCES.md`, which registers all
-231 sources and carries an "Alias / see also" column for URLs that several themes found independently.
+232 sources and carries an "Alias / see also" column for URLs that several themes found independently.
 The finest-grained detail (exact posts, dates, page numbers) stays in `research/raw/<X>-*.md`.
 
 ## Status legend (from CLAUDE.md)
@@ -228,6 +228,7 @@ All the NHTSA PDFs and the archived install PDFs are collected locally under `re
 
 | Document | Ref / title | Local path | Size | SHA256 | Sources |
 |---|---|---|---|---|---|
+| **silverchris CMU reverse-engineering docs** | GitHub `silverchris/mazda-cmu-documentation`, markdown tree @ `838b1a4` (2023-04-23); hardware, `.up` format, failsafe boot, versions table, D-Bus | `research/archive/github-silverchris-mazda-cmu-documentation/` (folder, 1.1 MB) | — | — | [F-62] |
 | **Mazda worldwide CMU update procedure** | "MZD Mazda Connect CMU Firmware Update Procedure", **MME/E004/17**, JUNE 2018, WORLDWIDE (30 steps; brake/clutch every 25 min). Blog copy | `research/archive/ameridan-firmware-cmu-update-procedure-worldwide-2018.pdf` (= `ameridan/pdf/firmware-cmu-update-procedure-worldwide-2018.pdf`) | 1,329,048 B | `2d7f5458750f68d8e5c7f0a53af97c60c1c65b561b0049bd01d6a03d4c9fc708` | [D-04][A-2.5] |
 | ” — MediaFire copy | `2018_Connect_CMU_Software_Update_Procedure.pdf` (different file, smaller) | `downloads/ameridan/2018_Connect_CMU_Software_Update_Procedure.pdf` | 778,657 B | `2c347d3dcd16328f85f6d19af94320998807846d34a3223d94a4db7027eab54d` | [B-3.10] |
 | ” — billswebspace copy (9 pp, w/ 70.00.335 notes) | full + one-page; 25-min ACC timer; ROOM-fuse recovery | `research/archive/F-rollback/mazda-cmu-software-update-procedure-worldwide.pdf` | 1,627,108 B | `b3a3f3b2534ace9b8ec3e37d87589c5c8e6eec721cb2c10c829a3a7f7b40d7b4` | [F-49] |
@@ -265,7 +266,10 @@ incl. 70.00.335C/.352B — 124spider attachment, bot-blocked, no Wayback) [A-3];
 DOWNLOAD (MD5 checksum)" PDF** (dead local-path link — `lost`, covered only 021A hashes) [A-3][B-3.10];
 Mazda **Connect FAQ for technicians** PDF [B-25]; the **Scribd "EU N CMU HASH Value"** doc 838112560
 (login-gated; likely holds EU hashes) [D-23]; **drone540/mazda-firmware-changelogs** GitHub (changelog
-text, 55.x/59.x/70.00.021/000; missing 70.1xx+) [D-24]. Public eCatalog cable install sheet:
+text, 55.x/59.x/70.00.021/000; missing 70.1xx+) [D-24]; **silverchris/mazda-cmu-documentation** GitHub
+(CMU hardware, SPI-NOR map, `.up` format + cert chain, failsafe boot, UART pins, NA build dates/SWI part numbers —
+markdown tree archived at `research/archive/github-silverchris-mazda-cmu-documentation/`, commit `838b1a4`;
+datasheets omitted) [F-62]. Public eCatalog cable install sheet:
 `ecatalog.trademotion.com/content/itemDocuments/1014/MAZDA6%20SCREEN%20MIRROR%20C922%20V6%20605.pdf` [D-02].
 
 ---
@@ -321,7 +325,7 @@ sponge tape ×30, owner's-manual supplement + parts list. [E-2.1]
 | Used 124 CMU | — | $125 (no screen, came w/ 59.00.563), $285 w/ display; EU used MZD-1 190–600 € | [F-02][F-06][F-23] |
 | Mazda screen assembly | **D0YP-61-1JZ** (Connect 1.0, all 124 years); earlier **ND1F-61-1J0B**; NOT D2YN-61-1JZA | ~$80 | [B-17][B-15] |
 | Digitizer / LCD | **TM070RDZ38** (7", 36-pin) | ~$20 (AliExpress item 3256802049591210) | [B-17][E §screen] |
-| CMU internals | SPI NOR **MX25L6445E** (EU) / **S25FL064A/P** (US); i.MX6 Linux 3.0.35; serial pins 2S=RX, 2T=TX, GND=housing screw | replacement chip MX25L6445EMI-10G | [E §CMU][F-19][F-40] |
+| CMU internals | SPI NOR **MX25L6445E** (EU) / **S25FL064A/P** (US); i.MX6 Linux 3.0.35; serial pins 2S=RX, 2T=TX, GND=housing screw (❓ [F-62] labels them the other way round: 2S = UART TX, 2T = UART RX — probably CMU-side vs adapter-side naming; swap if silent) | replacement chip MX25L6445EMI-10G | [E §CMU][F-19][F-40][F-62] |
 
 ### 6.5 Navigation SD cards
 
@@ -336,7 +340,7 @@ sponge tape ×30, owner's-manual supplement + parts list. [E-2.1]
 
 | Tool | Notes | Sources |
 |---|---|---|
-| **USB-TTL serial adapter CP2102** | for mazdatweaks.com/serial (2S/2T/GND, 115200 8N1); ⚠️ insulate the bare TX wire (one adapter burned out on the CMU case) | [A-3][C2-08][F-60] |
+| **USB-TTL serial adapter CP2102** | for mazdatweaks.com/serial (2S/2T/GND, 115200 8N1); ⚠️ insulate the bare TX wire (one adapter burned out on the CMU case); ❓ TX/RX polarity contradicts between [F-51] and [F-62] | [A-3][C2-08][F-60][F-62] |
 | **CH341A programmer** + SOIC16 clip (+16→8 adapter) | NOR-flash unbrick; must be 3.3 V on data lines (trace-cut mod); <50 € total. RPi + flashrom or Bus Pirate alternatives | [F-19][F-38][F-39] |
 
 ### 6.7 Wireless-CarPlay dongles (on the new hub's phone port)

@@ -337,7 +337,7 @@ export const FIRMWARE: readonly FirmwareVersion[] = [
         pointOfNoReturn: 3,
         notes: "The serial login credentials are gone entirely, and updates are signed so repacking is " +
             "infeasible. The last v70.",
-        sourceIds: ["C2-14"]
+        sourceIds: ["C2-14", "F-62"]
     },
     {
         id: "74.00.230A",

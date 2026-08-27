@@ -50,7 +50,7 @@ finished** — deliberately kept out of this one. Nothing can be verified on har
 ```
 CLAUDE.md                  – this file (keep it updated when scope/layout/status changes)
 research/
-  SOURCES.md               – deduplicated master source index [S-nn], link status, trust level
+  SOURCES.md               – deduplicated master source index ([A-nn]…[F-nn]), link status, trust level
   INVENTORY.md             – every file/artifact + hardware part numbers; what we hold and its status
   FIRMWARE-MATRIX.md       – version × region matrix, upgrade/downgrade rules, points of no return
   PROCEDURE-DRAFT.md       – reconstructed end-to-end procedure (route table, flash, tweaks, hub,
@@ -223,7 +223,7 @@ reorder — they never gate. No content may exist only inside a component.
   `git config --show-origin --get user.name` before concluding it is unset.
 - Every factual claim in research docs cites its source using the single repo-wide id scheme
   `[A-nn]` `[B-nn]` `[C1-nn]` `[C2-nn]` `[D-nn]` `[E-nn]` `[F-nn]`, registered in `research/SOURCES.md`
-  (231 sources, with an alias column for URLs several themes found independently). Per-post detail lives
+  (232 sources, with an alias column for URLs several themes found independently). Per-post detail lives
   in the matching `research/raw/<X>-*.md`.
 - Every file in `downloads/` is listed in `research/INVENTORY.md` and hashed in
   `downloads/CHECKSUMS.sha256` (`sha256sum <file> >> downloads/CHECKSUMS.sha256`).
@@ -300,6 +300,12 @@ Read `research/` before doing anything; the headlines:
   `apple-touch-icon`) were generated from it and referenced in `config.mts` head with the base prefix
   (VitePress does not base-prefix head hrefs — `BASE` const added). The hero glow gradient in
   `theme/style.css` was retuned from red-on-red to the logo's sampled red (`#d11a1f`) → cyan (`#0fbfd6`).
+- 2026-08-28: **source F-62 registered** — `silverchris/mazda-cmu-documentation` (CMU reverse-engineering docs,
+  markdown tree archived under `research/archive/github-silverchris-…/`). Annotated: the `.up` container format and
+  JCI certificate chain (every `.up` was always signed — .367's wall is the removed credentials, not new signing;
+  layout confirmed against the held EU failsafe), the failsafe/boot-select mechanism behind the brick recovery,
+  a build-date/SWI-part-number table for five NA builds (`FIRMWARE-MATRIX` §1a — 59.00.546 has no CarPlay/AA
+  component at all), and a new ❓ contradiction on serial pin polarity (2S/2T TX vs RX) in `OPEN-QUESTIONS` 10a.
 - **Next:** (1) continue porting the research into the pages — procedure next (the operational core),
   then hardware, recovery, reference — written generically for all markets and all starting versions;
   (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).

@@ -138,7 +138,8 @@ Requires tweak access. Pick the route from §0.
 5. For MZD-AIO tweaks afterwards: build the stick with *Install Options → Build run.sh* and run `./run.sh`.
 
 **Route C — serial console** (59.x without ID7, or 70.00.335/352): CP2102 USB-TTL adapter on the CMU's
-serial pins, ID7/ID7v2 pasted before the first reboot of the flash. This is the pre-2025 method, is
+serial pins (2S/2T are the UART on the main power/communication connector, Sumitomo 6098-5611 ⚠️ unverified;
+❓ TX/RX polarity is stated the opposite way in [F-62] vs [F-51] — see OPEN-QUESTIONS), ID7/ID7v2 pasted before the first reboot of the flash. This is the pre-2025 method, is
 considerably more involved (CMU out of the dash), the canonical write-up (`mazdatweaks.com/serial`) is
 **dead**, and one owner destroyed his adapter and his CMU's serial port with a bare wire. Treat as the
 fallback, not the recommendation.
@@ -154,7 +155,9 @@ fallback, not the recommendation.
 ## 4b. Security implications of the three routes (read before choosing)
 
 **This section is original analysis** — the tweak scripts were read line by line on 2026-08-23. No
-community guide documents any of this. Nothing here says the tools are malicious: they do exactly what
+community guide documents any of this (silverchris's reverse-engineering docs [F-62] describe the `.up`
+container format and its certificate chain, which is consistent with what follows, but not the ID7
+injection reading). Nothing here says the tools are malicious: they do exactly what
 they claim. It is about what they *leave behind*.
 
 **How the ID7 install mechanism actually works** (not documented anywhere we found). The package ships
@@ -262,7 +265,7 @@ minutes (the CMU sleep cycle); flaky CP/AA is usually the cable.
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| **Black screen, radio still plays, knob/touch dead** (after the failsafe) | Power lost between failsafe and reinstall | The classic brick. Not recoverable from the seat: SPI-NOR programmer (CH341A + SOIC16 clip, **3.3 V**, or RPi + flashrom), write `0x00` at offset `0x010000` → CMU boots failsafe → feed it the reinstall `.up`. Kit < €50. Dealers only replace the CMU (~€1000–1500 new, €190–600 used). |
+| **Black screen, radio still plays, knob/touch dead** (after the failsafe) | Power lost between failsafe and reinstall | The classic brick. Not recoverable from the seat: SPI-NOR programmer (CH341A + SOIC16 clip, **3.3 V**, or RPi + flashrom), write `0x00` at offset `0x010000` (boot-select, `mtd1`) → the bootstrap runs IBC2 and boots the failsafe image from `mtd7` @0x0E0000 [F-62] → feed it the reinstall `.up`. Kit < €50. Dealers only replace the CMU (~€1000–1500 new, €190–600 used). |
 | "Install Not Successful: System Failure" loop at ~2 % | Reinstall attempted before the failsafe; or corrupt file; or bad stick; or tweaks still installed | ROOM-fuse retry (§3); another/smaller/older stick; verify hashes; remove the nav SD |
 | "Failed to validate package certificate" | Antivirus altered the download, partial file, bad stick, or **the new hub fitted before the update** | Re-download with AV off, verify hash, refit the old hub |
 | Stuck at 19–21 % | Unreliable stick | Branded FAT32 stick |

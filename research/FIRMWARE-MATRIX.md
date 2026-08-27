@@ -23,6 +23,19 @@ Filenames: `cmu150_<REGION>_<VERSION><rev>_<type>.up`, where `cmu150` is the hea
 Types: `_failsafe.up` (~7 MB, bootloader/updater — install **first**), `_reinstall.up` (0.9–2.3 GB, the OS —
 install **second**), `_update.up` (single-file, from 70.00.335 onward; failsafe folded in). [D-04, C2-16]
 
+**What a `.up` file is** (from silverchris's CMU reverse-engineering docs, trust B — "not all information may be
+correct" is the author's own caveat). A password-protected zip with a 256-byte SHA256 signature appended; the CMU
+validates the chain `/jci/certificates/jci_root_cert.pem` (on the unit) → `jci_subord_cert.pem` → `publisher_cert.pem`
+(both inside the zip), then the signature against the publisher certificate. `main_instructions.ini` drives the
+steps (`Execute` / `ImageUpdate` / `FileUpdate`). Notable sub-packages: `fail-safe/` (→ SPI-NOR 0x0E0000), `ibc2/`,
+`bootstrap/`, `linux1/` (main kernel), `rootfs1upd/`, `vip/` (CAN/LIN microcontroller), and **`passwdupdate/`** —
+"scripts to update the passwd file as well as authorized_keys", i.e. the mechanism that sets or removes the
+serial/SSH credentials. **Every `.up` has always been signed** — signing is not something 70.00.367 introduced (see
+the row below). [F-62] Checked against a file the project holds: `cmu150_EU_70.00.100A_failsafe.up` lists exactly
+`jci_subord_cert.pem`, `publisher_cert.pem`, `main_instructions.ini`, `versions.ini.gz` plus `bootstrap/`,
+`checksumoption/`, `fail-safe/`, `ibc2/`; its entries are flagged encrypted and the file ends in 256 bytes that
+are not part of the zip. The structure matches; the signature itself was not verified.
+
 ---
 
 ## 1. The matrix
@@ -49,7 +62,7 @@ working · **other route** = what is left if you have neither.
 | 70.00.130 / 137 / 150A | NA/EU/4A | yes | ❌ no | ❓ unknown | — | Interim builds; **no data in any source about tweak status** ❓ |
 | **70.00.335C** | NA/EU/4A | yes | ❌ no | ❌ **NO** | **ID7v2-at-install** ✅ (serial during the flash); mp3 ⚠️ (one 124 owner failed) | **★★ POINT OF NO RETURN #2.** Runs `neutralizeid7` + forced `passwdupdate`: deletes ID7 v1 *and* any pre-installed "v2", removes the serial credentials. First **single-file** `update.up`. Fixes BT echo. [C2-11, C2-14] |
 | 70.00.352B | NA/EU/4A | yes | ❌ no | ❌ no | **ID7v2-at-install ✅** (last version where it works); mp3 ⚠️ | Same neutralize as 335. MazdaToFiat needs the `_VER_EXT -le 360` edit [A-08]. |
-| **70.00.367A** | NA/EU/4A | yes | ❌ no | ❌ no | **serial ✗, ID7v2 ✗**; escape = downgrade to 352/335 ✅; mp3 ⚠️ 1 report (2026-04) | **★★★ POINT OF NO RETURN #3.** Serial login credentials gone entirely; updates are **signed** so repacking is infeasible [C2-14]. Last v70. |
+| **70.00.367A** | NA/EU/4A | yes | ❌ no | ❌ no | **serial ✗, ID7v2 ✗**; escape = downgrade to 352/335 ✅; mp3 ⚠️ 1 report (2026-04) | **★★★ POINT OF NO RETURN #3.** Serial login credentials gone entirely; updates are **signed** so repacking is infeasible [C2-14]; the container format and cert chain are documented in [F-62] — all `.up` files were signed from the start, what .367 removed is the credentials, and no signed package that re-adds them exists. Last v70. |
 | 74.00.230A | NA/EU/4A | yes | ❌ no | ❌ no | ID7v2 ✗; **mp3 ✅** | First v74. Downgradable to v70 by USB (bench-tested) [F-19] |
 | 74.00.311A / 74.00.310 | NA/EU/4A | yes | ❌ no | ❌ no | mp3 ✅ | **★ Downgrade floor rises: from ≥74.00.310 USB cannot go below 74.00.310** [C2-17] |
 | **74.00.324A** | NA/EU/4A | yes | ❌ no | ❌ no | **mp3 ✅** (confirmed on 124s) | **The final MZD-Connect-1 firmware** (2022-11). ~50 fixes over v70. MazdaToFiat needs 3 line edits + AIO `run.sh` edit [B-01, C2-17] |
@@ -59,6 +72,21 @@ working · **other route** = what is left if you have neither.
 the only Fiat move was a NA 59.00.5xx update. There is therefore **no "back to stock Fiat" path**. [B-01]
 
 ---
+
+### 1a. Build metadata (NA builds only) — from silverchris's per-component version table [F-62]
+
+| version | `JCI_BUILD_START_TIME` | `JCI_SW_PART_NUMBER` | CarPlay / Android Auto component |
+|---|---|---|---|
+| 59.00.546 (Mazda NA) | 2018-04-27 | SWI10-23001-813R02 | **none** — no `JCI_BLM_CARPLAY-IHU` / `JCI_BLM_AAPA-IHU` in the build at all |
+| 70.00.100 | 2018-07-02 | SWI10-24818-807R02 | CarPlay 01.00.115 / AA 01.00.019 |
+| 70.00.367 | 2020-04-21 | SWI10-24818-003R02 | CarPlay 01.00.118 / AA 01.00.020 |
+| 74.00.230 | 2021-03-02 | SWI10-26479-102R02 | CarPlay 01.01.209 / AA 01.00.040 |
+| 74.00.310 | 2021-11-22 | SWI10-26479-113R02 | CarPlay 01.01.210 / AA 01.00.040 |
+
+All five are `JCI_SW_FLAVOR = NA`, patch `A`. 59.00.546 is *Mazda's* 59, not a Fiat build, but it shows that the
+CarPlay/AA modules are simply absent from the 59 line — the structural reason the upgrade exists at all.
+⚠️ unverified beyond this single source; EU/ADR equivalents unknown (they could be read from `versions.ini.gz`
+inside the `.up` files held locally — see OPEN-QUESTIONS).
 
 ## 2. Upgrade rules
 
@@ -85,7 +113,7 @@ the only Fiat move was a NA 59.00.5xx update. There is therefore **no "back to s
 | 70.00.335/352/367 | 70.00.100 / 59.00.502+ | USB | **Being back on 70.00.100 does NOT restore USB tweaking** — the credentials are gone. [A-03] |
 | 70.00.367 | 70.00.352 | USB | The documented escape for 367; 352 can then take ID7v2-at-install. |
 | 74.00.230 | 70.x / 59.00.502+ | USB | bench-tested [F-19] |
-| 74.00.310/311/324 | anything < 74.00.310 | **NOT by USB** | Only by SPI-NOR surgery (write a 70.00.100 failsafe dump + boot-select 0x00). [F-19] |
+| 74.00.310/311/324 | anything < 74.00.310 | **NOT by USB** | Only by SPI-NOR surgery (write a 70.00.100 failsafe dump + boot-select 0x00). [F-19] The failsafe is a self-contained kernel + initramfs in SPI-NOR `mtd7` @0x0E0000; the bootstrap loads IBC2 (`mtd3` @0x040000) and runs it when the first byte of boot-select (`mtd1` @0x010000) is `0x00`. [F-62] |
 | ≥59.00.502 | anything < 59.00.502 | **NOT by USB** (the update screen simply does not list lower versions) | Only by SPI-NOR. Mazda: "if your car was born with any 59.00.xxxx or above, DO NOT roll back." |
 | Mazda 70.x | **Fiat 59.00.5xx** | ❓ **no report of anyone doing it**; Fiat packages do not circulate | Open question. |
 
@@ -103,6 +131,10 @@ band, up and down by USB; across a wall, only with an SPI flash programmer.
 3. **70.00.367** — serial login itself is dead; ID7/ID7v2 impossible. Escape = downgrade to 352/335 and do
    ID7v2 at install.
 4. **74.00.310+** — you can no longer return to v70 by USB.
+
+Why the walls are walls: the update path only accepts JCI-signed `.up` packages, and the credentials live in a
+`passwdupdate/` step of those packages — so once a release removes them, nothing an owner can build will put them
+back through the normal updater. The only thing outside the signed path is the SPI-NOR itself. [F-62]
 
 ### ⚠️ Important nuance (2024–2025): the mp3 method changes this picture
 

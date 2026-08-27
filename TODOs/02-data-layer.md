@@ -76,6 +76,9 @@ currently contain, so progress is measurable.
       every one of them feeds a component that filters interactively, and the loader form cannot do that.
   - [ ] ⏳ **Measure the bundle cost once the components exist** (task 03). If `sources.ts` (200 rows)
         proves disproportionate on a page that only renders it statically, that is the one worth moving.
+- [ ] **`FirmwareVersion` has no build metadata.** Build dates and `SWI10-…` part numbers are now known for five
+      NA builds (`research/FIRMWARE-MATRIX.md` §1a, [F-62]); add optional `buildDate?` / `swiPartNumber?` fields
+      once EU/ADR values exist too, so the matrix can show them per market rather than NA-only.
 
 ## What actually happened
 

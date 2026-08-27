@@ -1,7 +1,8 @@
 /**
- * The source registry — 198 entries, extracted from `research/SOURCES.md` §2.1–2.10.
+ * The source registry — 201 entries: 200 extracted from `research/SOURCES.md` §2.1–2.10, plus F-62 added by hand
+ * (2026-08-28).
  *
- * Extracted with a parser rather than transcribed by hand: 198 rows across ten sub-tables with
+ * Extracted with a parser rather than transcribed by hand: ~200 rows across ten sub-tables with
  * *different column headers* is exactly the kind of job where typing errors creep in. The parser mapped
  * columns per section from each table's own header row.
  *
@@ -1972,6 +1973,23 @@ export const SOURCES: readonly Source[] = [
         archive: "`github-mzd-connect-1-root-README.md`",
         alias: "**D-25, F-55**",
         summary: "mp3-hack payload: `mp3/a-d.mp3`, `js/run.js`, `dev.html`; created 2024-03-25"
+    },
+    {
+        id: "F-62",
+        title: "silverchris/mazda-cmu-documentation (CMU reverse-engineering docs)",
+        url: "https://github.com/silverchris/mazda-cmu-documentation",
+        type: "GitHub repo (docs only)",
+        author: "silverchris",
+        dates: "2023",
+        category: "github",
+        status: "alive",
+        trust: "B",
+        archive: "`github-silverchris-mazda-cmu-documentation/` (markdown tree @ 838b1a4, datasheets omitted)",
+        alias: "see F-38, C2-14, F-51",
+        summary: "i.MX6 CMU hardware + SPI-NOR partition map; `.up` container format + JCI cert chain; " +
+            "failsafe/IBC2 boot; UART pins 2S/2T; per-component version table with build dates + SWI part " +
+            "numbers for NA 59.00.546 / 70.00.100 / 70.00.367 / 74.00.230 / 74.00.310; D-Bus, VIP, CAN. " +
+            "Author's own caveat: \"not all information may be correct\""
     },
     {
         id: "C2-24",

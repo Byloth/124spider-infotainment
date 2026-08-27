@@ -16,7 +16,9 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
    2024-04-22 Google-Drive uploader; the EU failsafe matches its community MD5
    `cc485f4f16541cd803f615df42dc3512` exactly. The competing `279f1b81e1fa43b1b43ea1af38aab834` is
    jayrock's 2020 copy — the one that threw "Invalid packet certificate" on his fourth car. Working
-   conclusion: `d5c0…` is the good file, `279f…` was a bad/older copy.
+   conclusion: `d5c0…` is the good file, `279f…` was a bad/older copy. "Invalid packet certificate" is
+   the CMU failing the `.up` certificate/signature check (root → subordinate → publisher → appended
+   signature [F-62]) — i.e. that copy was altered or truncated, not a region mismatch.
    ⚠️ **Caveat:** the two sources agreeing on `d5c0…` are both Google Drive re-hosts and may share an
    upstream, so this is corroboration, not true independence. The **ADR** pair is stronger: both halves
    match community MD5s (`46d7a81a…`, `afb5cf9a…`) from a different source lineage.
@@ -76,7 +78,10 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
 
 8. **Downgrade file order** (failsafe-first vs reinstall-first) is contradictory across sources, and one
    owner ended with a mismatched OS/failsafe pair. Needs a definitive answer before publishing a rollback
-   procedure.
+   procedure. Mechanism, for context: the failsafe is a separate kernel+initramfs image in SPI-NOR `mtd7`,
+   selected by the boot-select byte, and the `_failsafe.up` package carries its own `fail-safe/` + `ibc2/`
+   sub-packages [F-62] — so the order question is really "which image does the updater run from". That
+   explains *why* the pair can end up mismatched; it does not settle the order.
 
 9. ~~**Are the 124spider.org Google-Drive zips unmodified Mazda files?**~~ → **RESOLVED 2026-08-23.**
    The uploader's "tweaked … optimized for Fiat" wording refers to the *bundled extras*, not the
@@ -84,6 +89,15 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
    (`autorun_copy_to_usb/tweaks.sh`, `autorun`, `cmu_dataretrieval.up`, `dataRetrieval_config.txt`,
    `passwd`, and `MazdaToFiatV70AIO/tweaks.sh`) is **byte-identical** to Ameridan's MediaFire originals,
    as is the 68wooley guide PDF (SHA256 `56a1ee28…`). The zips are a convenience bundle, unmodified.
+
+10a. ❓ **Serial pin polarity.** [F-51]/[E] say 2S = RX, 2T = TX; silverchris [F-62] says 2S = UART TX,
+    2T = UART RX. Almost certainly a CMU-side vs adapter-side naming difference, but the procedure must
+    say "if no output, swap" until someone checks on hardware.
+
+10b. **Build dates / SWI part numbers** are known for five NA builds only [F-62] (FIRMWARE-MATRIX §1a).
+    The EU/ADR equivalents should be readable from `versions.ini.gz` inside the EU/ADR `.up` files held
+    locally (`downloads/firmware/EU`, `ADR`). `unzip -l` lists the entries fine (and confirms the [F-62] layout),
+    but they are encrypted — reading `versions.ini.gz` needs the zip password, which no source records.
 
 10. **Can a Fiat 59.00.5xx package be re-installed over Mazda 70.x** (return to stock)? No report exists,
     and Fiat packages do not circulate at all. Probably "no" — worth stating definitively.

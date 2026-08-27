@@ -8,8 +8,8 @@ appears under several ids. This is the lookup table the other research docs (`IN
 
 **Date of registry:** 2026-08-23 (all link-status checks were done on that date).
 
-**Total sources registered:** 231 — A-01…A-32 (32), B-01…B-29 (29), C1-01…C1-15 (15),
-C2-01…C2-26 (26), D-01…D-25 (25), E-01…E-43 (43), F-01…F-61 (61).
+**Total sources registered:** 232 — A-01…A-32 (32), B-01…B-29 (29), C1-01…C1-15 (15),
+C2-01…C2-26 (26), D-01…D-25 (25), E-01…E-43 (43), F-01…F-62 (62).
 
 ## ID convention
 
@@ -295,6 +295,7 @@ wrapper. URLs abbreviated to `m3r.com/threads/…<id>`.
 | C2-22 | Trevelopment/cmu-autorun release "1" (`XX.zip` = ID7_Recovery_XX) | https://github.com/Trevelopment/cmu-autorun/releases/download/1/XX.zip | binary | Trevelopment | live (200) | `downloads/tweaks/ID7_Recovery_XX.zip` (SHA256 e6b77807…) | B | ID7 v2 pack (44-recovery-recovery/anti-neutralizeid7); replaces dead `trevelopment.win/xx` | see C2-09 |
 | C2-23 | mzd-evo/mzd-connect-1-root (mp3-hack payload) | https://github.com/mzd-evo/mzd-connect-1-root | GitHub repo | mzd-evo | live (200, no README) | `github-mzd-connect-1-root-README.md` | B | mp3-hack payload: `mp3/a-d.mp3`, `js/run.js`, `dev.html`; created 2024-03-25 | **D-25, F-55** |
 | C2-24 | shunceyb/mzd74-tweaks-no-touch | https://github.com/shunceyb/mzd74-tweaks-no-touch | GitHub repo | shunceyb | live (200) | `github-shunceyb-mzd74-tweaks-no-touch-README.md` | C | mp3-hack variant auto-launching diag for broken touchscreens (v74) | — |
+| F-62 | silverchris/mazda-cmu-documentation (CMU reverse-engineering docs) | https://github.com/silverchris/mazda-cmu-documentation | GitHub repo (docs only) | silverchris | live (200); last commit 2023-04-23 | `github-silverchris-mazda-cmu-documentation/` (markdown tree @ 838b1a4, datasheets omitted) | B | i.MX6 CMU hardware + SPI-NOR partition map; `.up` container format + JCI cert chain; failsafe/IBC2 boot; UART pins 2S/2T; per-component version table with build dates + SWI part numbers for NA 59.00.546 / 70.00.100 / 70.00.367 / 74.00.230 / 74.00.310; D-Bus, VIP, CAN. Author's own caveat: "not all information may be correct". Mazda 3/6/CX-3 focus, "Fiat 124 Spider?". Registered 2026-08-28 | see F-38, C2-14, F-51 |
 | C2-25 | Ameridan ID7 v1 package `autorun_copy_to_usb.zip` | http://www.mediafire.com/file/0r6pzhongok9h0u/autorun_copy_to_usb.zip | tweak zip | ameridan | live (200) | `mediafire/autorun_copy_to_usb.zip` = `downloads/ameridan/autorun_copy_to_usb.zip` (SHA256 c8bef694…) | B | ID7 v1 autorun+recovery pack; install on 56.x before flashing | see B-05 |
 | C1-04b/C2-26 | Web searches (2026-08-23) | — | search | — | — | — | — | Surfaced C2-09/14/17/24, miata.net t-666336 & 679114 post 142, mazdas247 "v74 Infotainment Tweaks" (not read) | (C2-26) |
 | D-24 | GitHub drone540/mazda-firmware-changelogs | https://github.com/drone540/mazda-firmware-changelogs | GitHub repo | drone540 | live | — | B | Changelog text only (no binaries); 55.x/59.x/70.00.021/70.00.000; missing 70.00.1xx+ | — |
@@ -433,4 +434,4 @@ copy, or login-walled). A human with a browser (or the car owner saving the page
 
 ---
 
-*End of registry. 231 sources. Written 2026-08-23 from `research/raw/{A,B,C1,C2,D,E,F}`.*
+*End of registry. 232 sources. Written 2026-08-23 from `research/raw/{A,B,C1,C2,D,E,F}`.*
