@@ -8,6 +8,9 @@ hero:
     Everything needed to upgrade the infotainment unit of a Fiat or Abarth 124 Spider from the
     factory Fiat firmware to Mazda firmware — collected in one place, sourced, hashed and honest
     about what is still unverified.
+  image:
+    src: /logo.png
+    alt: A red-and-cyan scorpion emblem linking a phone to a car's infotainment screen
   actions:
     - theme: brand
       text: Start here

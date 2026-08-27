@@ -10,18 +10,26 @@ import { defineConfig } from "vitepress";
 // locale in place and gives additional locales their own subdirectory, so adding Italian
 // later means adding a `locales` key here — no existing file has to move.
 
+// VitePress does not prefix `base` onto <head> asset URLs, so favicon links have to carry it
+// themselves. Keeping the base in one const avoids it drifting from the `base` option below.
+const BASE = "/124spider-infotainment/";
+
 export default defineConfig({
     lang: "en-US",
     title: "124 Spider Infotainment",
     description: "Upgrading the Fiat and Abarth 124 Spider infotainment unit to Mazda firmware for " +
         "Apple CarPlay and Android Auto — a versioned, sourced, verified knowledge base.",
 
-    base: "/124spider-infotainment/",
+    base: BASE,
     cleanUrls: true,
     lastUpdated: true,
     sitemap: { hostname: "https://byloth.github.io/124spider-infotainment/" },
 
     head: [
+        ["link", { rel: "icon", type: "image/x-icon", href: `${BASE}favicon.ico` }],
+        ["link", { rel: "icon", type: "image/png", sizes: "32x32", href: `${BASE}favicon-32x32.png` }],
+        ["link", { rel: "icon", type: "image/png", sizes: "16x16", href: `${BASE}favicon-16x16.png` }],
+        ["link", { rel: "apple-touch-icon", sizes: "180x180", href: `${BASE}apple-touch-icon.png` }],
         ["meta", { name: "theme-color", content: "#8c1007" }],
         ["meta", { name: "author", content: "Matteo Bilotta" }]
     ],

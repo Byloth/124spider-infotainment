@@ -294,6 +294,12 @@ Read `research/` before doing anything; the headlines:
   "GitHub Actions."** Flagged separately: 28 `blog-ameridan` sources in `sources.ts` store domain-less
   relative URLs — a pre-existing latent bug surfacing on the unlisted `dev/components` gallery (and later
   on `/reference/sources`); fix with file 11 or a data pass.
+- 2026-08-27: **the site has a logo.** An original red-and-cyan scorpion mark (evokes the Abarth heritage
+  without replicating any trademark; a generic phone→car connectivity glyph stands in for CarPlay/AA)
+  lives at `docs/public/logo.png`, wired into the home hero. Favicons (`favicon.ico` + 16/32 PNG +
+  `apple-touch-icon`) were generated from it and referenced in `config.mts` head with the base prefix
+  (VitePress does not base-prefix head hrefs — `BASE` const added). The hero glow gradient in
+  `theme/style.css` was retuned from red-on-red to the logo's sampled red (`#d11a1f`) → cyan (`#0fbfd6`).
 - **Next:** (1) continue porting the research into the pages — procedure next (the operational core),
   then hardware, recovery, reference — written generically for all markets and all starting versions;
   (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).
