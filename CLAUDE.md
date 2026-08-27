@@ -56,6 +56,8 @@ research/
   PROCEDURE-DRAFT.md       – reconstructed end-to-end procedure (route table, flash, tweaks, hub,
                              troubleshooting, rollback) — untested on hardware
   OPEN-QUESTIONS.md        – blockers, contradictions, lost material, what only the car can answer
+  MAINTAINER-CAR.md        – field log for the maintainer's own car (hardware bought, observations, what was
+                             done); cite as [MC]; the only place car-specific facts live — never a site default
   raw/                     – the seven per-theme research reports (A,B,C1,C2,D,E,F) these were built
                              from; keep them, they hold the per-post detail the summaries drop
   archive/                 – ~430 local copies of key pages/PDFs (178 MB), incl. Wayback captures
@@ -311,3 +313,5 @@ Read `research/` before doing anything; the headlines:
   (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).
 - **Deferred to a separate task, after the site is complete:** anything specific to the maintainer's own
   car (reading its version string, choosing its route, an actual attempt).
+  Whatever *is* recorded about it goes in `research/MAINTAINER-CAR.md` (started 2026-08-28: the "P3" clone hub
+  bought; vendor claims wired + wireless, no firmware version stated).
