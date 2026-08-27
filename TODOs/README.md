@@ -27,14 +27,22 @@ when every child is `[X]`.
 | 05 | [Pages · Security](05-pages-security.md) | 38 | `[X]` | The original findings and the live hijacked domain — **written first**, and the house style for every page after |
 | 06 | [Pages · Firmware](06-pages-firmware.md) | 31 | `[~]` | Matrix, regions, points of no return, obtaining and verifying |
 | 07 | [Pages · Start here](07-pages-guide.md) | 30 | `[X]` | Overview, eligibility, what changes, risks, the route wizard |
-| 08 | [Pages · Procedure](08-pages-procedure.md) | 45 | `[ ]` | Route selector and the five steps — the operational core |
+| 08a | [Procedure · Route](08a-procedure-route.md) | 8 | `[ ]` | Choose-your-route selector — the hub the five steps hang off |
+| 08b | [Procedure · Flash](08b-procedure-flash.md) | 18 | `[ ]` | Prepare + flash — the brick-risk half (USB prep, failsafe→reinstall, the pedal rule) |
+| 08c | [Procedure · Rebrand](08c-procedure-rebrand.md) | 25 | `[ ]` | Rebrand + hardware + verify — the three rebrand routes, the hub fit, the final checks |
 | 09 | [Pages · Hardware](09-pages-hardware.md) | 22 | `[ ]` | The kit, part numbers per market, genuine vs clone |
 | 10 | [Pages · Recovery](10-pages-recovery.md) | 33 | `[ ]` | Troubleshooting, downgrading, un-bricking |
 | 11 | [Pages · Reference](11-pages-reference.md) | 31 | `[ ]` | Sources, inventory, open questions, glossary, changelog |
 | 12 | [Verification](12-verification.md) | 28 | `[ ]` | Build, typecheck, lint, no-JS, dark mode, responsive, hash verifier |
 | 99 | [Deferred](99-deferred.md) | 26 | `[ ]` | Deploy, i18n, binary hosting, the maintainer's own car |
 
-**494 tasks.** Update this table's state column as files progress.
+**500 tasks.** Update this table's state column as files progress.
+
+The procedure (08) is split into **08a → 08b → 08c**, one file per delivery stage rather than one big
+file, because it is the safety-critical operational core: staging it lets the brick-risk half (08b) be
+written and reviewed on its own. Each stage repeats the section-wide "Done when" invariants (untested
+caveat on every page, no-JS branches expanded), which is why the three add up to slightly more than the
+original single file.
 
 ## Why this order
 
