@@ -26,7 +26,7 @@ when every child is `[X]`.
 | 04 | [Diagrams](04-diagrams.md) | 35 | `[~]` | Eight original SVGs — inline in components, three generated from the data, each with a text equivalent |
 | 05 | [Pages · Security](05-pages-security.md) | 38 | `[X]` | The original findings and the live hijacked domain — **written first**, and the house style for every page after |
 | 06 | [Pages · Firmware](06-pages-firmware.md) | 31 | `[~]` | Matrix, regions, points of no return, obtaining and verifying |
-| 07 | [Pages · Start here](07-pages-guide.md) | 30 | `[ ]` | Overview, eligibility, what changes, risks, the route wizard |
+| 07 | [Pages · Start here](07-pages-guide.md) | 30 | `[X]` | Overview, eligibility, what changes, risks, the route wizard |
 | 08 | [Pages · Procedure](08-pages-procedure.md) | 45 | `[ ]` | Route selector and the five steps — the operational core |
 | 09 | [Pages · Hardware](09-pages-hardware.md) | 22 | `[ ]` | The kit, part numbers per market, genuine vs clone |
 | 10 | [Pages · Recovery](10-pages-recovery.md) | 33 | `[ ]` | Troubleshooting, downgrading, un-bricking |
@@ -69,14 +69,15 @@ today serves a scam site.
 - **Binaries: collected and verified.** ~11 GB in the git-ignored `downloads/`, all 28 files hashed in
   `downloads/CHECKSUMS.sha256`. EU, ADR and NA 70.00.100A all present and matching community MD5s.
   20 files scanned clean by VirusTotal; 7 exceed every scanner's size limit and never can be.
-- **Site: six pages are written** (files 05 and 06). `/security/` and `/security/link-safety` are
-  finished prose — the section that exists nowhere else, plus the live hijacked-domain warning — and the
-  whole `/firmware/` section now stands: the version matrix, regions and file naming, points of no return
-  (classic rule vs. the 2025 mp3 nuance, confidence intact), and obtaining and verifying (per-region
-  sourcing, hash tables, `HashVerifier`, the USB-stick test). The other 23 pages are still stubs. File 06
-  is `[~]` not `[X]` for one cross-cutting item only: anchoring *every* matrix row and linking each from
-  another page waits on the downstream pages that would cite them. Two more pages remain to create:
-  `guide/route` and `reference/changelog`.
+- **Site: eleven pages are written** (files 05, 06 and 07). `/security/` (2 pages) is finished prose — the
+  section that exists nowhere else, plus the live hijacked-domain warning. The whole `/firmware/` section
+  (4 pages) stands: the version matrix, regions and file naming, points of no return (classic rule vs. the
+  2025 mp3 nuance, confidence intact), and obtaining and verifying. And the `/guide/` "Start here" section
+  (5 pages) is done: overview, eligibility, what you gain and lose, risks and one-way doors, and the new
+  `guide/route` route wizard — every page written generically for all markets, no route presented as the
+  default. The other 18 pages are still stubs. File 06 stays `[~]` for one cross-cutting item only:
+  anchoring *every* matrix row and linking each from another page waits on the downstream pages that would
+  cite them. One more page remains to create: `reference/changelog`.
 - **Components: done** (file 03, plus two from 05). `useProfile()` plus 18 components in `docs/.vitepress/theme/components/`,
   and three pure-logic modules in `docs/.vitepress/logic/` — the version parser, the route derivation and
   an incremental SHA-256 (WebCrypto cannot hash a 2.4 GB file). A development gallery at

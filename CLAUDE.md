@@ -92,11 +92,12 @@ VitePress 1.6.4, **bun**, Node v24 via nvm. `bun run docs:dev` to serve, `bun ru
 
 - **Deploy is not decided** — local only for now, so `base: '/'` and there is no CI workflow. A GitHub
   Pages project site would need `base: '/124spider-infotainment/'`.
-- **Six of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety` and the
-  whole `/firmware/` section (`index`, `regions`, `points-of-no-return`, `obtaining`) are finished prose.
-  Every remaining stub carries a warning block pointing at its backing document — keep that warning until
-  the page actually stands on its own, so an empty page is never mistaken for guidance, and delete it only
-  in the commit that writes the page.
+- **Eleven of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety`, the
+  whole `/firmware/` section (`index`, `regions`, `points-of-no-return`, `obtaining`), and the whole
+  `/guide/` "Start here" section (`index`, `eligibility`, `what-changes`, `risks`, and the new `route`) are
+  finished prose. Every remaining stub carries a warning block pointing at its backing document — keep that
+  warning until the page actually stands on its own, so an empty page is never mistaken for guidance, and
+  delete it only in the commit that writes the page.
 - **i18n**: English content stays at the root of `docs/` on purpose. VitePress keeps the root locale in
   place and gives other locales a subdirectory, so adding Italian later needs only a `locales` key.
 - `bun run docs:build` fails on dead links by design — use it as the link checker.
@@ -271,8 +272,16 @@ Read `research/` before doing anything; the headlines:
   corroboration-not-independence caveat). No new data or components — data-derived tables are left to the
   components (SSR-rendered = the no-JS baseline) rather than hand-duplicated. File 06 is `[~]` for one
   cross-cutting item: anchoring every matrix row waits on the pages that will cite them.
-- **Next:** (1) continue porting the research into the pages — guide next, then procedure, hardware,
-  recovery, reference — written generically for all markets and all starting versions; (2) decide
-  where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).
+- 2026-08-27: **the guide / "Start here" section is written** (`TODOs/07`) — five pages: overview (what
+  the upgrade is, gain/lose, time/cost, the dealer warning), eligibility (7″-only, reading the version,
+  the ❓ unconfirmed 70.00.100-over-Fiat-59.00.563 flash), what you gain and lose (three tables incl. the
+  VIN-check nav explanation and the un-pair-before-flashing note), risks (the four one-way doors +
+  `VersionTimeline`, the brick mechanism explained, recovery cost, reversibility), and the **new**
+  `guide/route` (mounts `RouteWizard`, then a full static route table + per-route `RouteBranch` cards with
+  copyable fenced summaries — the wizard renders no table and points to it). `route.md` registered in the
+  `/guide/` sidebar. No new data/components; 105 tests green.
+- **Next:** (1) continue porting the research into the pages — procedure next (the operational core),
+  then hardware, recovery, reference — written generically for all markets and all starting versions;
+  (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).
 - **Deferred to a separate task, after the site is complete:** anything specific to the maintainer's own
   car (reading its version string, choosing its route, an actual attempt).

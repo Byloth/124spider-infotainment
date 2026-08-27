@@ -46,7 +46,8 @@ export default defineConfig({
                         { text: "Overview", link: "/guide/" },
                         { text: "Is my car eligible?", link: "/guide/eligibility" },
                         { text: "What you gain and lose", link: "/guide/what-changes" },
-                        { text: "Risks and one-way doors", link: "/guide/risks" }
+                        { text: "Risks and one-way doors", link: "/guide/risks" },
+                        { text: "Which route is mine?", link: "/guide/route" }
                     ]
                 }
             ],
