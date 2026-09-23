@@ -32,10 +32,10 @@ describe("sourceById", () =>
 
     it("resolves an alias to its canonical entry", () =>
     {
-        const withAlias = SOURCES.find((s) => s.alias !== undefined && (/\b[A-F][0-9]?-[0-9]+\b/).test(s.alias));
+        const withAlias = SOURCES.find((s) => s.alias !== undefined && (/\b[A-F][0-9]?-[0-9]+[a-z]?\b/).test(s.alias));
         expect(withAlias).toBeDefined();
 
-        const alias = withAlias!.alias!.match(/\b[A-F][0-9]?-[0-9]+\b/)![0];
+        const alias = withAlias!.alias!.match(/\b[A-F][0-9]?-[0-9]+[a-z]?\b/)![0];
 
         expect(sourceById(alias)?.id).toBe(withAlias!.id);
     });
@@ -55,5 +55,22 @@ describe("sourceById", () =>
         const broken = SOURCES.filter((s) => sourceById(s.id)?.id !== s.id).map((s) => s.id);
 
         expect(broken).toEqual([]);
+    });
+
+    it("keeps a split suffix apart from its siblings", () =>
+    {
+        // `normalise` used to run the number through `parseInt`, which would have folded `F-54a` into `F-54`.
+        expect(sourceById("F-54a")?.url).toMatch(/issues\/47$/);
+        expect(sourceById("F-54b")?.url).toMatch(/issues\/135$/);
+    });
+
+    it("no longer resolves the bare id of a split source", () =>
+    {
+        // A leftover alias naming the old id would silently send `[F-54]` to whichever entry carries it.
+        const bases = [...new Set(SOURCES.map((s) => s.id).filter((id) => (/[a-z]$/).test(id))
+            .map((id) => id.slice(0, -1)))];
+
+        expect(bases.length).toBeGreaterThan(0);
+        expect(bases.filter((id) => sourceById(id) !== undefined)).toEqual([]);
     });
 });

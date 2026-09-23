@@ -225,7 +225,8 @@ reorder — they never gate. No content may exist only inside a component.
   `git config --show-origin --get user.name` before concluding it is unset.
 - Every factual claim in research docs cites its source using the single repo-wide id scheme
   `[A-nn]` `[B-nn]` `[C1-nn]` `[C2-nn]` `[D-nn]` `[E-nn]` `[F-nn]`, registered in `research/SOURCES.md`
-  (237 sources, with an alias column for URLs several themes found independently). Per-post detail lives
+  (256 sources, with an alias column for URLs several themes found independently; ids may carry a letter
+  suffix — `F-54a`/`F-54b` — where one raw id bundled several pages). Per-post detail lives
   in the matching `research/raw/<X>-*.md`.
 - Every file in `downloads/` is listed in `research/INVENTORY.md` and hashed in
   `downloads/CHECKSUMS.sha256` (`sha256sum <file> >> downloads/CHECKSUMS.sha256`).
@@ -316,6 +317,12 @@ Read `research/` before doing anything; the headlines:
   seven placeholder entries lost the field. A data invariant now rejects anything but a single absolute
   http(s) URL. Found alongside it: `SourceTable` linked five `mazdatweaks.com` sources without the
   `isHostile()` check (live on the published `dev/components` gallery) — fixed and tested. 108 tests.
+- 2026-09-23: **bundled sources split, nothing dropped.** The URL pass above had kept one page where an entry
+  named several. Twelve such ids (A-32, B-28, D-03, D-11, D-13, D-14, D-21, E-25, E-34, F-38, F-52, F-54) are
+  now one source per page with a letter suffix (`F-54a` #47, `F-54b` #135); the bare ids are gone outside
+  `research/raw/`, and every citation was re-attributed by reading its sentence. D-04 stays one source (one
+  PDF, two hosts): the MediaFire copy returns through a new `mirrors` field. The id regexes and `normalise()`
+  (which `parseInt`-ed the suffix away) now keep the letter. 225 entries in `sources.ts`, 111 tests.
 - **Next:** (1) continue porting the research into the pages — procedure next (the operational core),
   then hardware, recovery, reference — written generically for all markets and all starting versions;
   (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).

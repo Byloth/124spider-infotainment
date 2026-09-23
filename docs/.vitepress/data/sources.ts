@@ -1,5 +1,5 @@
 /**
- * The source registry — 206 entries: 200 extracted from `research/SOURCES.md` §2.1–2.10, plus F-62 and E-44…E-48
+ * The source registry — 225 entries: 200 extracted from `research/SOURCES.md` §2.1–2.10, plus F-62 and E-44…E-48
  * added by hand (2026-08-28).
  *
  * Extracted with a parser rather than transcribed by hand: ~200 rows across ten sub-tables with
@@ -44,6 +44,8 @@ export interface Source
     archive?: string;
     /** Other ids pointing at the same URL, found independently by different research themes. */
     alias?: string;
+    /** Other copies of the *same* document on other hosts — not other sources. */
+    mirrors?: string[];
     summary: string;
 }
 
@@ -103,9 +105,10 @@ export const SOURCES: readonly Source[] = [
         summary: "Official bulletins incl. TSB 09-022/19 changelog, 09-021/21, 09-018/22, retrofit memo MC-10144323, " +
             "nav-SD & screen-crack SAs"
     },
+    // Split from raw D-03, which bundled several pages under one id; each page is its own source.
     {
-        id: "D-03",
-        title: "Mazda EU dealer portal (\"Mazda Technical Download Server\")",
+        id: "D-03a",
+        title: "Mazda EU dealer portal (portal.mazdaeur.com)",
         url: "https://portal.mazdaeur.com",
         type: "OEM portal",
         author: "Mazda Europe",
@@ -114,9 +117,22 @@ export const SOURCES: readonly Source[] = [
         status: "paywalled",
         trust: "A",
         archive: "`wb-m3r-official-fw-download-eu-245120.html`",
-        alias: "—",
-        summary: "Official EU firmware but pay-per-time; only a thin current set (70.00.100A, 74.00.311A) found by a " +
-            "paying user"
+        summary: "Official EU firmware but pay-per-time (register as \"Independent Operator\"); only a thin " +
+            "current set (70.00.100A, 74.00.311A) found by a paying user"
+    },
+    {
+        id: "D-03b",
+        title: "Mazda Technical Download Server (mazdashare.com/mtds)",
+        url: "https://mazdashare.com/mtds",
+        type: "OEM portal",
+        author: "Mazda Europe",
+        dates: "2026",
+        category: "official",
+        status: "paywalled",
+        trust: "A",
+        archive: "—",
+        summary: "The \"Mazda Technical Download Server\" behind the EU portal; Mazda intends updates to be " +
+            "dealer-only"
     },
     {
         id: "D-04",
@@ -132,6 +148,7 @@ export const SOURCES: readonly Source[] = [
         archive: "`ameridan-firmware-cmu-update-procedure-worldwide-2018.pdf`; " +
             "`downloads/ameridan/2018_Connect_CMU_Software_Update_Procedure.pdf`",
         alias: "alias B-§3.10 PDF; F-49; A-§2.5",
+        mirrors: ["https://www.mediafire.com/file/j6b9tibycbe3ztu/2018_Connect_CMU_Software_Update_Procedure.pdf/file"],
         summary: "The actual 30-step dealer update procedure bundled with the files; brake/clutch every 20–25 min"
     },
     {
@@ -193,9 +210,10 @@ export const SOURCES: readonly Source[] = [
         summary: "Kit 0000-8F-Z34 = 1× TK78669U0C + 1× C922V6605; MSRP $199+labor; CSP02 free on 2018 Mazda6 " +
             "Touring+; labor op YY800XRX 1.5 h"
     },
+    // Split from raw F-38, which bundled several pages under one id; each page is its own source.
     {
-        id: "F-38",
-        title: "2x4logic JCI fail-safe reverse-engineering pages",
+        id: "F-38a",
+        title: "2x4logic \"JCI fail-safe\" reverse-engineering page",
         url: "http://www.2x4logic.com/jci-failsafe.html",
         type: "technical",
         author: "majbthrd",
@@ -203,9 +221,22 @@ export const SOURCES: readonly Source[] = [
         category: "official",
         status: "dead",
         trust: "B",
-        archive: "`F-rollback/2x4logic-jci-failsafe.wayback2016.html`, `2x4logic-invokefailsafe.wayback20160605.html`",
-        alias: "—",
-        summary: "SPI-NOR partition map, why \"fail-safe\" isn't, boot-select byte @0x010000, Bus-Pirate procedure"
+        archive: "`F-rollback/2x4logic-jci-failsafe.wayback2016.html`",
+        summary: "SPI-NOR partition map, why \"fail-safe\" isn't, boot-select byte @0x010000; \"even Mazda's " +
+            "procedures seem insufficient; run the engine\""
+    },
+    {
+        id: "F-38b",
+        title: "2x4logic \"invoke fail-safe\" page",
+        url: "http://www.2x4logic.com/invokefailsafe.html",
+        type: "technical",
+        author: "majbthrd",
+        dates: "2016",
+        category: "official",
+        status: "dead",
+        trust: "B",
+        archive: "`F-rollback/2x4logic-invokefailsafe.wayback20160605.html`",
+        summary: "Forcing the failsafe by setting the boot-select byte to 0xFF; Bus-Pirate procedure"
     },
     {
         id: "F-58",
@@ -409,7 +440,7 @@ export const SOURCES: readonly Source[] = [
         trust: "B",
         archive: "`124spider-firmware-download-locations-45543.html`; " +
             "`wb-124spider-firmware-files-download-locations-45543.html`",
-        alias: "**D-11**",
+        alias: "**D-11a**",
         summary: "Public Google-Drive zips NA/EU/ADR + v74 NA + MZD-AIO; one EU brick report"
     },
     {
@@ -663,18 +694,33 @@ export const SOURCES: readonly Source[] = [
         alias: "—",
         summary: "(not read)"
     },
+    // Split from raw A-32, which bundled several pages under one id; each page is its own source.
     {
-        id: "A-32",
-        title: "Ameridan blog posts referenced by the forum",
+        id: "A-32a",
+        title: "Ameridan \"Universal Version 70 Fiat AIO Tweak\", as referenced by the forum",
         url: "https://21stcenturyfiat124spider.wordpress.com/2019/02/18/universal-version-70-fiat-tweak/",
         author: "ameridan",
-        dates: "2019 / 2025",
+        dates: "2019",
         category: "forum-124spider",
         status: "alive",
         trust: "B",
         archive: "(see B)",
-        alias: "**B-01, B-04**",
+        alias: "**= B-01**",
         summary: "Forum repeatedly says \"follow the blog / PDFs, not the OP\""
+    },
+    {
+        id: "A-32b",
+        title: "Ameridan \"V70 & V74 Tweaks without ID7\", as referenced by the forum",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2025/05/25/" +
+            "v70-tweaks-without-id7-no-serial-connection-needed-yes-you-can/",
+        author: "ameridan",
+        dates: "2025",
+        category: "forum-124spider",
+        status: "alive",
+        trust: "B",
+        archive: "(see B)",
+        alias: "**= B-04**",
+        summary: "Forum points owners of locked v70/v74 at the blog's mp3-hack write-up"
     },
     {
         id: "F-03",
@@ -871,7 +917,7 @@ export const SOURCES: readonly Source[] = [
         trust: "C",
         archive: "`ameridan/universal-version-70-fiat-tweak.*`, `ameridan-universal-v70-fiat-aio.html`, " +
             "`…-comments-p1.html`",
-        alias: "**A-32, C1-14, C2-06, E-02, F-42**",
+        alias: "**A-32a, C1-14, C2-06, E-02, F-42**",
         summary: "THE master guide: MazdaToFiatV70AIO + 68wooley Part 1/2; 335/352 neutralizeid7 warning; serial " +
             "pins; mp3-hack addendum"
     },
@@ -911,7 +957,7 @@ export const SOURCES: readonly Source[] = [
         status: "alive",
         trust: "C",
         archive: "`ameridan/v70-tweaks-without-id7-…`, `ameridan-v70-tweaks-without-id7-mp3-hack.html`",
-        alias: "**A-32, C2-05, F-41**",
+        alias: "**A-32b, C2-05, F-41**",
         summary: "madfiat's mp3-hack (mzd-connect-1-root + USB keyboard → terminal → tweaks.sh) on locked v70/v74; " +
             "v74 line edits"
     },
@@ -1201,17 +1247,52 @@ export const SOURCES: readonly Source[] = [
         alias: "—",
         summary: "Market switch: firmware region flash reprograms tuner; TAU part readout (Test 85)"
     },
+    // Split from raw B-28, which bundled several pages under one id; each page is its own source.
     {
-        id: "B-28",
-        title: "Gracenote database updates (v8/9/12)",
+        id: "B-28a",
+        title: "Gracenote music database version 12 update",
         url: "https://21stcenturyfiat124spider.wordpress.com/2022/12/05/gracenote-music-database-version-12-update/",
-        dates: "2016–2022",
+        dates: "2022-12-05",
         category: "blog-ameridan",
         status: "alive",
         trust: "C",
-        archive: "`ameridan/gracenote-*.html`",
-        alias: "—",
-        summary: "v70 upgrade resets Gracenote to v8; Gracenote_xx_January2022.up on s3.amazonaws.com/visteon"
+        archive: "`ameridan/gracenote-music-database-version-12-update.html`",
+        summary: "January 2022 database, \"probably the last one\"; Gracenote_{EU,NA,ADR,JP}_January2022.up on " +
+            "s3.amazonaws.com/visteon; how to disable Gracenote. ⚠️ Raw B also records \"v70 resets Gracenote to " +
+            "v8\" for this series without naming the post"
+    },
+    {
+        id: "B-28b",
+        title: "Gracenote music database version 9 update",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2018/10/16/gracenote-music-database-version-9-update/",
+        dates: "2018-10-16",
+        category: "blog-ameridan",
+        status: "alive",
+        trust: "C",
+        archive: "`ameridan/gracenote-music-database-version-9-update.html`",
+        summary: "June 2018 database; \"Disabling Gracenote\" section; superseded by v12 (B-28a)"
+    },
+    {
+        id: "B-28c",
+        title: "Gracenote music database version 8 update",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2017/12/22/gracenote-music-database-version-8-update/",
+        dates: "2017-12-22",
+        category: "blog-ameridan",
+        status: "alive",
+        trust: "C",
+        archive: "`ameridan/gracenote-music-database-version-8-update.html`",
+        summary: "Version 8 database; early 124s shipped with version 5 (2015); superseded by v9"
+    },
+    {
+        id: "B-28d",
+        title: "Gracenote music database update",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2016/09/29/gracenote-music-database-update/",
+        dates: "2016-09-29",
+        category: "blog-ameridan",
+        status: "alive",
+        trust: "C",
+        archive: "`ameridan/gracenote-music-database-update.html`",
+        summary: "The first update post: what the database does, the .up install procedure from USB"
     },
     {
         id: "B-29",
@@ -1223,7 +1304,8 @@ export const SOURCES: readonly Source[] = [
         trust: "C",
         archive: "`ameridan/*.html`",
         alias: "—",
-        summary: "Archived for completeness; no firmware/upgrade facts beyond the above"
+        summary: "Archived for completeness; no firmware/upgrade facts beyond the above. The 14 URL paths are " +
+            "listed in raw B §1.3"
     },
     {
         id: "C2-10",
@@ -1680,18 +1762,30 @@ export const SOURCES: readonly Source[] = [
         alias: "—",
         summary: "UK dealer kit £174.37 = C830-V6-60Z + C830-V6-693 tape + TK78-66-9U0C + manual 4100-77-300EN"
     },
+    // Split from raw D-14, which bundled several pages under one id; each page is its own source.
     {
-        id: "D-14",
-        title: "mikele85.ru + drive2.ru (Russian EU firmware lists / build-log)",
+        id: "D-14a",
+        title: "mikele85.ru (Russian EU firmware list)",
         url: "https://mikele85.ru/",
-        author: "2020s",
+        dates: "2020s",
         category: "forum-other",
         status: "alive",
         trust: "C",
         archive: "—",
-        alias: "—",
-        summary: "Lists EU span cmu140_EU_30.00.100A … cmu150_EU_74.00.324A; direct JP 59.00.332 → EU 74.00.324; " +
-            "files paid/Telegram/Yandex"
+        summary: "Lists EU span cmu140_EU_30.00.100A … cmu150_EU_74.00.324A; files paid/Telegram/Yandex. Only the " +
+            "host was recorded"
+    },
+    {
+        id: "D-14b",
+        title: "drive2.ru build-log (EU 74.00.324 over JP 59.00.332)",
+        url: "https://www.drive2.ru/",
+        dates: "2020s",
+        category: "forum-other",
+        status: "alive",
+        trust: "C",
+        archive: "—",
+        summary: "A build-log documents a direct JP 59.00.332 → EU 74.00.324 flash, to add Russian. Only the host " +
+            "was recorded, not the post"
     },
     {
         id: "D-15",
@@ -1805,13 +1899,13 @@ export const SOURCES: readonly Source[] = [
         status: "alive",
         trust: "B",
         archive: "`mzd-aio-issue-135-comments.md`",
-        alias: "**C2-14, F-54**",
+        alias: "**C2-14, F-54b**",
         summary: "Serial doesn't work for 70.00.367 EU; signed updates; only path = downgrade to 352"
     },
     {
         id: "C1-09",
         title: "MZD-AIO latest release asset (spot-check)",
-        url: "https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.8.6",
+        url: "https://github.com/Trevelopment/MZD-AIO/releases/download/v2.8.6/MZD-AIO-TI_Setup_2.8.6.exe",
         type: "binary",
         author: "Trevelopment",
         category: "github",
@@ -1922,7 +2016,7 @@ export const SOURCES: readonly Source[] = [
         status: "hijacked",
         trust: "B",
         archive: "`mazdatweaks-serial-wayback.html`; `F-rollback/mazdatweaks-serial.HIJACKED-2026-08-23.html`",
-        alias: "see F-52",
+        alias: "see F-52a",
         summary: "Serial (CP2102, TX/RX/GND, 115200) for 59.00.502+ up to 70.00.100; login user/jci; copy XX"
     },
     {
@@ -1935,7 +2029,7 @@ export const SOURCES: readonly Source[] = [
         status: "dead",
         trust: "B",
         archive: "`wb-mazdatweaks-id7-20190717.html`, `mazdatweaks-id7-wayback.html`, `github-mazdatweaks-id7.md`",
-        alias: "see F-52",
+        alias: "see F-52b",
         summary: "\"UPDATING TO 70.00.335+ REQUIRES SERIAL DURING UPDATE\"; paste cp/chmod XX before reboot"
     },
     {
@@ -1961,7 +2055,7 @@ export const SOURCES: readonly Source[] = [
         status: "alive",
         trust: "B",
         archive: "`mzd-aio-issue-135-comments.md`",
-        alias: "**= C1-08; F-54**",
+        alias: "**= C1-08; F-54b**",
         summary: "neutralizeid7 text; 70.x passwdupdate always; 367 no login; updates signed; 367→352+XX works"
     },
     {
@@ -2001,7 +2095,7 @@ export const SOURCES: readonly Source[] = [
         status: "alive",
         trust: "B",
         archive: "`github-silverchris-mazda-cmu-documentation/` (markdown tree @ 838b1a4, datasheets omitted)",
-        alias: "see F-38, C2-14, F-51",
+        alias: "see F-38a, F-38b, C2-14, F-51",
         summary: "i.MX6 CMU hardware + SPI-NOR partition map; `.up` container format + JCI cert chain; " +
             "failsafe/IBC2 boot; UART pins 2S/2T; per-component version table with build dates + SWI part " +
             "numbers for NA 59.00.546 / 70.00.100 / 70.00.367 / 74.00.230 / 74.00.310; D-Bus, VIP, CAN. " +
@@ -2060,9 +2154,10 @@ export const SOURCES: readonly Source[] = [
         alias: "**= C2-23 / F-55**",
         summary: "The 2025 USB-only root method (mp3/XSS); not firmware itself"
     },
+    // Split from raw F-52, which bundled several pages under one id; each page is its own source.
     {
-        id: "F-52",
-        title: "mazdatweaks.com/serial + /id7 (hijacked)",
+        id: "F-52a",
+        title: "mazdatweaks.com/serial (hijacked)",
         url: "https://mazdatweaks.com/serial/",
         type: "tweak site",
         author: "Trezdog44",
@@ -2070,8 +2165,22 @@ export const SOURCES: readonly Source[] = [
         status: "hijacked",
         trust: "C",
         archive: "`F-rollback/mazdatweaks-serial.HIJACKED-2026-08-23.html`",
-        alias: "**= C2-08 / C2-09**",
-        summary: "Flag everywhere it is linked; GitHub mirror is the surviving copy"
+        alias: "**= C2-08**",
+        summary: "Now serves gambling spam. Flag everywhere it is linked; the GitHub mirror is the surviving copy"
+    },
+    {
+        id: "F-52b",
+        title: "mazdatweaks.com/id7 (404, hijacked domain)",
+        url: "https://mazdatweaks.com/id7/",
+        type: "tweak site",
+        author: "Trezdog44",
+        category: "github",
+        status: "dead",
+        trust: "C",
+        archive: "—",
+        alias: "**= C2-09**",
+        summary: "404 on a domain whose /serial/ is hijacked. Flag everywhere it is linked; the GitHub mirror is " +
+            "the surviving copy"
     },
     {
         id: "F-53",
@@ -2087,18 +2196,34 @@ export const SOURCES: readonly Source[] = [
         summary: "\"70.00.335+ deletes autorun … install via serial after update before reboot\"; updating w/ tweaks " +
             "\"safe\" ❓"
     },
+    // Split from raw F-54, which bundled several pages under one id; each page is its own source.
     {
-        id: "F-54",
-        title: "MZD-AIO issues #47 and #135 (GitHub)",
+        id: "F-54a",
+        title: "MZD-AIO issue #47 (GitHub)",
         url: "https://github.com/Trevelopment/MZD-AIO/issues/47",
-        type: "issues",
+        type: "issue",
         author: "community",
+        dates: "2019-03",
+        category: "github",
+        status: "alive",
+        trust: "B",
+        archive: "—",
+        summary: "Brick after \"System Restore\": stuck on the Mazda logo forever"
+    },
+    {
+        id: "F-54b",
+        title: "MZD-AIO issue #135 (GitHub)",
+        url: "https://github.com/Trevelopment/MZD-AIO/issues/135",
+        type: "issue",
+        author: "community",
+        dates: "2021-09 → 11",
         category: "github",
         status: "alive",
         trust: "B",
         archive: "`mzd-aio-issue-135-comments.md`",
         alias: "**= C1-08 / C2-14**",
-        summary: "#47 brick after \"System Restore\"; #135 367 EU serial fails, neutralizeid7 listing, 367→352 works"
+        summary: "70.00.367 EU serial login fails; `neutralizeid7` script listing; downgrade 367→352 by USB works " +
+            "(\"same manual as upgrade\")"
     },
     {
         id: "F-55",
@@ -2113,17 +2238,34 @@ export const SOURCES: readonly Source[] = [
         alias: "**= C2-23 / D-25**",
         summary: "The mp3/JS payload used by F-10/F-41"
     },
+    // Split from raw D-11, which bundled several pages under one id; each page is its own source.
     {
-        id: "D-11",
-        title: "124spider.org \"Firmware Files Download Locations\" (Google Drive re-host)",
+        id: "D-11a",
+        title: "124spider.org \"Firmware Files Download Locations\" (thread 45543)",
         url: "https://www.124spider.org/threads/firmware-files-download-locations.45543/",
-        type: "free re-host",
+        type: "forum thread",
+        author: "AegirTheLucky",
+        dates: "2025-01-28 →",
         category: "firmware-distribution",
         status: "bot-blocked",
         trust: "B",
         archive: "`wb-124spider-firmware-files-download-locations-45543.html`",
         alias: "**= A-12**",
-        summary: "Live community GDrive: NA/EU/ADR zips + v74 NA + procedure PDF + README"
+        summary: "First post carries per-region NA/EU/ADR links (text links, not raw URLs in the archive) and the " +
+            "Drive folder (D-11b)"
+    },
+    {
+        id: "D-11b",
+        title: "Google Drive folder linked from thread 45543 (v74 NA)",
+        url: "https://drive.google.com/drive/folders/1FSOxXVccKppRURPqZVayfulACGOQW-3Q",
+        type: "free re-host",
+        author: "AegirTheLucky",
+        category: "firmware-distribution",
+        status: "alive",
+        trust: "B",
+        archive: "—",
+        summary: "Live 2026: cmu150_NA_74.00.324A_update.up, the worldwide procedure PDF, a \"README FIRST\" PDF, " +
+            "Checksum_Utility.exe"
     },
     {
         id: "D-12",
@@ -2169,7 +2311,7 @@ export const SOURCES: readonly Source[] = [
         status: "alive",
         trust: "D",
         archive: "—",
-        alias: "see D-13/E-11",
+        alias: "see D-13a/E-11",
         summary: "£34.99–39.99; some list Fiat/Abarth 124-branded 70.00.100 / 74.00.324 \"+ Support\"; files are " +
             "Mazda's"
     },
@@ -2197,17 +2339,30 @@ export const SOURCES: readonly Source[] = [
         alias: "see E-42",
         summary: "Folders per region (`NA N`, `EU N`, `4A N`) + `y Checksum`; naming preserved in D-09 / Shopify PDF"
     },
+    // Split from raw D-21, which bundled several pages under one id; each page is its own source.
     {
-        id: "D-21",
-        title: "odysee.com \"FIAT 124 CarPlay Android Auto FILES\" (DanB) + MEGA links",
+        id: "D-21a",
+        title: "odysee.com \"FIAT 124 CarPlay Android Auto FILES\" (DanB)",
         url: "https://odysee.com/@DanB:7/FIAT-124-CarPlay-Android-Auto-FILES",
         type: "free mirror",
+        dates: "2017",
         category: "firmware-distribution",
         status: "dead",
         trust: "C",
         archive: "—",
         alias: "see B-§3.10",
-        summary: "2017 copies; MEGA folders load but reported empty"
+        summary: "2017 copies; JS-rendered, content unverified, likely stale"
+    },
+    {
+        id: "D-21b",
+        title: "MEGA links to the same files (various)",
+        type: "free mirror",
+        category: "firmware-distribution",
+        status: "dead",
+        trust: "C",
+        archive: "—",
+        alias: "see SOURCES.md dead-mirror table",
+        summary: "No specific link recorded under this id; MEGA folders load but are reported empty"
     },
     {
         id: "D-22",
@@ -2281,20 +2436,35 @@ export const SOURCES: readonly Source[] = [
         status: "alive",
         trust: "C",
         archive: "`hardware/124spider-uk-shop-aa-carplay-kit.html`",
-        alias: "**D-13**",
+        alias: "see D-13a, D-13b",
         summary: "UK 124 kit £150 self-fit / +£140 fit; hub+cables+firmware+own instructions; hub possibly non-OEM"
     },
+    // Split from raw D-13, which bundled several pages under one id; each page is its own source.
     {
-        id: "D-13",
-        title: "124spider.uk (Stuart Clark) — vendor + free knowledge",
+        id: "D-13a",
+        title: "124spider.uk blog \"124 Spider CMU firmware updates\" (Stuart Clark)",
         url: "https://124spider.uk/blog/124-spider-cmu-firmware-updates",
-        type: "shop + guide",
+        type: "guide",
+        author: "Stuart Clark",
+        dates: "2020-03-05",
         category: "hardware-vendor",
         status: "alive",
         trust: "C",
-        archive: "`wb-124spideruk-cmu-firmware-updates.html`, `wb-124spideruk-support-firmware-updates.html`",
-        alias: "**= E-11**",
-        summary: "\"Use 70.00.100 and NOTHING NEWER\"; serial-connection ID7 walk-through; sells kit"
+        archive: "`wb-124spideruk-cmu-firmware-updates.html`",
+        alias: "see E-11",
+        summary: "\"Use 70.00.100 and NOTHING NEWER\"; the vendor also sells a kit (E-11)"
+    },
+    {
+        id: "D-13b",
+        title: "124spider.uk \"Support: firmware updates\" (Stuart Clark)",
+        url: "https://124spider.uk/support/firmware-updates",
+        type: "guide",
+        author: "Stuart Clark",
+        category: "hardware-vendor",
+        status: "alive",
+        trust: "C",
+        archive: "`wb-124spideruk-support-firmware-updates.html`",
+        summary: "Full serial-connection ID7 walk-through"
     },
     {
         id: "E-21",
@@ -2344,17 +2514,29 @@ export const SOURCES: readonly Source[] = [
         alias: "—",
         summary: "UK genuine kit £232.37 = TK78-66-9U0C + C830-V6-60Z + tape C830-V6-693"
     },
+    // Split from raw E-25, which bundled several pages under one id; each page is its own source.
     {
-        id: "E-25",
-        title: "Arnold Clark / Sandicliffe (UK dealers)",
+        id: "E-25a",
+        title: "Arnold Clark (UK dealer): C830V660Z cable set",
         url: "https://www.arnoldclarkautoparts.com/products/genuine-mazda-carplay-c830v660z",
         type: "dealer",
         category: "hardware-vendor",
         status: "alive",
         trust: "C",
-        archive: "`hardware/arnoldclark-C830V660Z.html`, `sandicliffe-C830V660Z.html`",
-        alias: "—",
-        summary: "C830V660Z cable set alone £100–101.48"
+        archive: "`hardware/arnoldclark-C830V660Z.html`",
+        summary: "Genuine C830V660Z cable set alone, £101.48 (sold out)"
+    },
+    {
+        id: "E-25b",
+        title: "Sandicliffe (UK dealer): C830V660Z cable set",
+        url: "https://www.sandicliffeshop.co.uk/products/" +
+            "genuine-mazda-cx-3-2018-usb-cable-for-apple-carplay-android-auto-c830v660z",
+        type: "dealer",
+        category: "hardware-vendor",
+        status: "alive",
+        trust: "C",
+        archive: "`hardware/sandicliffe-C830V660Z.html`",
+        summary: "Genuine C830V660Z cable set alone, £100.02"
     },
     {
         id: "E-26",
@@ -2431,18 +2613,85 @@ export const SOURCES: readonly Source[] = [
         alias: "—",
         summary: "Hub alone \"Genuine Mazda\" $149.95; cable kit C922-V6-605A sold separately"
     },
+    // Split from raw E-34, which bundled several pages under one id; each page is its own source.
     {
-        id: "E-34",
-        title: "Amazon listings (B07KRPSRKH etc.)",
+        id: "E-34a",
+        title: "Amazon B07KRPSRKH: \"Mazda Retrofit Kit – 0000-8F-Z34\" (genuine)",
         url: "https://www.amazon.com/dp/B07KRPSRKH",
         type: "marketplace",
         category: "hardware-vendor",
         status: "alive",
         trust: "C",
-        archive: "`hardware/amazon-m-*.html`",
-        alias: "—",
-        summary: "B07KRPSRKH = genuine 0000-8F-Z34 (4.8★/631, $163 in 2019); rest are clones ($51–111) incl. " +
-            "wireless-only"
+        archive: "`hardware/amazon-m-B07KRPSRKH.html`",
+        summary: "Brand: Mazda, sold by a certified Mazda dealer; 4.8★ / 631; the listing 68wooley and ameridan " +
+            "bought from; currently unavailable, was $163 in 2019"
+    },
+    {
+        id: "E-34b",
+        title: "Amazon B08ZKBNDS7: \"TK78-66-9U0C CarPlay Android Auto Retrofit Kit\"",
+        url: "https://www.amazon.com/dp/B08ZKBNDS7",
+        type: "marketplace",
+        category: "hardware-vendor",
+        status: "alive",
+        trust: "D",
+        archive: "`hardware/amazon-m-B08ZKBNDS7.html`",
+        summary: "Generic; unavailable; 4.3★ / 145"
+    },
+    {
+        id: "E-34c",
+        title: "Amazon B09TQNH7LF: \"TK78-66-9U0C Adapter … MX5 Fiat 124\"",
+        url: "https://www.amazon.com/dp/B09TQNH7LF",
+        type: "marketplace",
+        category: "hardware-vendor",
+        status: "alive",
+        trust: "D",
+        archive: "`hardware/amazon-m-B09TQNH7LF.html`",
+        summary: "One of few listings naming the Fiat 124; a review mentions 70.00.100 NA N; unavailable; 4.0★ / 90"
+    },
+    {
+        id: "E-34d",
+        title: "Amazon B09MTJ6469: Dasbecan \"TK78-66-9U0C (2024 New Upgraded)\"",
+        url: "https://www.amazon.com/dp/B09MTJ6469",
+        type: "marketplace",
+        category: "hardware-vendor",
+        status: "alive",
+        trust: "D",
+        archive: "`hardware/amazon-m-B09MTJ6469.html`",
+        summary: "Clone; $51.37 in stock; 4.2★ / 490; seller offers to \"help you upgrade the firmware\""
+    },
+    {
+        id: "E-34e",
+        title: "Amazon B0BPYD7JR9: \"Mazda Carplay and Android Auto Retrofit Kit, TK78-66-9U0C OEM Hub\"",
+        url: "https://www.amazon.com/dp/B0BPYD7JR9",
+        type: "marketplace",
+        category: "hardware-vendor",
+        status: "alive",
+        trust: "D",
+        archive: "`hardware/amazon-m-B0BPYD7JR9.html`",
+        summary: "Clone; $59.93, unavailable; 4.3★ / 740"
+    },
+    {
+        id: "E-34f",
+        title: "Amazon B0BY2J41ZC: HMYC \"Wireless Carplay Retrofit Kit\" (no Android Auto)",
+        url: "https://www.amazon.com/dp/B0BY2J41ZC",
+        type: "marketplace",
+        category: "hardware-vendor",
+        status: "alive",
+        trust: "D",
+        archive: "`hardware/amazon-m-B0BY2J41ZC.html`",
+        summary: "Wireless-CarPlay-only clone, \"NO Android Auto\"; $111.31 in stock; 3.9★ / 308; reviews say " +
+            "units \"stop working after a few days\""
+    },
+    {
+        id: "E-34g",
+        title: "Amazon B0FMXR1V1B: \"TK78-66-9U0C for Mazda … 00008FZ34 (2024 New Upgraded)\"",
+        url: "https://www.amazon.com/dp/B0FMXR1V1B",
+        type: "marketplace",
+        category: "hardware-vendor",
+        status: "alive",
+        trust: "D",
+        archive: "`hardware/amazon-m-B0FMXR1V1B.html`",
+        summary: "Clone; $67.65, \"only 2 left\"; copies Mazda's \"firmware MUST BE UPDATED FIRST … v70.00.21\" text"
     },
     {
         id: "E-35",
@@ -2685,7 +2934,7 @@ export const SOURCES: readonly Source[] = [
     }
 ];
 
-const ID_RE = /\b([A-F][0-9]?-[0-9]+)\b/g;
+const ID_RE = /\b([A-F][0-9]?-[0-9]+[a-z]?)\b/g;
 
 /**
  * Ids are written inconsistently across the research documents — `A-3` in one place, `A-03` in another.
@@ -2697,7 +2946,10 @@ const normalise = (id: string): string =>
     const prefix = id.slice(0, at);
     const num = Number.parseInt(id.slice(at + 1), 10);
 
-    return `${prefix}-${String(num).padStart(2, "0")}`;
+    // Keep the split suffix: `F-54a` and `F-54b` are different pages, and `parseInt` would drop it.
+    const suffix = (/[a-z]$/).exec(id)?.[0] ?? "";
+
+    return `${prefix}-${String(num).padStart(2, "0")}${suffix}`;
 };
 
 /**

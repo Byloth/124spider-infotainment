@@ -36,7 +36,7 @@ Rules:
   version** for either mode.
 - Not yet unboxed, not yet fitted, not yet tested. Cable set / market variant of the kit: not yet recorded.
 - Context from the research: the wireless mode is reported to need firmware ≥ 74.00.200 and to offer CarPlay only
-  (no Android Auto) [E-03][E-34][E-39] — ❓ some listings claim v70 works. Whether a P3 behaves as a plain wired hub on
+  (no Android Auto) [E-03][E-34f][E-39] — ❓ some listings claim v70 works. Whether a P3 behaves as a plain wired hub on
   70.00.100A is exactly what the first test on this car will show.
 
 ### 2026-08-28 — the P3 hub: listing, seller claims, buyer reviews, images

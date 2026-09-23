@@ -204,4 +204,13 @@ describe("SourceTable", () =>
             expect(html, source.id).toContain(`href="${source.url!.replaceAll("&", "&amp;")}"`);
         }
     });
+
+    it("links a document's mirrors too", async () =>
+    {
+        const html = await render(SourceTable);
+        const mirrors = SOURCES.flatMap((s) => s.mirrors ?? []);
+
+        expect(mirrors.length).toBeGreaterThan(0);
+        for (const url of mirrors) { expect(html, url).toContain(`href="${url}"`); }
+    });
 });

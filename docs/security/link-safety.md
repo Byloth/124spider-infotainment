@@ -28,7 +28,7 @@ has changed hands.
 
 **Nothing on that domain should be run, downloaded or trusted** — including the pages that look harmless.
 `/id7/`, the other one the guides lean on, has returned 404 since August
-2025<SourceCite ids="C2-09,F-52" />, which is fine today and is not a promise about tomorrow: whoever
+2025<SourceCite ids="C2-09,F-52b" />, which is fine today and is not a promise about tomorrow: whoever
 serves a gambling site from `/serial/` decides what `/id7/` returns next. Nothing on
 `mazdatweaks.com` is clickable anywhere on this site, whatever its own status says.
 

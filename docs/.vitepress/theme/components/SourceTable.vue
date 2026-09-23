@@ -22,6 +22,8 @@
         { value: "video", label: "Videos" }
     ];
 
+    const hostOf = (url: string): string => new URL(url).hostname;
+
     const rows = computed(() =>
     {
         const needle = search.value.trim().toLowerCase();
@@ -95,6 +97,18 @@
                         <template v-else>
                             {{ s.title }}
                         </template>
+                        <div v-if="s.mirrors" class="meta">
+                            Also at:
+                            <span v-for="m in s.mirrors"
+                                  :key="m"
+                                  class="mirror">
+                                <a v-if="!isHostile(m)"
+                                   :href="m"
+                                   target="_blank"
+                                   rel="noreferrer">{{ hostOf(m) }}</a>
+                                <span v-else class="dead-url">{{ hostOf(m) }}</span>
+                            </span>
+                        </div>
                         <div v-if="s.author || s.dates" class="meta">
                             {{ [s.author, s.dates].filter(Boolean).join(" · ") }}
                         </div>
@@ -194,6 +208,9 @@ th { background-color: var(--vp-c-bg-soft); font-weight: 600; }
 
 .summary { min-width: 300px; }
 .meta { margin-top: 2px; font-size: 12px; }
+
+// Separators in CSS, not markup: the template formatter moves a literal ", " onto its own line.
+.mirror + .mirror::before { content: ", "; }
 
 .dead-url
 {

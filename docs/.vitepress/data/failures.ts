@@ -47,7 +47,7 @@ export const FAILURES: readonly Failure[] = [
         ],
         phase: "during-flash",
         severity: "brick",
-        sourceIds: ["F-19", "F-03", "F-38"]
+        sourceIds: ["F-19", "F-03", "F-38a", "F-38b"]
     },
     {
         id: "system-failure-loop",
@@ -161,7 +161,7 @@ export const FAILURES: readonly Failure[] = [
         ],
         phase: "after-tweaks",
         severity: "serious",
-        sourceIds: ["F-02", "F-06", "F-54", "F-03"]
+        sourceIds: ["F-02", "F-06", "F-54a", "F-03"]
     },
     {
         id: "dealer-flashed-latest",
@@ -202,7 +202,7 @@ export const FAILURES: readonly Failure[] = [
         fixes: ["ID7v2 recovery over serial, up to 70.00.352", "The mp3 payload", "Test the stick on a spare CMU"],
         phase: "after-flash",
         severity: "serious",
-        sourceIds: ["F-01", "F-29", "F-54", "F-53"]
+        sourceIds: ["F-01", "F-29", "F-54b", "F-53"]
     },
     {
         id: "serial-login-refused",
@@ -211,7 +211,7 @@ export const FAILURES: readonly Failure[] = [
         fixes: ["Downgrade to 352 by USB, then use serial", "Or the mp3 payload"],
         phase: "after-flash",
         severity: "serious",
-        sourceIds: ["F-54", "F-21", "F-26", "F-41"]
+        sourceIds: ["F-54b", "F-21", "F-26", "F-41"]
     },
     {
         id: "bluetooth-and-settings-lost",

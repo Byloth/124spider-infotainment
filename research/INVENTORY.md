@@ -51,7 +51,7 @@ FIRST) + `_reinstall.up` (main OS, ~0.9–2.3 GB, SECOND) up to 70.00.110; from 
 
 **Where-obtainable key:** *Mazda-USA-CDN* = `https://s3.amazonaws.com/tsd.mazdausa.com/MAZDA_CONNECT/<filename>`
 (first-party AWS S3, **NA objects world-readable HTTP 200**, bucket-listing denied, EU/ADR objects 403)
-[D-01]; *GDrive* = 124spider.org thread 45543 folders [A-12][D-11]; *PM* = shared by private message on
+[D-01]; *GDrive* = 124spider.org thread 45543 folders [A-12][D-11a][D-11b]; *PM* = shared by private message on
 the forums; *reseller* = navi-world / mazdafiles / eBay etc. [D-16..D-19].
 
 Hashes: **SHA256 [dl]** = computed locally on the collected file (in `downloads/CHECKSUMS.sha256`);
@@ -94,7 +94,7 @@ Hashes: **SHA256 [dl]** = computed locally on the collected file (in `downloads/
 | 70.00.130 / 70.00.137 / 70.00.150A | NA/EU/ADR | cmu150_<R>_70.00.150A_update.up etc. | update | — | — | — | reseller/PM | known-to-exist | interim bug-fix; 70.00.137 cited for CX-3 AA. ❓ 130/150 region/existence thin | [D-02][C2-mtx] |
 | **70.00.335C** | NA/EU/ADR | cmu150_NA_70.00.335C_update.up (+ EU/ADR) | **single update** | NA **964,830,856 B [live]**; EU ~2.3 GB; ADR ~1.8 GB | — | EU 335C MD5 `4980D1E107A37209F4D7FE42803EFB3E`/SHA1 `03E4C336385501FEBC09AE4E81C3538423B60EFB` | Mazda-USA-CDN (NA); navi-world €31; PM | known-hash (EU) | ★★ **first single-file build; introduces `neutralizeid7` — POINT OF NO RETURN #2.** MazdaToFiatV70AIO won't run without 124geek's edits. BT echo fix | [D-02][B-2.3][C2-mtx][F-29] |
 | **70.00.352B** | NA/EU/ADR | cmu150_NA_70.00.352B_update.up (+ EU/ADR) | single update | NA **964,837,250 B [live]** | — | comm hashes exist (not captured) | Mazda-USA-CDN (NA); navi-world; PM | known-to-exist | last serial-enablable v70 (ID7v2). AIO OK up to 352 with AIO 2.8.6 + ID7v2 | [D-02][C2-mtx][A-8] |
-| **70.00.367A** | NA (2020-06), EU N (~2020-09), ADR later | cmu150_NA_70.00.367A_update.up; cmu150_EU_70.00.367A_…; cmu150_ADR_… | single update | NA **967,219,802 B [dl/live]**; EU ~2.3 GB | NA `2c46f3f08ac9f93f72a6e15878eb3230c6a3a6f48ce0e4e1034508170cc8ded4` [dl] | NA MD5 `648dc7443ba99af8abd483f20673c295` ✓ / SHA1 `19398226a7cdad3a632a78fb183b7420482d0b90`; EU hashes NOT found | Mazda-USA-CDN (NA); navi-world €31 EU; mazdafiles $15 ADR; PM | **verified-pending-AV** (NA; VirusTotal TODO) | ★★★ **last v70; POINT OF NO RETURN #3 — serial reportedly dead.** Escape = downgrade to 352/335 + ID7v2, or mp3 hack (1 report). NA collected locally | [D-02][C2-mtx][F-21][F-54] |
+| **70.00.367A** | NA (2020-06), EU N (~2020-09), ADR later | cmu150_NA_70.00.367A_update.up; cmu150_EU_70.00.367A_…; cmu150_ADR_… | single update | NA **967,219,802 B [dl/live]**; EU ~2.3 GB | NA `2c46f3f08ac9f93f72a6e15878eb3230c6a3a6f48ce0e4e1034508170cc8ded4` [dl] | NA MD5 `648dc7443ba99af8abd483f20673c295` ✓ / SHA1 `19398226a7cdad3a632a78fb183b7420482d0b90`; EU hashes NOT found | Mazda-USA-CDN (NA); navi-world €31 EU; mazdafiles $15 ADR; PM | **verified-pending-AV** (NA; VirusTotal TODO) | ★★★ **last v70; POINT OF NO RETURN #3 — serial reportedly dead.** Escape = downgrade to 352/335 + ID7v2, or mp3 hack (1 report). NA collected locally | [D-02][C2-mtx][F-21][F-54b] |
 | 70.00.345 / 70.00.357 | NA/EU | cmu150_<R>_70.00.35x_update.up | single update | — | — | — | reseller/PM | known-to-exist | seen "by accident" (dealer flashed .357 in Italy); same neutralizeid7 family | [B-2.3][F "dealer"] |
 
 ### 1.4 Version-74 firmware
@@ -103,7 +103,7 @@ Hashes: **SHA256 [dl]** = computed locally on the collected file (in `downloads/
 |---|---|---|---|---|---|---|---|---|---|---|
 | **74.00.230A** | NA/EU/ADR | cmu150_NA_74.00.230A_update.up (+ EU/ADR) | single update | NA **968,212,898 B [live]** | — | NA MD5 `29151b83ba3f77b898a5c94e05cc69cd`/SHA1 `91bbc5af672f2ccdbee95375077b40c56742e2b8` | Mazda-USA-CDN (NA); PM | known-hash | first v74; **do NOT install thinking it enables wireless CarPlay.** Downgradable to 70/59 by USB (bench-tested) | [D-02][B-2.3][F-13] |
 | 74.00.310 | NA/EU/ADR | cmu150_<R>_74.00.310_update.up | single update | — | — | — | reseller/PM | known-to-exist | **74.x downgrade floor** — from ≥74.00.310 you can only go back to 74.00.310 (not below) by USB | [C2-mtx][D-05][F-19] |
-| 74.00.311A | NA/EU/ADR | cmu150_NA_74.00.311A_update.up; cmu150_EU_74.00.311A_update | single update | NA **968,191,040 B [live]** | — | — | Mazda-USA-CDN (NA); EU paid portal [D-03]; PM | known-to-exist | TSB 09-021/21; EU N installable on 4A/ADR (English) | [D-02][B-2.3] |
+| 74.00.311A | NA/EU/ADR | cmu150_NA_74.00.311A_update.up; cmu150_EU_74.00.311A_update | single update | NA **968,191,040 B [live]** | — | — | Mazda-USA-CDN (NA); EU paid portal [D-03a]; PM | known-to-exist | TSB 09-021/21; EU N installable on 4A/ADR (English) | [D-02][B-2.3] |
 | **74.00.324A** | NA/EU/ADR (**final**) | cmu150_NA_74.00.324A_update.up; cmu150_EU_74.00.324A_update.up; cmu150_ADR_… | single update | **NA 1,003,179,676 B [dl/live]**; EU ~2.3 GB; ADR ~1.8 GB | NA `ffd04e2c8cfaf77388aacde0f9c1cddc17cb6b7f02d7caa2fe6ad39c0f40e787` [dl] | NA MD5 `49c7c7a834ca40cbbbb68f29ee696475` ✓ / SHA1 `975935BD09E9EA90CFEC22AE87D66B310A2242E3`; EU MD5 `9B841BC807A5010A8652BB3B9E894F91`/SHA1 `3aa55dadc8d59fadb0c69af17444447b097baf18` | Mazda-USA-CDN (NA); GDrive (NA); navi-world €39; mazdafiles $10–15; PM | **verified-pending-AV** (NA MD5 exact match; VirusTotal TODO) | **last-ever MZD-Connect-1 firmware.** Tweak-locked from factory; mp3 hack restores tweaks. AIO OK on 324. NA collected locally | [D-02][C2-mtx][B-2.3] |
 | 74.00.331 | NA/EU/ADR | cmu150_<R>_74.00.331A_update.up | single update | — | — | — | rare; PM | known-to-exist | newer than 324; ⚠️ AIO tweaks on 331 **may disable wireless CarPlay**; AIO recommended only ≤74.00.324 | [D-02][B-2.3][C2-17] |
 | 74.00.200(+) | — | — | — | — | — | — | — | known-to-exist | wireless-CarPlay threshold — but also needs a 2021 wireless-capable CMU (~$999); not a firmware-only feature; irrelevant to 124 | [B-2.3][E-03] |
@@ -143,7 +143,7 @@ hashes, so per CLAUDE.md they remain `collected` until the AV step is done. Loca
 | `All-in-one_tweaksV1.51Fiat_c` | Siutsch AIO 1.51 for 56.00.521/530; **donation-gated** (PayPal → emailed link) | — | paywalled | [B-3.9] |
 | `All-in-one_tweaksV1.51Fiat_d` (folder) | public `_d` update folder (ExitLogo.ivf, blm_msg-system.xml, speedometer.js…) | `mediafire.com/folder/nmariu5t0fb4c/All-in-one_tweaksV1.51Fiat_d` | known-to-exist (folder live, not hashed) | [B-3.9][C1] |
 | `StatusBar` / boot / exit `.ivf` sub-files | Stef's ExitLogo.ivf (754 KB), TranLogoEnd etc. | inside the zips above | collected (inside zips) | [B-11][B-12] |
-| Gracenote `.up` files | `Gracenote_{EU,NA,ADR,JP}_January2022.up` — re-apply after v70 (v70 resets Gracenote to v8) | `s3.amazonaws.com/visteon/public-gracenote/…` | known-to-exist | [B-28][B-3.9] |
+| Gracenote `.up` files | `Gracenote_{EU,NA,ADR,JP}_January2022.up` — re-apply after v70 (v70 resets Gracenote to v8) | `s3.amazonaws.com/visteon/public-gracenote/…` | known-to-exist | [B-28a][B-3.9] |
 
 ### 2.1 68wooley guide package (PDFs)
 
@@ -183,7 +183,7 @@ Related repos (`known-to-exist`): **Trevelopment/MZD-AIO-TI** (original name, HT
 since 2017-03-06 — NNG takedown); **Trevelopment/cmu-autorun** (recovery SD-card scripts; hosts ID7
 XX.zip); **Trevelopment/mazdatweaks** (website source — the only surviving copy of the /id7 & /serial
 docs, since mazdatweaks.com is now hijacked/gambling-spam and /id7 is 404); **Trevelopment/headunit**
-(bundled community Android Auto app, fork of gartnera/headunit). [C1][C2-09][F-52]
+(bundled community Android Auto app, fork of gartnera/headunit). [C1][C2-09][F-52a][F-52b]
 
 ### 3.2 ID7 recovery packages & the mp3 hack
 
@@ -195,7 +195,7 @@ docs, since mazdatweaks.com is now hijacked/gambling-spam and /id7 is 404); **Tr
 | **`mzd-connect-1-root`** (mp3 hack payload) | fake-MP3 XSS root: `mp3/a-d.mp3` (41,239 B each), `js/run.js` (4,998 B), `dev.html`, `mp3title.txt`, `css/`. Opens JCI diag → Terminal → run `tweaks.sh`/`run.sh` on locked v70/v74 with a USB keyboard, no ID7/serial | `github.com/mzd-evo/mzd-connect-1-root` (created 2024-03-25; no README) — collected as the GitHub **main-branch zip** | 132,338 B | `95690ef15f38712568e4eb5c9eb03a2de92ab590fc494473ed1b28f20bfb7ca6` | downloads/tweaks/mzd-connect-1-root-main.zip | collected | [C2-23][A-13][F-55][B-3.8] |
 | **`shunceyb/mzd74-tweaks-no-touch`** | variant of the mp3 hack auto-launching diag for broken touchscreens (v74) | `github.com/shunceyb/mzd74-tweaks-no-touch` | — | — | — | known-to-exist (README archived) | [C2-24] |
 | id7 `autorun.v2.zip` / `autorun-v3.zip` | original 2017-06/07 ID7 v1 scripts (m3r thread attachments) | m3r thread 200450 | — | — | — | lost (attachments not retrievable) | [C2-10] |
-| `Checksum_Utility.exe` | MD5/SHA utility bundled in the v74 GDrive folder | GDrive folder `1FSOxXVccKppRURPqZVayfulACGOQW-3Q` | — | — | — | known-to-exist (not hashed) | [A-3][D-11] |
+| `Checksum_Utility.exe` | MD5/SHA utility bundled in the v74 GDrive folder | GDrive folder `1FSOxXVccKppRURPqZVayfulACGOQW-3Q` | — | — | — | known-to-exist (not hashed) | [A-3][D-11b] |
 | `Delete Dumps Tweak 1.0.3` | frees rootfs (deletes CJK fonts — not for ADR) | mazda3revolution thread 237136 | — | — | — | known-to-exist | [B-3.6] |
 
 ### 3.3 AA Tru_Go (community Android Auto for tweakable firmware)
@@ -316,15 +316,15 @@ sponge tape ×30, owner's-manual supplement + parts list. [E-2.1]
 - **NA kit 0000-8F-Z34:** MSRP $199+labor (2018, official) → today MSRP ~$250.90; dealer web $192–213;
   hub TK78-66-9U0E MSRP $164.95 ($112–135 web); cable C922-V6-605A MSRP $85.95 ($58–72). Dealer-fitted
   $499.99 (Galpin). Amazon B07KRPSRKH ($163, genuine, now often "unavailable"); eBay US Mazda dealers
-  $148.13. [E-09][E-21..E-23][E-33][E-34][E-19]
+  $148.13. [E-09][E-21..E-23][E-33][E-34a][E-19]
 - **EU:** €220 parts / €360 fitted (MME launch 2018); DE OEM web C830-V6-60Z €126. [E-06][E-26]
 - **UK:** £196 (rsmagee 2018); £174.37 (CX-3, 4 lines); SG Petch £232.37; cable alone £100–101;
-  dealer-fitted £350–467; **124spider.uk £150 kit + £140 fitting**. [E-05][E-24][E-25][E-11]
+  dealer-fitted £350–467; **124spider.uk £150 kit + £140 fitting**. [E-05][E-24][E-25a][E-25b][E-11]
 - **AU/NZ:** A$355 genuine kit (mx5mania). **JP:** hub ¥12,960 + cable ¥2,592 (2019). [E-29][E-36]
 - **AliExpress** item **1005001447410048** (~US$81–103, C$136–177, €87) — the listing most 124 owners
   used 2020–21, reported working/"looks genuine"; newer "2024 upgraded" clones $51–67 (Amazon B09MTJ6469,
   B0BPYD7JR9, B0FMXR1V1B). Wireless-only clone HMYC B0BY2J41ZC $111 (no Android Auto in wireless mode).
-  [E-35][E-34][E-40] ⚠️ market flooded with clones; SD-nav quirks / DOA cables reported [E-17][E-18]
+  [E-35][E-34d][E-34e][E-34g][E-34f][E-40] ⚠️ market flooded with clones; SD-nav quirks / DOA cables reported [E-17][E-18]
 - 124-naming aftermarket kits: infotainment.com "M-KIT30" $299.95 (US, lists Fiat 124), visioncoding
   €110 (EU, lists Fiat 124), getcartech A$199 (AU). [E-31][E-32][E-30]
 
@@ -354,7 +354,7 @@ sponge tape ×30, owner's-manual supplement + parts list. [E-2.1]
 | Tool | Notes | Sources |
 |---|---|---|
 | **USB-TTL serial adapter CP2102** | for mazdatweaks.com/serial (2S/2T/GND, 115200 8N1); ⚠️ insulate the bare TX wire (one adapter burned out on the CMU case); ❓ TX/RX polarity contradicts between [F-51] and [F-62] | [A-3][C2-08][F-60][F-62] |
-| **CH341A programmer** + SOIC16 clip (+16→8 adapter) | NOR-flash unbrick; must be 3.3 V on data lines (trace-cut mod); <50 € total. RPi + flashrom or Bus Pirate alternatives | [F-19][F-38][F-39] |
+| **CH341A programmer** + SOIC16 clip (+16→8 adapter) | NOR-flash unbrick; must be 3.3 V on data lines (trace-cut mod); <50 € total. RPi + flashrom or Bus Pirate alternatives | [F-19][F-38a][F-38b][F-39] |
 
 ### 6.7 Wireless-CarPlay dongles (on the new hub's phone port)
 
@@ -427,13 +427,13 @@ Everything under `downloads/` (git-ignored; total **~2.9 GB**), hashes from
 4. **Google-Drive zips not hashed:** `FIAT 124 CarPlay files NA.zip` (935 MB, id `1f8B3X-…6Tber`),
    `…EU.zip` (2.2 GB, `1kFk-EA6Zuf…`), `…ADR.zip` (1.8 GB, `1Pe24NuIz…`), the v74 NA folder
    (`1FSOxXVccKp…`). Download, hash, and confirm whether they contain unmodified `.up` files (⚠️
-   AegirTheLucky says they are "tweaked … optimized for Fiat"). [A-3][A-12][D-11]
+   AegirTheLucky says they are "tweaked … optimized for Fiat"). [A-3][A-12][D-11a][D-11b]
 5. **EU/ADR community hashes are thin** — missing EU/ADR 021, EU/ADR 367A, ADR 324A, all EU/ADR
    74.00.230/311. Retrieve the Scribd "EU N CMU HASH Value" doc (login-gated). [D-07]
 6. **Not yet collected:** MZD-AIO 2.8.6 installers (all 4 platforms); the 124geek-modified MazdaToFiat
    `tweaks.sh` for 335/352; the AA Tru_Go builds (PM-only); rescue NOR `.bin` images; `Checksum_Utility.exe`.
 7. **Lost / decayed sources to try to recover:** the HiDrive share tree (`hsodpqja.l`, held every EU/ADR
    hash + a `y Checksum` folder); mazdatweaks.com `/id7` (404; only the GitHub `Trevelopment/mazdatweaks`
-   copy survives) and `/serial` (site now hijacked); the 021A-only "TESTING… MD5 checksum" PDF. [A-3][D-07][F-52]
+   copy survives) and `/serial` (site now hijacked); the 021A-only "TESTING… MD5 checksum" PDF. [A-3][D-07][F-52a][F-52b]
 8. **Mirror the official trim/cable PDFs and Mazda mp4 install videos** from the HiDrive
    `-CarPlay-AndroidAuto INSTALL` folder before it disappears (only place with the full MX-5 trim PDFs). [E-42]

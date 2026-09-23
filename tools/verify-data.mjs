@@ -90,14 +90,15 @@ else
     const normalise = (id) =>
     {
         const at = id.lastIndexOf("-");
-        return `${id.slice(0, at)}-${String(Number.parseInt(id.slice(at + 1), 10)).padStart(2, "0")}`;
+        const suffix = (/[a-z]$/).exec(id)?.[0] ?? ""; // `F-54a` ≠ `F-54`: keep the split suffix
+        return `${id.slice(0, at)}-${String(Number.parseInt(id.slice(at + 1), 10)).padStart(2, "0")}${suffix}`;
     };
 
     const known = new Set();
-    for (const m of sourcesTs.matchAll(/id: "([A-F][0-9]?-[0-9]+)"/g)) { known.add(normalise(m[1])); }
+    for (const m of sourcesTs.matchAll(/id: "([A-F][0-9]?-[0-9]+[a-z]?)"/g)) { known.add(normalise(m[1])); }
     for (const m of sourcesTs.matchAll(/alias: "([^"]*)"/g))
     {
-        for (const a of m[1].matchAll(/\b([A-F][0-9]?-[0-9]+)\b/g)) { known.add(normalise(a[1])); }
+        for (const a of m[1].matchAll(/\b([A-F][0-9]?-[0-9]+[a-z]?)\b/g)) { known.add(normalise(a[1])); }
     }
 
     const cited = new Set();
@@ -113,7 +114,7 @@ else
             }
             else if (entry.name.endsWith(".md"))
             {
-                for (const m of readFileSync(full, "utf8").matchAll(/\[([A-F][0-9]?-[0-9]+)[\],]/g))
+                for (const m of readFileSync(full, "utf8").matchAll(/\[([A-F][0-9]?-[0-9]+[a-z]?)[\],]/g))
                 {
                     cited.add(normalise(m[1]));
                 }
