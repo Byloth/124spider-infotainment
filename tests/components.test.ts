@@ -17,6 +17,7 @@ import { describe, expect, it } from "vitest";
 
 import LinkTable from "../docs/.vitepress/theme/components/LinkTable.vue";
 import SourceCite from "../docs/.vitepress/theme/components/SourceCite.vue";
+import SourceTable from "../docs/.vitepress/theme/components/SourceTable.vue";
 
 import { isHostile, LINKS } from "../docs/.vitepress/data/links";
 import { SOURCES } from "../docs/.vitepress/data/sources";
@@ -173,5 +174,34 @@ describe("LinkTable", () =>
         const html = await render(LinkTable);
 
         for (const link of LINKS) { expect(html, link.url).toContain(link.lastChecked); }
+    });
+});
+
+describe("SourceTable", () =>
+{
+    it("never emits an href for a source on a hostile host", async () =>
+    {
+        // The registry holds several `mazdatweaks.com` pages. `LinkTable` refused them from the start;
+        // this table did not, and linked them for as long as it existed.
+        const hostile = SOURCES.filter((s) => s.url !== undefined && isHostile(s.url));
+
+        expect(hostile.length, "no hostile source to test with").toBeGreaterThan(0);
+
+        const html = await render(SourceTable);
+        for (const source of hostile)
+        {
+            expect(html, source.id).toContain(source.title.replaceAll("\"", "&quot;"));
+            expect(html, source.id).not.toContain(`href="${source.url}"`);
+        }
+    });
+
+    it("keeps every other source clickable", async () =>
+    {
+        const html = await render(SourceTable);
+
+        for (const source of SOURCES.filter((s) => s.url !== undefined && !isHostile(s.url)))
+        {
+            expect(html, source.id).toContain(`href="${source.url!.replaceAll("&", "&amp;")}"`);
+        }
     });
 });

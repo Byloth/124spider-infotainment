@@ -1,6 +1,7 @@
 <script lang="ts" setup>
     import { computed, ref } from "vue";
 
+    import { isHostile } from "../../data/links";
     import { SOURCES } from "../../data/sources";
     import type { SourceCategory } from "../../data/sources";
 
@@ -85,10 +86,12 @@
                         {{ s.id }}
                     </td>
                     <td>
-                        <a v-if="s.url"
+                        <!-- Same rule as `LinkStatus`: nothing on a host with a hijacked page gets an href. -->
+                        <a v-if="s.url && !isHostile(s.url)"
                            :href="s.url"
                            target="_blank"
                            rel="noreferrer">{{ s.title }}</a>
+                        <span v-else-if="s.url" class="dead-url">{{ s.title }}</span>
                         <template v-else>
                             {{ s.title }}
                         </template>
@@ -191,6 +194,12 @@ th { background-color: var(--vp-c-bg-soft); font-weight: 600; }
 
 .summary { min-width: 300px; }
 .meta { margin-top: 2px; font-size: 12px; }
+
+.dead-url
+{
+    color: var(--vp-c-text-2);
+    text-decoration: line-through;
+}
 
 .status
 {

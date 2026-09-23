@@ -55,6 +55,28 @@ describe("identifiers", () =>
     });
 });
 
+describe("sources", () =>
+{
+    it("every url is one absolute http(s) URL", () =>
+    {
+        // The registry was parsed from tables that abbreviated URLs ("…slug.38004/", "/2019/02/18/…",
+        // "(various)"). Rendered as an href, those resolve against this site and 404. An entry with no
+        // single page to point at carries no `url` at all.
+        const malformed = SOURCES
+            .filter((s) => s.url !== undefined)
+            .filter((s) =>
+            {
+                const url = s.url!;
+                if (/[\s…]/.test(url)) { return true; }
+                try { return !["http:", "https:"].includes(new URL(url).protocol); }
+                catch { return true; }
+            })
+            .map((s) => `${s.id}: ${s.url}`);
+
+        expect(malformed).toEqual([]);
+    });
+});
+
 describe("source references resolve", () =>
 {
     const referenced = [

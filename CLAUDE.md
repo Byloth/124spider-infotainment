@@ -293,9 +293,7 @@ Read `research/` before doing anything; the headlines:
   fix and a sitemap); `package.json` repackaged under `@byloth/` (v0.1.0, Apache-2.0, authored metadata);
   root `README.md` + `LICENSE` added; the homepage now states plainly that the guide is in progress and
   nothing is hardware-tested yet. **One-time manual step still required: set the repo's Pages source to
-  "GitHub Actions."** Flagged separately: 28 `blog-ameridan` sources in `sources.ts` store domain-less
-  relative URLs — a pre-existing latent bug surfacing on the unlisted `dev/components` gallery (and later
-  on `/reference/sources`); fix with file 11 or a data pass.
+  "GitHub Actions."** (The domain-less source URLs flagged here were fixed on 2026-09-23 — see below.)
 - 2026-08-27: **the site has a logo.** An original red-and-cyan scorpion mark (evokes the Abarth heritage
   without replicating any trademark; a generic phone→car connectivity glyph stands in for CarPlay/AA)
   lives at `docs/public/logo.png`, wired into the home hero. Favicons (`favicon.ico` + 16/32 PNG +
@@ -311,6 +309,13 @@ Read `research/` before doing anything; the headlines:
 - 2026-08-28: **clone-hub variants documented** — E-44…E-48 (three mazda3revolution threads via Wayback, the CARABC
   listing and manual): the P2/P3/P3.1/P3.2/P3B table in `INVENTORY.md` §6.1, the "old P3 vs new P3" ambiguity, and
   OPEN-QUESTIONS 10c (74.00.200+ vs 70.xx for wireless boxes). Field log updated with the maintainer's CARABC P3.
+- 2026-09-23: **every source `url` is now one absolute URL.** The parser had carried the registry's
+  abbreviations into `sources.ts` — 113 of 178 `url`s were relative paths, `…`-truncated slugs,
+  "a ; b" pairs or placeholders like "(various)", each rendering as a 404 href. Full URLs were recovered
+  from `research/raw/` and the archive's canonical links; multi-page entries keep the first page listed;
+  seven placeholder entries lost the field. A data invariant now rejects anything but a single absolute
+  http(s) URL. Found alongside it: `SourceTable` linked five `mazdatweaks.com` sources without the
+  `isHostile()` check (live on the published `dev/components` gallery) — fixed and tested. 108 tests.
 - **Next:** (1) continue porting the research into the pages — procedure next (the operational core),
   then hardware, recovery, reference — written generically for all markets and all starting versions;
   (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).

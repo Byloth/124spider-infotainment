@@ -92,7 +92,6 @@ export const SOURCES: readonly Source[] = [
     {
         id: "D-02",
         title: "Mazda dealer TSB / Service-Alert PDFs on NHTSA",
-        url: "https://static.nhtsa.gov/odi/tsbs/…",
         type: "OEM TSB",
         author: "Mazda NA Operations",
         dates: "2016–2022",
@@ -107,7 +106,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "D-03",
         title: "Mazda EU dealer portal (\"Mazda Technical Download Server\")",
-        url: "https://portal.mazdaeur.com / https://mazdashare.com/mtds",
+        url: "https://portal.mazdaeur.com",
         type: "OEM portal",
         author: "Mazda Europe",
         dates: "2026",
@@ -122,7 +121,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "D-04",
         title: "\"2018 FIRMWARE CMU UPDATE PROCEDURE-WORLDWIDE\" dealer PDF (ref MME/E004/17, Jun 2018)",
-        url: "(WordPress + MediaFire mirrors)",
+        url: "https://21stcenturyfiat124spider.wordpress.com/wp-content/uploads/2019/02/" +
+            "firmware-cmu-update-procedure-worldwide-2018.pdf",
         type: "OEM procedure",
         author: "Mazda",
         dates: "Jun 2018",
@@ -196,7 +196,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-38",
         title: "2x4logic JCI fail-safe reverse-engineering pages",
-        url: "http://www.2x4logic.com/jci-failsafe.html + /invokefailsafe.html",
+        url: "http://www.2x4logic.com/jci-failsafe.html",
         type: "technical",
         author: "majbthrd",
         dates: "2016",
@@ -210,7 +210,6 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-58",
         title: "Mopar CMU part numbers for the 124 Spider",
-        url: "Mopar catalogues (68465853AA, 68460741AA)",
         type: "parts catalogue",
         author: "Mopar/FCA",
         dates: "—",
@@ -239,7 +238,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "E-38",
         title: "Mazda Europe CP/AA + retrofit press announcement (via SPGlobal)",
-        url: "https://autotechinsight.spglobal.com/news/5245987/…",
+        url: "https://autotechinsight.spglobal.com/news/5245987/" +
+            "mazda-to-offer-apple-carplay-android-auto-in-new-vehicles-equipped-with-mzd-connect-system",
         type: "news / OEM PR",
         author: "Mazda Europe (2018-07-12)",
         dates: "2018-07-16",
@@ -254,7 +254,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-01",
         title: "CarPlay / Android Auto Upgrade HowTo (32286)",
-        url: "…carplay-android-auto-upgrade-howto.32286/",
+        url: "https://www.124spider.org/threads/carplay-android-auto-upgrade-howto.32286/",
         author: "68wooley",
         dates: "OP 2019-02; to 2024-06 (21 pp)",
         category: "forum-124spider",
@@ -268,7 +268,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-02",
         title: "68wooley PDF guide zip `124Spider_CP_AA_Upgrade_Guide.zip`",
-        url: "mediafire.com/file/201759io15ariii/…",
+        url: "https://www.mediafire.com/file/201759io15ariii/124Spider_CP_AA_Upgrade_Guide.zip/file",
         author: "68wooley",
         dates: "Part1 v3.0 2019-05-17",
         category: "forum-124spider",
@@ -281,7 +281,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-03",
         title: "Mazda made up a mess!!! FW 70.00.367 (39292)",
-        url: "…mazda-made-up-a-mess-fw-70-00-367.39292/",
+        url: "https://www.124spider.org/threads/mazda-made-up-a-mess-fw-70-00-367.39292/",
         author: "EU user",
         dates: "2021",
         category: "forum-124spider",
@@ -294,7 +294,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-04",
         title: "OK…Screwed up the Infotainment Upgrade – Fixed!! (38071)",
-        url: "…ok-screwed-up-the-infotainment-upgrade-fixed.38071/",
+        url: "https://www.124spider.org/threads/ok-screwed-up-the-infotainment-upgrade-fixed.38071/",
         author: "Bob T",
         dates: "Oct 2020",
         category: "forum-124spider",
@@ -307,7 +307,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-05",
         title: "USB not recognized after downgrade 70.00.100A→59.00.502 (38159)",
-        url: "…infotainment-not-recognizing-usb…38159/",
+        url: "https://www.124spider.org/threads/" +
+            "infotainment-not-recognizing-usb-to-install-tweaks-after-downgrade-70-00-100a-to-59-00-502.38159/",
         author: "manwithastick",
         dates: "Oct–Dec 2020",
         category: "forum-124spider",
@@ -320,7 +321,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-06",
         title: "Android Auto Upgrade (38677)",
-        url: "…android-auto-upgrade.38677/",
+        url: "https://www.124spider.org/threads/android-auto-upgrade.38677/",
         author: "Griswold381",
         dates: "Jan–Mar 2021",
         category: "forum-124spider",
@@ -333,7 +334,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-07",
         title: "Car play easy update (41206)",
-        url: "…car-play-easy-update.41206/",
+        url: "https://www.124spider.org/threads/car-play-easy-update.41206/",
         author: "unknown",
         dates: "Feb 2022",
         category: "forum-124spider",
@@ -346,7 +347,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-08",
         title: "MazdaToFiat70AIO on 70.00.335C / 70.00.352B — SUCCESS (38004)",
-        url: "…mazdatofiat70aio-and-cmu-firmware-70-00-335c-or-70-00-352b-success.38004/",
+        url: "https://www.124spider.org/threads/" +
+            "mazdatofiat70aio-and-cmu-firmware-70-00-335c-or-70-00-352b-success.38004/",
         author: "124geek",
         dates: "Sep 2020",
         category: "forum-124spider",
@@ -359,7 +361,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-09",
         title: "Mazda Cracked Down / Removed Firmware Downloads (40247)",
-        url: "…mazda-cracked-down-removed-firmware-downloads…40247/",
+        url: "https://www.124spider.org/threads/" +
+            "mazda-cracked-down-removed-firmware-downloads-impacts-all-new-potential-aa-carplay-upgraders.40247/",
         author: "AnClar",
         dates: "Aug–Dec 2021",
         category: "forum-124spider",
@@ -372,7 +375,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-10",
         title: "CMU Firmware V70.00.100 (EU) (42393)",
-        url: "…cmu-firmware-v70-00-100-eu.42393/",
+        url: "https://www.124spider.org/threads/cmu-firmware-v70-00-100-eu.42393/",
         author: "Neighbour (UK)",
         dates: "Oct 2022",
         category: "forum-124spider",
@@ -385,7 +388,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-11",
         title: "File for 70.00.100 firmware? (44172)",
-        url: "…file-for-70-00-100-firmware.44172/",
+        url: "https://www.124spider.org/threads/file-for-70-00-100-firmware.44172/",
         author: "bstem (AU)",
         dates: "2024-02 → 2025-07",
         category: "forum-124spider",
@@ -398,7 +401,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-12",
         title: "Firmware Files Download Locations (45543)",
-        url: "…firmware-files-download-locations.45543/",
+        url: "https://www.124spider.org/threads/firmware-files-download-locations.45543/",
         author: "AegirTheLucky",
         dates: "2025-01-28 → Aug 2025",
         category: "forum-124spider",
@@ -412,7 +415,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-13",
         title: "V70 Tweaks without ID7 — YES YOU CAN! (45965)",
-        url: "…v70-tweaks-without-id7…45965/",
+        url: "https://www.124spider.org/threads/v70-tweaks-without-id7-no-serial-connection-needed-yes-you-can.45965/",
         author: "madfiat",
         dates: "2025-05 → Jul 2025",
         category: "forum-124spider",
@@ -425,7 +428,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-14",
         title: "Upgrading to Native AA from V56 tweaks AA (45021)",
-        url: "…upgrading-to-native-aa-version-from-v56-tweaks-aa.45021/",
+        url: "https://www.124spider.org/threads/upgrading-to-native-aa-version-from-v56-tweaks-aa.45021/",
         author: "Scorpius",
         dates: "2024",
         category: "forum-124spider",
@@ -438,7 +441,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-15",
         title: "Some settings not displaying after 70.00.100NA A (42919)",
-        url: "…some-settings-not-displaying…42919/",
+        url: "https://www.124spider.org/threads/" +
+            "some-settings-not-displaying-after-firmware-update-70-00-100na-a.42919/",
         author: "Liz787",
         dates: "Jan 2023",
         category: "forum-124spider",
@@ -451,7 +455,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-16",
         title: "CarPlay installed, rebranding Mazda→Fiat doesn't happen (41032)",
-        url: "…apple-carplay-installed-rebranding…41032/",
+        url: "https://www.124spider.org/threads/" +
+            "apple-carplay-installed-rebranding-from-mazda-to-fiat-does-not-happen.41032/",
         author: "Ausboy (AU)",
         dates: "Dec 2021–Jan 2022",
         category: "forum-124spider",
@@ -464,7 +469,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-17",
         title: "Odd man out — CMU update 74.00.230 (39761)",
-        url: "…odd-man-out-cmu-update-74-00-230.39761/",
+        url: "https://www.124spider.org/threads/odd-man-out-cmu-update-74-00-230.39761/",
         author: "Garrettt93",
         dates: "Jun 2021",
         category: "forum-124spider",
@@ -477,7 +482,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-18",
         title: "Mazda CarPlay/AA USB Retrofit Kit (38673)",
-        url: "…mazda-apple-carplay-and-android-auto-usb-retrofit-kit.38673/",
+        url: "https://www.124spider.org/threads/mazda-apple-carplay-and-android-auto-usb-retrofit-kit.38673/",
         author: "frankmar",
         dates: "Jan 2021",
         category: "forum-124spider",
@@ -490,7 +495,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-19",
         title: "All In One Tweaks V1.51 and Android Auto (42151)",
-        url: "…all-in-one-tweaks-v1-51-and-android-auto.42151/",
+        url: "https://www.124spider.org/threads/all-in-one-tweaks-v1-51-and-android-auto.42151/",
         author: "derekperry37 (UK)",
         dates: "Oct 2022–Jan 2023",
         category: "forum-124spider",
@@ -503,7 +508,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-20",
         title: "Installing AA via MZD-AIO on v56 (40537)",
-        url: "…installing-android-auto-using-the-mzd-aio…on-to-version-56.40537/",
+        url: "https://www.124spider.org/threads/" +
+            "installing-android-auto-using-the-mzd-aio-all-in-one-tweaks-installer-on-to-version-56.40537/",
         author: "LondonAbarth124",
         dates: "Oct 2021",
         category: "forum-124spider",
@@ -516,7 +522,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-21",
         title: "Is the official Abarth/Fiat CMU SW downloadable? (38211)",
-        url: "…is-the-official-abarth-fiat-cmu-sw-available-for-download.38211/",
+        url: "https://www.124spider.org/threads/is-the-official-abarth-fiat-cmu-sw-available-for-download.38211/",
         author: "jayrock (DE)",
         dates: "Oct 2020",
         category: "forum-124spider",
@@ -529,7 +535,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-22",
         title: "Infotainment update (freeze) (39797)",
-        url: "…infotainment-update.39797/",
+        url: "https://www.124spider.org/threads/infotainment-update.39797/",
         author: "DAC17",
         dates: "Jun 2021",
         category: "forum-124spider",
@@ -542,7 +548,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-23",
         title: "Carplay Up and Running (30666)",
-        url: "…carplay-up-and-running.30666/",
+        url: "https://www.124spider.org/threads/carplay-up-and-running.30666/",
         author: "rsmagee (UK)",
         dates: "2018-08 → 2023 (29+ pp)",
         category: "forum-124spider",
@@ -555,7 +561,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-24",
         title: "Mazda screen BHP1611J0D + CMU BJS7669C0K for sale (38459)",
-        url: "…124-spider-mazda-screen…tweaks-installed.38459/",
+        url: "https://www.124spider.org/threads/" +
+            "124-spider-mazda-screen-bhp1611j0d-mazda_gen_65_cmu-bjs7669c0k-tweaks-installed.38459/",
         author: "manwithastick",
         dates: "Dec 2020",
         category: "forum-124spider",
@@ -568,7 +575,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-25",
         title: "No sound with CarPlay (41439)",
-        url: "…no-sound-with-carplay.41439/",
+        url: "https://www.124spider.org/threads/no-sound-with-carplay.41439/",
         author: "Natnat",
         dates: "Apr 2022",
         category: "forum-124spider",
@@ -581,7 +588,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-26",
         title: "Apple Carplay DIY or replace… (39874)",
-        url: "…apple-carplay-diy-or-replace-with-a-different-infotainment.39874/",
+        url: "https://www.124spider.org/threads/apple-carplay-diy-or-replace-with-a-different-infotainment.39874/",
         author: "cje11",
         dates: "Jun 2021",
         category: "forum-124spider",
@@ -594,7 +601,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-27",
         title: "Android Auto without hardware change (33670)",
-        url: "…android-auto-without-hardware-change.33670/",
+        url: "https://www.124spider.org/threads/android-auto-without-hardware-change.33670/",
         author: "iassaei (EU)",
         dates: "Jul 2019",
         category: "forum-124spider",
@@ -607,7 +614,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-28",
         title: "Tweaks and Mods for dummies (37676)",
-        url: "…tweaks-and-mods-for-dummies.37676/",
+        url: "https://www.124spider.org/threads/tweaks-and-mods-for-dummies.37676/",
         author: "Spider Fan Buffalo",
         dates: "Jun 2020",
         category: "forum-124spider",
@@ -620,7 +627,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-29",
         title: "February 2021 North America Nav update available (38950)",
-        url: "…february-2021-north-america-nav-update-available.38950/",
+        url: "https://www.124spider.org/threads/february-2021-north-america-nav-update-available.38950/",
         author: "—",
         dates: "Feb 2021",
         category: "forum-124spider",
@@ -633,7 +640,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-30",
         title: "V59.00.524 to Car Play / Android Auto (42352)",
-        url: "…v59-00-524-to-car-play-android-auto.42352/",
+        url: "https://www.124spider.org/threads/v59-00-524-to-car-play-android-auto.42352/",
         author: "2018 NA user",
         dates: "Sep–Oct 2022",
         category: "forum-124spider",
@@ -646,7 +653,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-31",
         title: "CarPlay installation question (42640)",
-        url: "…carplay-installation-question.42640/",
+        url: "https://www.124spider.org/threads/carplay-installation-question.42640/",
         author: "—",
         dates: "~2023",
         category: "forum-124spider",
@@ -659,7 +666,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "A-32",
         title: "Ameridan blog posts referenced by the forum",
-        url: "21stcenturyfiat124spider.wordpress.com/2019/02/18/… ; …/2025/05/25/…",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2019/02/18/universal-version-70-fiat-tweak/",
         author: "ameridan",
         dates: "2019 / 2025",
         category: "forum-124spider",
@@ -672,7 +679,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-03",
         title: "I bricked my CMU then recovered it (22986)",
-        url: "…i-bricked-my-cmu-then-recovered-it.22986/",
+        url: "https://www.124spider.org/threads/i-bricked-my-cmu-then-recovered-it.22986/",
         author: "Doriath; SJWhiteley; Mrphanbg",
         dates: "2017-12 → 2020-02",
         category: "forum-124spider",
@@ -685,7 +692,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-05",
         title: "Update my CMU and now I have Mazda (HELP) (45814)",
-        url: "…update-my-cmu-and-now-i-have-mazda-help.45814/",
+        url: "https://www.124spider.org/threads/update-my-cmu-and-now-i-have-mazda-help.45814/",
         author: "(owner)",
         dates: "2025-04 → 08",
         category: "forum-124spider",
@@ -698,7 +705,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-06",
         title: "Issues with tweaks v1.51 after v70 CarPlay upgrade (40317)",
-        url: "…issues-with-tweaks-v1-51-after-v70-carplay-upgrade.40317/",
+        url: "https://www.124spider.org/threads/issues-with-tweaks-v1-51-after-v70-carplay-upgrade.40317/",
         author: "kd215",
         dates: "2021-09",
         category: "forum-124spider",
@@ -711,7 +718,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-07",
         title: "Infotainment update question (41083)",
-        url: "…infotainment-update-question.41083/",
+        url: "https://www.124spider.org/threads/infotainment-update-question.41083/",
         author: "(owner)",
         dates: "2022-01 → 2023-01",
         category: "forum-124spider",
@@ -724,7 +731,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-08",
         title: "Version 74.00.324 CMU Firmware Discussion (45963)",
-        url: "…version-74-00-324-cmu-firmware-discussion.45963/",
+        url: "https://www.124spider.org/threads/version-74-00-324-cmu-firmware-discussion.45963/",
         author: "madfiat et al.",
         dates: "2025-05 → 12",
         category: "forum-124spider",
@@ -738,7 +745,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-11",
         title: "Install tweaks using Mazda mp3 hack to v59/v70 (45459)",
-        url: "…install-tweaks-using-mazda-mp3-hack-to-v59-v70.45459/",
+        url: "https://www.124spider.org/threads/install-tweaks-using-mazda-mp3-hack-to-v59-v70.45459/",
         author: "Esch",
         dates: "2024-12 → 2025-07",
         category: "forum-124spider",
@@ -751,7 +758,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-12",
         title: "Tweak firmware v74 and older with only USB (44940)",
-        url: "…tweak-firmware-v74-and-older-with-only-usb.44940/",
+        url: "https://www.124spider.org/threads/tweak-firmware-v74-and-older-with-only-usb.44940/",
         author: "(owner)",
         dates: "2024-08 → 2025-05",
         category: "forum-124spider",
@@ -764,7 +771,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-13",
         title: "SD card help needed (40534)",
-        url: "…sd-card-help-needed.40534/",
+        url: "https://www.124spider.org/threads/sd-card-help-needed.40534/",
         author: "(owner)",
         dates: "2021-10",
         category: "forum-124spider",
@@ -778,7 +785,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-15",
         title: "Software program updates (43884)",
-        url: "…software-program-updates.43884/",
+        url: "https://www.124spider.org/threads/software-program-updates.43884/",
         author: "(owner)",
         dates: "2023-11",
         category: "forum-124spider",
@@ -791,7 +798,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-16",
         title: "Is it possible to upgrade the infotainment software (45237)",
-        url: "…is-it-possible-to-upgrade…45237/",
+        url: "https://www.124spider.org/threads/" +
+            "is-it-possible-to-upgrade-the-infotainment-software-has-anyone-done-that.45237/",
         author: "UK owners",
         dates: "2024-10 → 2025-03",
         category: "forum-124spider",
@@ -804,7 +812,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-59",
         title: "Software debacle, part II (40588)",
-        url: "…software-debacle-part-ii.40588/",
+        url: "https://www.124spider.org/threads/software-debacle-part-ii.40588/",
         author: "(owner)",
         dates: "2021-10",
         category: "forum-124spider",
@@ -817,7 +825,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-60",
         title: "CMU serial port blown out (43811)",
-        url: "…cmu-serial-port-blown-out.43811/",
+        url: "https://www.124spider.org/threads/cmu-serial-port-blown-out.43811/",
         author: "(owner)",
         dates: "2023",
         category: "forum-124spider",
@@ -830,7 +838,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-61",
         title: "Confirmed CarPlay through replacement CMU (42231)",
-        url: "…confirmed-carplay-through-replacement-cmu.42231/",
+        url: "https://www.124spider.org/threads/confirmed-carplay-through-replacement-cmu.42231/",
         author: "(owner)",
         dates: "2022",
         category: "forum-124spider",
@@ -843,7 +851,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "E-39",
         title: "Updated CarPlay hardware / wireless / adapter-hub threads (43650, 43766, 42115, 43933, 43852)",
-        url: "…/updated-carplay-hardware-w-usb-c-and-fast-charging.43650/ (+4)",
+        url: "https://www.124spider.org/threads/updated-carplay-hardware-w-usb-c-and-fast-charging.43650/",
         author: "(owners)",
         dates: "2022–2025",
         category: "forum-124spider",
@@ -856,7 +864,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-01",
         title: "Universal Version 70 Fiat AIO Tweak",
-        url: "/2019/02/18/universal-version-70-fiat-tweak/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2019/02/18/universal-version-70-fiat-tweak/",
         dates: "2019-02-18, edits to 2025-08; 194 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -870,7 +878,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-02",
         title: "Fixing factory Navigation for Version 70 firmware",
-        url: "/2019/01/31/fix-navigation-for-version-70-firmware/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2019/01/31/fix-navigation-for-version-70-firmware/",
         dates: "2019-01-31, edits to 02-16; 34 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -883,7 +891,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-03",
         title: "Common tweaks that work in the Fiat 124 Infotainment 7.0",
-        url: "/ameridans-radio-silencer/common-tweaks-that-work-…-7-0/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/ameridans-radio-silencer/" +
+            "common-tweaks-that-work-in-the-fiat-124-spider-infotainment-center-7-0/",
         dates: "2016-08 → 2025; 383 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -895,7 +904,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-04",
         title: "V70 & V74 Tweaks without ID7 — YES YOU CAN! (mp3 hack)",
-        url: "/2025/05/25/v70-tweaks-without-id7-no-serial-connection-needed-yes-you-can/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2025/05/25/" +
+            "v70-tweaks-without-id7-no-serial-connection-needed-yes-you-can/",
         dates: "2025-05-25; 40 comments to 2026-06",
         category: "blog-ameridan",
         status: "alive",
@@ -908,7 +918,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-05",
         title: "Preserve your ability to Tweak in future firmware versions (ID7 v1)",
-        url: "/2017/08/29/preserve-your-ability-to-tweak-in-future-firmware-versions/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2017/08/29/" +
+            "preserve-your-ability-to-tweak-in-future-firmware-versions/",
         dates: "2017-08-29",
         category: "blog-ameridan",
         status: "alive",
@@ -920,7 +931,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-06",
         title: "Preserve … VERSION 2.0 (ID7 v2)",
-        url: "/2019/05/20/preserve-your-ability-to-tweak-in-future-firmware-versions-version-2-0/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2019/05/20/" +
+            "preserve-your-ability-to-tweak-in-future-firmware-versions-version-2-0/",
         dates: "2019-05-20; 8 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -932,7 +944,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-07",
         title: "Replacing Mazda bootup/shutdown animations",
-        url: "/2018/11/04/replacing-mazda-bootup-shutdown-for-those-installing-carplay-hub/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2018/11/04/" +
+            "replacing-mazda-bootup-shutdown-for-those-installing-carplay-hub/",
         dates: "2018-11-04, upd. 2019-01-31; 10 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -944,7 +957,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-08",
         title: "Freeing up memory in Version 70 firmware",
-        url: "/2018/11/11/freeing-up-memory-in-version-70-firmware/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2018/11/11/freeing-up-memory-in-version-70-firmware/",
         dates: "2018-11-11, upd. to 2025-03; 17 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -956,7 +969,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-09",
         title: "Replacing the CMU to get CarPlay/AA (+ retrofit kit)",
-        url: "/2018/04/30/replacing-the-cmu-to-get-apple-carplay-and-android-auto/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2018/04/30/" +
+            "replacing-the-cmu-to-get-apple-carplay-and-android-auto/",
         dates: "2018-04-30, upd. to 2023-02; 15 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -969,7 +983,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-10",
         title: "New Fiat firmware is showing up (59.00.524)",
-        url: "/2018/04/22/new-fiat-firmware-is-showing-up/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2018/04/22/new-fiat-firmware-is-showing-up/",
         dates: "2018-04-22; 10 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -982,7 +996,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-11",
         title: "Exclusive Tweak ~ An Abarth Shutdown Animation",
-        url: "/2018/10/03/exclusive-tweak-an-abarth-shutdown-animation/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2018/10/03/exclusive-tweak-an-abarth-shutdown-animation/",
         dates: "2018-10-03",
         category: "blog-ameridan",
         status: "alive",
@@ -994,7 +1008,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-12",
         title: "Abarth 124 startup screens / unique parts",
-        url: "/2017/03/11/abarth-124-startup-screens/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2017/03/11/abarth-124-startup-screens/",
         dates: "2017-03-11, upd. to 2022-11; 30 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -1006,7 +1020,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-13",
         title: "New USB Audio Tweak",
-        url: "/2018/10/19/new-usb-audio-patch-tweak/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2018/10/19/new-usb-audio-patch-tweak/",
         dates: "2018-10-19; 7 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -1018,7 +1032,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-14",
         title: "Update for Date-to-Statusbar Tweak",
-        url: "/2018/11/03/update-for-date-to-statusbar-tweak/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2018/11/03/update-for-date-to-statusbar-tweak/",
         dates: "2018-11-03, upd. 11-11; 8 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -1030,7 +1044,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-15",
         title: "Resolving Touchscreen Issues",
-        url: "/2018/02/03/tweak-to-disable-touchscreen-input/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2018/02/03/tweak-to-disable-touchscreen-input/",
         dates: "2018-02-03, upd. to 2025-07; 8 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -1043,7 +1057,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-16",
         title: "Adding Wireless CarPlay",
-        url: "/2021/01/04/adding-wireless-carplay/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2021/01/04/adding-wireless-carplay/",
         dates: "2021-01-04, upd. to 05-31; 22 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -1055,7 +1069,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-17",
         title: "Infotainment Replacement Touch-Screen Details",
-        url: "/2022/08/14/infotainment-replacement-screen-details/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2022/08/14/infotainment-replacement-screen-details/",
         dates: "2022-08-14, upd. to 2023-04; 14 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -1067,7 +1081,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-18",
         title: "Encouraging news re CarPlay and Android Auto",
-        url: "/2017/03/15/encouraging-news-regarding-apple-carplay-and-android-auto/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2017/03/15/" +
+            "encouraging-news-regarding-apple-carplay-and-android-auto/",
         dates: "2017-03-15; 10 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -1079,7 +1094,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-19",
         title: "M.Y. 2019 Fiat Connect?",
-        url: "/2017/09/25/my-2019-fiat-connect/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2017/09/25/my-2019-fiat-connect/",
         dates: "2017-09-25; 7 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -1091,7 +1106,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-20",
         title: "Navigation",
-        url: "/2016/10/30/navigation/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2016/10/30/navigation/",
         dates: "2016-10-30, upd. to 2021-02; 176 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -1103,7 +1118,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-21",
         title: "New map updates (December 2018)",
-        url: "/2018/12/10/new-map-updates-dated-december-2018-are-available/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2018/12/10/" +
+            "new-map-updates-dated-december-2018-are-available/",
         dates: "2018-12-10; 7 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -1115,7 +1131,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-22",
         title: "New map updates (August 2022, was June 2019)",
-        url: "/2019/06/07/new-map-updates-dated-june-2019-are-available/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2019/06/07/new-map-updates-dated-june-2019-are-available/",
         dates: "2019-06-07, upd. to 2023-12; 46 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -1127,7 +1143,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-23",
         title: "Welcome / Radio Silencer (home)",
-        url: "/ameridans-radio-silencer/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/ameridans-radio-silencer/",
         dates: "2016→; 62 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -1139,7 +1155,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-24",
         title: "Blog articles (index)",
-        url: "/blog/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/blog/",
         dates: "index",
         category: "blog-ameridan",
         status: "alive",
@@ -1151,7 +1167,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-25",
         title: "Complete Specifications",
-        url: "/specs/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/specs/",
         dates: "living; 243 comments",
         category: "blog-ameridan",
         status: "alive",
@@ -1163,7 +1179,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-26",
         title: "The Infotainment Control Buttons",
-        url: "/2016/11/16/the-infotainment-control-buttons/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2016/11/16/the-infotainment-control-buttons/",
         dates: "2016-11-16",
         category: "blog-ameridan",
         status: "alive",
@@ -1175,7 +1191,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-27",
         title: "TAU exchange hookup (EU⇔NA tuner)",
-        url: "/2021/06/11/european-⇔-north-american-tuner-module-tau-exchange-hookup/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2021/06/11/" +
+            "european-%e2%87%94-north-american-tuner-module-tau-exchange-hookup/",
         dates: "2021-06-11",
         category: "blog-ameridan",
         status: "alive",
@@ -1187,7 +1204,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "B-28",
         title: "Gracenote database updates (v8/9/12)",
-        url: "/2022/12/05/…, /2018/10/16/…, /2017/12/22/…, /2016/09/29/…",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2022/12/05/gracenote-music-database-version-12-update/",
         dates: "2016–2022",
         category: "blog-ameridan",
         status: "alive",
@@ -1200,7 +1217,6 @@ export const SOURCES: readonly Source[] = [
         id: "B-29",
         title: "Supporting/context posts (fuel-economy, screenshots, BT, camera, canbus, waypoints, emblem, about, " +
             "favorites…)",
-        url: "(14 URL paths, see raw B §1.3)",
         dates: "various",
         category: "blog-ameridan",
         status: "alive",
@@ -1556,7 +1572,6 @@ export const SOURCES: readonly Source[] = [
         title: "mazdas247 \"DIY Firmware Update Information\" + 74.00.324A / 70.00.367 threads (123881478, " +
             "123883736, " +
             "123875753)",
-        url: "https://mazdas247.com/forum/threads/…",
         author: "—",
         category: "forum-other",
         status: "alive",
@@ -1568,7 +1583,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-35",
         title: "2016 CX-5 CMU bricked after firmware update (mazdas247 123884841)",
-        url: "https://mazdas247.com/forum/threads/…123884841/",
+        url: "https://mazdas247.com/forum/threads/" +
+            "2016-cx-5-cmu-bricked-after-firmware-update-black-screen-but-radio-works.123884841/",
         author: "2026-05 → 08",
         category: "forum-other",
         status: "alive",
@@ -1581,7 +1597,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-36",
         title: "Firmware update stuck at 19–21% and frozen radio (mazdas247 123883481)",
-        url: "https://mazdas247.com/forum/threads/…123883481/",
+        url: "https://mazdas247.com/forum/threads/" +
+            "mazda-connect-firmware-update-stuck-at-19%E2%80%9321-and-frozen-radio.123883481/",
         author: "2025-08",
         category: "forum-other",
         status: "alive",
@@ -1593,7 +1610,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-37",
         title: "Issues updating firmware, help (mazdas247 123884804)",
-        url: "https://mazdas247.com/forum/threads/…123884804/",
+        url: "https://mazdas247.com/forum/threads/issues-updating-firmware-help.123884804/",
         author: "2026-05-14",
         category: "forum-other",
         status: "alive",
@@ -1606,7 +1623,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-34",
         title: "Bricked CMU, offset 0x10000 to FF and still bricked (mazda6club 444748)",
-        url: "https://www.mazda6club.com/threads/…444748/",
+        url: "https://www.mazda6club.com/threads/bricked-cmu-replaced-offset-0x10000-to-ff-and-still-bricked.444748/",
         author: "2021-03",
         category: "forum-other",
         status: "alive",
@@ -1618,7 +1635,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "E-06",
         title: "GENUINE Mazda CarPlay+AA Install Instructions (miata.net t=679114)",
-        url: "https://forum.miata.net/vb/showthread.php?t=679114 (archive/index)",
+        url: "https://forum.miata.net/vb/showthread.php?t=679114",
         author: "ASH8, 2018-08-08 upd. 2018-10-02",
         category: "forum-other",
         status: "bot-blocked",
@@ -1666,7 +1683,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "D-14",
         title: "mikele85.ru + drive2.ru (Russian EU firmware lists / build-log)",
-        url: "mikele85.ru; drive2.ru",
+        url: "https://mikele85.ru/",
         author: "2020s",
         category: "forum-other",
         status: "alive",
@@ -1679,7 +1696,6 @@ export const SOURCES: readonly Source[] = [
     {
         id: "D-15",
         title: "Regional ASH8-material mirrors (mx5oc.co.uk, mx5life.com, cx3forums, mazda6club.com; mx5blog.co.uk)",
-        url: "(various)",
         author: "—",
         category: "forum-other",
         status: "alive",
@@ -1743,7 +1759,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "C1-05",
         title: "MZD-AIO releases API dump",
-        url: "(saved)",
+        url: "https://github.com/Trevelopment/MZD-AIO/releases",
         type: "JSON dump",
         author: "—",
         category: "github",
@@ -1756,7 +1772,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "C1-06",
         title: "MZD-AIO releases text summary",
-        url: "(saved)",
+        url: "https://github.com/Trevelopment/MZD-AIO/releases",
         type: "text",
         author: "—",
         category: "github",
@@ -1769,7 +1785,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "C1-07",
         title: "MZD-AIO README (archived)",
-        url: "(saved)",
+        url: "https://github.com/Trevelopment/MZD-AIO",
         type: "README",
         author: "—",
         category: "github",
@@ -1782,7 +1798,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "C1-08",
         title: "MZD-AIO issue #135 comments (archived)",
-        url: "github.com/Trevelopment/MZD-AIO/issues/135",
+        url: "https://github.com/Trevelopment/MZD-AIO/issues/135",
         type: "issue thread",
         author: "community",
         category: "github",
@@ -1795,7 +1811,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "C1-09",
         title: "MZD-AIO latest release asset (spot-check)",
-        url: "…/releases/download/v2.8.6/MZD-AIO-TI_Setup_2.8.6.exe",
+        url: "https://github.com/Trevelopment/MZD-AIO/releases/tag/v2.8.6",
         type: "binary",
         author: "Trevelopment",
         category: "github",
@@ -1860,7 +1876,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "C1-14",
         title: "Ameridan \"Universal V70 Fiat AIO Tweak\" article",
-        url: "…/2019/02/18/universal-version-70-fiat-tweak/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2019/02/18/universal-version-70-fiat-tweak/",
         type: "blog",
         author: "ameridan",
         category: "github",
@@ -1873,7 +1889,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "C1-15",
         title: "Ameridan \"Fix Navigation for v70\" article",
-        url: "…/2019/01/31/fix-navigation-for-version-70-firmware/",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2019/01/31/fix-navigation-for-version-70-firmware/",
         type: "blog",
         author: "ameridan",
         category: "github",
@@ -1925,7 +1941,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "C2-13",
         title: "68wooley CarPlay How-To Part 1 v3.0 (PDF, in Ameridan's MediaFire)",
-        url: "(mediafire `124Spider_CP_AA_Upgrade_Guide.zip`)",
+        url: "https://www.mediafire.com/file/201759io15ariii/124Spider_CP_AA_Upgrade_Guide.zip/file",
         type: "PDF guide",
         author: "68wooley",
         category: "github",
@@ -2047,7 +2063,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-52",
         title: "mazdatweaks.com/serial + /id7 (hijacked)",
-        url: "https://mazdatweaks.com/serial/ , /id7/",
+        url: "https://mazdatweaks.com/serial/",
         type: "tweak site",
         author: "Trezdog44",
         category: "github",
@@ -2074,7 +2090,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "F-54",
         title: "MZD-AIO issues #47 and #135 (GitHub)",
-        url: "https://github.com/Trevelopment/MZD-AIO/issues/47 and /135",
+        url: "https://github.com/Trevelopment/MZD-AIO/issues/47",
         type: "issues",
         author: "community",
         category: "github",
@@ -2100,7 +2116,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "D-11",
         title: "124spider.org \"Firmware Files Download Locations\" (Google Drive re-host)",
-        url: "124spider.org/threads/…45543/ ; drive.google.com/drive/folders/1FSOxXVccKppRURPqZVayfulACGOQW-3Q",
+        url: "https://www.124spider.org/threads/firmware-files-download-locations.45543/",
         type: "free re-host",
         category: "firmware-distribution",
         status: "bot-blocked",
@@ -2112,7 +2128,6 @@ export const SOURCES: readonly Source[] = [
     {
         id: "D-12",
         title: "124spider.org other firmware threads (44172, 42393, 38004, 45057→410, 45963, 45814)",
-        url: "124spider.org/threads/…",
         type: "free (PM)",
         category: "firmware-distribution",
         status: "dead",
@@ -2149,7 +2164,6 @@ export const SOURCES: readonly Source[] = [
     {
         id: "D-18",
         title: "UK resellers (satnavishop.co.uk, latestsatnav.co.uk, eBay, gumtree)",
-        url: "(various)",
         type: "reseller",
         category: "firmware-distribution",
         status: "alive",
@@ -2186,7 +2200,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "D-21",
         title: "odysee.com \"FIAT 124 CarPlay Android Auto FILES\" (DanB) + MEGA links",
-        url: "odysee.com/@DanB:7/… ; mega.nz/…",
+        url: "https://odysee.com/@DanB:7/FIAT-124-CarPlay-Android-Auto-FILES",
         type: "free mirror",
         category: "firmware-distribution",
         status: "dead",
@@ -2198,7 +2212,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "D-22",
         title: "mazdas247-posted NA CDN object (Bingoy 2021)",
-        url: "s3.amazonaws.com/tsd.mazdausa.com/…/cmu150_NA_74.00.230A_update.up",
+        url: "https://s3.amazonaws.com/tsd.mazdausa.com/MAZDA_CONNECT/cmu150_NA_74.00.230A_update.up",
         type: "CDN object",
         category: "firmware-distribution",
         status: "alive",
@@ -2210,7 +2224,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "D-23",
         title: "Scribd \"EU N CMU HASH Value\" (doc 838112560)",
-        url: "scribd.com/document/838112560",
+        url: "https://www.scribd.com/document/838112560",
         type: "hash doc",
         category: "firmware-distribution",
         status: "login-walled",
@@ -2235,7 +2249,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "E-01",
         title: "Ameridan \"Replacing the CMU… / retrofit kit\"",
-        url: "21stcenturyfiat…/2018/04/30/replacing-the-cmu-…",
+        url: "https://21stcenturyfiat124spider.wordpress.com/2018/04/30/" +
+            "replacing-the-cmu-to-get-apple-carplay-and-android-auto/",
         type: "blog",
         category: "hardware-vendor",
         status: "bot-blocked",
@@ -2272,7 +2287,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "D-13",
         title: "124spider.uk (Stuart Clark) — vendor + free knowledge",
-        url: "https://124spider.uk/blog/124-spider-cmu-firmware-updates ; /support/firmware-updates",
+        url: "https://124spider.uk/blog/124-spider-cmu-firmware-updates",
         type: "shop + guide",
         category: "hardware-vendor",
         status: "alive",
@@ -2296,7 +2311,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "E-22",
         title: "parts.mazdausa.com (Mazda USA parts portal)",
-        url: "https://parts.mazdausa.com/p/…/00008FZ34.html",
+        url: "https://parts.mazdausa.com/p/Mazda__/Smartphone-Screen-Mirroring-Kit/94313254/00008FZ34.html",
         type: "shop",
         category: "hardware-vendor",
         status: "bot-blocked",
@@ -2332,7 +2347,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "E-25",
         title: "Arnold Clark / Sandicliffe (UK dealers)",
-        url: "arnoldclarkautoparts.com/…C830V660Z ; sandicliffeshop.co.uk/…C830V660Z",
+        url: "https://www.arnoldclarkautoparts.com/products/genuine-mazda-carplay-c830v660z",
         type: "dealer",
         category: "hardware-vendor",
         status: "alive",
@@ -2344,7 +2359,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "E-26",
         title: "online-teile.com (DE OEM parts)",
-        url: "https://www.online-teile.com/…/C830V660Z_Cord-Short.html",
+        url: "https://www.online-teile.com/mazda-ersatzteile/en/C830V660Z_Cord-Short.html",
         type: "shop",
         category: "hardware-vendor",
         status: "alive",
@@ -2381,7 +2396,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "E-31",
         title: "infotainment.com (US aftermarket)",
-        url: "https://infotainment.com/shop/…/m-kit30/",
+        url: "https://infotainment.com/shop/interior-accessories/infotainment-radio-upgrades/m-kit30/",
         type: "shop",
         category: "hardware-vendor",
         status: "alive",
@@ -2406,7 +2421,8 @@ export const SOURCES: readonly Source[] = [
     {
         id: "E-33",
         title: "germanaudiotech.com (US)",
-        url: "https://www.germanaudiotech.com/products/usb-hub-aux-console-carplay-android-for-mazda-…-tk78-66-9u0c",
+        url: "https://www.germanaudiotech.com/products/" +
+            "usb-hub-aux-console-carplay-android-for-mazda-2016-2019-cx-9-oem-new-tk78-66-9u0c",
         type: "shop",
         category: "hardware-vendor",
         status: "alive",
@@ -2418,7 +2434,7 @@ export const SOURCES: readonly Source[] = [
     {
         id: "E-34",
         title: "Amazon listings (B07KRPSRKH etc.)",
-        url: "amazon.com (7 ASINs)",
+        url: "https://www.amazon.com/dp/B07KRPSRKH",
         type: "marketplace",
         category: "hardware-vendor",
         status: "alive",
