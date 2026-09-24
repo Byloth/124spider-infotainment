@@ -15,17 +15,17 @@ Backing: `research/PROCEDURE-DRAFT.md` §0 · Mazda's own worldwide update proce
 
 ## `/procedure/index.md` — Choose your route
 
-- [ ] The four routes side by side, as a **static table that is always visible**.
-- [ ] Reads the profile to highlight the reader's route; links to `/guide/route` for those who have not
+- [X] The four routes side by side, as a **static table that is always visible**.
+- [X] Reads the profile to highlight the reader's route; links to `/guide/route` for those who have not
       chosen yet.
-- [ ] The order of operations, stated once and unmistakably: **firmware first, with the old hub fitted;
+- [X] The order of operations, stated once and unmistakably: **firmware first, with the old hub fitted;
       hardware last.** Mazda's own wording: *"once the CMU has been attached to the CarPlay/AA-compatible
       USB hub, the software cannot be updated."*
-- [ ] The dealer warning again, briefly.
-- [ ] Diagram: **route comparison** (`04-diagrams.md`).
+- [X] The dealer warning again, briefly.
+- [X] Diagram: **route comparison** (`04-diagrams.md`).
 
 ## Done when
 
-- [ ] The page stands alone: a reader landing here is not silently missing a prerequisite.
-- [ ] With JS disabled, every branch is expanded and every route visible.
-- [ ] The untested-on-hardware caveat appears on the page.
+- [X] The page stands alone: a reader landing here is not silently missing a prerequisite.
+- [X] With JS disabled, every branch is expanded and every route visible.
+- [X] The untested-on-hardware caveat appears on the page.
