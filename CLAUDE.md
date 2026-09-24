@@ -100,10 +100,10 @@ VitePress 1.6.4, **bun**, Node v24 via nvm. `bun run docs:dev` to serve, `bun ru
   themselves via `import.meta.env.BASE_URL`** (only `SourceCite.vue` needed it — `withBase()` from
   `vitepress` is the idiomatic API but is unavailable in the bare Vitest SSR context, so the env var is
   used instead). A one-time repo setting is required: Pages source = "GitHub Actions".
-- **Twelve of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety`, the
+- **Thirteen of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety`, the
   whole `/firmware/` section (`index`, `regions`, `points-of-no-return`, `obtaining`), and the whole
   `/guide/` "Start here" section (`index`, `eligibility`, `what-changes`, `risks`, and the new `route`), and
-  the procedure hub `/procedure/` are finished prose. Every remaining stub carries a warning block pointing at its backing document — keep that
+  the procedure hub `/procedure/` and step 1 `/procedure/prepare` are finished prose. Every remaining stub carries a warning block pointing at its backing document — keep that
   warning until the page actually stands on its own, so an empty page is never mistaken for guidance, and
   delete it only in the commit that writes the page.
 - **i18n**: English content stays at the root of `docs/` on purpose. VitePress keeps the root locale in
@@ -332,8 +332,15 @@ Read `research/` before doing anything; the headlines:
   unresolved old-hub-vs-USB-keyboard question flagged where it bites, one `RouteBranch` per route laying
   out its path through the five steps (the 70.00.367 / 74.00.230 / 74.00.310+ downgrade options split per
   build, not lumped), `RouteComparison`, and the dealer caution. No new data or components.
-- **Next:** (1) continue porting the research into the pages — procedure `08b` next (prepare + flash, the
-  brick-risk half), then `08c`, hardware, recovery, reference — written generically for all markets and all starting versions;
+- 2026-09-24: **step 1 · Prepare is written** (`TODOs/08b`, first half) — `/procedure/prepare`: the files per
+  route (hashes left to `/firmware/obtaining`), the stick rules + owner-reported good/bad sticks, the
+  pre-flash list as prose and a `StepChecklist`, the ❓ tweaks-left-installed contradiction (the research
+  docs called those two cases "bricks"; the raw rows are *failed updates* fixed by removing the tweaks —
+  corrected in `PROCEDURE-DRAFT` §2 and `OPEN-QUESTIONS` #21), and ID7 install with dialog wording **quoted from `tweaks.sh` in the held package** (title
+  "Tweaks Selection for AUTORUN", text "Choose Installation Method" — both community versions were right).
+  To be reviewed by the user before `flash` is started.
+- **Next:** (1) continue porting the research into the pages — `/procedure/flash` next (the rest of `08b`,
+  the brick-risk half), then `08c`, hardware, recovery, reference — written generically for all markets and all starting versions;
   (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).
 - **Deferred to a separate task, after the site is complete:** anything specific to the maintainer's own
   car (reading its version string, choosing its route, an actual attempt).

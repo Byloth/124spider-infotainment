@@ -71,7 +71,7 @@ lost their branding and nav this way. [B-01, A-01]
 2. **Un-pair every phone** — in the car *and* on the phone. After the flash the car's Bluetooth identity
    becomes "Mazda" and the old pairings are invalid; you cannot clean them up afterwards. [B-01]
 3. **Remove the navigation SD card** and every other USB/AUX device. [D-04]
-4. **Uninstall existing tweaks.** Two bricks were attributed to AIO tweaks left in place during a flash;
+4. **Uninstall existing tweaks.** Two failed updates ("Failsafe file installation failed") were attributed to AIO tweaks left in place during a flash — failures, not bricks; removing the tweaks fixed one [F-26, F-19];
    ❓ the AIO FAQ says updating with tweaks installed is safe — the failure reports outweigh it. Speedometer
    and the community Android-Auto tweak in particular must go.
 5. **Clear DTCs** in the diagnostic screen (Music + Favorites + Mute → 3 → ENTER/CLEAR, 2 → ENTER). [F-49]

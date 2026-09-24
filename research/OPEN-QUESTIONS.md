@@ -157,7 +157,7 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
 |---|---|---|
 | 19 | "70.00.335+ is never tweakable again" (all pre-2025 guides, incl. Ameridan and 68wooley) vs. the 2025 mp3 method | Present the classic rule as the safe assumption, the mp3 method as a documented-but-thin escape, with per-version confidence |
 | 20 | "ID7 v2 protects you if pre-installed" (Ameridan's 2019 article) vs. its author's own failed test two days later — the working v2 is a *serial-during-flash procedure* | Say plainly: pre-installing anything does **not** survive 70.00.335 |
-| 21 | AIO FAQ "updating with tweaks installed is safe" vs. two bricks attributed to leftover tweaks | Recommend removing tweaks before flashing |
+| 21 | AIO FAQ "updating with tweaks installed is safe" vs. two failed updates ("Failsafe file installation failed") attributed to leftover tweaks — not bricks: removing the tweaks fixed one [F-26, F-19] | Recommend removing tweaks before flashing |
 | 22 | Mazda "ACC only, never run the engine" vs. 2x4logic "run the engine so the CMU never loses power" | Follow Mazda; use a battery charger and the pedal timer |
 | 23 | Reseller claim "update direct from 59.x to 74.00.324" vs. the dealer two-file rule via 70.00.100 | Follow the dealer rule until a first-hand report says otherwise |
 | 24 | Wrong-region firmware = "brick risk" (universal advice) vs. one ADR car happily running NA firmware | Keep the warning; record the anecdote |

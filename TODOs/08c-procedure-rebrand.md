@@ -29,6 +29,9 @@ Backing: `research/PROCEDURE-DRAFT.md` §4–§6 · the recovered rebrand/tweak 
 - [ ] The script edits needed on 70.00.335/352 (`_VER_EXT -le 360`) and on 74.00.324 (three `tweaks.sh`
       lines plus one in `run.sh`), with the caveat that this defeats a compatibility check the author put
       there because he could not test.
+- [ ] **Never run v56-era tweak packages on v70** (e.g. Ameridan AIO 1.51): two 124s ended with a dead
+      touchscreen / stuck at the logo and needed a used CMU (`F-02`, `F-06`). `/procedure/prepare` promises
+      this page covers it.
 - [ ] Note the language gap on v74: the tool ships 9 locale dictionaries against 38–41 in 74.00.324.
 - [ ] After: reboot, re-insert nav SD, re-pair phones, re-apply Gracenote.
 

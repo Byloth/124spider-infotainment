@@ -16,23 +16,23 @@ recovered ASH8 testing document (`research/archive/recovered/`, for USB-stick ve
 
 ## `/procedure/prepare.md` — 1 · Prepare
 
-- [ ] **Parts** (fitted later, but bought now) — hub + region cable set; link `/hardware/part-numbers`.
-- [ ] **Files**, region-matched; link `/firmware/obtaining` for sources and hashes.
-- [ ] **The USB stick** — FAT32, 4–16 GB, USB 2.0 preferred, one partition, **formatted on Windows**
+- [X] **Parts** (fitted later, but bought now) — hub + region cable set; link `/hardware/part-numbers`.
+- [X] **Files**, region-matched; link `/firmware/obtaining` for sources and hashes.
+- [X] **The USB stick** — FAT32, 4–16 GB, USB 2.0 preferred, one partition, **formatted on Windows**
       (Mac-formatted sticks add hidden files and are rejected; >32 GB defaults to exFAT and is not seen).
       Known-good and known-bad models from the reports. Test it with H2testw first — a failing stick is
       the most common cause of a failed flash.
-- [ ] Download the `.up` files **individually**; a zip of the folder has corrupted them. Verify hashes
+- [X] Download the `.up` files **individually**; a zip of the folder has corrupted them. Verify hashes
       before copying.
-- [ ] **`Checklist`** covering: settings and favourites recorded · every phone un-paired in the car *and*
+- [X] **`Checklist`** covering: settings and favourites recorded · every phone un-paired in the car *and*
       on the phone (the BT identity becomes "Mazda" and old pairings cannot be cleaned up afterwards) ·
       nav SD card removed · all other USB/AUX devices removed · existing tweaks uninstalled · DTCs cleared
       · battery charger connected (Mazda's TSB asks for ~7 A) · all electrical loads off.
-- [ ] **`RouteBranch` (56.x only): install ID7 now.** The single most important step for that route, and
+- [X] **`RouteBranch` (56.x only): install ID7 now.** The single most important step for that route, and
       impossible later. Full sub-procedure, plus the warning that there is **no reliable confirmation it
       took** — several owners only discovered the failure after flashing v70.
       Link `/security/` so the reader knows what ID7 leaves behind before installing it.
-- [ ] ❓ Note the contradiction on updating with tweaks installed (AIO FAQ says safe; two bricks were
+- [X] ❓ Note the contradiction on updating with tweaks installed (AIO FAQ says safe; two bricks were
       attributed to it) and give the cautious recommendation.
 
 ## `/procedure/flash.md` — 2 · Flash the firmware

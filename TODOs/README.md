@@ -28,7 +28,7 @@ when every child is `[X]`.
 | 06 | [Pages · Firmware](06-pages-firmware.md) | 31 | `[~]` | Matrix, regions, points of no return, obtaining and verifying |
 | 07 | [Pages · Start here](07-pages-guide.md) | 30 | `[X]` | Overview, eligibility, what changes, risks, the route wizard |
 | 08a | [Procedure · Route](08a-procedure-route.md) | 8 | `[X]` | Choose-your-route selector — the hub the five steps hang off |
-| 08b | [Procedure · Flash](08b-procedure-flash.md) | 18 | `[ ]` | Prepare + flash — the brick-risk half (USB prep, failsafe→reinstall, the pedal rule) |
+| 08b | [Procedure · Flash](08b-procedure-flash.md) | 18 | `[~]` | Prepare + flash — the brick-risk half (USB prep, failsafe→reinstall, the pedal rule) |
 | 08c | [Procedure · Rebrand](08c-procedure-rebrand.md) | 25 | `[ ]` | Rebrand + hardware + verify — the three rebrand routes, the hub fit, the final checks |
 | 09 | [Pages · Hardware](09-pages-hardware.md) | 22 | `[ ]` | The kit, part numbers per market, genuine vs clone |
 | 10 | [Pages · Recovery](10-pages-recovery.md) | 33 | `[ ]` | Troubleshooting, downgrading, un-bricking |
@@ -77,7 +77,7 @@ today serves a scam site.
 - **Binaries: collected and verified.** ~11 GB in the git-ignored `downloads/`, all 28 files hashed in
   `downloads/CHECKSUMS.sha256`. EU, ADR and NA 70.00.100A all present and matching community MD5s.
   20 files scanned clean by VirusTotal; 7 exceed every scanner's size limit and never can be.
-- **Site: twelve pages are written** (files 05, 06, 07 and 08a). `/security/` (2 pages) is finished prose — the
+- **Site: thirteen pages are written** (files 05, 06, 07, 08a and the first half of 08b). `/security/` (2 pages) is finished prose — the
   section that exists nowhere else, plus the live hijacked-domain warning. The whole `/firmware/` section
   (4 pages) stands: the version matrix, regions and file naming, points of no return (classic rule vs. the
   2025 mp3 nuance, confidence intact), and obtaining and verifying. And the `/guide/` "Start here" section
@@ -85,7 +85,8 @@ today serves a scam site.
   `guide/route` route wizard — every page written generically for all markets, no route presented as the
   default. The procedure hub `/procedure/` (08a) is written too: the four routes as a static table, the
   firmware-first/old-hub-fitted rule in Mazda's own words, and each route's path through the five steps.
-  The other 17 pages are still stubs. File 06 stays `[~]` for one cross-cutting item only:
+  Step 1 `/procedure/prepare` (first half of 08b) is written; `flash` waits for its review.
+  The other 16 pages are still stubs. File 06 stays `[~]` for one cross-cutting item only:
   anchoring *every* matrix row and linking each from another page waits on the downstream pages that would
   cite them. One more page remains to create: `reference/changelog`.
 - **Components: done** (file 03, plus two from 05). `useProfile()` plus 18 components in `docs/.vitepress/theme/components/`,
