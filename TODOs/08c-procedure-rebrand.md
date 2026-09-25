@@ -37,18 +37,18 @@ Backing: `research/PROCEDURE-DRAFT.md` §4–§6 · the recovered rebrand/tweak 
 
 ## `/procedure/hardware.md` — 4 · Install the hardware
 
-- [ ] Mount **`PartFinder`**; link `/hardware/`.
-- [ ] Tools and time (2.5 h typical; reports range 2–5 h).
-- [ ] The trim removal order for the 124, with the two documented deviations from Mazda's MX-5 sheet (the
+- [X] Mount **`PartFinder`**; link `/hardware/`.
+- [X] Tools and time (2.5 h typical; reports range 2–5 h).
+- [X] The trim removal order for the 124, with the two documented deviations from Mazda's MX-5 sheet (the
       shift/console/upper panel comes out as one piece; front console and its panel as one unit).
-- [ ] **The GPS connector** — the blue plug everyone forgets to re-seat; symptom is wrong location, wrong
+- [X] **The GPS connector** — the blue plug everyone forgets to re-seat; symptom is wrong location, wrong
       clock, greyed-out CarPlay. Give it its own callout.
-- [ ] Automatic transmission: prefer not to remove the knob (the white lock rod is easy to misplace).
-- [ ] RHD is identical; the "passenger side" is simply the other side.
-- [ ] Post-install oddities that are **not** faults: USB ports needing 15–30 minutes or a full shutdown to
+- [X] Automatic transmission: prefer not to remove the knob (the white lock rod is easy to misplace).
+- [X] RHD is identical; the "passenger side" is simply the other side.
+- [X] Post-install oddities that are **not** faults: USB ports needing 15–30 minutes or a full shutdown to
       appear; "no device recognized" clearing after locking the car and walking away.
-- [ ] Diagrams: **hub and cable schematic**, **trim removal order**.
-- [ ] `Checklist` for reassembly.
+- [X] Diagrams: **hub and cable schematic**, **trim removal order**.
+- [X] `Checklist` for reassembly.
 
 ## `/procedure/verify.md` — 5 · Verify
 

@@ -100,10 +100,10 @@ VitePress 1.6.4, **bun**, Node v24 via nvm. `bun run docs:dev` to serve, `bun ru
   themselves via `import.meta.env.BASE_URL`** (only `SourceCite.vue` needed it — `withBase()` from
   `vitepress` is the idiomatic API but is unavailable in the bare Vitest SSR context, so the env var is
   used instead). A one-time repo setting is required: Pages source = "GitHub Actions".
-- **Fifteen of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety`, the
+- **Sixteen of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety`, the
   whole `/firmware/` section (`index`, `regions`, `points-of-no-return`, `obtaining`), and the whole
   `/guide/` "Start here" section (`index`, `eligibility`, `what-changes`, `risks`, and the new `route`), and
-  the procedure hub `/procedure/` and steps 1–3 (`/procedure/prepare`, `/procedure/flash`, `/procedure/rebrand`) are finished prose. Every remaining stub carries a warning block pointing at its backing document — keep that
+  the procedure hub `/procedure/` and steps 1–4 (`prepare`, `flash`, `rebrand`, `hardware`) are finished prose. Every remaining stub carries a warning block pointing at its backing document — keep that
   warning until the page actually stands on its own, so an empty page is never mistaken for guidance, and
   delete it only in the commit that writes the page.
 - **i18n**: English content stays at the root of `docs/` on purpose. VitePress keeps the root locale in
@@ -353,8 +353,14 @@ Read `research/` before doing anything; the headlines:
   serial route now links) blocks; the 335/352 (C2-12) and 74.00.324 (B-04) edits with line numbers checked
   against the held file; 70.00.367 flagged as this project's reading of the script; the v74 language gap
   (B-01 comment, 2026-07); the AIO 1.51 danger block (A-04, F-06).
-- **Next:** (1) continue porting the research into the pages — the rest of `08c` (`/procedure/hardware`, then
-  `/procedure/verify`), then hardware, recovery, reference — written generically for all markets and all starting versions;
+- 2026-09-25: **step 4 · Hardware is written** (`TODOs/08c`, second page) — `/procedure/hardware`: 68wooley's
+  step list (A-01) keyed to the circled item numbers on Mazda's sheet (E-08) with the 124's two one-piece
+  deviations, the AT knob, the blue-GPS-plug danger block, the hub swap and cabling, test before reassembly,
+  RHD, and the post-install non-faults. `PartFinder`, `TrimOrder`, `HubWiring` mounted (both diagrams
+  checked against the E report; they stand). Found alongside it: 25 data fields rendered as plain text still
+  carried markdown (`**not VIN-locked**` showed literally) — stripped, and a new invariant rejects it. 112 tests.
+- **Next:** (1) continue porting the research into the pages — `/procedure/verify` (the end of `08c`), then
+  hardware, recovery, reference — written generically for all markets and all starting versions;
   (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).
 - **Deferred to a separate task, after the site is complete:** anything specific to the maintainer's own
   car (reading its version string, choosing its route, an actual attempt).

@@ -77,7 +77,7 @@ today serves a scam site.
 - **Binaries: collected and verified.** ~11 GB in the git-ignored `downloads/`, all 28 files hashed in
   `downloads/CHECKSUMS.sha256`. EU, ADR and NA 70.00.100A all present and matching community MD5s.
   20 files scanned clean by VirusTotal; 7 exceed every scanner's size limit and never can be.
-- **Site: fifteen pages are written** (files 05, 06, 07, 08a, 08b and the first page of 08c). `/security/` (2 pages) is finished prose — the
+- **Site: sixteen pages are written** (files 05, 06, 07, 08a, 08b and two pages of 08c). `/security/` (2 pages) is finished prose — the
   section that exists nowhere else, plus the live hijacked-domain warning. The whole `/firmware/` section
   (4 pages) stands: the version matrix, regions and file naming, points of no return (classic rule vs. the
   2025 mp3 nuance, confidence intact), and obtaining and verifying. And the `/guide/` "Start here" section
@@ -90,7 +90,8 @@ today serves a scam site.
   single-file re-flash with the ID7 v2 paste; the mp3-only route's per-build downgrade or no flash).
   Step 3 `/procedure/rebrand` (first page of 08c) is written: the seven prompts quoted from the held
   `tweaks.sh`, the three ways to run it, and the per-build script edits (line numbers checked against the
-  held file). The other 14 pages are still stubs. File 06 stays `[~]` for one cross-cutting item only:
+  held file). Step 4 `/procedure/hardware` is written too: the 124 trim order against Mazda's sheet, the GPS
+  plug, test-before-reassembly, and what is not a fault. The other 13 pages are still stubs. File 06 stays `[~]` for one cross-cutting item only:
   anchoring *every* matrix row and linking each from another page waits on the downstream pages that would
   cite them. One more page remains to create: `reference/changelog`.
 - **Components: done** (file 03, plus two from 05). `useProfile()` plus 18 components in `docs/.vitepress/theme/components/`,
