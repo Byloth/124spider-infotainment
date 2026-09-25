@@ -30,7 +30,7 @@ when every child is `[X]`.
 | 08a | [Procedure · Route](08a-procedure-route.md) | 8 | `[X]` | Choose-your-route selector — the hub the five steps hang off |
 | 08b | [Procedure · Flash](08b-procedure-flash.md) | 18 | `[X]` | Prepare + flash — the brick-risk half (USB prep, failsafe→reinstall, the pedal rule) |
 | 08c | [Procedure · Rebrand](08c-procedure-rebrand.md) | 25 | `[X]` | Rebrand + hardware + verify — the three rebrand routes, the hub fit, the final checks |
-| 09 | [Pages · Hardware](09-pages-hardware.md) | 22 | `[~]` | The kit, part numbers per market, genuine vs clone |
+| 09 | [Pages · Hardware](09-pages-hardware.md) | 22 | `[X]` | The kit, part numbers per market, genuine vs clone |
 | 10 | [Pages · Recovery](10-pages-recovery.md) | 33 | `[ ]` | Troubleshooting, downgrading, un-bricking |
 | 11 | [Pages · Reference](11-pages-reference.md) | 31 | `[ ]` | Sources, inventory, open questions, glossary, changelog |
 | 12 | [Verification](12-verification.md) | 28 | `[ ]` | Build, typecheck, lint, no-JS, dark mode, responsive, hash verifier |
@@ -77,7 +77,7 @@ today serves a scam site.
 - **Binaries: collected and verified.** ~11 GB in the git-ignored `downloads/`, all 28 files hashed in
   `downloads/CHECKSUMS.sha256`. EU, ADR and NA 70.00.100A all present and matching community MD5s.
   20 files scanned clean by VirusTotal; 7 exceed every scanner's size limit and never can be.
-- **Site: nineteen pages are written** (files 05, 06, 07, the whole procedure 08a–08c, and two pages of 09). `/security/` (2 pages) is finished prose — the
+- **Site: twenty pages are written** (files 05, 06, 07, the whole procedure 08a–08c, and 09). `/security/` (2 pages) is finished prose — the
   section that exists nowhere else, plus the live hijacked-domain warning. The whole `/firmware/` section
   (4 pages) stands: the version matrix, regions and file naming, points of no return (classic rule vs. the
   2025 mp3 nuance, confidence intact), and obtaining and verifying. And the `/guide/` "Start here" section
@@ -95,7 +95,9 @@ today serves a scam site.
   the checks in order, what stays Mazda, and where to look when something is wrong. `/hardware/` (the first
   page of 09) is written: what the kit is, firmware first, why Android Auto needs the hub too, and
   reversibility. `/hardware/part-numbers` too: a per-market summary, `PartFinder`, the supersession chain, ❓ 9U0E
-  on a 124, and where to buy genuine. The other 10 pages are still stubs. File 06 stays `[~]` for one cross-cutting item only:
+  on a 124, and where to buy genuine. `/hardware/oem-vs-clone` closes 09: the evidence table with strengths, the
+  clone P-code variants, the disputed wireless-firmware question, and a labelled recommendation. The other 9
+  pages are still stubs. File 06 stays `[~]` for one cross-cutting item only:
   anchoring *every* matrix row and linking each from another page waits on the downstream pages that would
   cite them. One more page remains to create: `reference/changelog`.
 - **Components: done** (file 03, plus two from 05). `useProfile()` plus 18 components in `docs/.vitepress/theme/components/`,

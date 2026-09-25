@@ -45,21 +45,21 @@ cable-set installation instructions (`research/archive/hardware/`, doc `C92X_V6_
 
 ## `/hardware/oem-vs-clone.md` — Genuine vs clone
 
-- [ ] Present this as **evidence, not opinion** — a table of claims with who reported them, when, and how
+- [X] Present this as **evidence, not opinion** — a table of claims with who reported them, when, and how
       strong the corroboration is.
-- [ ] The finding that matters: **clone hubs have repeatedly broken SD navigation and GPS lock** on
+- [X] The finding that matters: **clone hubs have repeatedly broken SD navigation and GPS lock** on
       Mazdas; swapping in a genuine `-9U0D` fixed it. Directly relevant to a 124 owner, because keeping
       factory navigation working is one of the goals.
-- [ ] Clone cables occasionally dead on arrival.
-- [ ] **Wireless-CarPlay clones:** no wireless Android Auto, and they push the car to 74.00.200+ — which
+- [X] Clone cables occasionally dead on arrival.
+- [X] **Wireless-CarPlay clones:** no wireless Android Auto, and they push the car to 74.00.200+ — which
       costs the easy tweak path. Some reviews report failures after days.
-- [ ] The other side, fairly: several 124 owners report AliExpress "genuine" kits working perfectly. That
+- [X] The other side, fairly: several 124 owners report AliExpress "genuine" kits working perfectly. That
       is buyers' impression; no teardown exists.
-- [ ] Recommendation, stated as such: buy genuine where budget allows; if buying a clone, use a seller
+- [X] Recommendation, stated as such: buy genuine where budget allows; if buying a clone, use a seller
       with returns, expect possible SD-nav quirks, and avoid wireless-only variants.
 
 ## Done when
 
-- [ ] Every part number in the pages resolves to a row in `parts.data.ts`.
-- [ ] All markets visible with JS disabled.
-- [ ] No price appears without its date.
+- [X] Every part number in the pages resolves to a row in `parts.data.ts`.
+- [X] All markets visible with JS disabled.
+- [X] No price appears without its date.
