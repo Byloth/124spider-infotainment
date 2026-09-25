@@ -123,8 +123,11 @@ Requires tweak access. Pick the route from §0.
    3. replace the word "Mazda" in the UI (de, en_AU/UK/US, es, fr, fr_CN, it, nl)
    4. replace the Mazda icon in CarPlay with the Fiat/Abarth badge
    5. **restore OEM navigation** — takes several minutes; tap the pedal to keep the CMU awake
-   6. change the Bluetooth name to "124 Spider"
-   7. full backup to USB (optional, up to 30 min — normally decline)
+   6. change the Bluetooth name to "124 Spider" (⚠️ the dialog reuses the title "RESTORE OEM NAVIGATION")
+   7. "copy system for debug analysis" to USB (optional, up to 30 min, ≥4 GB stick — normally decline).
+      Corrected 2026-09-25 from "full backup": `tweaks.sh` calls it a debug copy, not a restorable backup.
+   On a failed version check the script prints "PLEASE UPDATE YOUR CMU FW TO VERSION 70…", **renames
+   itself to `_tweaks.sh` on the stick** and reboots — rename it back after editing.
 4. Reboot, remove the stick, re-insert the nav SD, re-pair phones, re-apply Gracenote if you care.
 5. The installer is safe to re-run to pick up options you skipped.
 

@@ -15,25 +15,25 @@ Backing: `research/PROCEDURE-DRAFT.md` §4–§6 · the recovered rebrand/tweak 
 
 ## `/procedure/rebrand.md` — 3 · Restore Fiat branding and navigation
 
-- [ ] Explain what is being restored and by what: `MazdaToFiatV70AIO`, and that upstream MZD-AIO contains
+- [X] Explain what is being restored and by what: `MazdaToFiatV70AIO`, and that upstream MZD-AIO contains
       none of it.
-- [ ] **Three `RouteBranch` blocks**, each complete on its own:
-  - [ ] **Route A — ID7 installed:** plain USB. The tool's seven prompts, each explained (branding,
+- [X] **Three `RouteBranch` blocks**, each complete on its own:
+  - [X] **Route A — ID7 installed:** plain USB. The tool's seven prompts, each explained (branding,
         animations, UI wording, CarPlay icon, **navigation restore**, Bluetooth name, optional backup).
-  - [ ] **Route B — mp3 method (2025+):** the payload plus the tool on one stick, USB keyboard, audio
+  - [X] **Route B — mp3 method (2025+):** the payload plus the tool on one stick, USB keyboard, audio
         source → USB1 → diagnostic screen → Terminal → `cd /mnt`, `cd sdb1`, `./tweaks.sh`.
         ⚠️ Unresolved: whether the *old* hub's ports enumerate a keyboard.
-  - [ ] **Route C — serial console:** the pre-2025 method. Present it as the fallback it now is, note the
+  - [X] **Route C — serial console:** the pre-2025 method. Present it as the fallback it now is, note the
         canonical write-up is on a **hijacked domain** (link `/security/link-safety`), and that one owner
         destroyed both adapter and CMU serial port with a bare wire.
-- [ ] The script edits needed on 70.00.335/352 (`_VER_EXT -le 360`) and on 74.00.324 (three `tweaks.sh`
+- [X] The script edits needed on 70.00.335/352 (`_VER_EXT -le 360`) and on 74.00.324 (three `tweaks.sh`
       lines plus one in `run.sh`), with the caveat that this defeats a compatibility check the author put
       there because he could not test.
-- [ ] **Never run v56-era tweak packages on v70** (e.g. Ameridan AIO 1.51): two 124s ended with a dead
+- [X] **Never run v56-era tweak packages on v70** (e.g. Ameridan AIO 1.51): two 124s ended with a dead
       touchscreen / stuck at the logo and needed a used CMU (`F-02`, `F-06`). `/procedure/prepare` promises
       this page covers it.
-- [ ] Note the language gap on v74: the tool ships 9 locale dictionaries against 38–41 in 74.00.324.
-- [ ] After: reboot, re-insert nav SD, re-pair phones, re-apply Gracenote.
+- [X] Note the language gap on v74: the tool ships 9 locale dictionaries against 38–41 in 74.00.324.
+- [X] After: reboot, re-insert nav SD, re-pair phones, re-apply Gracenote.
 
 ## `/procedure/hardware.md` — 4 · Install the hardware
 

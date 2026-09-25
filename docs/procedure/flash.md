@@ -288,7 +288,7 @@ single `update.up`, with a serial console attached. Flashing 70.00.100 instead d
 gone<SourceCite ids="A-03" />.
 
 How to wire and open the serial console is covered with the rest of the serial method in
-[step 3](/procedure/rebrand). Read that before you start, and have the console working before you touch
+[step 3](/procedure/rebrand#serial-console). Read that before you start, and have the console working before you touch
 the update. ⚠️ Two sources label the unit's serial pins the other way round from each
 other<SourceCite ids="F-51,F-62" />, so if the console shows nothing, swap TX and RX.
 
