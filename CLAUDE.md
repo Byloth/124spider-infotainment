@@ -100,10 +100,10 @@ VitePress 1.6.4, **bun**, Node v24 via nvm. `bun run docs:dev` to serve, `bun ru
   themselves via `import.meta.env.BASE_URL`** (only `SourceCite.vue` needed it — `withBase()` from
   `vitepress` is the idiomatic API but is unavailable in the bare Vitest SSR context, so the env var is
   used instead). A one-time repo setting is required: Pages source = "GitHub Actions".
-- **Sixteen of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety`, the
+- **Seventeen of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety`, the
   whole `/firmware/` section (`index`, `regions`, `points-of-no-return`, `obtaining`), and the whole
   `/guide/` "Start here" section (`index`, `eligibility`, `what-changes`, `risks`, and the new `route`), and
-  the procedure hub `/procedure/` and steps 1–4 (`prepare`, `flash`, `rebrand`, `hardware`) are finished prose. Every remaining stub carries a warning block pointing at its backing document — keep that
+  the whole `/procedure/` section (the hub plus steps 1–5: `prepare`, `flash`, `rebrand`, `hardware`, `verify`) are finished prose. Every remaining stub carries a warning block pointing at its backing document — keep that
   warning until the page actually stands on its own, so an empty page is never mistaken for guidance, and
   delete it only in the commit that writes the page.
 - **i18n**: English content stays at the root of `docs/` on purpose. VitePress keeps the root locale in
@@ -359,8 +359,12 @@ Read `research/` before doing anything; the headlines:
   RHD, and the post-install non-faults. `PartFinder`, `TrimOrder`, `HubWiring` mounted (both diagrams
   checked against the E report; they stand). Found alongside it: 25 data fields rendered as plain text still
   carried markdown (`**not VIN-locked**` showed literally) — stripped, and a new invariant rejects it. 112 tests.
-- **Next:** (1) continue porting the research into the pages — `/procedure/verify` (the end of `08c`), then
-  hardware, recovery, reference — written generically for all markets and all starting versions;
+- 2026-09-25: **step 5 · Verify is written; the procedure section is complete** (`TODOs/08c` done) —
+  `/procedure/verify`: the checks in driver's-seat order (version per market, failsafe/OS match, animation,
+  wording, maps + GPS, BT name, CP/AA port), what stays Mazda (AA exit icon, no AA touch, iPhone's "Mazda",
+  wireless CarPlay, languages outside the nine), a symptom → step table, and the keep-the-old-hub / no-dealer
+  reminders. Steps 2–5 to be reviewed by the user before `09`.
+- **Next:** (1) continue porting the research into the pages — `09` hardware, then recovery, reference — written generically for all markets and all starting versions;
   (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).
 - **Deferred to a separate task, after the site is complete:** anything specific to the maintainer's own
   car (reading its version string, choosing its route, an actual attempt).

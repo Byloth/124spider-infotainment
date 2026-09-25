@@ -52,15 +52,15 @@ Backing: `research/PROCEDURE-DRAFT.md` §4–§6 · the recovered rebrand/tweak 
 
 ## `/procedure/verify.md` — 5 · Verify
 
-- [ ] What a correct result looks like: version string, Fiat/Abarth boot animation, UI wording, maps
+- [X] What a correct result looks like: version string, Fiat/Abarth boot animation, UI wording, maps
       instead of compass, Bluetooth name "124 Spider", phone on the icon-marked port launching CarPlay/AA.
-- [ ] The known-unfixable cosmetics, repeated here so nobody chases them.
-- [ ] `Checklist`.
-- [ ] Where to go if something is wrong: `/recovery/`.
+- [X] The known-unfixable cosmetics, repeated here so nobody chases them.
+- [X] `Checklist`.
+- [X] Where to go if something is wrong: `/recovery/`.
 
 ## Done when
 
-- [ ] Each page stands alone: a reader landing mid-procedure is not silently missing a prerequisite.
-- [ ] All three rebrand routes are fully written — none is a stub pointing at another.
-- [ ] With JS disabled, every branch is expanded and every route visible.
-- [ ] The untested-on-hardware caveat appears on every page in this stage.
+- [X] Each page stands alone: a reader landing mid-procedure is not silently missing a prerequisite.
+- [X] All three rebrand routes are fully written — none is a stub pointing at another.
+- [X] With JS disabled, every branch is expanded and every route visible.
+- [X] The untested-on-hardware caveat appears on every page in this stage.
