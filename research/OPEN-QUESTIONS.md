@@ -150,6 +150,10 @@ tested on the car. Ordered by how much they block the project. Source ids → `S
     VIN? (One Fiat dealership demonstrably flashed *Mazda* firmware onto a 124.) Unknown.
 18. **Nav SD after a CMU swap:** the Fiat card is VIN-locked after ~100 km; whether it survives a different
     CMU is not reported for the 124.
+18a. **Which fuse is "ROOM" on a 124?** Mazda's failed-update recovery pulls the ROOM fuse for one minute
+    [F-49], and the NA TSB puts it in the engine-compartment fuse block [F-50] — both Mazda documents. A 124
+    owner asked the question in the how-to thread and got no answer [A-01]. The Fiat owner's manual fuse
+    chart should settle it; not yet checked. `/procedure/flash` tells readers to find it before they start.
 
 ## D. Known contradictions to flag in the published guide
 

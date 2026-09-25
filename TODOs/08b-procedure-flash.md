@@ -37,22 +37,22 @@ recovered ASH8 testing document (`research/archive/recovered/`, for USB-stick ve
 
 ## `/procedure/flash.md` — 2 · Flash the firmware
 
-- [ ] Follow Mazda's own 30-step procedure; this page is the practical gloss, not a replacement.
-- [ ] The sequence: stick holds **only** the two `.up` files → ACC (one press, no pedal) → diagnostic
+- [X] Follow Mazda's own 30-step procedure; this page is the practical gloss, not a replacement.
+- [X] The sequence: stick holds **only** the two `.up` files → ACC (one press, no pedal) → diagnostic
       screen (Music + Mute + Favorites) → **failsafe first, alone** (~8 min) → then reinstall (~27–40 min).
-- [ ] **The pedal rule, given the weight it deserves:** ACC times out at 25 minutes, and losing power
+- [X] **The pedal rule, given the weight it deserves:** ACC times out at 25 minutes, and losing power
       mid-flash is the classic brick. Press and release clutch/brake right after the failsafe finishes and
       roughly every 20 minutes. Never switch the ignition off during the process.
-- [ ] Mount **`FlashTimer`**, described as an aid and not a guarantee.
-- [ ] What "done" looks like, and what is *expected* to be wrong at this point: Mazda boot animation,
+- [X] Mount **`FlashTimer`**, described as an aid and not a guarantee.
+- [X] What "done" looks like, and what is *expected* to be wrong at this point: Mazda boot animation,
       Bluetooth name "Mazda", navigation showing only a compass. Readers panic here otherwise.
-- [ ] **If it fails** — Mazda's own recovery: IG OFF → wait for black screen → remove stick → pull the
+- [X] **If it fails** — Mazda's own recovery: IG OFF → wait for black screen → remove stick → pull the
       ROOM fuse for 1 minute → refit → ACC → the update screen returns → re-insert.
-- [ ] Diagram: **two-file flash sequence**.
-- [ ] Link `/recovery/` for anything the ROOM-fuse retry does not fix.
+- [X] Diagram: **two-file flash sequence**.
+- [X] Link `/recovery/` for anything the ROOM-fuse retry does not fix.
 
 ## Done when
 
-- [ ] Each page stands alone: a reader landing mid-procedure is not silently missing a prerequisite.
-- [ ] With JS disabled, every branch is expanded and every route visible.
-- [ ] The untested-on-hardware caveat appears on every page in this stage.
+- [X] Each page stands alone: a reader landing mid-procedure is not silently missing a prerequisite.
+- [X] With JS disabled, every branch is expanded and every route visible.
+- [X] The untested-on-hardware caveat appears on every page in this stage.
