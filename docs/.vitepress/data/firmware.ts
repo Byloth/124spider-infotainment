@@ -313,7 +313,7 @@ export const FIRMWARE: readonly FirmwareVersion[] = [
         ],
         packaging: "single-file",
         notes: "Same neutralize behaviour as 335. MazdaToFiatV70AIO needs its version gate edited to " +
-            "`_VER_EXT -le 360` to run here.",
+            "_VER_EXT -le 360 to run here.",
         sourceIds: ["A-08"]
     },
     {

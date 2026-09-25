@@ -39,7 +39,7 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
         term: "failsafe package",
         aliases: ["failsafe", "_failsafe.up"],
         definition: "The smaller of the two firmware files, roughly 7 MB. It replaces the bootloader and " +
-            "the updater itself, and must be installed **first**. Its name is misleading: it is not a " +
+            "the updater itself, and must be installed first. Its name is misleading: it is not a " +
             "safety net. Losing power between it and the reinstall package is the classic way to brick " +
             "the unit, because the system then boots neither the old software nor the new."
     },
@@ -47,7 +47,7 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
         term: "reinstall package",
         aliases: ["reinstall", "_reinstall.up"],
         definition: "The large firmware file, between 0.9 and 2.3 GB depending on region, containing the " +
-            "operating system. Installed **second**, after the failsafe package."
+            "operating system. Installed second, after the failsafe package."
     },
     {
         term: "update package",
@@ -65,7 +65,7 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
     {
         term: "ID7 v2",
         definition: "Not a newer package so much as a different procedure: a serial console attached " +
-            "*during* the firmware flash, with the recovery files pasted in before the first reboot. " +
+            "during the firmware flash, with the recovery files pasted in before the first reboot. " +
             "Needed from 70.00.335 onwards, and it must be repeated after every subsequent flash."
     },
     {
@@ -105,7 +105,7 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
         term: "ADR",
         aliases: ["4A"],
         definition: "The market covering Australia, New Zealand, the Middle East, Asia-Pacific, South " +
-            "Africa and South America. It appears on screen as `4A`, which catches people out when they " +
+            "Africa and South America. It appears on screen as 4A, which catches people out when they " +
             "go looking for files."
     },
     {
@@ -135,9 +135,9 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
     {
         term: "region suffix",
         aliases: ["N suffix", "M suffix"],
-        definition: "The letters after the version number, as in `70.00.100A EU N`. `NA`, `EU`, `4A` and " +
-            "`JP` are the market; the trailing `N` means the NNG navigation protocol and `M` means " +
-            "Matsukone, used only in Japan. The `A`, `B` or `C` before it is the revision — a different " +
+        definition: "The letters after the version number, as in 70.00.100A EU N. NA, EU, 4A and " +
+            "JP are the market; the trailing N means the NNG navigation protocol and M means " +
+            "Matsukone, used only in Japan. The A, B or C before it is the revision — a different " +
             "thing entirely."
     }
 ];

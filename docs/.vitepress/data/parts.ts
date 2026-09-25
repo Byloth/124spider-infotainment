@@ -176,7 +176,7 @@ export const PARTS: readonly Part[] = [
             { market: "EU", amount: "€190–600 used, €1000–1500 new", asOf: "2026-08" },
             { market: "NA", amount: "$125–299 used", asOf: "2026-08" }
         ],
-        notes: "These units are **not VIN-locked**: any MZD-1 CMU from any Mazda model is plug-and-play. " +
+        notes: "These units are not VIN-locked: any MZD-1 CMU from any Mazda model is plug-and-play. " +
             "That makes a used unit both the last-resort repair and the community's answer for a car " +
             "stuck on locked firmware — fit a used v56 unit and run the easy path on that.",
         sourceIds: ["F-01", "F-23", "F-18"]
@@ -199,7 +199,7 @@ export const PARTS: readonly Part[] = [
         markets: "all",
         label: "SPI flash programmer — for un-bricking only",
         prices: [{ market: "EU", amount: "under €50 for the whole kit", asOf: "2026-08" }],
-        notes: "**Must be 3.3 V** on the data lines; many CH341A boards need the well-documented " +
+        notes: "Must be 3.3 V on the data lines; many CH341A boards need the well-documented " +
             "trace-cut modification first. A Raspberry Pi with flashrom does the same job. Chips seen: " +
             "MX25L6445E in EU units, Spansion S25FL064A/P in US and early ones.",
         sourceIds: ["F-19", "F-03"]

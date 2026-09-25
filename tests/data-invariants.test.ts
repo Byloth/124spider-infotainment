@@ -238,3 +238,26 @@ describe("glossary", () =>
         expect(GLOSSARY.filter((g) => g.definition.trim().length < 20).map((g) => g.term)).toEqual([]);
     });
 });
+
+describe("rendered text", () =>
+{
+    // Components interpolate these fields with `{{ }}`, which renders text, not markdown: a `**bold**` or
+    // a backticked `code` in the data shows up on the page as literal asterisks and backticks.
+    const MARKUP = /\*\*|(^|[\s(])\*[^\s*][^*]*\*|`/;
+
+    const fields: [string, string][] = [
+        ...PARTS.flatMap((p) => [[`part ${p.id}`, p.label], [`part ${p.id}`, p.notes ?? ""]] as [string, string][]),
+        ...GLOSSARY.map((g) => [`glossary ${g.term}`, g.definition] as [string, string]),
+        ...FAILURES.flatMap((f) => [f.symptom, ...f.causes, ...f.fixes, f.caveat ?? ""]
+            .map((text) => [`failure ${f.id}`, text] as [string, string])),
+        ...FIRMWARE.flatMap((f) => [f.notes, ...f.otherRoutes.map((r) => r.note ?? "")]
+            .map((text) => [`firmware ${f.id}`, text] as [string, string])),
+        ...SOURCES.flatMap((s) => [[`source ${s.id}`, s.title], [`source ${s.id}`, s.summary]] as [string, string][]),
+        ...ARTIFACTS.map((a) => [`artifact ${a.filename}`, a.notes] as [string, string])
+    ];
+
+    it("carries no markdown, because it is not rendered as markdown", () =>
+    {
+        expect(fields.filter(([, text]) => MARKUP.test(text)).map(([where]) => where)).toEqual([]);
+    });
+});

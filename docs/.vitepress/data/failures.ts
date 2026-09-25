@@ -220,7 +220,7 @@ export const FAILURES: readonly Failure[] = [
             "gone.",
         causes: ["Any re-flash restores factory defaults, and the Bluetooth identity changes with the firmware"],
         fixes: [
-            "Un-pair every phone in the car *and* on the phone **before** updating — it cannot be cleaned up " +
+            "Un-pair every phone in the car and on the phone before updating — it cannot be cleaned up " +
             "afterwards",
             "Record favourites first",
             "MazdaToFiatV70AIO sets the name back to \"124 Spider\""
