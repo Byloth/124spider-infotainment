@@ -77,7 +77,7 @@ today serves a scam site.
 - **Binaries: collected and verified.** ~11 GB in the git-ignored `downloads/`, all 28 files hashed in
   `downloads/CHECKSUMS.sha256`. EU, ADR and NA 70.00.100A all present and matching community MD5s.
   20 files scanned clean by VirusTotal; 7 exceed every scanner's size limit and never can be.
-- **Site: eighteen pages are written** (files 05, 06, 07, the whole procedure 08a–08c, and `/hardware/`). `/security/` (2 pages) is finished prose — the
+- **Site: nineteen pages are written** (files 05, 06, 07, the whole procedure 08a–08c, and two pages of 09). `/security/` (2 pages) is finished prose — the
   section that exists nowhere else, plus the live hijacked-domain warning. The whole `/firmware/` section
   (4 pages) stands: the version matrix, regions and file naming, points of no return (classic rule vs. the
   2025 mp3 nuance, confidence intact), and obtaining and verifying. And the `/guide/` "Start here" section
@@ -94,7 +94,8 @@ today serves a scam site.
   plug, test-before-reassembly, and what is not a fault. Step 5 `/procedure/verify` closes the procedure:
   the checks in order, what stays Mazda, and where to look when something is wrong. `/hardware/` (the first
   page of 09) is written: what the kit is, firmware first, why Android Auto needs the hub too, and
-  reversibility. The other 11 pages are still stubs. File 06 stays `[~]` for one cross-cutting item only:
+  reversibility. `/hardware/part-numbers` too: a per-market summary, `PartFinder`, the supersession chain, ❓ 9U0E
+  on a 124, and where to buy genuine. The other 10 pages are still stubs. File 06 stays `[~]` for one cross-cutting item only:
   anchoring *every* matrix row and linking each from another page waits on the downstream pages that would
   cite them. One more page remains to create: `reference/changelog`.
 - **Components: done** (file 03, plus two from 05). `useProfile()` plus 18 components in `docs/.vitepress/theme/components/`,

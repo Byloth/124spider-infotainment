@@ -100,10 +100,10 @@ VitePress 1.6.4, **bun**, Node v24 via nvm. `bun run docs:dev` to serve, `bun ru
   themselves via `import.meta.env.BASE_URL`** (only `SourceCite.vue` needed it — `withBase()` from
   `vitepress` is the idiomatic API but is unavailable in the bare Vitest SSR context, so the env var is
   used instead). A one-time repo setting is required: Pages source = "GitHub Actions".
-- **Eighteen of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety`, the
+- **Nineteen of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety`, the
   whole `/firmware/` section (`index`, `regions`, `points-of-no-return`, `obtaining`), and the whole
   `/guide/` "Start here" section (`index`, `eligibility`, `what-changes`, `risks`, and the new `route`), and
-  the whole `/procedure/` section (the hub plus steps 1–5: `prepare`, `flash`, `rebrand`, `hardware`, `verify`) and `/hardware/` are finished prose. Every remaining stub carries a warning block pointing at its backing document — keep that
+  the whole `/procedure/` section (the hub plus steps 1–5: `prepare`, `flash`, `rebrand`, `hardware`, `verify`), `/hardware/` and `/hardware/part-numbers` are finished prose. Every remaining stub carries a warning block pointing at its backing document — keep that
   warning until the page actually stands on its own, so an empty page is never mistaken for guidance, and
   delete it only in the commit that writes the page.
 - **i18n**: English content stays at the root of `docs/` on purpose. VitePress keeps the root locale in
@@ -369,8 +369,11 @@ Read `research/` before doing anything; the headlines:
   E-01), and reversibility. `PartFinder` now renders each kit's `contents` and each price's `note` (the EU tape
   and manual numbers were invisible, and a reseller's price read like a genuine one); a component test checks
   that every part number, content line and price note reaches the markup. 113 tests.
-- **Next:** (1) continue porting the research into the pages — the rest of `09` (`part-numbers`,
-  `oem-vs-clone`), then recovery, reference — written generically for all markets and all starting versions;
+- 2026-09-25: **`/hardware/part-numbers` is written** (`TODOs/09`, second page): a four-market summary table,
+  `PartFinder` (SSR = every market), the hub's supersession chain and the revisions reported not to work, the
+  cable set, ordering per market (NA kit vs EU/UK lines), where to buy genuine, and ❓ no 124 report for 9U0E.
+- **Next:** (1) continue porting the research into the pages — `/hardware/oem-vs-clone` (end of `09`), then
+  recovery, reference — written generically for all markets and all starting versions;
   (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).
 - **Deferred to a separate task, after the site is complete:** anything specific to the maintainer's own
   car (reading its version string, choosing its route, an actual attempt).

@@ -26,21 +26,21 @@ cable-set installation instructions (`research/archive/hardware/`, doc `C92X_V6_
 
 ## `/hardware/part-numbers.md` — Part numbers by market
 
-- [ ] Mount **`PartFinder`** over a **static table of all markets** (no-JS baseline).
-- [ ] **Hub:** `TK78-66-9U0C` — the same part worldwide. Genuine units carry an orange label and
+- [X] Mount **`PartFinder`** over a **static table of all markets** (no-JS baseline).
+- [X] **Hub:** `TK78-66-9U0C` — the same part worldwide. Genuine units carry an orange label and
       "Made in Japan". Superseded by `-9U0D` → `-9U0E` (catalogues list 9U0E as replacing B/C/D).
       Earlier `-9U0`/`-9U0A`/`-9U0B` and the China-market green-label `KD5J-66-9U0` are reported **not** to
       work with 70.00.021+. The 124's original hub is `N243-66-9U0A/B`.
-- [ ] **Cable sets, per market:** NA `C922-V6-605(A)` · EU/UK `C830-V6-60Z` · ADR `C924-V6-605` ·
+- [X] **Cable sets, per market:** NA `C922-V6-605(A)` · EU/UK `C830-V6-60Z` · ADR `C924-V6-605` ·
       JP `C921-V6-605`. They differ only by catalogue entry — any set physically fits any car.
-- [ ] **Kit numbers:** NA `0000-8F-Z34` (officially 1× hub + 1× cable set; labour op YY800XRX, 1.5 h).
+- [X] **Kit numbers:** NA `0000-8F-Z34` (officially 1× hub + 1× cable set; labour op YY800XRX, 1.5 h).
       UK/EU is ordered as separate lines: hub + `C830-V6-60Z` + tape `C830-V6-693` + manual
       `4100-77-300EN/ES/DE`.
-- [ ] **Prices**, dated and per market — NA kit MSRP ~$250 (web $192–213), EU launch €220 parts / €360
+- [X] **Prices**, dated and per market — NA kit MSRP ~$250 (web $192–213), EU launch €220 parts / €360
       fitted, UK £174–232 genuine (dealer-fitted £350–467), AU A$355, JP ¥12,960 + ¥2,592 (2019).
       Mark every price with its date; these are historic figures, not quotes.
-- [ ] Where to buy genuine: dealer parts counters, dealer-run eBay/Amazon stores, UK dealer web shops.
-- [ ] ❓ Open: whether the current genuine `-9U0E` works with 70.00.100 on a 124 — catalogues say it
+- [X] Where to buy genuine: dealer parts counters, dealer-run eBay/Amazon stores, UK dealer web shops.
+- [X] ❓ Open: whether the current genuine `-9U0E` works with 70.00.100 on a 124 — catalogues say it
       supersedes 9U0C, but no 124 report exists.
 
 ## `/hardware/oem-vs-clone.md` — Genuine vs clone
