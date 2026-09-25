@@ -100,10 +100,10 @@ VitePress 1.6.4, **bun**, Node v24 via nvm. `bun run docs:dev` to serve, `bun ru
   themselves via `import.meta.env.BASE_URL`** (only `SourceCite.vue` needed it — `withBase()` from
   `vitepress` is the idiomatic API but is unavailable in the bare Vitest SSR context, so the env var is
   used instead). A one-time repo setting is required: Pages source = "GitHub Actions".
-- **Seventeen of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety`, the
+- **Eighteen of the 29 pages are written**; the rest are stubs. `/security/` + `/security/link-safety`, the
   whole `/firmware/` section (`index`, `regions`, `points-of-no-return`, `obtaining`), and the whole
   `/guide/` "Start here" section (`index`, `eligibility`, `what-changes`, `risks`, and the new `route`), and
-  the whole `/procedure/` section (the hub plus steps 1–5: `prepare`, `flash`, `rebrand`, `hardware`, `verify`) are finished prose. Every remaining stub carries a warning block pointing at its backing document — keep that
+  the whole `/procedure/` section (the hub plus steps 1–5: `prepare`, `flash`, `rebrand`, `hardware`, `verify`) and `/hardware/` are finished prose. Every remaining stub carries a warning block pointing at its backing document — keep that
   warning until the page actually stands on its own, so an empty page is never mistaken for guidance, and
   delete it only in the commit that writes the page.
 - **i18n**: English content stays at the root of `docs/` on purpose. VitePress keeps the root locale in
@@ -364,7 +364,13 @@ Read `research/` before doing anything; the headlines:
   wording, maps + GPS, BT name, CP/AA port), what stays Mazda (AA exit icon, no AA touch, iPhone's "Mazda",
   wireless CarPlay, languages outside the nine), a symptom → step table, and the keep-the-old-hub / no-dealer
   reminders. Steps 2–5 to be reviewed by the user before `09`.
-- **Next:** (1) continue porting the research into the pages — `09` hardware, then recovery, reference — written generically for all markets and all starting versions;
+- 2026-09-25: **`/hardware/` is written** (`TODOs/09`, first page): what the kit physically is (`HubWiring`),
+  the 7-inch requirement, firmware first in Mazda's words, why Android Auto needs the hub too (E-10, E-06,
+  E-01), and reversibility. `PartFinder` now renders each kit's `contents` and each price's `note` (the EU tape
+  and manual numbers were invisible, and a reseller's price read like a genuine one); a component test checks
+  that every part number, content line and price note reaches the markup. 113 tests.
+- **Next:** (1) continue porting the research into the pages — the rest of `09` (`part-numbers`,
+  `oem-vs-clone`), then recovery, reference — written generically for all markets and all starting versions;
   (2) decide where/whether to publish the binaries (proprietary — takedown risk killed every past mirror).
 - **Deferred to a separate task, after the site is complete:** anything specific to the maintainer's own
   car (reading its version string, choosing its route, an actual attempt).

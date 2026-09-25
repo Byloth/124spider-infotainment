@@ -16,10 +16,12 @@ import type { Component } from "vue";
 import { describe, expect, it } from "vitest";
 
 import LinkTable from "../docs/.vitepress/theme/components/LinkTable.vue";
+import PartFinder from "../docs/.vitepress/theme/components/PartFinder.vue";
 import SourceCite from "../docs/.vitepress/theme/components/SourceCite.vue";
 import SourceTable from "../docs/.vitepress/theme/components/SourceTable.vue";
 
 import { isHostile, LINKS } from "../docs/.vitepress/data/links";
+import { PARTS } from "../docs/.vitepress/data/parts";
 import { SOURCES } from "../docs/.vitepress/data/sources";
 
 const render = (component: Component, props?: Record<string, unknown>): Promise<string> =>
@@ -212,5 +214,31 @@ describe("SourceTable", () =>
 
         expect(mirrors.length).toBeGreaterThan(0);
         for (const url of mirrors) { expect(html, url).toContain(`href="${url}"`); }
+    });
+});
+
+describe("PartFinder", () =>
+{
+    const escape = (text: string): string => text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+
+    // Server-rendered with no profile, this table is the no-JS baseline for /hardware/part-numbers, so
+    // everything the data holds has to reach the markup: a kit's contents carry part numbers that appear
+    // nowhere else, and a price without its note can read as a genuine-part price when it is not.
+    it("renders every market's parts, with each kit's contents and each price's note", async () =>
+    {
+        const html = await render(PartFinder);
+
+        const missing = PARTS.flatMap((p) => [
+            p.partNumber,
+            ...(p.contents ?? []),
+            ...(p.prices ?? []).flatMap((price) => [price.amount, price.asOf, price.note ?? ""])
+        ]).filter((text) => text !== "" && !html.includes(escape(text)));
+
+        expect(missing).toEqual([]);
     });
 });

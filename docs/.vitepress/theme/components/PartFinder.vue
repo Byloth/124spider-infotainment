@@ -40,6 +40,11 @@
                         <div v-if="p.notes" class="meta">
                             {{ p.notes }}
                         </div>
+                        <ul v-if="p.contents" class="contents">
+                            <li v-for="item in p.contents" :key="item">
+                                {{ item }}
+                            </li>
+                        </ul>
                     </td>
                     <td>
                         <code>{{ p.partNumber }}</code>
@@ -55,7 +60,9 @@
                              :key="price.amount + price.asOf"
                              class="price">
                             {{ price.amount }}
-                            <span class="asof">({{ price.market }}, {{ price.asOf }})</span>
+                            <span class="asof">
+                                ({{ price.note ? `${price.note}, ` : "" }}{{ price.market }}, {{ price.asOf }})
+                            </span>
                         </div>
                         <span v-if="!p.prices" class="meta">—</span>
                     </td>
@@ -112,6 +119,16 @@ th { background-color: var(--vp-c-bg-soft); font-weight: 600; }
     color: var(--vp-c-text-2);
     font-size: 12px;
     line-height: 18px;
+}
+
+.contents
+{
+    margin: 4px 0 0;
+    padding-left: 18px;
+    color: var(--vp-c-text-2);
+    font-size: 12px;
+    line-height: 18px;
+    list-style: disc;
 }
 
 .price { white-space: nowrap; }
